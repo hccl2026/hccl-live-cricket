@@ -1165,93 +1165,143 @@ footer small{
     z-index:1;
 }
 /* =========================================
-   HCCL OFFICIAL NAVY BLUE THEME
-   COLORS ONLY
+   HCCL NAVY + BLACK + RED PREMIUM THEME
 ========================================= */
 
 :root{
-    --hccl-navy:#06152d;
-    --hccl-navy-2:#0a1d3b;
-    --hccl-navy-3:#10294d;
-    --hccl-red:#ef1b1b;
-    --hccl-white:#ffffff;
+    --navy:#071a34;
+    --deep-navy:#041126;
+    --black:#05070b;
+    --card:#0b1728;
+    --red:#ef1b1b;
+    --white:#ffffff;
 }
 
-/* MAIN WEBSITE BACKGROUND */
+/* MAIN BACKGROUND */
 body{
-    background:#06152d !important;
+    background:#05070b !important;
     color:#ffffff !important;
 }
 
-/* TOP NAVIGATION */
+/* TOP HEADER - NAVY */
 .nav{
-    background:#071a34 !important;
-    border-bottom:1px solid rgba(255,255,255,0.08) !important;
+    background:linear-gradient(
+        90deg,
+        #071a34 0%,
+        #06152d 55%,
+        #03070d 100%
+    ) !important;
+
+    border-bottom:1px solid rgba(239,27,27,.25) !important;
 }
 
-/* HERO */
+/* HERO - NAVY TO BLACK */
 .hero{
     background:
-      radial-gradient(circle at 75% 45%, rgba(239,27,27,.10), transparent 30%),
-      linear-gradient(135deg,#06152d 0%,#081b36 55%,#041126 100%) !important;
+      radial-gradient(
+        circle at 78% 45%,
+        rgba(239,27,27,.12),
+        transparent 28%
+      ),
+      linear-gradient(
+        120deg,
+        #071a34 0%,
+        #061326 38%,
+        #05070b 72%,
+        #020305 100%
+      ) !important;
 }
 
-/* DARK SECTIONS */
-.section,
+/* NORMAL SECTIONS - BLACK */
+.section{
+    background:#05070b !important;
+}
+
+/* ALTERNATE DARK SECTION - NAVY/BLACK */
 .section.dark{
-    background:#06152d !important;
+    background:linear-gradient(
+        135deg,
+        #071a34 0%,
+        #07111f 50%,
+        #05070b 100%
+    ) !important;
 }
 
 /* CARDS */
 .team-card,
 .match-card{
-    background:#0a1d3b !important;
-    border-color:#17345d !important;
+    background:linear-gradient(
+        145deg,
+        #0b1c33,
+        #080d15
+    ) !important;
+
+    border:1px solid #17304f !important;
+}
+
+/* CARD HOVER */
+.team-card:hover,
+.match-card:hover{
+    border-color:#ef1b1b !important;
+    box-shadow:0 10px 35px rgba(239,27,27,.10) !important;
+}
+
+/* LIVE SCORE STRIP */
+.live-strip{
+    background:linear-gradient(
+        90deg,
+        #071a34,
+        #090d14,
+        #071a34
+    ) !important;
+
+    border-top:1px solid #17304f !important;
+    border-bottom:1px solid #17304f !important;
 }
 
 /* POINTS TABLE */
 .points{
-    background:#081a35 !important;
-    border-color:#17345d !important;
-}
-
-.points > div{
-    border-color:#17345d !important;
+    background:#080d15 !important;
+    border:1px solid #17304f !important;
 }
 
 .points .pt-head{
-    background:#10294d !important;
+    background:#0b1c33 !important;
 }
 
-/* LIVE STRIP */
-.live-strip{
-    background:#0a1d3b !important;
-    border-color:#17345d !important;
+.points > div{
+    border-color:#17263a !important;
 }
 
-/* SECONDARY BUTTON */
-.secondary{
-    background:#10294d !important;
-    border-color:#294a75 !important;
-    color:#ffffff !important;
-}
-
-/* HCCL RED HIGHLIGHTS */
+/* RED ACCENTS */
 .tag,
 .hero-copy em,
 .live-title b{
     color:#ef1b1b !important;
 }
 
-/* KEEP LIVE BUTTON RED */
+/* RED BUTTONS */
 .primary,
 .live-nav{
     background:#ef1b1b !important;
     color:#ffffff !important;
 }
 
-/* FOOTER */
+/* SECONDARY BUTTON */
+.secondary{
+    background:#0b1c33 !important;
+    border:1px solid #244467 !important;
+    color:#ffffff !important;
+}
+
+/* FOOTER - BLACK TO NAVY */
 footer{
-    background:#041126 !important;
-    border-top:1px solid #17345d !important;
+    background:linear-gradient(
+        90deg,
+        #020305,
+        #071a34,
+        #020305
+    ) !important;
+
+    border-top:1px solid rgba(239,27,27,.25) !important;
 }
