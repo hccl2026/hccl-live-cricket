@@ -1164,3 +1164,94 @@ footer small{
     position:relative;
     z-index:1;
 }
+/* =========================================
+   HCCL OFFICIAL NAVY BLUE THEME
+   COLORS ONLY
+========================================= */
+
+:root{
+    --hccl-navy:#06152d;
+    --hccl-navy-2:#0a1d3b;
+    --hccl-navy-3:#10294d;
+    --hccl-red:#ef1b1b;
+    --hccl-white:#ffffff;
+}
+
+/* MAIN WEBSITE BACKGROUND */
+body{
+    background:#06152d !important;
+    color:#ffffff !important;
+}
+
+/* TOP NAVIGATION */
+.nav{
+    background:#071a34 !important;
+    border-bottom:1px solid rgba(255,255,255,0.08) !important;
+}
+
+/* HERO */
+.hero{
+    background:
+      radial-gradient(circle at 75% 45%, rgba(239,27,27,.10), transparent 30%),
+      linear-gradient(135deg,#06152d 0%,#081b36 55%,#041126 100%) !important;
+}
+
+/* DARK SECTIONS */
+.section,
+.section.dark{
+    background:#06152d !important;
+}
+
+/* CARDS */
+.team-card,
+.match-card{
+    background:#0a1d3b !important;
+    border-color:#17345d !important;
+}
+
+/* POINTS TABLE */
+.points{
+    background:#081a35 !important;
+    border-color:#17345d !important;
+}
+
+.points > div{
+    border-color:#17345d !important;
+}
+
+.points .pt-head{
+    background:#10294d !important;
+}
+
+/* LIVE STRIP */
+.live-strip{
+    background:#0a1d3b !important;
+    border-color:#17345d !important;
+}
+
+/* SECONDARY BUTTON */
+.secondary{
+    background:#10294d !important;
+    border-color:#294a75 !important;
+    color:#ffffff !important;
+}
+
+/* HCCL RED HIGHLIGHTS */
+.tag,
+.hero-copy em,
+.live-title b{
+    color:#ef1b1b !important;
+}
+
+/* KEEP LIVE BUTTON RED */
+.primary,
+.live-nav{
+    background:#ef1b1b !important;
+    color:#ffffff !important;
+}
+
+/* FOOTER */
+footer{
+    background:#041126 !important;
+    border-top:1px solid #17345d !important;
+}
