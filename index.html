@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HCCL — Heroes Champions Cricket League</title>
+<link rel="stylesheet" href="site.css">
+</head>
+
+<body>
+
+<header class="nav">
+  <a class="logo" href="index.html">
+    <img src="hccl-logo.png">
+    <span>HCCL</span>
+  </a>
+
+  <nav>
+    <a class="active" href="index.html">Home</a>
+    <a href="#matches">Matches</a>
+    <a href="#teams">Teams</a>
+    <a href="#table">Points</a>
+    <a href="scorer.html">Scoring</a>
+  </nav>
+
+  <a class="live-nav" href="match.html">
+    <i></i> LIVE MATCH
+  </a>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="hero-copy">
+    <span class="tag">HEROES CHAMPIONS CRICKET LEAGUE</span>
+
+    <h1>THE LEAGUE.<br><em>LIVE.</em></h1>
+
+    <p>
+      Fixtures, live scores, streaming, full scorecards,
+      player statistics and HCCL tournament updates — all in one place.
+    </p>
+
+    <div class="hero-actions">
+      <a class="primary" href="match.html">Watch Live Match</a>
+      <a class="secondary" href="#matches">View Schedule</a>
+    </div>
+  </div>
+
+  <div class="hero-art">
+    <div class="orbit one"></div>
+    <div class="orbit two"></div>
+
+    <video
+      src="hccl-logo-animated.mp4"
+      autoplay
+      muted
+      loop
+      playsinline>
+    </video>
+
+    <span class="float-label l1">LIVE SCORING</span>
+    <span class="float-label l2">8 TEAMS</span>
+    <span class="float-label l3">ONE CHAMPION</span>
+  </div>
+</section>
+
+
+<section class="live-strip">
+
+  <div class="live-title">
+    <span class="dot"></span>
+    <b>LIVE NOW</b>
+    <small>Match 04 · League Stage</small>
+  </div>
+
+  <div class="live-team">
+    <img src="hccl-logo.png">
+    <span>HCCL REDS</span>
+    <strong>124/4</strong>
+    <small>15.2 OV</small>
+  </div>
+
+  <div class="vs">VS</div>
+
+  <div class="live-team right">
+    <small>Target 176</small>
+    <strong>HCCL BLUES</strong>
+    <img src="hccl-logo.png">
+  </div>
+
+  <a href="match.html">LIVE SCORE →</a>
+
+</section>
+
+
+<section id="matches" class="section">
+
+  <div class="section-head">
+    <div>
+      <span class="tag">MATCH CENTRE</span>
+      <h2>Schedule & Results</h2>
+    </div>
+
+    <div class="filter">
+      <button class="on" data-filter="all">All</button>
+      <button data-filter="live">Live</button>
+      <button data-filter="upcoming">Upcoming</button>
+      <button data-filter="completed">Results</button>
+    </div>
+  </div>
+
+
+  <div class="matches">
+
+    <article class="match-card live" data-status="live">
+
+      <div class="status live-status">
+        <i></i> LIVE · 2ND INNINGS
+      </div>
+
+      <div class="meta">
+        26 AUG · 4:30 PM · HCCL STADIUM
+      </div>
+
+      <div class="matchup">
+
+        <div>
+          <img src="hccl-logo.png">
+          <b>HCCL REDS</b>
+          <strong>124/4</strong>
+          <small>15.2 ov</small>
+        </div>
+
+        <span>VS</span>
+
+        <div>
+          <img src="hccl-logo.png">
+          <b>HCCL BLUES</b>
+          <strong>175/7</strong>
+          <small>20 ov</small>
+        </div>
+
+      </div>
+
+      <div class="card-actions">
+        <a href="match.html">Live Score</a>
+        <a href="overlay.html">Stream Overlay</a>
+      </div>
+
+    </article>
+
+
+    <article class="match-card" data-status="upcoming">
+
+      <div class="status upcoming">UPCOMING</div>
+
+      <div class="meta">
+        27 AUG · 3:00 PM · HCCL STADIUM
+      </div>
+
+      <div class="matchup">
+
+        <div>
+          <img src="hccl-logo.png">
+          <b>HCCL WARRIORS</b>
+        </div>
+
+        <span>VS</span>
+
+        <div>
+          <img src="hccl-logo.png">
+          <b>HCCL TITANS</b>
+        </div>
+
+      </div>
+
+      <div
+        class="countdown"
+        data-time="2026-08-27T15:00:00">
+        Starts in —
+      </div>
+
+    </article>
+
+
+    <article class="match-card" data-status="upcoming">
+
+      <div class="status upcoming">UPCOMING</div>
+
+      <div class="meta">
+        28 AUG · 6:30 PM · HCCL STADIUM
+      </div>
+
+      <div class="matchup">
+
+        <div>
+          <img src="hccl-logo.png">
+          <b>HCCL KINGS</b>
+        </div>
+
+        <span>VS</span>
+
+        <div>
+          <img src="hccl-logo.png">
+          <b>HCCL STRIKERS</b>
+        </div>
+
+      </div>
+
+      <div
+        class="countdown"
+        data-time="2026-08-28T18:30:00">
+        Starts in —
+      </div>
+
+    </article>
+
+
+    <article class="match-card done" data-status="completed">
+
+      <div class="status completed">COMPLETED</div>
+
+      <div class="meta">
+        25 AUG · MATCH 03
+      </div>
+
+      <div class="matchup">
+
+        <div>
+          <img src="hccl-logo.png">
+          <b>HCCL LIONS</b>
+          <strong>181/6</strong>
+        </div>
+
+        <span>VS</span>
+
+        <div>
+          <img src="hccl-logo.png">
+          <b>HCCL EAGLES</b>
+          <strong>168/9</strong>
+        </div>
+
+      </div>
+
+      <div class="result">
+        HCCL LIONS won by 13 runs
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<section id="teams" class="section dark">
+
+  <div class="section-head">
+    <div>
+      <span class="tag">FRANCHISES</span>
+      <h2>HCCL Teams</h2>
+    </div>
+  </div>
+
+  <div class="teams">
+
+    <div class="team-card">
+      <img src="hccl-logo.png">
+      <b>HCCL Reds</b>
+      <span>Squad →</span>
+    </div>
+
+    <div class="team-card">
+      <img src="hccl-logo.png">
+      <b>HCCL Blues</b>
+      <span>Squad →</span>
+    </div>
+
+    <div class="team-card">
+      <img src="hccl-logo.png">
+      <b>HCCL Warriors</b>
+      <span>Squad →</span>
+    </div>
+
+    <div class="team-card">
+      <img src="hccl-logo.png">
+      <b>HCCL Titans</b>
+      <span>Squad →</span>
+    </div>
+
+    <div class="team-card">
+      <img src="hccl-logo.png">
+      <b>HCCL Kings</b>
+      <span>Squad →</span>
+    </div>
+
+    <div class="team-card">
+      <img src="hccl-logo.png">
+      <b>HCCL Strikers</b>
+      <span>Squad →</span>
+    </div>
+
+    <div class="team-card">
+      <img src="hccl-logo.png">
+      <b>HCCL Lions</b>
+      <span>Squad →</span>
+    </div>
+
+    <div class="team-card">
+      <img src="hccl-logo.png">
+      <b>HCCL Eagles</b>
+      <span>Squad →</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="table" class="section">
+
+  <div class="section-head">
+    <div>
+      <span class="tag">LEAGUE TABLE</span>
+      <h2>Points Table</h2>
+    </div>
+  </div>
+
+  <div class="points">
+
+    <div class="pt-head">
+      <span>#</span>
+      <span>TEAM</span>
+      <span>P</span>
+      <span>W</span>
+      <span>L</span>
+      <span>NRR</span>
+      <span>PTS</span>
+    </div>
+
+    <div>
+      <span>1</span>
+      <span><b>HCCL Reds</b></span>
+      <span>4</span>
+      <span>3</span>
+      <span>1</span>
+      <span>+1.24</span>
+      <strong>6</strong>
+    </div>
+
+    <div>
+      <span>2</span>
+      <span><b>HCCL Lions</b></span>
+      <span>4</span>
+      <span>3</span>
+      <span>1</span>
+      <span>+0.82</span>
+      <strong>6</strong>
+    </div>
+
+    <div>
+      <span>3</span>
+      <span><b>HCCL Blues</b></span>
+      <span>4</span>
+      <span>2</span>
+      <span>2</span>
+      <span>+0.35</span>
+      <strong>4</strong>
+    </div>
+
+    <div>
+      <span>4</span>
+      <span><b>HCCL Titans</b></span>
+      <span>3</span>
+      <span>2</span>
+      <span>1</span>
+      <span>+0.12</span>
+      <strong>4</strong>
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+  <img src="hccl-logo.png">
+  <span>Heroes Champions Cricket League</span>
+  <small>Official HCCL Tournament Portal</small>
+</footer>
+
+
+<script src="site.js"></script>
+
+</body>
+</html>
