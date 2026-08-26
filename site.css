@@ -1142,3 +1142,12 @@ footer small{
         font-size: 48px !important;
     }
 }
+/* HCCL HEADER LOGO - slight overlap with name */
+.nav .logo img{
+    width: 52px !important;
+    height: 52px !important;
+    object-fit: contain;
+    margin-right: -8px !important;
+    position: relative;
+    z-index: 2;
+}
