@@ -1142,12 +1142,25 @@ footer small{
         font-size: 48px !important;
     }
 }
-/* HCCL HEADER LOGO - slight overlap with name */
+/* TOP HCCL LOGO - 3MM BIGGER THAN TEXT */
+.nav .logo{
+    display:flex;
+    align-items:center;
+    gap:0;
+}
+
 .nav .logo img{
-    width: 52px !important;
-    height: 52px !important;
-    object-fit: contain;
-    margin-right: -8px !important;
-    position: relative;
-    z-index: 2;
+    width:68px !important;
+    height:68px !important;
+    object-fit:contain;
+    margin-right:-6px !important;
+    position:relative;
+    z-index:2;
+}
+
+.nav .logo span{
+    font-size:20px !important;
+    line-height:1;
+    position:relative;
+    z-index:1;
 }
