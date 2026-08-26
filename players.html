@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>HCCL — MVP Players</title>
+
+<link rel="stylesheet" href="site.css">
+
+<style>
+
+.mvp-page{
+  width:min(1200px,calc(100% - 30px));
+  margin:45px auto 80px;
+}
+
+.mvp-head{
+  margin-bottom:28px;
+}
+
+.mvp-head small{
+  color:#ef1b1b;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.mvp-head h1{
+  font-size:46px;
+  margin:8px 0;
+}
+
+.mvp-head p{
+  color:#aaa;
+}
+
+.mvp-tabs{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:25px 0 30px;
+}
+
+.mvp-tabs button{
+  border:1px solid #333;
+  background:#151515;
+  color:#bbb;
+  padding:11px 18px;
+  border-radius:24px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.mvp-tabs button.active,
+.mvp-tabs button:hover{
+  background:#ef1b1b;
+  border-color:#ef1b1b;
+  color:white;
+}
+
+.stats-section{
+  display:none;
+}
+
+.stats-section.active{
+  display:block;
+}
+
+.table-wrap{
+  overflow-x:auto;
+  background:#101010;
+  border:1px solid #292929;
+  border-radius:16px;
+}
+
+.stats-table{
+  width:100%;
+  min-width:900px;
+  border-collapse:collapse;
+}
+
+.stats-table th{
+  text-align:left;
+  padding:14px;
+  background:#171717;
+  color:#888;
+  font-size:11px;
+  letter-spacing:.5px;
+}
+
+.stats-table td{
+  padding:15px 14px;
+  border-top:1px solid #242424;
+  font-size:14px;
+}
+
+.stats-table tr:hover{
+  background:#151515;
+}
+
+.rank{
+  color:#ef1b1b;
+  font-weight:900;
+}
+
+.player{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:180px;
+}
+
+.player img{
+  width:40px;
+  height:40px;
+  object-fit:contain;
+}
+
+.player b{
+  display:block;
+}
+
+.player small{
+  color:#777;
+}
+
+.mvp-score{
+  color:#f5b942;
+  font-weight:900;
+}
+
+.section-title{
+  font-size:28px;
+  margin-bottom:18px;
+}
+
+.note{
+  margin-top:15px;
+  color:#777;
+  font-size:12px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+
+  <a class="logo" href="index.html">
+    <img src="hccl-logo.png">
+    <span>HCCL</span>
+  </a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="match.html">Live</a>
+    <a href="scorecard.html">Scorecard</a>
+    <a href="index.html#teams">Teams</a>
+    <a href="index.html#table">Points</a>
+    <a class="active" href="players.html">MVP Players</a>
+    <a href="registration.html">Player Registration</a>
+    <a href="scorer.html">Scoring</a>
+  </nav>
+
+  <a class="live-nav" href="match.html">
+    <i></i> LIVE MATCH
+  </a>
+
+</header>
+
+
+<main class="mvp-page">
+
+  <div class="mvp-head">
+    <small>HEROES CHAMPIONS CRICKET LEAGUE</small>
+    <h1>MVP Players</h1>
+    <p>League leaders across batting, bowling, fielding and wicket keeping.</p>
+  </div>
+
+
+  <div class="mvp-tabs">
+
+    <button class="active" data-tab="overall">Overall MVP</button>
+
+    <button data-tab="batting">Batting</button>
+
+    <button data-tab="bowling">Bowling</button>
+
+    <button data-tab="fielding">Catches</button>
+
+    <button data-tab="keeping">Keeping</button>
+
+    <button data-tab="allround">All-Rounders</button>
+
+  </div>
+
+
+  <!-- OVERALL MVP -->
+
+  <section id="overall" class="stats-section active">
+
+    <h2 class="section-title">Overall MVP Rankings</h2>
+
+    <div class="table-wrap">
+
+      <table class="stats-table">
+
+        <thead>
+          <tr>
+            <th>RANK</th>
+            <th>PLAYER</th>
+            <th>M</th>
+            <th>RUNS</th>
+            <th>WKTS</th>
+            <th>CATCHES</th>
+            <th>ST</th>
+            <th>MVP PTS</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td class="rank">1</td>
+            <td>
+              <div class="player">
+                <img src="hccl-logo.png">
+                <div>
+                  <b>Player Name</b>
+                  <small>HCCL Reds</small>
+                </div>
+              </div>
+            </td>
+            <td>4</td>
+            <td>188</td>
+            <td>7</td>
+            <td>4</td>
+            <td>0</td>
+            <td class="mvp-score">520</td>
+          </tr>
+
+          <tr>
+            <td class="rank">2</td>
+            <td>
+              <div class="player">
+                <img src="hccl-logo.png">
+                <div>
+                  <b>Player Name</b>
+                  <small>HCCL Lions</small>
+                </div>
+              </div>
+            </td>
+            <td>4</td>
+            <td>160</td>
+            <td>8</td>
+            <td>3</td>
+            <td>0</td>
+            <td class="mvp-score">485</td>
+          </tr>
+
+          <tr>
+            <td class="rank">3</td>
+            <td>
+              <div class="player">
+                <img src="hccl-logo.png">
+                <div>
+                  <b>Player Name</b>
+                  <small>HCCL Blues</small>
+                </div>
+              </div>
+            </td>
+            <td>4</td>
+            <td>142</td>
+            <td>6</td>
+            <td>5</td>
+            <td>0</td>
+            <td class="mvp-score">451</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- BATTING -->
+
+  <section id="batting" class="stats-section">
+
+    <h2 class="section-title">Top Batters</h2>
+
+    <div class="table-wrap">
+
+      <table class="stats-table">
+
+        <thead>
+          <tr>
+            <th>RANK</th>
+            <th>PLAYER</th>
+            <th>INNS</th>
+            <th>RUNS</th>
+            <th>BALLS</th>
+            <th>AVG</th>
+            <th>SR</th>
+            <th>HS</th>
+            <th>4s</th>
+            <th>6s</th>
+            <th>50s</th>
+            <th>100s</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td class="rank">1</td>
+            <td>
+              <div class="player">
+                <img src="hccl-logo.png">
+                <div>
+                  <b>Player Name</b>
+                  <small>HCCL Reds</small>
+                </div>
+              </div>
+            </td>
+            <td>4</td>
+            <td>188</td>
+            <td>121</td>
+            <td>62.67</td>
+            <td>155.37</td>
+            <td>84</td>
+            <td>21</td>
+            <td>9</td>
+            <td>2</td>
+            <td>0</td>
+          </tr>
+
+          <tr>
+            <td class="rank">2</td>
+            <td>
+              <div class="player">
+                <img src="hccl-logo.png">
+                <div>
+                  <b>Player Name</b>
+                  <small>HCCL Kings</small>
+                </div>
+              </div>
+            </td>
+            <td>4</td>
+            <td>171</td>
+            <td>118</td>
+            <td>57.00</td>
+            <td>144.92</td>
+            <td>76</td>
+            <td>18</td>
+            <td>7</td>
+            <td>2</td>
+            <td>0</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- BOWLING -->
+
+  <section id="bowling" class="stats-section">
+
+    <h2 class="section-title">Top Bowlers</h2>
+
+    <div class="table-wrap">
+
+      <table class="stats-table">
+
+        <thead>
+          <tr>
+            <th>RANK</th>
+            <th>PLAYER</th>
+            <th>INNS</th>
+            <th>OVERS</th>
+            <th>BALLS</th>
+            <th>RUNS</th>
+            <th>WKTS</th>
+            <th>AVG</th>
+            <th>ECON</th>
+            <th>SR</th>
+            <th>BEST</th>
+            <th>5W</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td class="rank">1</td>
+            <td>
+              <div class="player">
+                <img src="hccl-logo.png">
+                <div>
+                  <b>Player Name</b>
+                  <small>HCCL Lions</small>
+                </div>
+              </div>
+            </td>
+            <td>4</td>
+            <td>15.0</td>
+            <td>90</td>
+            <td>102</td>
+            <td>9</td>
+            <td>11.33</td>
+            <td>6.80</td>
+            <td>10.00</td>
+            <td>4/18</td>
+            <td>0</td>
+          </tr>
+
+          <tr>
+            <td class="rank">2</td>
+            <td>
+              <div class="player">
+                <img src="hccl-logo.png">
+                <div>
+                  <b>Player Name</b>
+                  <small>HCCL Warriors</small>
+                </div>
+              </div>
+            </td>
+            <td>4</td>
+            <td>14.2</td>
+            <td>86</td>
+            <td>111</td>
+            <td>8</td>
+            <td>13.88</td>
+            <td>7.74</td>
+            <td>10.75</td>
+            <td>3/21</td>
+            <td>0</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- FIELDING -->
+
+  <section id="fielding" class="stats-section">
+
+    <h2 class="section-title">Top Fielders</h2>
+
+    <div class="table-wrap">
+
+      <table class="stats-table">
+
+        <thead>
+          <tr>
+            <th>RANK</th>
+            <th>PLAYER</th>
+            <th>MATCHES</th>
+            <th>CATCHES</th>
+            <th>RUN OUTS</th>
+            <th>TOTAL DISMISSALS</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td class="rank">1</td>
+            <td>
+              <div class="player">
+                <img src="hccl-logo.png">
+                <div>
+                  <b>Player Name</b>
+                  <small>HCCL Titans</small>
+                </div>
+              </div>
+            </td>
+            <td>4</td>
+            <td>7</td>
+            <td>2</td>
+            <td>9</td>
+          </tr>
+
+          <tr>
+            <td class="rank">2</td>
+            <td>
+              <div class="player">
+                <img src="hccl-logo.png">
+                <div>
+                  <b>Player Name</b>
+                  <small>HCCL Blues</small>
+                </div>
+              </div>
+            </td>
+            <td>4</td>
+            <td>6</td>
+            <td>1</td>
+            <td>7</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- KEEPING -->
+
+  <section id="keeping" class="stats-section">
+
+    <h2 class="section-title">Top Wicket Keepers</h2>
+
+    <div class="table-wrap">
+
+      <table class="stats-table">
+
+        <thead>
+          <tr>
+            <th>RANK</th>
+            <th>PLAYER</th>
+            <th>MATCHES</th>
+            <th>CATCHES</th>
+            <th>STUMPINGS</th>
+            <th>RUN OUTS</th>
+            <th>TOTAL DISMISSALS</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td class="rank">1</td>
+            <td>
+              <div class="player">
+                <img src="hccl-logo.png">
+                <div>
+                  <b>Player Name</b>
+                  <small>HCCL Eagles</small>
+                </div>
+              </div>
+            </td>
+            <td>4</td>
+            <td>5</td>
+            <td>3</td>
+            <td>1</td>
+            <td>9</td>
+          </tr>
+
+          <tr>
+            <td class="rank">2</td>
+            <td>
+              <div class="player">
+                <img src="hccl-logo.png">
+                <div>
+                  <b>Player Name</b>
+                  <small>HCCL Reds</small>
+                </div>
+              </div>
+            </td>
+            <td>4</td>
+            <td>4</td>
+            <td>2</td>
+            <td>1</td>
+            <td>7</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- ALL ROUNDERS -->
+
+  <section id="allround" class="stats-section">
+
+    <h2 class="section-title">Top All-Rounders</h2>
+
+    <div class="table-wrap">
+
+      <table class="stats-table">
+
+        <thead>
+          <tr>
+            <th>RANK</th>
+            <th>PLAYER</th>
+            <th>MATCHES</th>
+            <th>RUNS</th>
+            <th>BAT AVG</th>
+            <th>BAT SR</th>
+            <th>WKTS</th>
+            <th>BOWL AVG</th>
+            <th>ECON</th>
+            <th>CATCHES</th>
+            <th>MVP PTS</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td class="rank">1</td>
+            <td>
+              <div class="player">
+                <img src="hccl-logo.png">
+                <div>
+                  <b>Player Name</b>
+                  <small>HCCL Reds</small>
+                </div>
+              </div>
+            </td>
+            <td>4</td>
+            <td>188</td>
+            <td>62.67</td>
+            <td>155.37</td>
+            <td>7</td>
+            <td>15.14</td>
+            <td>7.12</td>
+            <td>4</td>
+            <td class="mvp-score">520</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <p class="note">
+    Demo statistics shown here. Later these values can be updated automatically from HCCL live scoring data.
+  </p>
+
+</main>
+
+
+<script>
+
+const buttons = document.querySelectorAll(".mvp-tabs button");
+
+const sections = document.querySelectorAll(".stats-section");
+
+buttons.forEach(function(button){
+
+  button.addEventListener("click",function(){
+
+    buttons.forEach(function(btn){
+      btn.classList.remove("active");
+    });
+
+    sections.forEach(function(section){
+      section.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    const target = button.getAttribute("data-tab");
+
+    document.getElementById(target).classList.add("active");
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
