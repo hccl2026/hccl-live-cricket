@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>HCCL — Player Profile</title>
 
@@ -11,175 +12,343 @@
 
 <style>
 
+/* ===============================
+   PLAYER PROFILE PAGE
+================================ */
+
 .profile-page{
-  width:min(1180px,calc(100% - 32px));
-  margin:0 auto;
-  padding:60px 0 90px;
+  width:min(1200px,calc(100% - 32px));
+  margin:auto;
+  padding:55px 0 90px;
 }
 
-.profile-hero{
+
+/* HERO */
+
+.player-hero{
+  position:relative;
+  overflow:hidden;
+
   display:grid;
-  grid-template-columns:240px 1fr;
-  gap:28px;
+  grid-template-columns:260px 1fr;
+  gap:30px;
   align-items:center;
 
-  padding:26px;
+  padding:30px;
 
-  border:1px solid #213b59;
-  border-radius:20px;
+  border:1px solid #203b59;
+  border-radius:22px;
 
   background:
   linear-gradient(
-    145deg,
-    #071a34 0%,
-    #05070b 58%,
-    #190507 100%
+    115deg,
+    #071b36 0%,
+    #03070c 50%,
+    #160507 75%,
+    #500707 100%
   );
 }
 
-.player-photo-large{
-  width:220px;
-  height:220px;
-  border-radius:20px;
+.player-hero:after{
+  content:"";
+  position:absolute;
+
+  width:350px;
+  height:350px;
+
+  right:-100px;
+  top:-120px;
+
+  border-radius:50%;
+
+  background:
+  radial-gradient(
+    circle,
+    rgba(239,27,27,.20),
+    transparent 70%
+  );
+
+  pointer-events:none;
+}
+
+
+/* PLAYER PHOTO */
+
+.player-photo-box{
+  position:relative;
+  z-index:2;
+
+  display:flex;
+  justify-content:center;
+}
+
+.player-photo{
+  width:230px;
+  height:230px;
+
   object-fit:cover;
 
-  border:2px solid #31577e;
+  border-radius:22px;
+
+  border:2px solid #345a80;
 
   background:#071323;
+
+  box-shadow:
+  0 15px 40px rgba(0,0,0,.45);
 }
 
-.profile-main small{
-  color:#ef1b1b;
-  font-weight:900;
-  letter-spacing:1.5px;
+
+/* HERO INFO */
+
+.player-info{
+  position:relative;
+  z-index:2;
 }
 
-.profile-main h1{
-  margin:6px 0 6px;
-  font-size:clamp(34px,5vw,54px);
+.player-kicker{
+  color:#ff2424;
+
+  font-size:11px;
+  font-weight:1000;
+
+  letter-spacing:2px;
 }
 
-.profile-sub{
-  color:#9ea7b2;
+.player-info h1{
+  margin:7px 0 5px;
+
+  color:#fff;
+
+  font-size:clamp(38px,5vw,60px);
+
+  line-height:1;
+}
+
+.player-location{
+  color:#a8b1bc;
+
+  font-size:14px;
+
   margin-bottom:18px;
 }
 
-.profile-badges{
+
+/* BADGES */
+
+.player-badges{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
+  gap:9px;
 }
 
-.badge{
+.player-badge{
   padding:8px 12px;
+
+  border:1px solid #294563;
   border-radius:999px;
 
   background:#071323;
-  border:1px solid #29415e;
 
-  font-size:11px;
-  font-weight:900;
+  color:#fff;
+
+  font-size:10px;
+  font-weight:1000;
 }
 
 .grade-a{
-  color:#ffd34d;
-  border-color:#8d741d;
+  color:#ffd44e;
+  border-color:#8b741d;
 }
 
 .grade-b{
-  color:#79baff;
-  border-color:#315f8f;
+  color:#75b9ff;
+  border-color:#35628f;
 }
 
 .grade-c{
-  color:#c7ccd2;
+  color:#d1d5da;
 }
 
-.verify{
-  color:#44d47d;
-  border-color:#2e8151;
+.verified{
+  color:#43d17c;
+  border-color:#27794a;
 }
 
-.profile-actions{
-  margin-top:18px;
+
+/* BUTTONS */
+
+.player-actions{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
+
+  margin-top:20px;
 }
 
-.action-btn{
+.profile-button{
   display:inline-flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
 
-  min-height:42px;
-  padding:0 15px;
+  min-height:43px;
+
+  padding:0 17px;
 
   border-radius:9px;
 
-  background:#ef1b1b;
+  background:#ed1616;
+
   color:#fff;
 
-  font-size:12px;
-  font-weight:900;
+  text-decoration:none;
+
+  font-size:11px;
+  font-weight:1000;
 }
 
-.action-btn.secondary{
+.profile-button:hover{
+  background:#ff2929;
+}
+
+.profile-button.secondary{
   background:#07182c;
+
   border:1px solid #31577e;
 }
 
 
-/* SUMMARY */
+/* MAIN SCORE CARDS */
 
-.summary-grid{
+.profile-summary{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:12px;
+  gap:13px;
+
   margin-top:22px;
 }
 
-.summary-card{
-  padding:18px;
-  border:1px solid #203a58;
+.summary-box{
+  padding:19px;
+
+  border:1px solid #203b59;
   border-radius:14px;
-  background:#071323;
+
+  background:
+  linear-gradient(
+    145deg,
+    #07182c,
+    #05070b
+  );
 }
 
-.summary-card small{
-  color:#8995a3;
+.summary-box small{
+  display:block;
+
+  color:#8794a2;
+
   font-size:10px;
   font-weight:900;
 }
 
-.summary-card strong{
+.summary-box strong{
   display:block;
+
   margin-top:6px;
-  font-size:24px;
+
+  color:#fff;
+
+  font-size:25px;
+}
+
+.summary-box.red strong{
+  color:#ff3434;
+}
+
+.summary-box.gold strong{
+  color:#ffd34d;
 }
 
 
 /* SECTIONS */
 
 .profile-section{
-  margin-top:28px;
+  margin-top:34px;
 }
 
-.profile-section h2{
+.section-heading{
   margin-bottom:14px;
-  font-size:24px;
 }
 
-.stats-grid{
+.section-heading span{
+  display:block;
+
+  color:#ef1b1b;
+
+  font-size:10px;
+  font-weight:1000;
+
+  letter-spacing:1.5px;
+}
+
+.section-heading h2{
+  margin-top:4px;
+
+  color:#fff;
+
+  font-size:25px;
+}
+
+
+/* INFO GRID */
+
+.info-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:12px;
 }
 
-.stat-card{
+.info-card{
   padding:16px;
 
-  border:1px solid #1d3551;
+  border:1px solid #203850;
+  border-radius:12px;
+
+  background:#071323;
+}
+
+.info-card small{
+  display:block;
+
+  color:#84909d;
+
+  font-size:9px;
+  font-weight:900;
+}
+
+.info-card strong{
+  display:block;
+
+  margin-top:6px;
+
+  color:#fff;
+
+  font-size:14px;
+}
+
+
+/* STAT GRID */
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+}
+
+.stat-card{
+  padding:17px;
+
+  border:1px solid #203850;
   border-radius:13px;
 
   background:
@@ -192,127 +361,167 @@
 
 .stat-card small{
   display:block;
-  color:#8995a3;
-  font-size:10px;
-  font-weight:900;
+
+  color:#85919e;
+
+  font-size:9px;
+  font-weight:1000;
 }
 
 .stat-card strong{
   display:block;
-  margin-top:7px;
-  font-size:21px;
+
+  margin-top:6px;
+
+  color:#fff;
+
+  font-size:22px;
 }
 
 
-/* INFO */
+/* BATTING */
 
-.info-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-
-.info-card{
-  padding:15px;
-  border:1px solid #1d3551;
-  border-radius:12px;
-  background:#071323;
-}
-
-.info-card small{
-  display:block;
-  color:#8995a3;
-  font-size:10px;
-  font-weight:900;
-}
-
-.info-card strong{
-  display:block;
-  margin-top:5px;
+.batting-section .stat-card strong{
+  color:#fff;
 }
 
 
-/* VERIFICATION */
+/* BOWLING */
 
-.verify-box{
+.bowling-section .stat-card:nth-child(1) strong{
+  color:#ff4040;
+}
+
+
+/* FIELDING */
+
+.fielding-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:12px;
 }
 
-.verify-card{
-  padding:15px;
-  border-radius:12px;
-  border:1px solid #1d3551;
+
+/* VERIFICATION */
+
+.verification-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.verification-card{
+  padding:17px;
+
+  border:1px solid #203850;
+  border-radius:13px;
+
   background:#071323;
 }
 
-.verify-card small{
-  color:#8995a3;
-  font-size:10px;
-  font-weight:900;
-}
-
-.verify-card strong{
+.verification-card small{
   display:block;
-  margin-top:6px;
-  color:#f0c45c;
+
+  color:#85919e;
+
+  font-size:9px;
+  font-weight:1000;
 }
 
-.verify-card.ok strong{
-  color:#44d47d;
+.verification-card strong{
+  display:block;
+
+  margin-top:7px;
+
+  color:#ffca45;
+}
+
+.verification-card.success{
+  border-color:#23613f;
+}
+
+.verification-card.success strong{
+  color:#43d17c;
 }
 
 
 /* NOT FOUND */
 
-.not-found{
+.player-not-found{
+  padding:100px 20px;
+
   text-align:center;
-  padding:80px 20px;
-  color:#9ea7b2;
 }
 
-.not-found h1{
+.player-not-found h1{
   color:#fff;
-  margin-bottom:10px;
+  font-size:40px;
+}
+
+.player-not-found p{
+  margin:10px 0 20px;
+
+  color:#929da8;
 }
 
 
-/* RESPONSIVE */
+/* MOBILE */
 
-@media(max-width:850px){
+@media(max-width:1000px){
 
-  .profile-hero{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
-
-  .player-photo-large{
-    margin:auto;
-  }
-
-  .profile-badges,
-  .profile-actions{
-    justify-content:center;
-  }
-
-  .summary-grid,
   .stats-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .info-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .verify-box{
+}
+
+@media(max-width:800px){
+
+  .player-hero{
     grid-template-columns:1fr;
+
+    text-align:center;
+  }
+
+  .player-badges,
+  .player-actions{
+    justify-content:center;
+  }
+
+  .profile-summary{
+    grid-template-columns:repeat(2,1fr);
   }
 
 }
 
-@media(max-width:550px){
+@media(max-width:600px){
 
-  .summary-grid,
   .stats-grid,
+  .fielding-grid,
+  .verification-grid,
+  .info-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:430px){
+
+  .profile-summary,
+  .stats-grid,
+  .fielding-grid,
+  .verification-grid,
   .info-grid{
     grid-template-columns:1fr;
+  }
+
+  .player-photo{
+    width:190px;
+    height:190px;
   }
 
 }
@@ -325,929 +534,1487 @@
 <body>
 
 
+<!-- ===============================
+     TOP NAVIGATION
+================================ -->
+
 <header class="nav">
 
-  <a class="logo" href="index.html">
-    <img src="hccl-logo.png" alt="HCCL">
-    <span>HCCL</span>
+
+<a class="logo" href="index.html">
+
+  <img
+    src="hccl-logo.png"
+    alt="HCCL Logo">
+
+  <span>
+    HCCL
+  </span>
+
+</a>
+
+
+<nav>
+
+  <a href="index.html">
+    Home
   </a>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="schedule.html">Schedule</a>
-    <a href="match.html">Live</a>
-    <a href="match.html#scorecard">Scorecard</a>
-    <a href="index.html#teams">Teams</a>
-    <a href="index.html#table">Points</a>
-    <a class="active" href="players.html">MVP Players</a>
-    <a href="registration.html">Player Registration</a>
-    <a href="scorer.html">Scoring</a>
-  </nav>
-
-  <a class="live-nav" href="match.html">
-    <i></i>
-    LIVE MATCH
+  <a href="schedule.html">
+    Schedule
   </a>
+
+  <a href="match.html">
+    Live
+  </a>
+
+  <a href="match.html#scorecard">
+    Scorecard
+  </a>
+
+  <a href="index.html#teams">
+    Teams
+  </a>
+
+  <a href="index.html#table">
+    Points
+  </a>
+
+  <a href="players.html">
+    MVP Players
+  </a>
+
+  <a
+    class="active"
+    href="player-profile.html?id=1">
+
+    Player Profile
+
+  </a>
+
+  <a href="registration.html">
+    Player Registration
+  </a>
+
+  <a href="scorer.html">
+    Scoring
+  </a>
+
+</nav>
+
+
+<a
+class="live-nav"
+href="match.html">
+
+<i></i>
+
+LIVE MATCH
+
+</a>
+
 
 </header>
 
 
-<main class="profile-page" id="profileContent"></main>
 
+<!-- ===============================
+     PROFILE
+================================ -->
+
+<main
+class="profile-page"
+id="profilePage">
+</main>
+
+
+
+<!-- ===============================
+     FOOTER
+================================ -->
 
 <footer>
 
-  <img src="hccl-logo.png" alt="HCCL">
+<img
+src="hccl-logo.png"
+alt="HCCL">
 
-  <span>
-    Heroes Champions Cricket League
-  </span>
 
-  <small>
-    Official HCCL Tournament Portal
-  </small>
+<span>
+
+Heroes Champions Cricket League
+
+</span>
+
+
+<small>
+
+Official HCCL Tournament Portal
+
+</small>
 
 </footer>
 
 
+
 <script>
 
-/*
-====================================================
-SAMPLE PLAYER DATABASE
-Later replace with backend/database data.
-====================================================
-*/
+
+/* =========================================
+   SAMPLE PLAYER DATABASE
+
+   Later real registered player database
+   will replace this.
+========================================= */
+
 
 const players = [
 
-  {
-    id:1,
-    name:"Sample Player 1",
-    district:"Ghaziabad",
-    state:"Uttar Pradesh",
-    role:"Batsman",
-    batting:"Right Hand Bat",
-    bowling:"Right Arm Medium",
-    grade:"A",
-    base:50,
-    score:82,
 
-    matches:18,
-    innings:17,
-    runs:620,
-    ballsFaced:418,
-    avg:41.3,
-    sr:148.2,
-    highest:94,
-    fifties:5,
-    hundreds:0,
-    fours:62,
-    sixes:29,
+{
 
-    wickets:2,
-    ballsBowled:72,
-    runsConceded:101,
-    bowlAvg:50.5,
-    economy:8.4,
-    bowlSR:36,
-    best:"1/18",
+id:1,
 
-    catches:11,
-    stumpings:0,
-    runOuts:3,
+name:"Sample Player 1",
 
-    cricHeroes:"#",
-    photo:"hccl-logo.png",
+district:"Ghaziabad",
 
-    aadhaarVerified:true,
-    cricVerified:true,
-    paymentVerified:true
-  },
+state:"Uttar Pradesh",
 
+role:"Batsman",
 
-  {
-    id:2,
-    name:"Sample Player 2",
-    district:"Noida",
-    state:"Uttar Pradesh",
-    role:"All-Rounder",
-    batting:"Left Hand Bat",
-    bowling:"Right Arm Off Spin",
-    grade:"A",
-    base:50,
-    score:78,
+batting:"Right Hand Bat",
 
-    matches:20,
-    innings:18,
-    runs:410,
-    ballsFaced:301,
-    avg:34.1,
-    sr:136.4,
-    highest:78,
-    fifties:3,
-    hundreds:0,
-    fours:38,
-    sixes:19,
+bowling:"Right Arm Medium",
 
-    wickets:21,
-    ballsBowled:420,
-    runsConceded:448,
-    bowlAvg:21.3,
-    economy:6.4,
-    bowlSR:20,
-    best:"4/22",
+photo:"hccl-logo.png",
 
-    catches:8,
-    stumpings:0,
-    runOuts:4,
+grade:"A",
 
-    cricHeroes:"#",
-    photo:"hccl-logo.png",
+base:50,
 
-    aadhaarVerified:true,
-    cricVerified:true,
-    paymentVerified:true
-  },
+score:82,
+
+matches:18,
+
+innings:17,
+
+runs:620,
+
+ballsFaced:418,
+
+average:41.3,
+
+strikeRate:148.2,
+
+highest:94,
+
+fifties:5,
+
+hundreds:0,
+
+fours:62,
+
+sixes:29,
+
+wickets:2,
+
+ballsBowled:72,
+
+runsConceded:101,
+
+bowlingAverage:50.5,
+
+economy:8.4,
+
+bowlingStrikeRate:36,
+
+bestBowling:"1/18",
+
+catches:11,
+
+runOuts:3,
+
+stumpings:0,
+
+cricHeroes:"#",
+
+identityVerified:true,
+
+cricHeroesVerified:true,
+
+paymentVerified:true
+
+},
 
 
-  {
-    id:3,
-    name:"Sample Player 3",
-    district:"Meerut",
-    state:"Uttar Pradesh",
-    role:"Spin Bowler",
-    batting:"Right Hand Bat",
-    bowling:"Right Arm Leg Spin",
-    grade:"B",
-    base:25,
-    score:64,
 
-    matches:22,
-    innings:9,
-    runs:85,
-    ballsFaced:81,
-    avg:12.1,
-    sr:105.5,
-    highest:27,
-    fifties:0,
-    hundreds:0,
-    fours:6,
-    sixes:3,
+{
 
-    wickets:28,
-    ballsBowled:516,
-    runsConceded:507,
-    bowlAvg:18.1,
-    economy:5.9,
-    bowlSR:18.4,
-    best:"5/21",
+id:2,
 
-    catches:7,
-    stumpings:0,
-    runOuts:2,
+name:"Sample Player 2",
 
-    cricHeroes:"#",
-    photo:"hccl-logo.png",
+district:"Noida",
 
-    aadhaarVerified:true,
-    cricVerified:true,
-    paymentVerified:true
-  },
+state:"Uttar Pradesh",
 
+role:"All-Rounder",
 
-  {
-    id:4,
-    name:"Sample Player 4",
-    district:"Hapur",
-    state:"Uttar Pradesh",
-    role:"Fast Bowler",
-    batting:"Right Hand Bat",
-    bowling:"Right Arm Fast",
-    grade:"B",
-    base:25,
-    score:61,
+batting:"Left Hand Bat",
 
-    matches:18,
-    innings:8,
-    runs:102,
-    ballsFaced:91,
-    avg:14.5,
-    sr:112.3,
-    highest:31,
-    fifties:0,
-    hundreds:0,
-    fours:8,
-    sixes:4,
+bowling:"Right Arm Off Spin",
 
-    wickets:25,
-    ballsBowled:420,
-    runsConceded:469,
-    bowlAvg:18.8,
-    economy:6.7,
-    bowlSR:16.8,
-    best:"4/18",
+photo:"hccl-logo.png",
 
-    catches:5,
-    stumpings:0,
-    runOuts:2,
+grade:"A",
 
-    cricHeroes:"#",
-    photo:"hccl-logo.png",
+base:50,
 
-    aadhaarVerified:true,
-    cricVerified:true,
-    paymentVerified:false
-  },
+score:78,
+
+matches:20,
+
+innings:18,
+
+runs:410,
+
+ballsFaced:301,
+
+average:34.1,
+
+strikeRate:136.4,
+
+highest:78,
+
+fifties:3,
+
+hundreds:0,
+
+fours:38,
+
+sixes:19,
+
+wickets:21,
+
+ballsBowled:420,
+
+runsConceded:448,
+
+bowlingAverage:21.3,
+
+economy:6.4,
+
+bowlingStrikeRate:20,
+
+bestBowling:"4/22",
+
+catches:8,
+
+runOuts:4,
+
+stumpings:0,
+
+cricHeroes:"#",
+
+identityVerified:true,
+
+cricHeroesVerified:true,
+
+paymentVerified:true
+
+},
 
 
-  {
-    id:5,
-    name:"Sample Player 5",
-    district:"Modinagar",
-    state:"Uttar Pradesh",
-    role:"Medium Pacer",
-    batting:"Right Hand Bat",
-    bowling:"Right Arm Medium",
-    grade:"C",
-    base:10,
-    score:41,
 
-    matches:12,
-    innings:6,
-    runs:75,
-    ballsFaced:76,
-    avg:10.7,
-    sr:98.6,
-    highest:24,
-    fifties:0,
-    hundreds:0,
-    fours:5,
-    sixes:2,
+{
 
-    wickets:13,
-    ballsBowled:270,
-    runsConceded:351,
-    bowlAvg:27,
-    economy:7.8,
-    bowlSR:20.8,
-    best:"3/25",
+id:3,
 
-    catches:4,
-    stumpings:0,
-    runOuts:1,
+name:"Sample Player 3",
 
-    cricHeroes:"#",
-    photo:"hccl-logo.png",
+district:"Meerut",
 
-    aadhaarVerified:true,
-    cricVerified:false,
-    paymentVerified:false
-  },
+state:"Uttar Pradesh",
+
+role:"Spin Bowler",
+
+batting:"Right Hand Bat",
+
+bowling:"Right Arm Leg Spin",
+
+photo:"hccl-logo.png",
+
+grade:"B",
+
+base:25,
+
+score:64,
+
+matches:22,
+
+innings:9,
+
+runs:85,
+
+ballsFaced:81,
+
+average:12.1,
+
+strikeRate:105.5,
+
+highest:27,
+
+fifties:0,
+
+hundreds:0,
+
+fours:6,
+
+sixes:3,
+
+wickets:28,
+
+ballsBowled:516,
+
+runsConceded:507,
+
+bowlingAverage:18.1,
+
+economy:5.9,
+
+bowlingStrikeRate:18.4,
+
+bestBowling:"5/21",
+
+catches:7,
+
+runOuts:2,
+
+stumpings:0,
+
+cricHeroes:"#",
+
+identityVerified:true,
+
+cricHeroesVerified:true,
+
+paymentVerified:true
+
+},
 
 
-  {
-    id:6,
-    name:"Sample Player 6",
-    district:"Muzaffarnagar",
-    state:"Uttar Pradesh",
-    role:"Wicket Keeper Batsman",
-    batting:"Right Hand Bat",
-    bowling:"—",
-    grade:"A",
-    base:50,
-    score:75,
 
-    matches:19,
-    innings:18,
-    runs:485,
-    ballsFaced:342,
-    avg:37.3,
-    sr:141.8,
-    highest:86,
-    fifties:4,
-    hundreds:0,
-    fours:45,
-    sixes:21,
+{
 
-    wickets:0,
-    ballsBowled:0,
-    runsConceded:0,
-    bowlAvg:0,
-    economy:0,
-    bowlSR:0,
-    best:"—",
+id:4,
 
-    catches:19,
-    stumpings:8,
-    runOuts:3,
+name:"Sample Player 4",
 
-    cricHeroes:"#",
-    photo:"hccl-logo.png",
+district:"Hapur",
 
-    aadhaarVerified:true,
-    cricVerified:true,
-    paymentVerified:true
-  }
+state:"Uttar Pradesh",
+
+role:"Fast Bowler",
+
+batting:"Right Hand Bat",
+
+bowling:"Right Arm Fast",
+
+photo:"hccl-logo.png",
+
+grade:"B",
+
+base:25,
+
+score:61,
+
+matches:18,
+
+innings:8,
+
+runs:102,
+
+ballsFaced:91,
+
+average:14.5,
+
+strikeRate:112.3,
+
+highest:31,
+
+fifties:0,
+
+hundreds:0,
+
+fours:8,
+
+sixes:4,
+
+wickets:25,
+
+ballsBowled:420,
+
+runsConceded:469,
+
+bowlingAverage:18.8,
+
+economy:6.7,
+
+bowlingStrikeRate:16.8,
+
+bestBowling:"4/18",
+
+catches:5,
+
+runOuts:2,
+
+stumpings:0,
+
+cricHeroes:"#",
+
+identityVerified:true,
+
+cricHeroesVerified:true,
+
+paymentVerified:false
+
+},
+
+
+
+{
+
+id:5,
+
+name:"Sample Player 5",
+
+district:"Modinagar",
+
+state:"Uttar Pradesh",
+
+role:"Medium Pacer",
+
+batting:"Right Hand Bat",
+
+bowling:"Right Arm Medium",
+
+photo:"hccl-logo.png",
+
+grade:"C",
+
+base:10,
+
+score:41,
+
+matches:12,
+
+innings:6,
+
+runs:75,
+
+ballsFaced:76,
+
+average:10.7,
+
+strikeRate:98.6,
+
+highest:24,
+
+fifties:0,
+
+hundreds:0,
+
+fours:5,
+
+sixes:2,
+
+wickets:13,
+
+ballsBowled:270,
+
+runsConceded:351,
+
+bowlingAverage:27,
+
+economy:7.8,
+
+bowlingStrikeRate:20.8,
+
+bestBowling:"3/25",
+
+catches:4,
+
+runOuts:1,
+
+stumpings:0,
+
+cricHeroes:"#",
+
+identityVerified:true,
+
+cricHeroesVerified:false,
+
+paymentVerified:false
+
+},
+
+
+
+{
+
+id:6,
+
+name:"Sample Player 6",
+
+district:"Muzaffarnagar",
+
+state:"Uttar Pradesh",
+
+role:"Wicket Keeper Batsman",
+
+batting:"Right Hand Bat",
+
+bowling:"—",
+
+photo:"hccl-logo.png",
+
+grade:"A",
+
+base:50,
+
+score:75,
+
+matches:19,
+
+innings:18,
+
+runs:485,
+
+ballsFaced:342,
+
+average:37.3,
+
+strikeRate:141.8,
+
+highest:86,
+
+fifties:4,
+
+hundreds:0,
+
+fours:45,
+
+sixes:21,
+
+wickets:0,
+
+ballsBowled:0,
+
+runsConceded:0,
+
+bowlingAverage:0,
+
+economy:0,
+
+bowlingStrikeRate:0,
+
+bestBowling:"—",
+
+catches:19,
+
+runOuts:3,
+
+stumpings:8,
+
+cricHeroes:"#",
+
+identityVerified:true,
+
+cricHeroesVerified:true,
+
+paymentVerified:true
+
+}
 
 ];
 
 
-/*
-====================================================
-GET PLAYER ID FROM URL
-====================================================
-*/
 
-const params =
+/* =========================================
+   GET PLAYER ID FROM URL
+========================================= */
+
+
+const urlParams =
 new URLSearchParams(
-  window.location.search
+window.location.search
 );
 
-const playerId =
+
+let playerID =
 Number(
-  params.get("id")
+urlParams.get("id")
 );
 
 
 /*
-====================================================
-FIND PLAYER
-====================================================
+If Player Profile tab is opened directly,
+show player number 1.
 */
+
+if(!playerID){
+
+playerID = 1;
+
+}
+
 
 const player =
 players.find(
-  p => p.id === playerId
+item => item.id === playerID
 );
 
 
-/*
-====================================================
-HELPERS
-====================================================
-*/
 
-function yesNo(value){
-
-  return value
-  ? "VERIFIED"
-  : "PENDING";
-
-}
+/* =========================================
+   VERIFICATION HELPERS
+========================================= */
 
 
-function verificationClass(value){
+function verificationText(status){
 
-  return value
-  ? "verify-card ok"
-  : "verify-card";
+return status
+? "VERIFIED"
+: "PENDING";
 
 }
 
 
-/*
-====================================================
-RENDER
-====================================================
-*/
+function verificationCard(status){
 
-const profile =
+return status
+? "verification-card success"
+: "verification-card";
+
+}
+
+
+
+/* =========================================
+   PROFILE PAGE
+========================================= */
+
+
+const page =
 document.getElementById(
-  "profileContent"
+"profilePage"
 );
+
 
 
 if(!player){
 
-  profile.innerHTML = `
 
-    <div class="not-found">
+page.innerHTML = `
 
-      <h1>
-        Player Not Found
-      </h1>
+<div class="player-not-found">
 
-      <p>
-        The requested HCCL player profile is not available.
-      </p>
+<h1>
+Player Not Found
+</h1>
 
-      <div style="margin-top:20px;">
+<p>
+This HCCL player profile is currently unavailable.
+</p>
 
-        <a
-          class="action-btn"
-          href="players.html">
+<a
+href="players.html"
+class="profile-button">
 
-          BACK TO MVP PLAYERS
+VIEW MVP PLAYERS
 
-        </a>
+</a>
 
-      </div>
+</div>
 
-    </div>
+`;
 
-  `;
 
 }
 
 else{
 
-  profile.innerHTML = `
 
+document.title =
+player.name +
+" — HCCL Player Profile";
 
-  <!-- PROFILE HERO -->
 
-  <section class="profile-hero">
+page.innerHTML = `
 
 
-    <img
-      class="player-photo-large"
-      src="${player.photo}"
-      alt="${player.name}">
+<!-- =====================================
+     PLAYER HERO
+===================================== -->
 
 
-    <div class="profile-main">
+<section class="player-hero">
 
 
-      <small>
-        HCCL PLAYER PROFILE
-      </small>
+<div class="player-photo-box">
 
+<img
+class="player-photo"
+src="${player.photo}"
+alt="${player.name}">
 
-      <h1>
-        ${player.name}
-      </h1>
+</div>
 
 
-      <div class="profile-sub">
 
-        ${player.role}
-        ·
-        ${player.district},
-        ${player.state}
+<div class="player-info">
 
-      </div>
 
+<span class="player-kicker">
 
-      <div class="profile-badges">
+HEROES CHAMPIONS CRICKET LEAGUE
 
+</span>
 
-        <span
-          class="badge grade-${player.grade.toLowerCase()}">
 
-          ${player.grade} GRADE
+<h1>
 
-        </span>
+${player.name}
 
+</h1>
 
-        <span class="badge">
 
-          BASE ${player.base} POINTS
+<div class="player-location">
 
-        </span>
+${player.role}
+&nbsp; • &nbsp;
+${player.district},
+${player.state}
 
+</div>
 
-        <span class="badge">
 
-          SCORE ${player.score}/100
 
-        </span>
+<div class="player-badges">
 
 
-        ${
-          player.aadhaarVerified
-          ?
-          `<span class="badge verify">IDENTITY VERIFIED</span>`
-          :
-          ``
-        }
+<span
+class="player-badge grade-${player.grade.toLowerCase()}">
 
+${player.grade} GRADE
 
-      </div>
+</span>
 
 
-      <div class="profile-actions">
+<span class="player-badge">
 
+BASE ${player.base} POINTS
 
-        <a
-          class="action-btn"
-          href="${player.cricHeroes}"
-          target="_blank">
+</span>
 
-          CRICHEROES PROFILE
 
-        </a>
+<span class="player-badge">
 
+PERFORMANCE ${player.score}/100
 
-        <a
-          class="action-btn secondary"
-          href="players.html">
+</span>
 
-          BACK TO RANKINGS
 
-        </a>
+${
+player.identityVerified
 
+?
 
-      </div>
+`
 
+<span class="player-badge verified">
 
-    </div>
+✓ IDENTITY VERIFIED
 
+</span>
 
-  </section>
+`
 
+:
 
-
-  <!-- SUMMARY -->
-
-  <section class="summary-grid">
-
-
-    <div class="summary-card">
-
-      <small>
-        PERFORMANCE SCORE
-      </small>
-
-      <strong>
-        ${player.score}/100
-      </strong>
-
-    </div>
-
-
-    <div class="summary-card">
-
-      <small>
-        PLAYER GRADE
-      </small>
-
-      <strong>
-        ${player.grade}
-      </strong>
-
-    </div>
-
-
-    <div class="summary-card">
-
-      <small>
-        AUCTION BASE
-      </small>
-
-      <strong>
-        ${player.base} PTS
-      </strong>
-
-    </div>
-
-
-    <div class="summary-card">
-
-      <small>
-        MATCHES
-      </small>
-
-      <strong>
-        ${player.matches}
-      </strong>
-
-    </div>
-
-
-  </section>
-
-
-
-  <!-- PLAYER INFO -->
-
-  <section class="profile-section">
-
-    <h2>
-      Player Information
-    </h2>
-
-
-    <div class="info-grid">
-
-
-      <div class="info-card">
-
-        <small>
-          ROLE
-        </small>
-
-        <strong>
-          ${player.role}
-        </strong>
-
-      </div>
-
-
-      <div class="info-card">
-
-        <small>
-          DISTRICT
-        </small>
-
-        <strong>
-          ${player.district}
-        </strong>
-
-      </div>
-
-
-      <div class="info-card">
-
-        <small>
-          BATTING STYLE
-        </small>
-
-        <strong>
-          ${player.batting}
-        </strong>
-
-      </div>
-
-
-      <div class="info-card">
-
-        <small>
-          BOWLING STYLE
-        </small>
-
-        <strong>
-          ${player.bowling}
-        </strong>
-
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-
-  <!-- BATTING -->
-
-  <section class="profile-section">
-
-    <h2>
-      Batting
-    </h2>
-
-
-    <div class="stats-grid">
-
-
-      <div class="stat-card">
-        <small>INNINGS</small>
-        <strong>${player.innings}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>RUNS</small>
-        <strong>${player.runs}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>BALLS FACED</small>
-        <strong>${player.ballsFaced}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>AVERAGE</small>
-        <strong>${player.avg}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>STRIKE RATE</small>
-        <strong>${player.sr}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>HIGHEST</small>
-        <strong>${player.highest}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>50s</small>
-        <strong>${player.fifties}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>100s</small>
-        <strong>${player.hundreds}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>FOURS</small>
-        <strong>${player.fours}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>SIXES</small>
-        <strong>${player.sixes}</strong>
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-
-  <!-- BOWLING -->
-
-  <section class="profile-section">
-
-    <h2>
-      Bowling
-    </h2>
-
-
-    <div class="stats-grid">
-
-
-      <div class="stat-card">
-        <small>WICKETS</small>
-        <strong>${player.wickets}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>BALLS BOWLED</small>
-        <strong>${player.ballsBowled}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>RUNS CONCEDED</small>
-        <strong>${player.runsConceded}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>BOWLING AVG</small>
-        <strong>${player.bowlAvg}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>ECONOMY</small>
-        <strong>${player.economy}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>BOWLING SR</small>
-        <strong>${player.bowlSR}</strong>
-      </div>
-
-
-      <div class="stat-card">
-        <small>BEST</small>
-        <strong>${player.best}</strong>
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-
-  <!-- FIELDING -->
-
-  <section class="profile-section">
-
-    <h2>
-      Fielding & Keeping
-    </h2>
-
-
-    <div class="stats-grid">
-
-
-      <div class="stat-card">
-
-        <small>
-          CATCHES
-        </small>
-
-        <strong>
-          ${player.catches}
-        </strong>
-
-      </div>
-
-
-      <div class="stat-card">
-
-        <small>
-          STUMPINGS
-        </small>
-
-        <strong>
-          ${player.stumpings}
-        </strong>
-
-      </div>
-
-
-      <div class="stat-card">
-
-        <small>
-          RUN OUTS
-        </small>
-
-        <strong>
-          ${player.runOuts}
-        </strong>
-
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-
-  <!-- VERIFICATION -->
-
-  <section class="profile-section">
-
-    <h2>
-      HCCL Verification
-    </h2>
-
-
-    <div class="verify-box">
-
-
-      <div
-        class="${verificationClass(player.aadhaarVerified)}">
-
-        <small>
-          IDENTITY
-        </small>
-
-        <strong>
-          ${yesNo(player.aadhaarVerified)}
-        </strong>
-
-      </div>
-
-
-      <div
-        class="${verificationClass(player.cricVerified)}">
-
-        <small>
-          CRICHEROES STATS
-        </small>
-
-        <strong>
-          ${yesNo(player.cricVerified)}
-        </strong>
-
-      </div>
-
-
-      <div
-        class="${verificationClass(player.paymentVerified)}">
-
-        <small>
-          PAYMENT
-        </small>
-
-        <strong>
-          ${yesNo(player.paymentVerified)}
-        </strong>
-
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-  `;
+""
 
 }
 
+
+</div>
+
+
+
+<div class="player-actions">
+
+
+<a
+href="${player.cricHeroes}"
+target="_blank"
+rel="noopener"
+class="profile-button">
+
+CRICHEROES PROFILE
+
+</a>
+
+
+<a
+href="players.html"
+class="profile-button secondary">
+
+MVP RANKINGS
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     PLAYER SUMMARY
+===================================== -->
+
+
+<section class="profile-summary">
+
+
+<div class="summary-box red">
+
+<small>
+PERFORMANCE SCORE
+</small>
+
+<strong>
+${player.score}/100
+</strong>
+
+</div>
+
+
+
+<div class="summary-box gold">
+
+<small>
+PLAYER GRADE
+</small>
+
+<strong>
+${player.grade}
+</strong>
+
+</div>
+
+
+
+<div class="summary-box">
+
+<small>
+BASE POINTS
+</small>
+
+<strong>
+${player.base}
+</strong>
+
+</div>
+
+
+
+<div class="summary-box">
+
+<small>
+MATCHES
+</small>
+
+<strong>
+${player.matches}
+</strong>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     PLAYER INFORMATION
+===================================== -->
+
+
+<section class="profile-section">
+
+
+<div class="section-heading">
+
+<span>
+PLAYER DETAILS
+</span>
+
+<h2>
+Player Information
+</h2>
+
+</div>
+
+
+
+<div class="info-grid">
+
+
+<div class="info-card">
+
+<small>
+PRIMARY ROLE
+</small>
+
+<strong>
+${player.role}
+</strong>
+
+</div>
+
+
+
+<div class="info-card">
+
+<small>
+DISTRICT
+</small>
+
+<strong>
+${player.district}
+</strong>
+
+</div>
+
+
+
+<div class="info-card">
+
+<small>
+BATTING STYLE
+</small>
+
+<strong>
+${player.batting}
+</strong>
+
+</div>
+
+
+
+<div class="info-card">
+
+<small>
+BOWLING STYLE
+</small>
+
+<strong>
+${player.bowling}
+</strong>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     BATTING
+===================================== -->
+
+
+<section
+class="profile-section batting-section">
+
+
+<div class="section-heading">
+
+<span>
+PERFORMANCE
+</span>
+
+<h2>
+Batting Statistics
+</h2>
+
+</div>
+
+
+
+<div class="stats-grid">
+
+
+<div class="stat-card">
+
+<small>
+INNINGS
+</small>
+
+<strong>
+${player.innings}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+RUNS
+</small>
+
+<strong>
+${player.runs}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+BALLS FACED
+</small>
+
+<strong>
+${player.ballsFaced}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+AVERAGE
+</small>
+
+<strong>
+${player.average}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+STRIKE RATE
+</small>
+
+<strong>
+${player.strikeRate}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+HIGHEST SCORE
+</small>
+
+<strong>
+${player.highest}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+50s
+</small>
+
+<strong>
+${player.fifties}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+100s
+</small>
+
+<strong>
+${player.hundreds}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+FOURS
+</small>
+
+<strong>
+${player.fours}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+SIXES
+</small>
+
+<strong>
+${player.sixes}
+</strong>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     BOWLING
+===================================== -->
+
+
+<section
+class="profile-section bowling-section">
+
+
+<div class="section-heading">
+
+<span>
+PERFORMANCE
+</span>
+
+<h2>
+Bowling Statistics
+</h2>
+
+</div>
+
+
+
+<div class="stats-grid">
+
+
+<div class="stat-card">
+
+<small>
+WICKETS
+</small>
+
+<strong>
+${player.wickets}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+BALLS BOWLED
+</small>
+
+<strong>
+${player.ballsBowled}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+RUNS CONCEDED
+</small>
+
+<strong>
+${player.runsConceded}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+BOWLING AVG
+</small>
+
+<strong>
+${player.bowlingAverage}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+ECONOMY
+</small>
+
+<strong>
+${player.economy}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+BOWLING SR
+</small>
+
+<strong>
+${player.bowlingStrikeRate}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+BEST BOWLING
+</small>
+
+<strong>
+${player.bestBowling}
+</strong>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     FIELDING / KEEPING
+===================================== -->
+
+
+<section class="profile-section">
+
+
+<div class="section-heading">
+
+<span>
+PERFORMANCE
+</span>
+
+<h2>
+Fielding & Keeping
+</h2>
+
+</div>
+
+
+
+<div class="fielding-grid">
+
+
+<div class="stat-card">
+
+<small>
+CATCHES
+</small>
+
+<strong>
+${player.catches}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+RUN OUTS
+</small>
+
+<strong>
+${player.runOuts}
+</strong>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<small>
+STUMPINGS
+</small>
+
+<strong>
+${player.stumpings}
+</strong>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     VERIFICATION
+===================================== -->
+
+
+<section class="profile-section">
+
+
+<div class="section-heading">
+
+<span>
+HCCL APPROVAL
+</span>
+
+<h2>
+Player Verification
+</h2>
+
+</div>
+
+
+
+<div class="verification-grid">
+
+
+<div
+class="${verificationCard(
+player.identityVerified
+)}">
+
+<small>
+IDENTITY VERIFICATION
+</small>
+
+<strong>
+
+${verificationText(
+player.identityVerified
+)}
+
+</strong>
+
+</div>
+
+
+
+<div
+class="${verificationCard(
+player.cricHeroesVerified
+)}">
+
+<small>
+CRICHEROES STATISTICS
+</small>
+
+<strong>
+
+${verificationText(
+player.cricHeroesVerified
+)}
+
+</strong>
+
+</div>
+
+
+
+<div
+class="${verificationCard(
+player.paymentVerified
+)}">
+
+<small>
+REGISTRATION PAYMENT
+</small>
+
+<strong>
+
+${verificationText(
+player.paymentVerified
+)}
+
+</strong>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+`;
+
+}
+
+
 </script>
 
+
 </body>
+
 </html>
