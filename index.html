@@ -1,706 +1,888 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+
 <meta charset="utf-8">
+
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>HCCL — Heroes Champions Cricket League</title>
 
 <link rel="stylesheet" href="site.css">
 
-<style>
-
-/* =========================================================
-   HCCL 3 COLUMN HERO
-   LEFT = TROPHY
-   CENTER = THE LEAGUE LIVE
-   RIGHT = HCCL LOGO
-========================================================= */
-
-.hero{
-  min-height:650px !important;
-  display:grid !important;
-
-  grid-template-columns:
-    minmax(280px,.90fr)
-    minmax(390px,1.10fr)
-    minmax(280px,.90fr) !important;
-
-  align-items:center !important;
-  gap:28px !important;
-
-  padding-top:55px !important;
-  padding-bottom:55px !important;
-}
-
-.hero-copy{
-  order:2;
-  text-align:center;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-
-  position:relative;
-  z-index:10;
-}
-
-.hero-copy .tag{
-  margin-bottom:12px;
-}
-
-.hero-copy h1{
-  margin:8px 0 18px !important;
-  font-size:clamp(54px,5.8vw,88px) !important;
-  line-height:.88 !important;
-  letter-spacing:-3px !important;
-  text-align:center;
-}
-
-.hero-copy p{
-  max-width:540px;
-  margin:0 auto;
-  text-align:center;
-  font-size:15px !important;
-  color:#d2d6dd !important;
-}
-
-.hero-actions{
-  width:100%;
-  display:flex !important;
-  align-items:center;
-  justify-content:center !important;
-  gap:14px !important;
-  margin-top:28px !important;
-}
-
-.hero-actions .primary,
-.hero-actions .secondary{
-  min-width:150px;
-}
-
-.side-visual{
-  min-height:470px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-}
-
-.trophy-side{
-  order:1;
-}
-
-.logo-side{
-  order:3;
-}
-
-.side-round{
-  position:relative;
-
-  width:340px;
-  height:340px;
-
-  border-radius:50%;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.side-round video{
-  width:340px !important;
-  height:340px !important;
-
-  border-radius:50% !important;
-  object-fit:cover !important;
-
-  border:3px solid rgba(239,27,27,.78);
-
-  background:#050505;
-
-  position:relative;
-  z-index:5;
-}
-
-.trophy-side .side-round video{
-  box-shadow:
-    0 0 18px rgba(239,27,27,.25),
-    0 0 55px rgba(0,0,0,.55);
-}
-
-.logo-side .side-round video{
-  box-shadow:
-    0 0 22px rgba(239,27,27,.45),
-    0 0 70px rgba(239,27,27,.25);
-}
-
-.side-round::before{
-  content:"";
-  position:absolute;
-
-  width:380px;
-  height:380px;
-
-  border-radius:50%;
-  border:1px solid rgba(239,27,27,.24);
-
-  z-index:1;
-}
-
-.side-round::after{
-  content:"";
-  position:absolute;
-
-  width:420px;
-  height:420px;
-
-  border-radius:50%;
-  border:1px solid rgba(239,27,27,.10);
-
-  z-index:1;
-}
-
-.round-title{
-  margin-top:28px;
-
-  padding:7px 14px;
-
-  border-radius:999px;
-
-  background:rgba(5,6,10,.92);
-
-  border:1px solid rgba(255,255,255,.15);
-
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:1px;
-
-  position:relative;
-  z-index:10;
-}
-
-.trophy-side .round-title{
-  color:#f4c654;
-}
-
-.logo-side .round-title{
-  color:#ff4b4b;
-}
-
-.side-badge{
-  position:absolute;
-  z-index:20;
-
-  padding:8px 13px;
-
-  border-radius:999px;
-
-  background:rgba(8,8,10,.92);
-
-  border:1px solid rgba(255,255,255,.16);
-
-  color:#fff;
-
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:.7px;
-}
-
-.trophy-side .side-badge{
-  top:20%;
-  left:-2%;
-}
-
-.logo-side .badge-top{
-  top:20%;
-  right:-2%;
-}
-
-.logo-side .badge-bottom{
-  right:0;
-  bottom:22%;
-}
-
-.hero-art{
-  display:none !important;
-}
-
-@media(max-width:1100px){
-
-  .hero{
-    grid-template-columns:1fr 1fr !important;
-    gap:30px !important;
-  }
-
-  .hero-copy{
-    grid-column:1 / 3;
-    order:1;
-  }
-
-  .trophy-side{
-    order:2;
-  }
-
-  .logo-side{
-    order:3;
-  }
-
-}
-
-@media(max-width:760px){
-
-  .hero{
-    grid-template-columns:1fr !important;
-    padding-top:40px !important;
-    gap:45px !important;
-  }
-
-  .hero-copy{
-    grid-column:auto;
-    order:1;
-  }
-
-  .trophy-side{
-    order:2;
-  }
-
-  .logo-side{
-    order:3;
-  }
-
-  .side-round{
-    width:280px;
-    height:280px;
-  }
-
-  .side-round video{
-    width:280px !important;
-    height:280px !important;
-  }
-
-  .side-round::before{
-    width:310px;
-    height:310px;
-  }
-
-  .side-round::after{
-    width:340px;
-    height:340px;
-  }
-
-  .side-badge{
-    display:none;
-  }
-
-  .hero-copy h1{
-    font-size:48px !important;
-  }
-
-}
-
-</style>
-
 </head>
 
+
 <body>
+
+
+<!-- =====================================================
+     TOP NAVIGATION
+===================================================== -->
 
 <header class="nav">
 
   <a class="logo" href="index.html">
+
     <img src="hccl-logo.png" alt="HCCL Logo">
+
     <span>HCCL</span>
+
   </a>
 
+
   <nav>
-    <a class="active" href="index.html">Home</a>
-    <a href="schedule.html">Schedule</a>
-    <a href="match.html">Live</a>
-    <a href="scorecard.html">Scorecard</a>
-    <a href="#teams">Teams</a>
-    <a href="#table">Points</a>
-    <a href="players.html">MVP Players</a>
-    <a href="registration.html">Player Registration</a>
-    <a href="scorer.html">Scoring</a>
+
+    <a class="active" href="index.html">
+      Home
+    </a>
+
+    <a href="schedule.html">
+      Schedule
+    </a>
+
+    <a href="match.html">
+      Live
+    </a>
+
+    <a href="match.html#scorecard">
+      Scorecard
+    </a>
+
+    <a href="#teams">
+      Teams
+    </a>
+
+    <a href="#table">
+      Points
+    </a>
+
+    <a href="players.html">
+      MVP Players
+    </a>
+
+    <a href="registration.html">
+      Player Registration
+    </a>
+
+    <a href="scorer.html">
+      Scoring
+    </a>
+
   </nav>
 
+
   <a class="live-nav" href="match.html">
+
     <i></i>
+
     LIVE MATCH
+
   </a>
 
 </header>
 
+
+
 <main>
 
-<!-- HERO -->
 
-<section class="hero">
+<!-- =====================================================
+     MAIN HERO
+===================================================== -->
 
-  <!-- LEFT TROPHY -->
+<section class="hero hero-three-column">
 
-  <div class="side-visual trophy-side">
 
-    <div class="side-round">
+  <!-- ===================================================
+       LEFT SIDE - TROPHY VIDEO
+  =================================================== -->
+
+  <div class="hero-side trophy-side">
+
+
+    <div class="hero-circle trophy-circle">
+
       <video
         src="TROPHY.mp4"
         autoplay
         muted
         loop
-        playsinline>
+        playsinline
+        preload="auto">
       </video>
+
     </div>
 
-    <span class="side-badge">
-      LIVE SCORING
-    </span>
 
-    <span class="round-title">
+    <div class="circle-caption trophy-caption">
+
       HCCL TROPHY
-    </span>
+
+    </div>
+
 
   </div>
 
 
-  <!-- CENTER TITLE -->
 
-  <div class="hero-copy">
+  <!-- ===================================================
+       CENTER CONTENT
+  =================================================== -->
 
-    <span class="tag">
+  <div class="hero-center">
+
+
+    <span class="tag hero-main-tag">
+
       HEROES CHAMPIONS CRICKET LEAGUE
+
     </span>
 
+
+    <div class="hero-tagline">
+
+      PLAY
+
+      <i>•</i>
+
+      PERFORM
+
+      <i>•</i>
+
+      WIN
+
+    </div>
+
+
     <h1>
+
       THE<br>
+
       LEAGUE.<br>
+
       <em>LIVE.</em>
+
     </h1>
 
+
     <p>
+
       Fixtures, live scores, streaming, full scorecards,
       player statistics and HCCL tournament updates —
       all in one place.
+
     </p>
+
 
     <div class="hero-actions">
 
+
       <a class="primary" href="match.html">
+
         Watch Live Match
+
       </a>
+
 
       <a class="secondary" href="schedule.html">
+
         View Schedule
+
       </a>
 
+
     </div>
+
 
   </div>
 
 
-  <!-- RIGHT HCCL -->
 
-  <div class="side-visual logo-side">
+  <!-- ===================================================
+       RIGHT SIDE - HCCL ANIMATED LOGO
+  =================================================== -->
 
-    <div class="side-round">
+  <div class="hero-side league-side">
+
+
+    <div class="hero-circle league-circle">
+
       <video
         src="hccl-logo-animated.mp4"
         autoplay
         muted
         loop
-        playsinline>
+        playsinline
+        preload="auto">
       </video>
+
     </div>
 
-    <span class="side-badge badge-top">
-      8 TEAMS
-    </span>
 
-    <span class="side-badge badge-bottom">
-      ONE CHAMPION
-    </span>
+    <div class="circle-caption league-caption">
 
-    <span class="round-title">
       HCCL LEAGUE
-    </span>
+
+    </div>
+
 
   </div>
+
 
 </section>
 
 
-<!-- LIVE STRIP -->
+
+<!-- =====================================================
+     LIVE MATCH STRIP
+===================================================== -->
 
 <section class="live-strip">
 
+
   <div class="live-title">
+
     <span class="dot"></span>
+
     <b>LIVE NOW</b>
-    <small>Match 04 · League Stage</small>
+
+    <small>
+      Match 04 · League Stage
+    </small>
+
   </div>
+
+
 
   <div class="live-team">
-    <img src="hccl-logo.png">
-    <span>HCCL REDS</span>
-    <strong>124/4</strong>
-    <small>15.2 OV</small>
+
+    <img
+      src="hccl-logo.png"
+      alt="HCCL Reds">
+
+    <span>
+      HCCL REDS
+    </span>
+
+    <strong>
+      124/4
+    </strong>
+
+    <small>
+      15.2 OV
+    </small>
+
   </div>
 
-  <div class="vs">VS</div>
+
+
+  <div class="vs">
+
+    VS
+
+  </div>
+
+
 
   <div class="live-team right">
-    <small>Target 176</small>
-    <strong>HCCL BLUES</strong>
-    <img src="hccl-logo.png">
+
+    <small>
+      Target 176
+    </small>
+
+    <strong>
+      HCCL BLUES
+    </strong>
+
+    <img
+      src="hccl-logo.png"
+      alt="HCCL Blues">
+
   </div>
+
+
 
   <a href="match.html">
+
     LIVE SCORE →
+
   </a>
 
+
 </section>
 
 
-<!-- QUICK ACCESS -->
 
-<section class="section">
+<!-- =====================================================
+     MATCH CENTRE
+===================================================== -->
+
+<section class="section quick-section">
+
 
   <div class="section-head">
+
     <div>
-      <span class="tag">HCCL MATCH CENTRE</span>
-      <h2>Everything Cricket</h2>
+
+      <span class="tag">
+
+        HCCL MATCH CENTRE
+
+      </span>
+
+      <h2>
+
+        Everything Cricket
+
+      </h2>
+
     </div>
+
   </div>
+
+
+
+  <div class="teams quick-grid">
+
+
+    <a
+      class="team-card quick-card"
+      href="schedule.html">
+
+      <img src="hccl-logo.png" alt="Schedule">
+
+      <b>
+        Match Schedule
+      </b>
+
+      <span>
+        View Fixtures →
+      </span>
+
+    </a>
+
+
+
+    <a
+      class="team-card quick-card"
+      href="match.html">
+
+      <img src="hccl-logo.png" alt="Live Match">
+
+      <b>
+        Live Match
+      </b>
+
+      <span>
+        Watch Live →
+      </span>
+
+    </a>
+
+
+
+    <a
+      class="team-card quick-card"
+      href="match.html#scorecard">
+
+      <img src="hccl-logo.png" alt="Scorecard">
+
+      <b>
+        Scorecard
+      </b>
+
+      <span>
+        Full Scorecard →
+      </span>
+
+    </a>
+
+
+
+    <a
+      class="team-card quick-card"
+      href="players.html">
+
+      <img src="hccl-logo.png" alt="MVP Players">
+
+      <b>
+        MVP Players
+      </b>
+
+      <span>
+        View Rankings →
+      </span>
+
+    </a>
+
+
+
+    <a
+      class="team-card quick-card"
+      href="registration.html">
+
+      <img src="hccl-logo.png" alt="Player Registration">
+
+      <b>
+        Player Registration
+      </b>
+
+      <span>
+        Register Now →
+      </span>
+
+    </a>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     HCCL TEAMS
+===================================================== -->
+
+<section
+  id="teams"
+  class="section dark">
+
+
+  <div class="section-head">
+
+    <div>
+
+      <span class="tag">
+
+        FRANCHISES
+
+      </span>
+
+      <h2>
+
+        HCCL Teams
+
+      </h2>
+
+    </div>
+
+  </div>
+
+
 
   <div class="teams">
 
-    <a class="team-card" href="schedule.html">
-      <img src="hccl-logo.png">
-      <b>Match Schedule</b>
-      <span>View Fixtures →</span>
-    </a>
 
-    <a class="team-card" href="match.html">
-      <img src="hccl-logo.png">
-      <b>Live Match</b>
-      <span>Watch Live →</span>
-    </a>
+    <div class="team-card">
 
-    <a class="team-card" href="scorecard.html">
-      <img src="hccl-logo.png">
-      <b>Scorecard</b>
-      <span>Full Scorecard →</span>
-    </a>
+      <img src="hccl-logo.png" alt="HCCL Reds">
 
-    <a class="team-card" href="players.html">
-      <img src="hccl-logo.png">
-      <b>MVP Players</b>
-      <span>View Rankings →</span>
-    </a>
+      <b>
+        HCCL Reds
+      </b>
 
-    <a class="team-card" href="registration.html">
-      <img src="hccl-logo.png">
-      <b>Player Registration</b>
-      <span>Register Now →</span>
-    </a>
+      <span>
+        Squad →
+      </span>
+
+    </div>
+
+
+
+    <div class="team-card">
+
+      <img src="hccl-logo.png" alt="HCCL Blues">
+
+      <b>
+        HCCL Blues
+      </b>
+
+      <span>
+        Squad →
+      </span>
+
+    </div>
+
+
+
+    <div class="team-card">
+
+      <img src="hccl-logo.png" alt="HCCL Warriors">
+
+      <b>
+        HCCL Warriors
+      </b>
+
+      <span>
+        Squad →
+      </span>
+
+    </div>
+
+
+
+    <div class="team-card">
+
+      <img src="hccl-logo.png" alt="HCCL Titans">
+
+      <b>
+        HCCL Titans
+      </b>
+
+      <span>
+        Squad →
+      </span>
+
+    </div>
+
+
+
+    <div class="team-card">
+
+      <img src="hccl-logo.png" alt="HCCL Kings">
+
+      <b>
+        HCCL Kings
+      </b>
+
+      <span>
+        Squad →
+      </span>
+
+    </div>
+
+
+
+    <div class="team-card">
+
+      <img src="hccl-logo.png" alt="HCCL Strikers">
+
+      <b>
+        HCCL Strikers
+      </b>
+
+      <span>
+        Squad →
+      </span>
+
+    </div>
+
+
+
+    <div class="team-card">
+
+      <img src="hccl-logo.png" alt="HCCL Lions">
+
+      <b>
+        HCCL Lions
+      </b>
+
+      <span>
+        Squad →
+      </span>
+
+    </div>
+
+
+
+    <div class="team-card">
+
+      <img src="hccl-logo.png" alt="HCCL Eagles">
+
+      <b>
+        HCCL Eagles
+      </b>
+
+      <span>
+        Squad →
+      </span>
+
+    </div>
+
 
   </div>
+
 
 </section>
 
 
-<!-- TEAMS -->
 
-<section id="teams" class="section dark">
+<!-- =====================================================
+     POINTS TABLE
+===================================================== -->
+
+<section
+  id="table"
+  class="section">
+
 
   <div class="section-head">
+
     <div>
-      <span class="tag">FRANCHISES</span>
-      <h2>HCCL Teams</h2>
-    </div>
-  </div>
 
-  <div class="teams">
+      <span class="tag">
 
-    <div class="team-card">
-      <img src="hccl-logo.png">
-      <b>HCCL Reds</b>
-      <span>Squad →</span>
-    </div>
+        LEAGUE TABLE
 
-    <div class="team-card">
-      <img src="hccl-logo.png">
-      <b>HCCL Blues</b>
-      <span>Squad →</span>
-    </div>
+      </span>
 
-    <div class="team-card">
-      <img src="hccl-logo.png">
-      <b>HCCL Warriors</b>
-      <span>Squad →</span>
-    </div>
+      <h2>
 
-    <div class="team-card">
-      <img src="hccl-logo.png">
-      <b>HCCL Titans</b>
-      <span>Squad →</span>
-    </div>
+        Points Table
 
-    <div class="team-card">
-      <img src="hccl-logo.png">
-      <b>HCCL Kings</b>
-      <span>Squad →</span>
-    </div>
+      </h2>
 
-    <div class="team-card">
-      <img src="hccl-logo.png">
-      <b>HCCL Strikers</b>
-      <span>Squad →</span>
-    </div>
-
-    <div class="team-card">
-      <img src="hccl-logo.png">
-      <b>HCCL Lions</b>
-      <span>Squad →</span>
-    </div>
-
-    <div class="team-card">
-      <img src="hccl-logo.png">
-      <b>HCCL Eagles</b>
-      <span>Squad →</span>
     </div>
 
   </div>
 
-</section>
 
-
-<!-- POINTS TABLE -->
-
-<section id="table" class="section">
-
-  <div class="section-head">
-    <div>
-      <span class="tag">LEAGUE TABLE</span>
-      <h2>Points Table</h2>
-    </div>
-  </div>
 
   <div class="points">
 
+
     <div class="pt-head">
+
       <span>#</span>
+
       <span>TEAM</span>
+
       <span>P</span>
+
       <span>W</span>
+
       <span>L</span>
+
       <span>NRR</span>
+
       <span>PTS</span>
+
     </div>
 
+
+
     <div>
+
       <span>1</span>
-      <span><b>HCCL Reds</b></span>
+
+      <span>
+        <b>HCCL Reds</b>
+      </span>
+
       <span>4</span>
+
       <span>3</span>
+
       <span>1</span>
+
       <span>+1.24</span>
+
       <strong>6</strong>
+
     </div>
 
+
+
     <div>
+
       <span>2</span>
-      <span><b>HCCL Lions</b></span>
+
+      <span>
+        <b>HCCL Lions</b>
+      </span>
+
       <span>4</span>
+
       <span>3</span>
+
       <span>1</span>
+
       <span>+0.82</span>
+
       <strong>6</strong>
+
     </div>
 
+
+
     <div>
+
       <span>3</span>
-      <span><b>HCCL Blues</b></span>
+
+      <span>
+        <b>HCCL Blues</b>
+      </span>
+
       <span>4</span>
+
       <span>2</span>
+
       <span>2</span>
+
       <span>+0.35</span>
+
       <strong>4</strong>
+
     </div>
 
+
+
     <div>
+
       <span>4</span>
-      <span><b>HCCL Titans</b></span>
+
+      <span>
+        <b>HCCL Titans</b>
+      </span>
+
       <span>3</span>
+
       <span>2</span>
+
       <span>1</span>
+
       <span>+0.12</span>
+
       <strong>4</strong>
+
     </div>
 
+
+
     <div>
+
       <span>5</span>
-      <span><b>HCCL Warriors</b></span>
+
+      <span>
+        <b>HCCL Warriors</b>
+      </span>
+
       <span>3</span>
+
       <span>1</span>
+
       <span>2</span>
+
       <span>-0.10</span>
+
       <strong>2</strong>
+
     </div>
 
+
+
     <div>
+
       <span>6</span>
-      <span><b>HCCL Kings</b></span>
+
+      <span>
+        <b>HCCL Kings</b>
+      </span>
+
       <span>3</span>
+
       <span>1</span>
+
       <span>2</span>
+
       <span>-0.28</span>
+
       <strong>2</strong>
+
     </div>
 
+
+
     <div>
+
       <span>7</span>
-      <span><b>HCCL Strikers</b></span>
+
+      <span>
+        <b>HCCL Strikers</b>
+      </span>
+
       <span>3</span>
+
       <span>1</span>
+
       <span>2</span>
+
       <span>-0.54</span>
+
       <strong>2</strong>
+
     </div>
 
+
+
     <div>
+
       <span>8</span>
-      <span><b>HCCL Eagles</b></span>
+
+      <span>
+        <b>HCCL Eagles</b>
+      </span>
+
       <span>4</span>
+
       <span>0</span>
+
       <span>4</span>
+
       <span>-1.18</span>
+
       <strong>0</strong>
+
     </div>
+
 
   </div>
 
+
 </section>
+
 
 </main>
 
 
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
 
-  <img src="hccl-logo.png">
+
+  <img
+    src="hccl-logo.png"
+    alt="HCCL">
+
 
   <span>
+
     Heroes Champions Cricket League
+
   </span>
 
+
   <small>
+
     Official HCCL Tournament Portal
+
   </small>
+
 
 </footer>
 
+
+
 <script src="site.js"></script>
 
+
 </body>
+
 </html>
