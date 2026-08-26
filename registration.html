@@ -1,10 +1,8 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 
 <meta charset="utf-8">
-
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>HCCL — Player Registration</title>
@@ -12,10 +10,6 @@
 <link rel="stylesheet" href="site.css">
 
 <style>
-
-/* =========================================
-   PAGE
-========================================= */
 
 .registration-page{
   width:min(1180px,calc(100% - 32px));
@@ -41,15 +35,10 @@
 }
 
 .registration-title p{
-  max-width:760px;
+  max-width:780px;
   margin:10px auto 0;
   color:#aab1bb;
 }
-
-
-/* =========================================
-   LAYOUT
-========================================= */
 
 .registration-layout{
   display:grid;
@@ -59,6 +48,7 @@
 
 .registration-card,
 .status-card{
+  padding:24px;
   border:1px solid #1d3551;
   border-radius:18px;
 
@@ -69,22 +59,15 @@
     #05070b 58%,
     #160507 100%
   );
-
-  padding:24px;
 }
-
-
-/* =========================================
-   FORM
-========================================= */
 
 .form-section{
   margin-bottom:30px;
 }
 
 .form-section h2{
-  font-size:20px;
   margin-bottom:16px;
+  font-size:20px;
 }
 
 .form-section h2 span{
@@ -104,7 +87,7 @@
 }
 
 .form-group.full{
-  grid-column:1 / 3;
+  grid-column:1/3;
 }
 
 .form-group label{
@@ -118,6 +101,7 @@
 .form-group textarea{
   width:100%;
   min-height:46px;
+  padding:10px 12px;
 
   border:1px solid #29415e;
   border-radius:9px;
@@ -125,9 +109,12 @@
   background:#06101d;
   color:#fff;
 
-  padding:10px 12px;
-
   outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+  border-color:#ef1b1b;
 }
 
 .form-group textarea{
@@ -135,47 +122,86 @@
   resize:vertical;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-  border-color:#ef1b1b;
-}
 
+/* AADHAAR */
 
-/* =========================================
-   CRICHEROES
-========================================= */
-
-.profile-box{
-  padding:18px;
-
+.aadhaar-box{
+  padding:20px;
+  border:1px solid #28517b;
   border-radius:14px;
 
   background:
   linear-gradient(
     135deg,
-    #07182c,
-    #07101d
+    #071d36,
+    #05080d
   );
-
-  border:1px solid #284766;
 }
 
-.profile-box strong{
-  display:block;
-  margin-bottom:5px;
-}
-
-.profile-box p{
-  color:#99a4b1;
+.aadhaar-info{
+  margin-bottom:15px;
+  color:#9eabb8;
   font-size:12px;
-  margin-bottom:12px;
+}
+
+.aadhaar-actions{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+}
+
+.verify-btn{
+  min-height:44px;
+  padding:0 18px;
+
+  border:0;
+  border-radius:9px;
+
+  cursor:pointer;
+
+  background:#0e3760;
+  color:#fff;
+
+  font-size:12px;
+  font-weight:900;
+}
+
+.verify-btn:hover{
+  background:#145085;
+}
+
+.verify-btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.verification-result{
+  margin-top:15px;
+  padding:13px;
+  border-radius:10px;
+
+  background:#071323;
+  border:1px solid #263e5c;
+
+  font-size:12px;
+}
+
+.verify-pending{
+  color:#f3c758;
+}
+
+.verify-success{
+  color:#43d17c;
+  border-color:#287b4c;
+}
+
+.verify-error{
+  color:#ff6d6d;
+  border-color:#7b2d2d;
 }
 
 
-/* =========================================
-   STATS
-========================================= */
+/* STATS */
 
 .stats-box{
   display:grid;
@@ -185,44 +211,53 @@
 
 .stat-input{
   padding:12px;
-
-  border-radius:12px;
-
-  background:#071323;
-
   border:1px solid #1d3551;
+  border-radius:12px;
+  background:#071323;
 }
 
 .stat-input label{
   display:block;
-
+  margin-bottom:6px;
   color:#8f99a5;
-
   font-size:10px;
   font-weight:900;
-
-  margin-bottom:6px;
 }
 
 .stat-input input{
   width:100%;
-
+  border:0;
   background:transparent;
-
-  border:none;
-
   color:#fff;
+  outline:none;
 
   font-size:18px;
   font-weight:900;
-
-  outline:none;
 }
 
 
-/* =========================================
-   CLASSIFICATION
-========================================= */
+/* CRICHEROES */
+
+.profile-box{
+  padding:18px;
+  border:1px solid #284766;
+  border-radius:14px;
+  background:#07182c;
+}
+
+.profile-box strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.profile-box p{
+  margin-bottom:12px;
+  color:#99a4b1;
+  font-size:12px;
+}
+
+
+/* CLASSIFICATION */
 
 .classification-grid{
   display:grid;
@@ -231,37 +266,22 @@
 }
 
 .classification-card{
-  padding:18px 14px;
-
-  border-radius:13px;
-
-  background:
-  linear-gradient(
-    145deg,
-    #08182b,
-    #07090d
-  );
-
+  padding:16px;
   border:1px solid #233b59;
+  border-radius:13px;
+  background:#071323;
 }
 
 .classification-card small{
-  display:block;
-
   color:#8e98a4;
-
   font-size:10px;
   font-weight:900;
 }
 
 .classification-card strong{
   display:block;
-
   margin-top:7px;
-
-  font-size:19px;
-
-  color:#fff;
+  font-size:20px;
 }
 
 .grade-a{
@@ -276,43 +296,29 @@
   color:#c2c7ce !important;
 }
 
-
-/* =========================================
-   GRADES
-========================================= */
-
 .grade-info{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:12px;
-
   margin-top:15px;
 }
 
 .grade-box{
+  padding:15px;
   text-align:center;
 
-  padding:16px;
-
+  border:1px solid #1d3551;
   border-radius:12px;
 
   background:#071323;
-
-  border:1px solid #1d3551;
 }
 
 .grade-box b{
   display:block;
-  font-size:18px;
 }
 
 .grade-box span{
-  display:block;
-
-  margin-top:4px;
-
-  color:#a6afb9;
-
+  color:#9ea7b1;
   font-size:12px;
 }
 
@@ -329,38 +335,11 @@
 }
 
 
-/* =========================================
-   SCORE EXPLANATION
-========================================= */
-
-.score-info{
-  margin-top:15px;
-
-  padding:15px;
-
-  border-radius:12px;
-
-  background:#050b13;
-
-  border:1px solid #1b3049;
-
-  color:#9ea8b4;
-
-  font-size:12px;
-}
-
-.score-info b{
-  color:#fff;
-}
-
-
-/* =========================================
-   PAYMENT
-========================================= */
+/* PAYMENT */
 
 .payment-box{
   padding:18px;
-
+  border:1px solid #273b54;
   border-radius:14px;
 
   background:
@@ -370,15 +349,11 @@
     #07090d,
     #210507
   );
-
-  border:1px solid #273b54;
 }
 
 .payment-row{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-
   gap:12px;
 
   padding:10px 0;
@@ -387,21 +362,15 @@
 }
 
 .payment-row:last-child{
-  border-bottom:none;
+  border-bottom:0;
 }
 
 .payment-row small{
   color:#939daa;
 }
 
-.payment-row b{
-  color:#fff;
-}
 
-
-/* =========================================
-   BUTTON
-========================================= */
+/* SUBMIT */
 
 .submit-btn{
   width:100%;
@@ -410,34 +379,26 @@
   border:0;
   border-radius:10px;
 
-  cursor:pointer;
-
   color:#fff;
-
-  background:
-  linear-gradient(
-    135deg,
-    #ff2929,
-    #c90000
-  );
+  background:linear-gradient(135deg,#ff2929,#c90000);
 
   font-size:14px;
   font-weight:900;
 
-  box-shadow:
-  0 10px 28px rgba(239,27,27,.22);
+  cursor:pointer;
+}
+
+.submit-btn:disabled{
+  opacity:.35;
+  cursor:not-allowed;
 }
 
 
-/* =========================================
-   RIGHT PROCESS
-========================================= */
+/* RIGHT */
 
 .status-card{
   align-self:start;
-
   position:sticky;
-
   top:105px;
 }
 
@@ -448,96 +409,35 @@
 
 .status-card h3{
   text-align:center;
-  font-size:22px;
 }
 
 .status-card>p{
-  margin-top:7px;
-
   text-align:center;
-
+  margin-top:7px;
   color:#9da5af;
-
   font-size:12px;
-}
-
-.process{
-  margin-top:25px;
-}
-
-.process-step{
-  display:grid;
-
-  grid-template-columns:35px 1fr;
-
-  gap:12px;
-
-  padding:13px 0;
-
-  border-bottom:1px solid #1d3046;
-}
-
-.process-step:last-child{
-  border-bottom:none;
-}
-
-.process-number{
-  width:32px;
-  height:32px;
-
-  border-radius:50%;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background:#ef1b1b;
-
-  color:#fff;
-
-  font-size:12px;
-  font-weight:900;
-}
-
-.process-step b{
-  display:block;
-  font-size:13px;
-}
-
-.process-step small{
-  color:#8f99a5;
 }
 
 .registration-status{
   margin-top:22px;
-
   padding:15px;
 
+  border:1px solid #263c57;
   border-radius:12px;
 
   background:#081526;
-
-  border:1px solid #263c57;
 }
 
 .registration-status span{
   display:flex;
-
   justify-content:space-between;
-
-  padding:7px 0;
-
+  padding:8px 0;
   font-size:12px;
 }
 
 .registration-status strong{
   color:#f0c45c;
 }
-
-
-/* =========================================
-   MOBILE
-========================================= */
 
 @media(max-width:900px){
 
@@ -549,26 +449,19 @@
     position:static;
   }
 
-  .classification-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
 }
 
 @media(max-width:620px){
 
-  .form-grid{
+  .form-grid,
+  .stats-box,
+  .classification-grid,
+  .grade-info{
     grid-template-columns:1fr;
   }
 
   .form-group.full{
     grid-column:auto;
-  }
-
-  .stats-box,
-  .classification-grid,
-  .grade-info{
-    grid-template-columns:1fr;
   }
 
 }
@@ -577,21 +470,14 @@
 
 </head>
 
-
 <body>
 
-
-<!-- =========================================
-     HEADER
-========================================= -->
 
 <header class="nav">
 
 <a class="logo" href="index.html">
 
-  <img
-    src="hccl-logo.png"
-    alt="HCCL">
+  <img src="hccl-logo.png" alt="HCCL">
 
   <span>HCCL</span>
 
@@ -600,63 +486,40 @@
 
 <nav>
 
-  <a href="index.html">
-    Home
-  </a>
+<a href="index.html">Home</a>
 
-  <a href="schedule.html">
-    Schedule
-  </a>
+<a href="schedule.html">Schedule</a>
 
-  <a href="match.html">
-    Live
-  </a>
+<a href="match.html">Live</a>
 
-  <a href="match.html#scorecard">
-    Scorecard
-  </a>
+<a href="match.html#scorecard">Scorecard</a>
 
-  <a href="index.html#teams">
-    Teams
-  </a>
+<a href="index.html#teams">Teams</a>
 
-  <a href="index.html#table">
-    Points
-  </a>
+<a href="index.html#table">Points</a>
 
-  <a href="players.html">
-    MVP Players
-  </a>
+<a href="players.html">MVP Players</a>
 
-  <a
-    class="active"
-    href="registration.html">
-    Player Registration
-  </a>
+<a class="active" href="registration.html">
+Player Registration
+</a>
 
-  <a href="scorer.html">
-    Scoring
-  </a>
+<a href="scorer.html">Scoring</a>
 
 </nav>
 
 
-<a
-  class="live-nav"
-  href="match.html">
+<a class="live-nav" href="match.html">
 
-  <i></i>
+<i></i>
 
-  LIVE MATCH
+LIVE MATCH
 
 </a>
 
 </header>
 
 
-<!-- =========================================
-     PAGE
-========================================= -->
 
 <main class="registration-page">
 
@@ -672,25 +535,20 @@ Player Registration
 </h1>
 
 <p>
-Register for Heroes Champions Cricket League.
-Submit your CricHeroes profile and cricket statistics.
-Players will be classified category-wise into
-A, B or C Grade with HCCL auction base points.
+Register, verify identity, add CricHeroes profile and cricket statistics,
+then enter the HCCL A/B/C grading and auction process.
 </p>
 
 </div>
 
 
+
 <div class="registration-layout">
 
 
-<!-- =========================================
-     FORM
-========================================= -->
-
 <form
-  class="registration-card"
-  id="playerRegistration">
+class="registration-card"
+id="playerRegistration">
 
 
 <!-- 01 PLAYER DETAILS -->
@@ -709,13 +567,14 @@ Player Details
 <div class="form-group">
 
 <label>
-FULL NAME *
+FULL NAME AS PER AADHAAR *
 </label>
 
 <input
 type="text"
 name="name"
-placeholder="Enter player name"
+id="playerName"
+placeholder="Exact Aadhaar name"
 required>
 
 </div>
@@ -752,27 +611,12 @@ name="dob">
 <div class="form-group">
 
 <label>
-AGE
-</label>
-
-<input
-type="number"
-name="age"
-placeholder="Age">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
 DISTRICT / CITY *
 </label>
 
 <input
 type="text"
 name="district"
-placeholder="District / City"
 required>
 
 </div>
@@ -786,8 +630,7 @@ STATE
 
 <input
 type="text"
-name="state"
-placeholder="State">
+name="state">
 
 </div>
 
@@ -801,7 +644,7 @@ JERSEY SIZE
 <select name="jersey">
 
 <option value="">
-Select Size
+Select
 </option>
 
 <option>S</option>
@@ -812,20 +655,6 @@ Select Size
 <option>XXXL</option>
 
 </select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-PREFERRED JERSEY NUMBER
-</label>
-
-<input
-type="number"
-name="jerseyNumber"
-placeholder="Example: 18">
 
 </div>
 
@@ -849,12 +678,114 @@ accept="image/*">
 </section>
 
 
-<!-- 02 CRICKET PROFILE -->
+
+<!-- 02 AADHAAR -->
 
 <section class="form-section">
 
 <h2>
 <span>02.</span>
+Aadhaar Verification
+</h2>
+
+
+<div class="aadhaar-box">
+
+
+<div class="aadhaar-info">
+
+Enter the Aadhaar number and verify using OTP.
+Registration remains locked until identity verification succeeds.
+The website should not display or permanently store the full Aadhaar number.
+
+</div>
+
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label>
+AADHAAR NUMBER *
+</label>
+
+<input
+type="password"
+inputmode="numeric"
+maxlength="12"
+id="aadhaarNumber"
+placeholder="12 digit Aadhaar number">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+OTP
+</label>
+
+<input
+type="text"
+inputmode="numeric"
+maxlength="6"
+id="aadhaarOtp"
+placeholder="Enter OTP"
+disabled>
+
+</div>
+
+
+</div>
+
+
+<div class="aadhaar-actions">
+
+<button
+type="button"
+class="verify-btn"
+id="sendOtpBtn">
+
+SEND OTP
+
+</button>
+
+
+<button
+type="button"
+class="verify-btn"
+id="verifyOtpBtn"
+disabled>
+
+VERIFY OTP & NAME
+
+</button>
+
+</div>
+
+
+<div
+class="verification-result verify-pending"
+id="aadhaarStatus">
+
+Aadhaar verification pending.
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- 03 CRICKET PROFILE -->
+
+<section class="form-section">
+
+<h2>
+<span>03.</span>
 Cricket Profile
 </h2>
 
@@ -870,7 +801,6 @@ PRIMARY ROLE *
 
 <select
 name="role"
-id="role"
 required>
 
 <option value="">
@@ -918,13 +848,8 @@ BATTING STYLE
 
 <select name="batting">
 
-<option>
-Right Hand Bat
-</option>
-
-<option>
-Left Hand Bat
-</option>
+<option>Right Hand Bat</option>
+<option>Left Hand Bat</option>
 
 </select>
 
@@ -940,48 +865,19 @@ BOWLING STYLE
 <select name="bowling">
 
 <option value="">
-Select Bowling Style
+Select Bowling
 </option>
 
-<option>
-Right Arm Fast
-</option>
-
-<option>
-Right Arm Medium Fast
-</option>
-
-<option>
-Right Arm Medium
-</option>
-
-<option>
-Left Arm Fast
-</option>
-
-<option>
-Left Arm Medium Fast
-</option>
-
-<option>
-Left Arm Medium
-</option>
-
-<option>
-Right Arm Off Spin
-</option>
-
-<option>
-Right Arm Leg Spin
-</option>
-
-<option>
-Left Arm Orthodox
-</option>
-
-<option>
-Left Arm Wrist Spin
-</option>
+<option>Right Arm Fast</option>
+<option>Right Arm Medium Fast</option>
+<option>Right Arm Medium</option>
+<option>Left Arm Fast</option>
+<option>Left Arm Medium Fast</option>
+<option>Left Arm Medium</option>
+<option>Right Arm Off Spin</option>
+<option>Right Arm Leg Spin</option>
+<option>Left Arm Orthodox</option>
+<option>Left Arm Wrist Spin</option>
 
 </select>
 
@@ -991,92 +887,13 @@ Left Arm Wrist Spin
 <div class="form-group">
 
 <label>
-BALL TYPE *
+BALL TYPE
 </label>
 
-<select
-name="ballType"
-required>
+<select name="ballType">
 
-<option value="">
-Select Ball Type
-</option>
-
-<option>
-Leather Ball
-</option>
-
-<option>
-Tennis Ball
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-MATCH FORMAT *
-</label>
-
-<select
-name="format"
-required>
-
-<option value="">
-Select Format
-</option>
-
-<option>T20</option>
-
-<option>T10</option>
-
-<option>
-OD / 50 Overs
-</option>
-
-<option>
-Other Limited Overs
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-CRICKET EXPERIENCE
-</label>
-
-<select name="experience">
-
-<option value="">
-Select Experience
-</option>
-
-<option>
-Local Club
-</option>
-
-<option>
-District Level
-</option>
-
-<option>
-State Level
-</option>
-
-<option>
-Corporate Cricket
-</option>
-
-<option>
-League Cricket
-</option>
+<option>Leather Ball</option>
+<option>Tennis Ball</option>
 
 </select>
 
@@ -1088,12 +905,13 @@ League Cricket
 </section>
 
 
-<!-- 03 CRICHEROES -->
+
+<!-- 04 CRICHEROES -->
 
 <section class="form-section">
 
 <h2>
-<span>03.</span>
+<span>04.</span>
 CricHeroes Profile
 </h2>
 
@@ -1105,18 +923,16 @@ CricHeroes Player Profile Link *
 </strong>
 
 <p>
-Paste the player's CricHeroes profile link.
-The verified profile will later be used to confirm
-previous performance before final HCCL grading.
+Verified CricHeroes statistics will be used for
+category ranking and HCCL auction grading.
 </p>
-
 
 <div class="form-group">
 
 <input
 type="url"
 name="cricHeroes"
-placeholder="Paste CricHeroes profile URL"
+placeholder="Paste CricHeroes profile link"
 required>
 
 </div>
@@ -1126,377 +942,147 @@ required>
 </section>
 
 
-<!-- 04 BATTING -->
+
+<!-- 05 BATTING -->
 
 <section class="form-section">
 
 <h2>
-<span>04.</span>
+<span>05.</span>
 Batting Statistics
 </h2>
 
 
 <div class="stats-box">
 
-
 <div class="stat-input">
-
-<label>MATCHES</label>
-
-<input
-type="number"
-name="matches"
-placeholder="0">
-
-</div>
-
-
-<div class="stat-input">
-
-<label>INNINGS</label>
-
-<input
-type="number"
-name="batInnings"
-placeholder="0">
-
-</div>
-
-
-<div class="stat-input">
-
 <label>RUNS</label>
-
-<input
-type="number"
-name="runs"
-placeholder="0">
-
+<input type="number" name="runs" placeholder="0">
 </div>
 
-
 <div class="stat-input">
-
 <label>BALLS FACED</label>
-
-<input
-type="number"
-name="ballsFaced"
-placeholder="0">
-
+<input type="number" name="ballsFaced" placeholder="0">
 </div>
 
-
 <div class="stat-input">
-
-<label>BATTING AVG</label>
-
-<input
-type="number"
-name="batAvg"
-step="0.01"
-placeholder="0.00">
-
+<label>AVERAGE</label>
+<input type="number" name="batAvg" step="0.01" placeholder="0">
 </div>
 
-
 <div class="stat-input">
-
 <label>STRIKE RATE</label>
-
-<input
-type="number"
-name="strikeRate"
-step="0.01"
-placeholder="0.00">
-
+<input type="number" name="strikeRate" step="0.01" placeholder="0">
 </div>
 
-
 <div class="stat-input">
-
-<label>HIGHEST SCORE</label>
-
-<input
-type="number"
-name="highestScore"
-placeholder="0">
-
-</div>
-
-
-<div class="stat-input">
-
 <label>50s</label>
-
-<input
-type="number"
-name="fifties"
-placeholder="0">
-
+<input type="number" name="fifties" placeholder="0">
 </div>
 
-
 <div class="stat-input">
-
 <label>100s</label>
-
-<input
-type="number"
-name="hundreds"
-placeholder="0">
-
+<input type="number" name="hundreds" placeholder="0">
 </div>
-
-
-<div class="stat-input">
-
-<label>4s</label>
-
-<input
-type="number"
-name="fours"
-placeholder="0">
-
-</div>
-
-
-<div class="stat-input">
-
-<label>6s</label>
-
-<input
-type="number"
-name="sixes"
-placeholder="0">
-
-</div>
-
 
 </div>
 
 </section>
 
 
-<!-- 05 BOWLING -->
+
+<!-- 06 BOWLING -->
 
 <section class="form-section">
 
 <h2>
-<span>05.</span>
+<span>06.</span>
 Bowling Statistics
 </h2>
 
 
 <div class="stats-box">
 
-
 <div class="stat-input">
-
-<label>
-BOWLING INNINGS
-</label>
-
-<input
-type="number"
-name="bowlInnings"
-placeholder="0">
-
+<label>WICKETS</label>
+<input type="number" name="wickets" placeholder="0">
 </div>
 
-
 <div class="stat-input">
-
-<label>
-BALLS BOWLED
-</label>
-
-<input
-type="number"
-name="ballsBowled"
-placeholder="0">
-
+<label>BALLS BOWLED</label>
+<input type="number" name="ballsBowled" placeholder="0">
 </div>
 
-
 <div class="stat-input">
-
-<label>
-RUNS CONCEDED
-</label>
-
-<input
-type="number"
-name="runsConceded"
-placeholder="0">
-
+<label>RUNS CONCEDED</label>
+<input type="number" name="runsConceded" placeholder="0">
 </div>
 
-
 <div class="stat-input">
-
-<label>
-WICKETS
-</label>
-
-<input
-type="number"
-name="wickets"
-placeholder="0">
-
+<label>BOWLING AVG</label>
+<input type="number" name="bowlAvg" step="0.01" placeholder="0">
 </div>
 
-
 <div class="stat-input">
-
-<label>
-BOWLING AVG
-</label>
-
-<input
-type="number"
-name="bowlAvg"
-step="0.01"
-placeholder="0.00">
-
+<label>ECONOMY</label>
+<input type="number" name="economy" step="0.01" placeholder="0">
 </div>
 
-
 <div class="stat-input">
-
-<label>
-ECONOMY
-</label>
-
-<input
-type="number"
-name="economy"
-step="0.01"
-placeholder="0.00">
-
+<label>5 WICKET HAULS</label>
+<input type="number" name="fiveWickets" placeholder="0">
 </div>
-
-
-<div class="stat-input">
-
-<label>
-BOWLING SR
-</label>
-
-<input
-type="number"
-name="bowlSR"
-step="0.01"
-placeholder="0.00">
-
-</div>
-
-
-<div class="stat-input">
-
-<label>
-BEST BOWLING
-</label>
-
-<input
-type="text"
-name="bestBowling"
-placeholder="4/18">
-
-</div>
-
-
-<div class="stat-input">
-
-<label>
-5 WICKET HAULS
-</label>
-
-<input
-type="number"
-name="fiveWickets"
-placeholder="0">
-
-</div>
-
 
 </div>
 
 </section>
 
 
-<!-- 06 FIELDING -->
 
-<section class="form-section">
-
-<h2>
-<span>06.</span>
-Fielding / Keeping Statistics
-</h2>
-
-
-<div class="stats-box">
-
-
-<div class="stat-input">
-
-<label>
-CATCHES
-</label>
-
-<input
-type="number"
-name="catches"
-placeholder="0">
-
-</div>
-
-
-<div class="stat-input">
-
-<label>
-RUN OUTS
-</label>
-
-<input
-type="number"
-name="runOuts"
-placeholder="0">
-
-</div>
-
-
-<div class="stat-input">
-
-<label>
-STUMPINGS
-</label>
-
-<input
-type="number"
-name="stumpings"
-placeholder="0">
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- 07 CLASSIFICATION -->
+<!-- 07 FIELDING -->
 
 <section class="form-section">
 
 <h2>
 <span>07.</span>
-HCCL Auto Classification
+Fielding / Keeping
+</h2>
+
+
+<div class="stats-box">
+
+<div class="stat-input">
+<label>CATCHES</label>
+<input type="number" name="catches" placeholder="0">
+</div>
+
+<div class="stat-input">
+<label>RUN OUTS</label>
+<input type="number" name="runOuts" placeholder="0">
+</div>
+
+<div class="stat-input">
+<label>STUMPINGS</label>
+<input type="number" name="stumpings" placeholder="0">
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- 08 CLASSIFICATION -->
+
+<section class="form-section">
+
+<h2>
+<span>08.</span>
+HCCL Classification
 </h2>
 
 
 <div class="classification-grid">
-
 
 <div class="classification-card">
 
@@ -1514,7 +1100,7 @@ Pending
 <div class="classification-card">
 
 <small>
-CATEGORY SCORE
+SCORE
 </small>
 
 <strong id="categoryScore">
@@ -1549,83 +1135,54 @@ Pending
 
 </div>
 
-
 </div>
 
 
 <div class="grade-info">
 
-
 <div class="grade-box a">
 
-<b>
-A GRADE
-</b>
+<b>A GRADE</b>
 
-<span>
-50 Base Points
-</span>
+<span>50 Points</span>
 
 </div>
 
 
 <div class="grade-box b">
 
-<b>
-B GRADE
-</b>
+<b>B GRADE</b>
 
-<span>
-25 Base Points
-</span>
+<span>25 Points</span>
 
 </div>
 
 
 <div class="grade-box c">
 
-<b>
-C GRADE
-</b>
+<b>C GRADE</b>
 
-<span>
-10 Base Points
-</span>
+<span>10 Points</span>
 
 </div>
 
-
 </div>
-
-
-<div class="score-info">
-
-<b>Category based grading:</b>
-
-Batsmen are evaluated mainly on batting performance.
-Bowlers are evaluated mainly on wickets, economy and bowling average.
-All-rounders receive combined batting and bowling scores.
-Wicket keepers receive batting plus keeping points.
-Catches and run-outs provide fielding bonus points.
-
-</div>
-
 
 </section>
 
 
-<!-- 08 PAYMENT -->
+
+<!-- 09 PAYMENT -->
 
 <section class="form-section">
 
 <h2>
-<span>08.</span>
-Registration Payment
+<span>09.</span>
+Payment
 </h2>
 
 
 <div class="payment-box">
-
 
 <div class="payment-row">
 
@@ -1643,19 +1200,6 @@ To Be Announced
 <div class="payment-row">
 
 <small>
-Payment Method
-</small>
-
-<b>
-UPI / Online
-</b>
-
-</div>
-
-
-<div class="payment-row">
-
-<small>
 Payment Status
 </small>
 
@@ -1665,7 +1209,6 @@ Pending
 
 </div>
 
-
 </div>
 
 
@@ -1674,60 +1217,26 @@ class="form-group"
 style="margin-top:15px;">
 
 <label>
-PAYMENT TRANSACTION / UTR ID
+UTR / TRANSACTION ID
 </label>
 
 <input
 type="text"
-name="transaction"
-placeholder="Enter payment transaction ID">
-
-</div>
-
-
-<div
-class="form-group"
-style="margin-top:15px;">
-
-<label>
-PAYMENT SCREENSHOT
-</label>
-
-<input
-type="file"
-name="paymentScreenshot"
-accept="image/*">
-
-</div>
-
-
-</section>
-
-
-<!-- NOTES -->
-
-<section class="form-section">
-
-<div class="form-group full">
-
-<label>
-PREVIOUS TOURNAMENTS / ACHIEVEMENTS
-</label>
-
-<textarea
-name="notes"
-placeholder="Previous leagues, tournaments, awards or achievements"></textarea>
+name="transaction">
 
 </div>
 
 </section>
+
 
 
 <button
 type="submit"
-class="submit-btn">
+id="submitRegistration"
+class="submit-btn"
+disabled>
 
-CALCULATE GRADE & SUBMIT REGISTRATION
+VERIFY AADHAAR TO CONTINUE
 
 </button>
 
@@ -1735,9 +1244,8 @@ CALCULATE GRADE & SUBMIT REGISTRATION
 </form>
 
 
-<!-- =========================================
-     RIGHT SIDE
-========================================= -->
+
+<!-- RIGHT -->
 
 <aside class="status-card">
 
@@ -1749,190 +1257,38 @@ alt="HCCL">
 
 
 <h3>
-HCCL Player Grading
+Registration Status
 </h3>
 
-
 <p>
-Category-wise grading and auction base points.
+Identity verification is required before final registration.
 </p>
 
 
-<div class="process">
-
-
-<div class="process-step">
-
-<span class="process-number">
-1
-</span>
-
-<div>
-
-<b>
-Registration
-</b>
-
-<small>
-Player details and photo.
-</small>
-
-</div>
-
-</div>
-
-
-<div class="process-step">
-
-<span class="process-number">
-2
-</span>
-
-<div>
-
-<b>
-CricHeroes Profile
-</b>
-
-<small>
-Previous performance verification.
-</small>
-
-</div>
-
-</div>
-
-
-<div class="process-step">
-
-<span class="process-number">
-3
-</span>
-
-<div>
-
-<b>
-Player Category
-</b>
-
-<small>
-Batsman / All-Rounder / Spin / Pace / Keeper.
-</small>
-
-</div>
-
-</div>
-
-
-<div class="process-step">
-
-<span class="process-number">
-4
-</span>
-
-<div>
-
-<b>
-Category Score
-</b>
-
-<small>
-Role-specific performance calculation.
-</small>
-
-</div>
-
-</div>
-
-
-<div class="process-step">
-
-<span class="process-number">
-5
-</span>
-
-<div>
-
-<b>
-A / B / C Grade
-</b>
-
-<small>
-Player placed in appropriate grade.
-</small>
-
-</div>
-
-</div>
-
-
-<div class="process-step">
-
-<span class="process-number">
-6
-</span>
-
-<div>
-
-<b>
-Base Points
-</b>
-
-<small>
-A 50 · B 25 · C 10.
-</small>
-
-</div>
-
-</div>
-
-
-<div class="process-step">
-
-<span class="process-number">
-7
-</span>
-
-<div>
-
-<b>
-HCCL Verification
-</b>
-
-<small>
-Statistics and payment checked.
-</small>
-
-</div>
-
-</div>
-
-
-<div class="process-step">
-
-<span class="process-number">
-8
-</span>
-
-<div>
-
-<b>
-Auction Pool
-</b>
-
-<small>
-Approved player becomes auction eligible.
-</small>
-
-</div>
-
-</div>
-
-
-</div>
-
-
 <div class="registration-status">
+
+
+<span>
+
+Aadhaar
+
+<strong id="sideAadhaar">
+PENDING
+</strong>
+
+</span>
+
+
+<span>
+
+CricHeroes
+
+<strong>
+REQUIRED
+</strong>
+
+</span>
+
 
 <span>
 
@@ -1969,17 +1325,6 @@ C Grade
 
 <span>
 
-CricHeroes
-
-<strong>
-VERIFY
-</strong>
-
-</span>
-
-
-<span>
-
 Auction
 
 <strong>
@@ -1988,8 +1333,8 @@ AFTER APPROVAL
 
 </span>
 
-</div>
 
+</div>
 
 </aside>
 
@@ -1999,15 +1344,9 @@ AFTER APPROVAL
 </main>
 
 
-<!-- =========================================
-     FOOTER
-========================================= -->
-
 <footer>
 
-<img
-src="hccl-logo.png"
-alt="HCCL">
+<img src="hccl-logo.png" alt="HCCL">
 
 <span>
 Heroes Champions Cricket League
@@ -2020,17 +1359,223 @@ Official HCCL Tournament Portal
 </footer>
 
 
-<!-- =========================================
-     CATEGORY GRADING ENGINE
-========================================= -->
 
 <script>
 
-const form =
-document.getElementById("playerRegistration");
+/*
+===================================================
+AADHAAR VERIFICATION STATE
+===================================================
+*/
+
+let aadhaarVerified = false;
 
 
-function numberValue(data,name){
+/*
+===================================================
+SEND OTP
+
+IMPORTANT:
+This requires a secure authorized backend.
+
+Example future endpoint:
+POST /api/aadhaar/send-otp
+
+Do not put UIDAI/provider secret keys
+inside this HTML file.
+===================================================
+*/
+
+document
+.getElementById("sendOtpBtn")
+.addEventListener(
+"click",
+function(){
+
+  const aadhaar =
+  document
+  .getElementById("aadhaarNumber")
+  .value
+  .replace(/\D/g,"");
+
+
+  const name =
+  document
+  .getElementById("playerName")
+  .value
+  .trim();
+
+
+  if(aadhaar.length !== 12){
+
+    setAadhaarError(
+      "Please enter a valid 12 digit Aadhaar number."
+    );
+
+    return;
+
+  }
+
+
+  if(!name){
+
+    setAadhaarError(
+      "Enter player name exactly as per Aadhaar."
+    );
+
+    return;
+
+  }
+
+
+  /*
+  REAL BACKEND CALL WILL GO HERE.
+
+  Until Aadhaar provider/backend is connected,
+  do not mark the user as verified.
+  */
+
+
+  document
+  .getElementById("aadhaarOtp")
+  .disabled = false;
+
+
+  document
+  .getElementById("verifyOtpBtn")
+  .disabled = false;
+
+
+  const status =
+  document
+  .getElementById("aadhaarStatus");
+
+
+  status.className =
+  "verification-result verify-pending";
+
+
+  status.textContent =
+  "OTP service backend is not connected yet. UI is ready for authorized Aadhaar OTP integration.";
+
+});
+
+
+/*
+===================================================
+VERIFY OTP + NAME
+
+Future backend should return something like:
+
+{
+ verified:true,
+ nameMatch:true
+}
+
+Only then registration unlocks.
+===================================================
+*/
+
+document
+.getElementById("verifyOtpBtn")
+.addEventListener(
+"click",
+function(){
+
+  const otp =
+  document
+  .getElementById("aadhaarOtp")
+  .value
+  .trim();
+
+
+  if(otp.length < 4){
+
+    setAadhaarError(
+      "Enter the OTP received on the Aadhaar-linked mobile number."
+    );
+
+    return;
+
+  }
+
+
+  /*
+  REAL PROVIDER RESPONSE REQUIRED.
+
+  We intentionally do NOT fake Aadhaar verification.
+  */
+
+
+  setAadhaarError(
+    "Real Aadhaar verification backend is not connected yet."
+  );
+
+});
+
+
+function setAadhaarSuccess(){
+
+  aadhaarVerified = true;
+
+
+  const status =
+  document
+  .getElementById("aadhaarStatus");
+
+
+  status.className =
+  "verification-result verify-success";
+
+
+  status.textContent =
+  "✓ Aadhaar OTP verified and player name matched.";
+
+
+  document
+  .getElementById("sideAadhaar")
+  .textContent =
+  "VERIFIED";
+
+
+  const submit =
+  document
+  .getElementById("submitRegistration");
+
+
+  submit.disabled = false;
+
+
+  submit.textContent =
+  "CALCULATE GRADE & SUBMIT REGISTRATION";
+
+}
+
+
+function setAadhaarError(message){
+
+  const status =
+  document
+  .getElementById("aadhaarStatus");
+
+
+  status.className =
+  "verification-result verify-error";
+
+
+  status.textContent =
+  message;
+
+}
+
+
+/*
+===================================================
+NUMBER HELPER
+===================================================
+*/
+
+function num(data,name){
 
   return Number(
     data.get(name) || 0
@@ -2039,38 +1584,36 @@ function numberValue(data,name){
 }
 
 
-/* =========================================
-   BATTING SCORE
-========================================= */
+/*
+===================================================
+BATTING SCORE
+===================================================
+*/
 
 function battingScore(data){
 
   const runs =
-  numberValue(data,"runs");
+  num(data,"runs");
 
   const avg =
-  numberValue(data,"batAvg");
+  num(data,"batAvg");
 
   const sr =
-  numberValue(data,"strikeRate");
+  num(data,"strikeRate");
 
   const fifties =
-  numberValue(data,"fifties");
+  num(data,"fifties");
 
   const hundreds =
-  numberValue(data,"hundreds");
+  num(data,"hundreds");
 
 
   let score = 0;
 
 
-  /* RUNS */
-
   score +=
   Math.min(runs / 10,40);
 
-
-  /* AVERAGE */
 
   if(avg >= 40){
 
@@ -2087,14 +1630,7 @@ function battingScore(data){
     score += 10;
 
   }
-  else if(avg >= 15){
 
-    score += 5;
-
-  }
-
-
-  /* STRIKE RATE */
 
   if(sr >= 150){
 
@@ -2111,17 +1647,11 @@ function battingScore(data){
     score += 10;
 
   }
-  else if(sr >= 90){
 
-    score += 5;
-
-  }
-
-
-  /* MILESTONES */
 
   score +=
   Math.min(fifties * 2,10);
+
 
   score +=
   Math.min(hundreds * 5,10);
@@ -2132,35 +1662,33 @@ function battingScore(data){
 }
 
 
-/* =========================================
-   BOWLING SCORE
-========================================= */
+/*
+===================================================
+BOWLING SCORE
+===================================================
+*/
 
 function bowlingScore(data){
 
   const wickets =
-  numberValue(data,"wickets");
+  num(data,"wickets");
 
   const economy =
-  numberValue(data,"economy");
+  num(data,"economy");
 
   const avg =
-  numberValue(data,"bowlAvg");
+  num(data,"bowlAvg");
 
   const fiveWickets =
-  numberValue(data,"fiveWickets");
+  num(data,"fiveWickets");
 
 
   let score = 0;
 
 
-  /* WICKETS */
-
   score +=
   Math.min(wickets * 2,50);
 
-
-  /* ECONOMY */
 
   if(economy > 0 && economy <= 5.5){
 
@@ -2177,14 +1705,7 @@ function bowlingScore(data){
     score += 12;
 
   }
-  else if(economy <= 8.5 && economy > 0){
 
-    score += 6;
-
-  }
-
-
-  /* BOWLING AVG */
 
   if(avg > 0 && avg <= 15){
 
@@ -2201,14 +1722,7 @@ function bowlingScore(data){
     score += 12;
 
   }
-  else if(avg <= 30 && avg > 0){
 
-    score += 6;
-
-  }
-
-
-  /* 5 WICKET HAUL */
 
   score +=
   Math.min(fiveWickets * 5,10);
@@ -2219,205 +1733,148 @@ function bowlingScore(data){
 }
 
 
-/* =========================================
-   FIELDING SCORE
-========================================= */
+/*
+===================================================
+FIELDING
+===================================================
+*/
 
-function fieldingScore(data){
+function fieldScore(data){
 
   const catches =
-  numberValue(data,"catches");
+  num(data,"catches");
 
   const runOuts =
-  numberValue(data,"runOuts");
+  num(data,"runOuts");
 
 
-  let score = 0;
-
-
-  score += catches * 1.5;
-
-  score += runOuts * 2;
-
-
-  return Math.min(score,20);
+  return Math.min(
+    (catches * 1.5) +
+    (runOuts * 2),
+    20
+  );
 
 }
 
 
-/* =========================================
-   WICKET KEEPING SCORE
-========================================= */
+/*
+===================================================
+KEEPING
+===================================================
+*/
 
-function keepingScore(data){
+function keeperScore(data){
 
-  const catches =
-  numberValue(data,"catches");
+  return Math.min(
 
-  const stumpings =
-  numberValue(data,"stumpings");
+    num(data,"catches") * 2 +
 
-  const runOuts =
-  numberValue(data,"runOuts");
+    num(data,"stumpings") * 3 +
 
+    num(data,"runOuts") * 2,
 
-  let score = 0;
+    40
 
-
-  score += catches * 2;
-
-  score += stumpings * 3;
-
-  score += runOuts * 2;
-
-
-  return Math.min(score,40);
+  );
 
 }
 
 
-/* =========================================
-   FINAL CATEGORY SCORE
-========================================= */
+/*
+===================================================
+ROLE SCORE
+===================================================
+*/
 
-function calculateCategoryScore(
-  role,
-  data
-){
+function categoryScore(role,data){
 
   const bat =
   battingScore(data);
 
-
   const bowl =
   bowlingScore(data);
 
-
   const field =
-  fieldingScore(data);
-
+  fieldScore(data);
 
   const keep =
-  keepingScore(data);
+  keeperScore(data);
 
 
-  let finalScore = 0;
+  let score = 0;
 
-
-  /*
-  BATSMAN
-  90% batting
-  10% fielding
-  */
 
   if(role === "Batsman"){
 
-    finalScore =
-    (bat * 0.90) +
-    (field * 0.50);
+    score =
+    bat * .90 +
+    field * .50;
 
   }
 
-
-  /*
-  ALL ROUNDER
-  Batting + Bowling combined
-  */
 
   else if(role === "All-Rounder"){
 
-    finalScore =
-    (bat * 0.45) +
-    (bowl * 0.45) +
-    (field * 0.50);
+    score =
+    bat * .45 +
+    bowl * .45 +
+    field * .50;
 
   }
 
 
-  /*
-  SPIN BOWLER
-  */
+  else if(
+    role === "Spin Bowler" ||
+    role === "Fast Bowler" ||
+    role === "Medium Pacer"
+  ){
 
-  else if(role === "Spin Bowler"){
-
-    finalScore =
-    (bowl * 0.90) +
-    (field * 0.50);
-
-  }
-
-
-  /*
-  FAST BOWLER
-  */
-
-  else if(role === "Fast Bowler"){
-
-    finalScore =
-    (bowl * 0.90) +
-    (field * 0.50);
+    score =
+    bowl * .90 +
+    field * .50;
 
   }
 
-
-  /*
-  MEDIUM PACER
-  */
-
-  else if(role === "Medium Pacer"){
-
-    finalScore =
-    (bowl * 0.90) +
-    (field * 0.50);
-
-  }
-
-
-  /*
-  WICKET KEEPER
-  */
 
   else if(role === "Wicket Keeper"){
 
-    finalScore =
-    (keep * 1.50) +
-    (bat * 0.35);
+    score =
+    keep * 1.5 +
+    bat * .35;
 
   }
 
-
-  /*
-  WICKET KEEPER BATSMAN
-  */
 
   else if(
     role === "Wicket Keeper Batsman"
   ){
 
-    finalScore =
-    (bat * 0.60) +
-    (keep * 0.90);
+    score =
+    bat * .60 +
+    keep * .90;
 
   }
 
 
   return Math.min(
-    Math.round(finalScore),
+    Math.round(score),
     100
   );
 
 }
 
 
-/* =========================================
-   GRADE SYSTEM
+/*
+===================================================
+GRADE
 
-   70 - 100 = A = 50 Points
-   45 - 69  = B = 25 Points
-   0  - 44  = C = 10 Points
-========================================= */
+A = 50
+B = 25
+C = 10
+===================================================
+*/
 
-function calculateGrade(score){
+function gradePlayer(score){
 
   if(score >= 70){
 
@@ -2447,29 +1904,25 @@ function calculateGrade(score){
 }
 
 
-/* =========================================
-   SUBMIT
-========================================= */
+/*
+===================================================
+FINAL SUBMIT
+===================================================
+*/
 
-form.addEventListener(
+document
+.getElementById("playerRegistration")
+.addEventListener(
 "submit",
 function(event){
 
   event.preventDefault();
 
 
-  const data =
-  new FormData(form);
-
-
-  const role =
-  data.get("role");
-
-
-  if(!role){
+  if(!aadhaarVerified){
 
     alert(
-      "Please select player role."
+      "Aadhaar verification is required before registration."
     );
 
     return;
@@ -2477,92 +1930,62 @@ function(event){
   }
 
 
+  const data =
+  new FormData(this);
+
+
+  const role =
+  data.get("role");
+
+
   const score =
-  calculateCategoryScore(
+  categoryScore(
     role,
     data
   );
 
 
   const result =
-  calculateGrade(score);
+  gradePlayer(score);
 
-
-  /* CATEGORY */
 
   document
-  .getElementById(
-    "autoCategory"
-  )
+  .getElementById("autoCategory")
   .textContent =
   role;
 
 
-  /* SCORE */
-
   document
-  .getElementById(
-    "categoryScore"
-  )
+  .getElementById("categoryScore")
   .textContent =
   score + " / 100";
 
 
-  /* GRADE */
-
-  const gradeElement =
-  document.getElementById(
-    "autoGrade"
-  );
+  const grade =
+  document
+  .getElementById("autoGrade");
 
 
-  gradeElement.textContent =
+  grade.textContent =
   result.grade +
   " Grade";
 
 
-  gradeElement.className = "";
+  grade.className = "";
 
 
-  if(result.grade === "A"){
+  grade.classList.add(
+    "grade-" +
+    result.grade.toLowerCase()
+  );
 
-    gradeElement
-    .classList
-    .add("grade-a");
-
-  }
-
-
-  if(result.grade === "B"){
-
-    gradeElement
-    .classList
-    .add("grade-b");
-
-  }
-
-
-  if(result.grade === "C"){
-
-    gradeElement
-    .classList
-    .add("grade-c");
-
-  }
-
-
-  /* BASE POINTS */
 
   document
-  .getElementById(
-    "basePoints"
-  )
+  .getElementById("basePoints")
   .textContent =
   result.points +
   " Points";
 
-
-  /* RESULT */
 
   alert(
     "HCCL PLAYER CLASSIFICATION\n\n" +
@@ -2570,16 +1993,15 @@ function(event){
     "Category: " +
     role +
 
-    "\nPerformance Score: " +
+    "\nScore: " +
     score +
     "/100" +
 
     "\nGrade: " +
     result.grade +
 
-    "\nAuction Base: " +
-    result.points +
-    " Points"
+    "\nBase Points: " +
+    result.points
   );
 
 });
@@ -2588,5 +2010,4 @@ function(event){
 
 
 </body>
-
 </html>
