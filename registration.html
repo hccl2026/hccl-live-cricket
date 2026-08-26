@@ -49,15 +49,12 @@
 .status-card{
   border:1px solid #1d3551;
   border-radius:18px;
-
-  background:
-  linear-gradient(
+  background:linear-gradient(
     145deg,
     #071a34 0%,
     #05070b 58%,
     #160507 100%
   );
-
   padding:24px;
 }
 
@@ -101,15 +98,11 @@
 .form-group textarea{
   width:100%;
   min-height:46px;
-
   border:1px solid #29415e;
   border-radius:9px;
-
   background:#06101d;
   color:#fff;
-
   padding:10px 12px;
-
   outline:none;
 }
 
@@ -124,60 +117,14 @@
   border-color:#ef1b1b;
 }
 
-.stats-box{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-
-.stat-input{
-  padding:12px;
-
-  border-radius:12px;
-
-  background:#071323;
-
-  border:1px solid #1d3551;
-}
-
-.stat-input label{
-  display:block;
-
-  color:#8f99a5;
-
-  font-size:10px;
-  font-weight:900;
-
-  margin-bottom:6px;
-}
-
-.stat-input input{
-  width:100%;
-
-  background:transparent;
-
-  border:none;
-
-  color:white;
-
-  font-size:18px;
-  font-weight:900;
-
-  outline:none;
-}
-
 .profile-box{
   padding:18px;
-
   border-radius:14px;
-
-  background:
-  linear-gradient(
+  background:linear-gradient(
     135deg,
     #07182c,
     #07101d
   );
-
   border:1px solid #284766;
 }
 
@@ -192,6 +139,43 @@
   margin-bottom:12px;
 }
 
+
+/* STATS */
+
+.stats-box{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.stat-input{
+  padding:12px;
+  border-radius:12px;
+  background:#071323;
+  border:1px solid #1d3551;
+}
+
+.stat-input label{
+  display:block;
+  color:#8f99a5;
+  font-size:10px;
+  font-weight:900;
+  margin-bottom:6px;
+}
+
+.stat-input input{
+  width:100%;
+  background:transparent;
+  border:none;
+  color:#fff;
+  font-size:18px;
+  font-weight:900;
+  outline:none;
+}
+
+
+/* CLASSIFICATION */
+
 .classification-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -199,36 +183,27 @@
 }
 
 .classification-card{
-  padding:16px;
-
+  padding:18px;
   border-radius:13px;
-
-  background:
-  linear-gradient(
+  background:linear-gradient(
     145deg,
     #08182b,
     #07090d
   );
-
   border:1px solid #233b59;
 }
 
 .classification-card small{
   display:block;
-
   color:#8e98a4;
-
   font-size:10px;
   font-weight:900;
 }
 
 .classification-card strong{
   display:block;
-
-  margin-top:6px;
-
+  margin-top:7px;
   font-size:22px;
-
   color:#fff;
 }
 
@@ -241,21 +216,63 @@
 }
 
 .grade-c{
-  color:#9ea6b0 !important;
+  color:#aeb5be !important;
 }
+
+
+/* GRADE INFO */
+
+.grade-info{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:15px;
+}
+
+.grade-box{
+  text-align:center;
+  padding:14px;
+  border-radius:12px;
+  background:#071323;
+  border:1px solid #1d3551;
+}
+
+.grade-box b{
+  display:block;
+  font-size:18px;
+}
+
+.grade-box span{
+  display:block;
+  margin-top:4px;
+  font-size:12px;
+  color:#a6afb9;
+}
+
+.grade-box.a b{
+  color:#ffd34d;
+}
+
+.grade-box.b b{
+  color:#89bfff;
+}
+
+.grade-box.c b{
+  color:#aeb5be;
+}
+
+
+/* PAYMENT */
 
 .payment-box{
   border-radius:14px;
   padding:18px;
-
-  background:
-  linear-gradient(
+  background:linear-gradient(
     135deg,
     #081a32,
     #07090d,
     #210507
   );
-
   border:1px solid #273b54;
 }
 
@@ -263,11 +280,8 @@
   display:flex;
   justify-content:space-between;
   align-items:center;
-
   gap:12px;
-
   padding:10px 0;
-
   border-bottom:1px solid #1b2d42;
 }
 
@@ -283,34 +297,31 @@
   color:#fff;
 }
 
+
+/* BUTTON */
+
 .submit-btn{
   width:100%;
   min-height:52px;
-
   border:0;
   border-radius:10px;
-
   cursor:pointer;
-
   color:#fff;
-
-  background:
-  linear-gradient(
+  background:linear-gradient(
     135deg,
     #ff2929,
     #c90000
   );
-
   font-size:14px;
   font-weight:900;
-
-  box-shadow:
-  0 10px 28px rgba(239,27,27,.22);
+  box-shadow:0 10px 28px rgba(239,27,27,.22);
 }
+
+
+/* RIGHT STATUS */
 
 .status-card{
   align-self:start;
-
   position:sticky;
   top:105px;
 }
@@ -327,11 +338,8 @@
 
 .status-card>p{
   margin-top:7px;
-
   text-align:center;
-
   color:#9da5af;
-
   font-size:12px;
 }
 
@@ -342,11 +350,8 @@
 .process-step{
   display:grid;
   grid-template-columns:35px 1fr;
-
   gap:12px;
-
   padding:13px 0;
-
   border-bottom:1px solid #1d3046;
 }
 
@@ -357,17 +362,12 @@
 .process-number{
   width:32px;
   height:32px;
-
   border-radius:50%;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   background:#ef1b1b;
-
-  color:white;
-
+  color:#fff;
   font-size:12px;
   font-weight:900;
 }
@@ -383,28 +383,25 @@
 
 .registration-status{
   margin-top:22px;
-
   padding:15px;
-
   border-radius:12px;
-
   background:#081526;
-
   border:1px solid #263c57;
 }
 
 .registration-status span{
   display:flex;
   justify-content:space-between;
-
   padding:7px 0;
-
   font-size:12px;
 }
 
 .registration-status strong{
   color:#f0c45c;
 }
+
+
+/* MOBILE */
 
 @media(max-width:900px){
 
@@ -429,16 +426,21 @@
   }
 
   .stats-box,
-  .classification-grid{
-    grid-template-columns:repeat(2,1fr);
+  .classification-grid,
+  .grade-info{
+    grid-template-columns:1fr;
   }
 
 }
 
 </style>
+
 </head>
 
 <body>
+
+
+<!-- HEADER -->
 
 <header class="nav">
 
@@ -455,7 +457,11 @@
     <a href="index.html#teams">Teams</a>
     <a href="index.html#table">Points</a>
     <a href="players.html">MVP Players</a>
-    <a class="active" href="registration.html">Player Registration</a>
+
+    <a class="active" href="registration.html">
+      Player Registration
+    </a>
+
     <a href="scorer.html">Scoring</a>
   </nav>
 
@@ -469,6 +475,9 @@
 
 <main class="registration-page">
 
+
+<!-- TITLE -->
+
 <div class="registration-title">
 
   <span class="tag">
@@ -480,8 +489,9 @@
   </h1>
 
   <p>
-    Register for Heroes Champions Cricket League, submit your CricHeroes profile,
-    verify previous cricket statistics and enter the HCCL player grading and auction process.
+    Register for Heroes Champions Cricket League.
+    Submit your CricHeroes profile and previous cricket statistics
+    for HCCL category, grade and auction base-point classification.
   </p>
 
 </div>
@@ -493,7 +503,7 @@
 <form class="registration-card" id="playerRegistration">
 
 
-<!-- 01 PERSONAL DETAILS -->
+<!-- PLAYER DETAILS -->
 
 <section class="form-section">
 
@@ -505,12 +515,20 @@
 
   <div class="form-group">
     <label>FULL NAME *</label>
-    <input type="text" name="name" placeholder="Enter player name" required>
+    <input
+      type="text"
+      name="name"
+      placeholder="Enter player name"
+      required>
   </div>
 
   <div class="form-group">
     <label>MOBILE NUMBER *</label>
-    <input type="tel" name="mobile" placeholder="+91" required>
+    <input
+      type="tel"
+      name="mobile"
+      placeholder="+91"
+      required>
   </div>
 
   <div class="form-group">
@@ -520,23 +538,35 @@
 
   <div class="form-group">
     <label>AGE</label>
-    <input type="number" name="age" placeholder="Age">
+    <input
+      type="number"
+      name="age"
+      placeholder="Age">
   </div>
 
   <div class="form-group">
     <label>DISTRICT / CITY *</label>
-    <input type="text" name="district" placeholder="District / City" required>
+    <input
+      type="text"
+      name="district"
+      placeholder="District / City"
+      required>
   </div>
 
   <div class="form-group">
     <label>STATE</label>
-    <input type="text" name="state" placeholder="State">
+    <input
+      type="text"
+      name="state"
+      placeholder="State">
   </div>
 
   <div class="form-group">
+
     <label>JERSEY SIZE</label>
 
     <select name="jersey">
+
       <option value="">Select size</option>
       <option>S</option>
       <option>M</option>
@@ -544,18 +574,31 @@
       <option>XL</option>
       <option>XXL</option>
       <option>XXXL</option>
+
     </select>
 
   </div>
 
   <div class="form-group">
+
     <label>PREFERRED JERSEY NUMBER</label>
-    <input type="number" name="jerseyNumber" placeholder="Example: 18">
+
+    <input
+      type="number"
+      name="jerseyNumber"
+      placeholder="Example: 18">
+
   </div>
 
   <div class="form-group full">
+
     <label>PLAYER PHOTO</label>
-    <input type="file" name="photo" accept="image/*">
+
+    <input
+      type="file"
+      name="photo"
+      accept="image/*">
+
   </div>
 
 </div>
@@ -563,7 +606,7 @@
 </section>
 
 
-<!-- 02 CRICKET PROFILE -->
+<!-- CRICKET PROFILE -->
 
 <section class="form-section">
 
@@ -581,13 +624,33 @@
 
       <option value="">Select role</option>
 
-      <option>Batsman</option>
-      <option>All-Rounder</option>
-      <option>Spin Bowler</option>
-      <option>Fast Bowler</option>
-      <option>Medium Pacer</option>
-      <option>Wicket Keeper</option>
-      <option>Wicket Keeper Batsman</option>
+      <option value="Batsman">
+        Batsman
+      </option>
+
+      <option value="All-Rounder">
+        All-Rounder
+      </option>
+
+      <option value="Spin Bowler">
+        Spin Bowler
+      </option>
+
+      <option value="Fast Bowler">
+        Fast Bowler
+      </option>
+
+      <option value="Medium Pacer">
+        Medium Pacer
+      </option>
+
+      <option value="Wicket Keeper">
+        Wicket Keeper
+      </option>
+
+      <option value="Wicket Keeper Batsman">
+        Wicket Keeper Batsman
+      </option>
 
     </select>
 
@@ -599,8 +662,15 @@
     <label>BATTING STYLE</label>
 
     <select name="batting">
-      <option>Right Hand Bat</option>
-      <option>Left Hand Bat</option>
+
+      <option>
+        Right Hand Bat
+      </option>
+
+      <option>
+        Left Hand Bat
+      </option>
+
     </select>
 
   </div>
@@ -612,20 +682,49 @@
 
     <select name="bowling">
 
-      <option value="">Select bowling style</option>
+      <option value="">
+        Select bowling style
+      </option>
 
-      <option>Right Arm Fast</option>
-      <option>Right Arm Medium Fast</option>
-      <option>Right Arm Medium</option>
+      <option>
+        Right Arm Fast
+      </option>
 
-      <option>Left Arm Fast</option>
-      <option>Left Arm Medium Fast</option>
-      <option>Left Arm Medium</option>
+      <option>
+        Right Arm Medium Fast
+      </option>
 
-      <option>Right Arm Off Spin</option>
-      <option>Right Arm Leg Spin</option>
-      <option>Left Arm Orthodox</option>
-      <option>Left Arm Wrist Spin</option>
+      <option>
+        Right Arm Medium
+      </option>
+
+      <option>
+        Left Arm Fast
+      </option>
+
+      <option>
+        Left Arm Medium Fast
+      </option>
+
+      <option>
+        Left Arm Medium
+      </option>
+
+      <option>
+        Right Arm Off Spin
+      </option>
+
+      <option>
+        Right Arm Leg Spin
+      </option>
+
+      <option>
+        Left Arm Orthodox
+      </option>
+
+      <option>
+        Left Arm Wrist Spin
+      </option>
 
     </select>
 
@@ -638,10 +737,17 @@
 
     <select name="ballType" required>
 
-      <option value="">Select ball type</option>
+      <option value="">
+        Select ball type
+      </option>
 
-      <option>Leather Ball</option>
-      <option>Tennis Ball</option>
+      <option>
+        Leather Ball
+      </option>
+
+      <option>
+        Tennis Ball
+      </option>
 
     </select>
 
@@ -654,7 +760,9 @@
 
     <select name="format" required>
 
-      <option value="">Select format</option>
+      <option value="">
+        Select format
+      </option>
 
       <option>T20</option>
       <option>T10</option>
@@ -672,7 +780,9 @@
 
     <select name="experience">
 
-      <option value="">Select experience</option>
+      <option value="">
+        Select experience
+      </option>
 
       <option>Local Club</option>
       <option>District Level</option>
@@ -689,7 +799,7 @@
 </section>
 
 
-<!-- 03 CRICHEROES -->
+<!-- CRICHEROES -->
 
 <section class="form-section">
 
@@ -704,9 +814,9 @@
   </strong>
 
   <p>
-    Paste your CricHeroes player profile link.
-    HCCL will use the profile and submitted statistics for verification,
-    category allocation, grading and base-price calculation.
+    Paste your CricHeroes player profile URL.
+    Verified statistics will later be used for automatic
+    category, A/B/C grade and base-point calculation.
   </p>
 
   <div class="form-group">
@@ -724,12 +834,12 @@
 </section>
 
 
-<!-- 04 BATTING STATS -->
+<!-- BATTING -->
 
 <section class="form-section">
 
 <h2>
-  <span>04.</span> Previous Batting Statistics
+  <span>04.</span> Batting Statistics
 </h2>
 
 <div class="stats-box">
@@ -794,12 +904,12 @@
 </section>
 
 
-<!-- 05 BOWLING STATS -->
+<!-- BOWLING -->
 
 <section class="form-section">
 
 <h2>
-  <span>05.</span> Previous Bowling Statistics
+  <span>05.</span> Bowling Statistics
 </h2>
 
 <div class="stats-box">
@@ -854,12 +964,12 @@
 </section>
 
 
-<!-- 06 FIELDING -->
+<!-- FIELDING / KEEPING -->
 
 <section class="form-section">
 
 <h2>
-  <span>06.</span> Fielding / Keeping Statistics
+  <span>06.</span> Fielding / Keeping
 </h2>
 
 <div class="stats-box">
@@ -884,12 +994,12 @@
 </section>
 
 
-<!-- 07 AUTO CLASSIFICATION -->
+<!-- CLASSIFICATION -->
 
 <section class="form-section">
 
 <h2>
-  <span>07.</span> HCCL Auto Classification
+  <span>07.</span> HCCL Classification Preview
 </h2>
 
 <div class="classification-grid">
@@ -897,7 +1007,7 @@
   <div class="classification-card">
 
     <small>
-      AUTO CATEGORY
+      PLAYER CATEGORY
     </small>
 
     <strong id="autoCategory">
@@ -923,7 +1033,7 @@
   <div class="classification-card">
 
     <small>
-      BASE PRICE
+      AUCTION BASE
     </small>
 
     <strong id="basePrice">
@@ -934,10 +1044,47 @@
 
 </div>
 
+
+<div class="grade-info">
+
+  <div class="grade-box a">
+
+    <b>A GRADE</b>
+
+    <span>
+      50 Points
+    </span>
+
+  </div>
+
+
+  <div class="grade-box b">
+
+    <b>B GRADE</b>
+
+    <span>
+      25 Points
+    </span>
+
+  </div>
+
+
+  <div class="grade-box c">
+
+    <b>C GRADE / BASIC</b>
+
+    <span>
+      10 Points
+    </span>
+
+  </div>
+
+</div>
+
 </section>
 
 
-<!-- 08 PAYMENT -->
+<!-- PAYMENT -->
 
 <section class="form-section">
 
@@ -1030,7 +1177,7 @@
 
   <textarea
     name="notes"
-    placeholder="Previous leagues, tournaments, awards, achievements or additional information"></textarea>
+    placeholder="Previous leagues, tournaments, awards or achievements"></textarea>
 
 </div>
 
@@ -1041,14 +1188,15 @@
   type="submit"
   class="submit-btn">
 
-  SUBMIT HCCL PLAYER REGISTRATION
+  CHECK GRADE & SUBMIT REGISTRATION
 
 </button>
+
 
 </form>
 
 
-<!-- RIGHT SIDE PROCESS -->
+<!-- RIGHT PROCESS -->
 
 <aside class="status-card">
 
@@ -1062,7 +1210,7 @@
 </h3>
 
 <p>
-  Registration to HCCL auction pool.
+  Registration to official HCCL auction pool.
 </p>
 
 
@@ -1074,8 +1222,8 @@
   <span class="process-number">1</span>
 
   <div>
-    <b>Register Player</b>
-    <small>Personal and cricket information.</small>
+    <b>Player Registration</b>
+    <small>Player enters personal and cricket details.</small>
   </div>
 
 </div>
@@ -1087,7 +1235,7 @@
 
   <div>
     <b>CricHeroes Verification</b>
-    <small>Profile link and previous statistics are checked.</small>
+    <small>Previous player profile and statistics are verified.</small>
   </div>
 
 </div>
@@ -1098,8 +1246,8 @@
   <span class="process-number">3</span>
 
   <div>
-    <b>Auto Classification</b>
-    <small>Batsman, All-Rounder, Spin, Fast/Medium, Keeper or Fielding category.</small>
+    <b>Category Allocation</b>
+    <small>Batsman, All-Rounder, Spin, Fast/Medium or Keeper.</small>
   </div>
 
 </div>
@@ -1110,8 +1258,8 @@
   <span class="process-number">4</span>
 
   <div>
-    <b>A / B / C Grade</b>
-    <small>Performance score determines player grade.</small>
+    <b>A / B / C Grading</b>
+    <small>Verified performance determines player grade.</small>
   </div>
 
 </div>
@@ -1122,8 +1270,8 @@
   <span class="process-number">5</span>
 
   <div>
-    <b>Base Price</b>
-    <small>Base auction price is assigned from the final grade.</small>
+    <b>Base Points</b>
+    <small>A = 50, B = 25, C = 10 Points.</small>
   </div>
 
 </div>
@@ -1147,7 +1295,7 @@
 
   <div>
     <b>HCCL Approval</b>
-    <small>Management confirms the player's verified profile.</small>
+    <small>Final profile and grade are approved.</small>
   </div>
 
 </div>
@@ -1159,11 +1307,10 @@
 
   <div>
     <b>Auction Pool</b>
-    <small>Approved player becomes eligible for franchise selection.</small>
+    <small>Approved player becomes available to franchises.</small>
   </div>
 
 </div>
-
 
 </div>
 
@@ -1181,18 +1328,18 @@
   </span>
 
   <span>
-    Grade
-    <strong>A / B / C</strong>
+    A Grade
+    <strong>50 PTS</strong>
   </span>
 
   <span>
-    Base Price
-    <strong>AUTO</strong>
+    B Grade
+    <strong>25 PTS</strong>
   </span>
 
   <span>
-    Auction
-    <strong>AFTER APPROVAL</strong>
+    C Grade
+    <strong>10 PTS</strong>
   </span>
 
 </div>
@@ -1222,39 +1369,64 @@
 
 <script>
 
-const form = document.getElementById("playerRegistration");
+const form =
+document.getElementById("playerRegistration");
 
-form.addEventListener("submit",function(event){
+
+form.addEventListener(
+"submit",
+function(event){
 
   event.preventDefault();
 
-  const data = new FormData(form);
 
-  const role = data.get("role");
+  const data =
+  new FormData(form);
+
+
+  const role =
+  data.get("role") || "Unclassified";
+
 
   const runs =
-    Number(data.get("runs") || 0);
+  Number(data.get("runs") || 0);
+
 
   const wickets =
-    Number(data.get("wickets") || 0);
+  Number(data.get("wickets") || 0);
+
 
   const catches =
-    Number(data.get("catches") || 0);
+  Number(data.get("catches") || 0);
+
 
   const stumpings =
-    Number(data.get("stumpings") || 0);
+  Number(data.get("stumpings") || 0);
+
+
+  const runOuts =
+  Number(data.get("runOuts") || 0);
+
 
   const strikeRate =
-    Number(data.get("strikeRate") || 0);
+  Number(data.get("strikeRate") || 0);
+
 
   const economy =
-    Number(data.get("economy") || 99);
+  Number(data.get("economy") || 0);
 
 
-  let category = role || "Unclassified";
+  /*
+  ============================================
+  DEMO PERFORMANCE SCORE
 
+  Later this can be replaced by verified
+  CricHeroes + HCCL statistics.
+  ============================================
+  */
 
   let score = 0;
+
 
   score += runs * 0.35;
 
@@ -1264,99 +1436,138 @@ form.addEventListener("submit",function(event){
 
   score += stumpings * 8;
 
+  score += runOuts * 6;
+
 
   if(strikeRate >= 150){
+
     score += 30;
+
   }
   else if(strikeRate >= 130){
+
     score += 20;
+
   }
   else if(strikeRate >= 110){
+
     score += 10;
+
   }
 
 
-  if(
-    economy > 0 &&
-    economy <= 6
-  ){
+  if(economy > 0 && economy <= 6){
+
     score += 30;
+
   }
-  else if(
-    economy > 6 &&
-    economy <= 7
-  ){
+  else if(economy > 6 && economy <= 7){
+
     score += 20;
+
   }
-  else if(
-    economy > 7 &&
-    economy <= 8
-  ){
+  else if(economy > 7 && economy <= 8){
+
     score += 10;
+
   }
 
+
+  /*
+  ============================================
+  FINAL HCCL GRADING
+
+  A = 50 POINTS
+  B = 25 POINTS
+  C = 10 POINTS
+  ============================================
+  */
 
   let grade = "C";
 
-  let base = "C Grade Base Price";
+  let basePoints = 10;
 
 
   if(score >= 180){
 
     grade = "A";
 
-    base = "A Grade Base Price";
+    basePoints = 50;
 
   }
   else if(score >= 90){
 
     grade = "B";
 
-    base = "B Grade Base Price";
+    basePoints = 25;
+
+  }
+  else{
+
+    grade = "C";
+
+    basePoints = 10;
 
   }
 
 
   document
   .getElementById("autoCategory")
-  .textContent = category;
+  .textContent = role;
 
 
   const gradeElement =
   document.getElementById("autoGrade");
 
 
-  gradeElement.textContent = grade;
+  gradeElement.textContent =
+  grade + " Grade";
 
 
   gradeElement.className = "";
 
 
   if(grade === "A"){
+
     gradeElement.classList.add("grade-a");
+
   }
+
 
   if(grade === "B"){
+
     gradeElement.classList.add("grade-b");
+
   }
 
+
   if(grade === "C"){
+
     gradeElement.classList.add("grade-c");
+
   }
 
 
   document
   .getElementById("basePrice")
-  .textContent = base;
+  .textContent =
+  basePoints + " Points";
 
 
   alert(
-    "Player classification preview generated. Database and CricHeroes automatic import will be connected in the next backend stage."
+    "HCCL Classification Preview: " +
+    role +
+    " | Grade " +
+    grade +
+    " | Base " +
+    basePoints +
+    " Points"
   );
 
 });
 
 </script>
+
 
 </body>
 </html>
