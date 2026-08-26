@@ -1,10 +1,7 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8">
-
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>HCCL — Player Registration</title>
@@ -13,19 +10,15 @@
 
 <style>
 
-/* =========================================================
-   HCCL PLAYER REGISTRATION PAGE
-========================================================= */
-
 .registration-page{
   width:min(1180px,calc(100% - 32px));
   margin:0 auto;
-  padding:65px 0 90px;
+  padding:60px 0 90px;
 }
 
 .registration-title{
   text-align:center;
-  margin-bottom:38px;
+  margin-bottom:35px;
 }
 
 .registration-title .tag{
@@ -41,7 +34,7 @@
 }
 
 .registration-title p{
-  max-width:650px;
+  max-width:760px;
   margin:10px auto 0;
   color:#aab1bb;
 }
@@ -69,7 +62,7 @@
 }
 
 .form-section{
-  margin-bottom:28px;
+  margin-bottom:30px;
 }
 
 .form-section h2{
@@ -113,7 +106,6 @@
   border-radius:9px;
 
   background:#06101d;
-
   color:#fff;
 
   padding:10px 12px;
@@ -140,45 +132,116 @@
 
 .stat-input{
   padding:12px;
+
   border-radius:12px;
+
   background:#071323;
+
   border:1px solid #1d3551;
 }
 
 .stat-input label{
   display:block;
+
   color:#8f99a5;
+
   font-size:10px;
   font-weight:900;
+
   margin-bottom:6px;
 }
 
 .stat-input input{
   width:100%;
+
   background:transparent;
+
   border:none;
+
   color:white;
+
   font-size:18px;
   font-weight:900;
+
   outline:none;
 }
 
-.scoring-link{
-  padding:16px;
+.profile-box{
+  padding:18px;
+
+  border-radius:14px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #07182c,
+    #07101d
+  );
+
   border:1px solid #284766;
-  border-radius:12px;
-  background:#07182c;
 }
 
-.scoring-link strong{
+.profile-box strong{
   display:block;
   margin-bottom:5px;
 }
 
-.scoring-link p{
+.profile-box p{
   color:#99a4b1;
   font-size:12px;
   margin-bottom:12px;
+}
+
+.classification-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.classification-card{
+  padding:16px;
+
+  border-radius:13px;
+
+  background:
+  linear-gradient(
+    145deg,
+    #08182b,
+    #07090d
+  );
+
+  border:1px solid #233b59;
+}
+
+.classification-card small{
+  display:block;
+
+  color:#8e98a4;
+
+  font-size:10px;
+  font-weight:900;
+}
+
+.classification-card strong{
+  display:block;
+
+  margin-top:6px;
+
+  font-size:22px;
+
+  color:#fff;
+}
+
+.grade-a{
+  color:#ffd34d !important;
+}
+
+.grade-b{
+  color:#89bfff !important;
+}
+
+.grade-c{
+  color:#9ea6b0 !important;
 }
 
 .payment-box{
@@ -200,8 +263,11 @@
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   gap:12px;
+
   padding:10px 0;
+
   border-bottom:1px solid #1b2d42;
 }
 
@@ -219,23 +285,32 @@
 
 .submit-btn{
   width:100%;
-  min-height:50px;
+  min-height:52px;
+
   border:0;
   border-radius:10px;
 
   cursor:pointer;
 
   color:#fff;
-  background:linear-gradient(135deg,#ff2929,#c90000);
+
+  background:
+  linear-gradient(
+    135deg,
+    #ff2929,
+    #c90000
+  );
 
   font-size:14px;
   font-weight:900;
 
-  box-shadow:0 10px 28px rgba(239,27,27,.22);
+  box-shadow:
+  0 10px 28px rgba(239,27,27,.22);
 }
 
 .status-card{
   align-self:start;
+
   position:sticky;
   top:105px;
 }
@@ -252,8 +327,11 @@
 
 .status-card>p{
   margin-top:7px;
+
   text-align:center;
+
   color:#9da5af;
+
   font-size:12px;
 }
 
@@ -264,8 +342,11 @@
 .process-step{
   display:grid;
   grid-template-columns:35px 1fr;
+
   gap:12px;
+
   padding:13px 0;
+
   border-bottom:1px solid #1d3046;
 }
 
@@ -276,6 +357,7 @@
 .process-number{
   width:32px;
   height:32px;
+
   border-radius:50%;
 
   display:flex;
@@ -283,6 +365,7 @@
   justify-content:center;
 
   background:#ef1b1b;
+
   color:white;
 
   font-size:12px;
@@ -300,17 +383,22 @@
 
 .registration-status{
   margin-top:22px;
+
   padding:15px;
+
   border-radius:12px;
 
   background:#081526;
+
   border:1px solid #263c57;
 }
 
 .registration-status span{
   display:flex;
   justify-content:space-between;
+
   padding:7px 0;
+
   font-size:12px;
 }
 
@@ -340,74 +428,46 @@
     grid-column:auto;
   }
 
-  .stats-box{
+  .stats-box,
+  .classification-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
 }
 
 </style>
-
 </head>
 
-
 <body>
-
-
-<!-- TOP NAV -->
 
 <header class="nav">
 
   <a class="logo" href="index.html">
-
     <img src="hccl-logo.png" alt="HCCL Logo">
-
     <span>HCCL</span>
-
   </a>
 
-
   <nav>
-
     <a href="index.html">Home</a>
-
     <a href="schedule.html">Schedule</a>
-
     <a href="match.html">Live</a>
-
     <a href="match.html#scorecard">Scorecard</a>
-
     <a href="index.html#teams">Teams</a>
-
     <a href="index.html#table">Points</a>
-
     <a href="players.html">MVP Players</a>
-
-    <a class="active" href="registration.html">
-      Player Registration
-    </a>
-
+    <a class="active" href="registration.html">Player Registration</a>
     <a href="scorer.html">Scoring</a>
-
   </nav>
 
-
   <a class="live-nav" href="match.html">
-
     <i></i>
-
     LIVE MATCH
-
   </a>
 
 </header>
 
 
-
 <main class="registration-page">
-
-
-<!-- PAGE TITLE -->
 
 <div class="registration-title">
 
@@ -420,871 +480,883 @@
   </h1>
 
   <p>
-    Register for Heroes Champions Cricket League,
-    submit your Scoring Heroes profile and player statistics,
-    and complete your registration payment.
+    Register for Heroes Champions Cricket League, submit your CricHeroes profile,
+    verify previous cricket statistics and enter the HCCL player grading and auction process.
   </p>
 
 </div>
 
 
-
 <div class="registration-layout">
 
-
-<!-- ======================================================
-     LEFT FORM
-====================================================== -->
 
 <form class="registration-card" id="playerRegistration">
 
 
-<!-- PERSONAL DETAILS -->
+<!-- 01 PERSONAL DETAILS -->
 
 <section class="form-section">
 
-  <h2>
-    <span>01.</span> Player Details
-  </h2>
+<h2>
+  <span>01.</span> Player Details
+</h2>
 
+<div class="form-grid">
 
-  <div class="form-grid">
+  <div class="form-group">
+    <label>FULL NAME *</label>
+    <input type="text" name="name" placeholder="Enter player name" required>
+  </div>
 
+  <div class="form-group">
+    <label>MOBILE NUMBER *</label>
+    <input type="tel" name="mobile" placeholder="+91" required>
+  </div>
 
-    <div class="form-group">
+  <div class="form-group">
+    <label>DATE OF BIRTH</label>
+    <input type="date" name="dob">
+  </div>
 
-      <label>FULL NAME *</label>
+  <div class="form-group">
+    <label>AGE</label>
+    <input type="number" name="age" placeholder="Age">
+  </div>
 
-      <input
-        type="text"
-        name="name"
-        placeholder="Enter player name"
-        required>
+  <div class="form-group">
+    <label>DISTRICT / CITY *</label>
+    <input type="text" name="district" placeholder="District / City" required>
+  </div>
 
-    </div>
+  <div class="form-group">
+    <label>STATE</label>
+    <input type="text" name="state" placeholder="State">
+  </div>
 
+  <div class="form-group">
+    <label>JERSEY SIZE</label>
 
-    <div class="form-group">
-
-      <label>MOBILE NUMBER *</label>
-
-      <input
-        type="tel"
-        name="mobile"
-        placeholder="+91"
-        required>
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>DATE OF BIRTH</label>
-
-      <input
-        type="date"
-        name="dob">
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>AGE</label>
-
-      <input
-        type="number"
-        name="age"
-        placeholder="Age">
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>DISTRICT / CITY *</label>
-
-      <input
-        type="text"
-        name="district"
-        placeholder="District / City"
-        required>
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>JERSEY SIZE</label>
-
-      <select name="jersey">
-
-        <option value="">Select size</option>
-
-        <option>S</option>
-
-        <option>M</option>
-
-        <option>L</option>
-
-        <option>XL</option>
-
-        <option>XXL</option>
-
-        <option>XXXL</option>
-
-      </select>
-
-    </div>
-
-
-    <div class="form-group full">
-
-      <label>PLAYER PHOTO</label>
-
-      <input
-        type="file"
-        name="photo"
-        accept="image/*">
-
-    </div>
-
+    <select name="jersey">
+      <option value="">Select size</option>
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+      <option>XXL</option>
+      <option>XXXL</option>
+    </select>
 
   </div>
 
-</section>
-
-
-
-<!-- CRICKET PROFILE -->
-
-<section class="form-section">
-
-  <h2>
-    <span>02.</span> Cricket Profile
-  </h2>
-
-
-  <div class="form-grid">
-
-
-    <div class="form-group">
-
-      <label>PLAYER ROLE *</label>
-
-      <select name="role" required>
-
-        <option value="">
-          Select role
-        </option>
-
-        <option>
-          Batsman
-        </option>
-
-        <option>
-          Bowler
-        </option>
-
-        <option>
-          All-Rounder
-        </option>
-
-        <option>
-          Wicket Keeper
-        </option>
-
-        <option>
-          Wicket Keeper Batsman
-        </option>
-
-      </select>
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>BATTING STYLE</label>
-
-      <select name="batting">
-
-        <option>
-          Right Hand Bat
-        </option>
-
-        <option>
-          Left Hand Bat
-        </option>
-
-      </select>
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>BOWLING STYLE</label>
-
-      <select name="bowling">
-
-        <option value="">
-          Select bowling style
-        </option>
-
-        <option>
-          Right Arm Fast
-        </option>
-
-        <option>
-          Right Arm Medium
-        </option>
-
-        <option>
-          Left Arm Fast
-        </option>
-
-        <option>
-          Left Arm Medium
-        </option>
-
-        <option>
-          Off Spin
-        </option>
-
-        <option>
-          Leg Spin
-        </option>
-
-        <option>
-          Left Arm Spin
-        </option>
-
-      </select>
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>PREFERRED JERSEY NUMBER</label>
-
-      <input
-        type="number"
-        name="jerseyNumber"
-        placeholder="Example: 18">
-
-    </div>
-
-
+  <div class="form-group">
+    <label>PREFERRED JERSEY NUMBER</label>
+    <input type="number" name="jerseyNumber" placeholder="Example: 18">
   </div>
-
-</section>
-
-
-
-<!-- SCORING HEROES -->
-
-<section class="form-section">
-
-  <h2>
-    <span>03.</span> Scoring Heroes Profile
-  </h2>
-
-
-  <div class="scoring-link">
-
-
-    <strong>
-      Scoring Heroes Player Link
-    </strong>
-
-
-    <p>
-      Paste your player/profile URL here.
-      HCCL can use this profile to verify your cricket statistics.
-    </p>
-
-
-    <div class="form-group">
-
-      <input
-        type="url"
-        name="scoringHeroes"
-        placeholder="Paste Scoring Heroes player profile link">
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- BATTING STATS -->
-
-<section class="form-section">
-
-  <h2>
-    <span>04.</span> Batting Statistics
-  </h2>
-
-
-  <div class="stats-box">
-
-
-    <div class="stat-input">
-
-      <label>MATCHES</label>
-
-      <input type="number" placeholder="0">
-
-    </div>
-
-
-    <div class="stat-input">
-
-      <label>RUNS</label>
-
-      <input type="number" placeholder="0">
-
-    </div>
-
-
-    <div class="stat-input">
-
-      <label>BALLS FACED</label>
-
-      <input type="number" placeholder="0">
-
-    </div>
-
-
-    <div class="stat-input">
-
-      <label>AVERAGE</label>
-
-      <input type="number" step="0.01" placeholder="0.00">
-
-    </div>
-
-
-    <div class="stat-input">
-
-      <label>STRIKE RATE</label>
-
-      <input type="number" step="0.01" placeholder="0.00">
-
-    </div>
-
-
-    <div class="stat-input">
-
-      <label>50 / 100</label>
-
-      <input type="text" placeholder="0 / 0">
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- BOWLING STATS -->
-
-<section class="form-section">
-
-  <h2>
-    <span>05.</span> Bowling Statistics
-  </h2>
-
-
-  <div class="stats-box">
-
-
-    <div class="stat-input">
-
-      <label>WICKETS</label>
-
-      <input type="number" placeholder="0">
-
-    </div>
-
-
-    <div class="stat-input">
-
-      <label>BALLS BOWLED</label>
-
-      <input type="number" placeholder="0">
-
-    </div>
-
-
-    <div class="stat-input">
-
-      <label>RUNS GIVEN</label>
-
-      <input type="number" placeholder="0">
-
-    </div>
-
-
-    <div class="stat-input">
-
-      <label>BOWLING AVG</label>
-
-      <input type="number" step="0.01" placeholder="0.00">
-
-    </div>
-
-
-    <div class="stat-input">
-
-      <label>ECONOMY</label>
-
-      <input type="number" step="0.01" placeholder="0.00">
-
-    </div>
-
-
-    <div class="stat-input">
-
-      <label>BEST BOWLING</label>
-
-      <input type="text" placeholder="0/0">
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- FIELDING -->
-
-<section class="form-section">
-
-  <h2>
-    <span>06.</span> Fielding / Keeping
-  </h2>
-
-
-  <div class="stats-box">
-
-
-    <div class="stat-input">
-
-      <label>CATCHES</label>
-
-      <input type="number" placeholder="0">
-
-    </div>
-
-
-    <div class="stat-input">
-
-      <label>STUMPINGS</label>
-
-      <input type="number" placeholder="0">
-
-    </div>
-
-
-    <div class="stat-input">
-
-      <label>RUN OUTS</label>
-
-      <input type="number" placeholder="0">
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- PAYMENT -->
-
-<section class="form-section">
-
-  <h2>
-    <span>07.</span> Registration Payment
-  </h2>
-
-
-  <div class="payment-box">
-
-
-    <div class="payment-row">
-
-      <small>
-        Registration Fee
-      </small>
-
-      <b>
-        To Be Announced
-      </b>
-
-    </div>
-
-
-    <div class="payment-row">
-
-      <small>
-        Payment Method
-      </small>
-
-      <b>
-        UPI / Online
-      </b>
-
-    </div>
-
-
-    <div class="payment-row">
-
-      <small>
-        Payment Status
-      </small>
-
-      <b>
-        Pending
-      </b>
-
-    </div>
-
-
-  </div>
-
-
-  <div
-    class="form-group"
-    style="margin-top:15px;">
-
-    <label>
-      PAYMENT TRANSACTION / UTR ID
-    </label>
-
-    <input
-      type="text"
-      name="transaction"
-      placeholder="Enter payment transaction ID">
-
-  </div>
-
-
-  <div
-    class="form-group"
-    style="margin-top:15px;">
-
-    <label>
-      PAYMENT SCREENSHOT
-    </label>
-
-    <input
-      type="file"
-      name="paymentScreenshot"
-      accept="image/*">
-
-  </div>
-
-</section>
-
-
-
-<!-- DECLARATION -->
-
-<section class="form-section">
 
   <div class="form-group full">
-
-    <label>
-      PLAYER NOTES / EXPERIENCE
-    </label>
-
-    <textarea
-      name="notes"
-      placeholder="Previous tournaments, achievements or additional information"></textarea>
-
+    <label>PLAYER PHOTO</label>
+    <input type="file" name="photo" accept="image/*">
   </div>
+
+</div>
 
 </section>
 
+
+<!-- 02 CRICKET PROFILE -->
+
+<section class="form-section">
+
+<h2>
+  <span>02.</span> Cricket Profile
+</h2>
+
+<div class="form-grid">
+
+  <div class="form-group">
+
+    <label>PRIMARY ROLE *</label>
+
+    <select name="role" required>
+
+      <option value="">Select role</option>
+
+      <option>Batsman</option>
+      <option>All-Rounder</option>
+      <option>Spin Bowler</option>
+      <option>Fast Bowler</option>
+      <option>Medium Pacer</option>
+      <option>Wicket Keeper</option>
+      <option>Wicket Keeper Batsman</option>
+
+    </select>
+
+  </div>
+
+
+  <div class="form-group">
+
+    <label>BATTING STYLE</label>
+
+    <select name="batting">
+      <option>Right Hand Bat</option>
+      <option>Left Hand Bat</option>
+    </select>
+
+  </div>
+
+
+  <div class="form-group">
+
+    <label>BOWLING STYLE</label>
+
+    <select name="bowling">
+
+      <option value="">Select bowling style</option>
+
+      <option>Right Arm Fast</option>
+      <option>Right Arm Medium Fast</option>
+      <option>Right Arm Medium</option>
+
+      <option>Left Arm Fast</option>
+      <option>Left Arm Medium Fast</option>
+      <option>Left Arm Medium</option>
+
+      <option>Right Arm Off Spin</option>
+      <option>Right Arm Leg Spin</option>
+      <option>Left Arm Orthodox</option>
+      <option>Left Arm Wrist Spin</option>
+
+    </select>
+
+  </div>
+
+
+  <div class="form-group">
+
+    <label>BALL TYPE *</label>
+
+    <select name="ballType" required>
+
+      <option value="">Select ball type</option>
+
+      <option>Leather Ball</option>
+      <option>Tennis Ball</option>
+
+    </select>
+
+  </div>
+
+
+  <div class="form-group">
+
+    <label>MATCH FORMAT *</label>
+
+    <select name="format" required>
+
+      <option value="">Select format</option>
+
+      <option>T20</option>
+      <option>T10</option>
+      <option>OD / 50 Overs</option>
+      <option>Other Limited Overs</option>
+
+    </select>
+
+  </div>
+
+
+  <div class="form-group">
+
+    <label>CRICKET EXPERIENCE</label>
+
+    <select name="experience">
+
+      <option value="">Select experience</option>
+
+      <option>Local Club</option>
+      <option>District Level</option>
+      <option>State Level</option>
+      <option>Corporate Cricket</option>
+      <option>League Cricket</option>
+
+    </select>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- 03 CRICHEROES -->
+
+<section class="form-section">
+
+<h2>
+  <span>03.</span> CricHeroes Profile
+</h2>
+
+<div class="profile-box">
+
+  <strong>
+    CricHeroes Player Profile Link *
+  </strong>
+
+  <p>
+    Paste your CricHeroes player profile link.
+    HCCL will use the profile and submitted statistics for verification,
+    category allocation, grading and base-price calculation.
+  </p>
+
+  <div class="form-group">
+
+    <input
+      type="url"
+      name="cricHeroes"
+      placeholder="Paste CricHeroes profile URL"
+      required>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- 04 BATTING STATS -->
+
+<section class="form-section">
+
+<h2>
+  <span>04.</span> Previous Batting Statistics
+</h2>
+
+<div class="stats-box">
+
+  <div class="stat-input">
+    <label>MATCHES</label>
+    <input type="number" name="matches" placeholder="0">
+  </div>
+
+  <div class="stat-input">
+    <label>INNINGS</label>
+    <input type="number" name="batInnings" placeholder="0">
+  </div>
+
+  <div class="stat-input">
+    <label>RUNS</label>
+    <input type="number" name="runs" placeholder="0">
+  </div>
+
+  <div class="stat-input">
+    <label>BALLS FACED</label>
+    <input type="number" name="ballsFaced" placeholder="0">
+  </div>
+
+  <div class="stat-input">
+    <label>BATTING AVG</label>
+    <input type="number" name="batAvg" step="0.01" placeholder="0.00">
+  </div>
+
+  <div class="stat-input">
+    <label>STRIKE RATE</label>
+    <input type="number" name="strikeRate" step="0.01" placeholder="0.00">
+  </div>
+
+  <div class="stat-input">
+    <label>HIGHEST SCORE</label>
+    <input type="number" name="highestScore" placeholder="0">
+  </div>
+
+  <div class="stat-input">
+    <label>50s</label>
+    <input type="number" name="fifties" placeholder="0">
+  </div>
+
+  <div class="stat-input">
+    <label>100s</label>
+    <input type="number" name="hundreds" placeholder="0">
+  </div>
+
+  <div class="stat-input">
+    <label>4s</label>
+    <input type="number" name="fours" placeholder="0">
+  </div>
+
+  <div class="stat-input">
+    <label>6s</label>
+    <input type="number" name="sixes" placeholder="0">
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- 05 BOWLING STATS -->
+
+<section class="form-section">
+
+<h2>
+  <span>05.</span> Previous Bowling Statistics
+</h2>
+
+<div class="stats-box">
+
+  <div class="stat-input">
+    <label>BOWLING INNINGS</label>
+    <input type="number" name="bowlInnings" placeholder="0">
+  </div>
+
+  <div class="stat-input">
+    <label>BALLS BOWLED</label>
+    <input type="number" name="ballsBowled" placeholder="0">
+  </div>
+
+  <div class="stat-input">
+    <label>RUNS CONCEDED</label>
+    <input type="number" name="runsConceded" placeholder="0">
+  </div>
+
+  <div class="stat-input">
+    <label>WICKETS</label>
+    <input type="number" name="wickets" placeholder="0">
+  </div>
+
+  <div class="stat-input">
+    <label>BOWLING AVG</label>
+    <input type="number" name="bowlAvg" step="0.01" placeholder="0.00">
+  </div>
+
+  <div class="stat-input">
+    <label>ECONOMY</label>
+    <input type="number" name="economy" step="0.01" placeholder="0.00">
+  </div>
+
+  <div class="stat-input">
+    <label>BOWLING SR</label>
+    <input type="number" name="bowlSR" step="0.01" placeholder="0.00">
+  </div>
+
+  <div class="stat-input">
+    <label>BEST BOWLING</label>
+    <input type="text" name="bestBowling" placeholder="4/18">
+  </div>
+
+  <div class="stat-input">
+    <label>5 WICKET HAULS</label>
+    <input type="number" name="fiveWickets" placeholder="0">
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- 06 FIELDING -->
+
+<section class="form-section">
+
+<h2>
+  <span>06.</span> Fielding / Keeping Statistics
+</h2>
+
+<div class="stats-box">
+
+  <div class="stat-input">
+    <label>CATCHES</label>
+    <input type="number" name="catches" placeholder="0">
+  </div>
+
+  <div class="stat-input">
+    <label>RUN OUTS</label>
+    <input type="number" name="runOuts" placeholder="0">
+  </div>
+
+  <div class="stat-input">
+    <label>STUMPINGS</label>
+    <input type="number" name="stumpings" placeholder="0">
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- 07 AUTO CLASSIFICATION -->
+
+<section class="form-section">
+
+<h2>
+  <span>07.</span> HCCL Auto Classification
+</h2>
+
+<div class="classification-grid">
+
+  <div class="classification-card">
+
+    <small>
+      AUTO CATEGORY
+    </small>
+
+    <strong id="autoCategory">
+      Pending
+    </strong>
+
+  </div>
+
+
+  <div class="classification-card">
+
+    <small>
+      PLAYER GRADE
+    </small>
+
+    <strong id="autoGrade">
+      Pending
+    </strong>
+
+  </div>
+
+
+  <div class="classification-card">
+
+    <small>
+      BASE PRICE
+    </small>
+
+    <strong id="basePrice">
+      Pending
+    </strong>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- 08 PAYMENT -->
+
+<section class="form-section">
+
+<h2>
+  <span>08.</span> Registration Payment
+</h2>
+
+<div class="payment-box">
+
+  <div class="payment-row">
+
+    <small>
+      Registration Fee
+    </small>
+
+    <b>
+      To Be Announced
+    </b>
+
+  </div>
+
+
+  <div class="payment-row">
+
+    <small>
+      Payment Method
+    </small>
+
+    <b>
+      UPI / Online
+    </b>
+
+  </div>
+
+
+  <div class="payment-row">
+
+    <small>
+      Payment Status
+    </small>
+
+    <b>
+      Pending
+    </b>
+
+  </div>
+
+</div>
+
+
+<div class="form-group" style="margin-top:15px;">
+
+  <label>
+    PAYMENT TRANSACTION / UTR ID
+  </label>
+
+  <input
+    type="text"
+    name="transaction"
+    placeholder="Enter payment transaction ID">
+
+</div>
+
+
+<div class="form-group" style="margin-top:15px;">
+
+  <label>
+    PAYMENT SCREENSHOT
+  </label>
+
+  <input
+    type="file"
+    name="paymentScreenshot"
+    accept="image/*">
+
+</div>
+
+</section>
+
+
+<!-- NOTES -->
+
+<section class="form-section">
+
+<div class="form-group full">
+
+  <label>
+    PREVIOUS TOURNAMENTS / ACHIEVEMENTS
+  </label>
+
+  <textarea
+    name="notes"
+    placeholder="Previous leagues, tournaments, awards, achievements or additional information"></textarea>
+
+</div>
+
+</section>
 
 
 <button
   type="submit"
   class="submit-btn">
 
-  SUBMIT HCCL REGISTRATION
+  SUBMIT HCCL PLAYER REGISTRATION
 
 </button>
-
 
 </form>
 
 
-
-<!-- ======================================================
-     RIGHT PROCESS
-====================================================== -->
+<!-- RIGHT SIDE PROCESS -->
 
 <aside class="status-card">
 
+<img
+  src="hccl-logo.png"
+  class="status-logo"
+  alt="HCCL">
 
-  <img
-    src="hccl-logo.png"
-    class="status-logo"
-    alt="HCCL">
+<h3>
+  Player Selection Process
+</h3>
 
-
-  <h3>
-    Registration Process
-  </h3>
-
-
-  <p>
-    Complete all steps to enter the HCCL player pool.
-  </p>
+<p>
+  Registration to HCCL auction pool.
+</p>
 
 
-
-  <div class="process">
-
-
-    <div class="process-step">
-
-      <span class="process-number">
-        1
-      </span>
-
-      <div>
-
-        <b>
-          Player Registration
-        </b>
-
-        <small>
-          Enter player personal and cricket details.
-        </small>
-
-      </div>
-
-    </div>
+<div class="process">
 
 
+<div class="process-step">
 
-    <div class="process-step">
+  <span class="process-number">1</span>
 
-      <span class="process-number">
-        2
-      </span>
-
-      <div>
-
-        <b>
-          Scoring Heroes Verification
-        </b>
-
-        <small>
-          Submit your Scoring Heroes profile link and statistics.
-        </small>
-
-      </div>
-
-    </div>
-
-
-
-    <div class="process-step">
-
-      <span class="process-number">
-        3
-      </span>
-
-      <div>
-
-        <b>
-          Payment Verification
-        </b>
-
-        <small>
-          Payment and transaction details will be verified.
-        </small>
-
-      </div>
-
-    </div>
-
-
-
-    <div class="process-step">
-
-      <span class="process-number">
-        4
-      </span>
-
-      <div>
-
-        <b>
-          HCCL Approval
-        </b>
-
-        <small>
-          Player profile is reviewed by HCCL management.
-        </small>
-
-      </div>
-
-    </div>
-
-
-
-    <div class="process-step">
-
-      <span class="process-number">
-        5
-      </span>
-
-      <div>
-
-        <b>
-          Player Pool
-        </b>
-
-        <small>
-          Approved player enters the official HCCL player pool.
-        </small>
-
-      </div>
-
-    </div>
-
-
-
-    <div class="process-step">
-
-      <span class="process-number">
-        6
-      </span>
-
-      <div>
-
-        <b>
-          Auction / Team Selection
-        </b>
-
-        <small>
-          Eligible players can be selected by HCCL franchises.
-        </small>
-
-      </div>
-
-    </div>
-
-
+  <div>
+    <b>Register Player</b>
+    <small>Personal and cricket information.</small>
   </div>
 
+</div>
 
 
-  <div class="registration-status">
+<div class="process-step">
 
-    <span>
+  <span class="process-number">2</span>
 
-      Registration
-
-      <strong>
-        OPEN
-      </strong>
-
-    </span>
-
-
-    <span>
-
-      Profile Verification
-
-      <strong>
-        REQUIRED
-      </strong>
-
-    </span>
-
-
-    <span>
-
-      Payment
-
-      <strong>
-        REQUIRED
-      </strong>
-
-    </span>
-
-
-    <span>
-
-      Selection
-
-      <strong>
-        AFTER APPROVAL
-      </strong>
-
-    </span>
-
+  <div>
+    <b>CricHeroes Verification</b>
+    <small>Profile link and previous statistics are checked.</small>
   </div>
 
+</div>
+
+
+<div class="process-step">
+
+  <span class="process-number">3</span>
+
+  <div>
+    <b>Auto Classification</b>
+    <small>Batsman, All-Rounder, Spin, Fast/Medium, Keeper or Fielding category.</small>
+  </div>
+
+</div>
+
+
+<div class="process-step">
+
+  <span class="process-number">4</span>
+
+  <div>
+    <b>A / B / C Grade</b>
+    <small>Performance score determines player grade.</small>
+  </div>
+
+</div>
+
+
+<div class="process-step">
+
+  <span class="process-number">5</span>
+
+  <div>
+    <b>Base Price</b>
+    <small>Base auction price is assigned from the final grade.</small>
+  </div>
+
+</div>
+
+
+<div class="process-step">
+
+  <span class="process-number">6</span>
+
+  <div>
+    <b>Payment Verification</b>
+    <small>Registration payment is verified.</small>
+  </div>
+
+</div>
+
+
+<div class="process-step">
+
+  <span class="process-number">7</span>
+
+  <div>
+    <b>HCCL Approval</b>
+    <small>Management confirms the player's verified profile.</small>
+  </div>
+
+</div>
+
+
+<div class="process-step">
+
+  <span class="process-number">8</span>
+
+  <div>
+    <b>Auction Pool</b>
+    <small>Approved player becomes eligible for franchise selection.</small>
+  </div>
+
+</div>
+
+
+</div>
+
+
+<div class="registration-status">
+
+  <span>
+    Registration
+    <strong>OPEN</strong>
+  </span>
+
+  <span>
+    CricHeroes
+    <strong>REQUIRED</strong>
+  </span>
+
+  <span>
+    Grade
+    <strong>A / B / C</strong>
+  </span>
+
+  <span>
+    Base Price
+    <strong>AUTO</strong>
+  </span>
+
+  <span>
+    Auction
+    <strong>AFTER APPROVAL</strong>
+  </span>
+
+</div>
 
 </aside>
 
 
 </div>
 
-
 </main>
 
 
 <footer>
 
-  <img src="hccl-logo.png" alt="HCCL">
+<img src="hccl-logo.png" alt="HCCL">
 
-  <span>
-    Heroes Champions Cricket League
-  </span>
+<span>
+  Heroes Champions Cricket League
+</span>
 
-  <small>
-    Official HCCL Tournament Portal
-  </small>
+<small>
+  Official HCCL Tournament Portal
+</small>
 
 </footer>
 
 
-
 <script>
 
-document
-.getElementById("playerRegistration")
-.addEventListener("submit",function(event){
+const form = document.getElementById("playerRegistration");
+
+form.addEventListener("submit",function(event){
 
   event.preventDefault();
 
+  const data = new FormData(form);
+
+  const role = data.get("role");
+
+  const runs =
+    Number(data.get("runs") || 0);
+
+  const wickets =
+    Number(data.get("wickets") || 0);
+
+  const catches =
+    Number(data.get("catches") || 0);
+
+  const stumpings =
+    Number(data.get("stumpings") || 0);
+
+  const strikeRate =
+    Number(data.get("strikeRate") || 0);
+
+  const economy =
+    Number(data.get("economy") || 99);
+
+
+  let category = role || "Unclassified";
+
+
+  let score = 0;
+
+  score += runs * 0.35;
+
+  score += wickets * 14;
+
+  score += catches * 6;
+
+  score += stumpings * 8;
+
+
+  if(strikeRate >= 150){
+    score += 30;
+  }
+  else if(strikeRate >= 130){
+    score += 20;
+  }
+  else if(strikeRate >= 110){
+    score += 10;
+  }
+
+
+  if(
+    economy > 0 &&
+    economy <= 6
+  ){
+    score += 30;
+  }
+  else if(
+    economy > 6 &&
+    economy <= 7
+  ){
+    score += 20;
+  }
+  else if(
+    economy > 7 &&
+    economy <= 8
+  ){
+    score += 10;
+  }
+
+
+  let grade = "C";
+
+  let base = "C Grade Base Price";
+
+
+  if(score >= 180){
+
+    grade = "A";
+
+    base = "A Grade Base Price";
+
+  }
+  else if(score >= 90){
+
+    grade = "B";
+
+    base = "B Grade Base Price";
+
+  }
+
+
+  document
+  .getElementById("autoCategory")
+  .textContent = category;
+
+
+  const gradeElement =
+  document.getElementById("autoGrade");
+
+
+  gradeElement.textContent = grade;
+
+
+  gradeElement.className = "";
+
+
+  if(grade === "A"){
+    gradeElement.classList.add("grade-a");
+  }
+
+  if(grade === "B"){
+    gradeElement.classList.add("grade-b");
+  }
+
+  if(grade === "C"){
+    gradeElement.classList.add("grade-c");
+  }
+
+
+  document
+  .getElementById("basePrice")
+  .textContent = base;
+
+
   alert(
-    "Registration form design is ready. Backend submission will be connected next."
+    "Player classification preview generated. Database and CricHeroes automatic import will be connected in the next backend stage."
   );
 
 });
 
 </script>
 
-
 </body>
-
 </html>
