@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HCCL — Scoring Control</title>
+<link rel="stylesheet" href="site.css">
+
+<style>
+.scorer-wrap{
+  width:min(1180px,calc(100% - 30px));
+  margin:40px auto;
+}
+
+.scorer-title{
+  margin-bottom:25px;
+}
+
+.scorer-title h1{
+  font-size:42px;
+  margin-top:5px;
+}
+
+.score-display{
+  background:linear-gradient(135deg,#181818,#090909);
+  border:1px solid #333;
+  border-radius:20px;
+  padding:30px;
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.score-display img{
+  width:100px;
+  margin:0 auto 15px;
+}
+
+.score-display h2{
+  font-size:24px;
+}
+
+.main-score{
+  font-size:70px;
+  font-weight:900;
+  color:#fff;
+  line-height:1;
+  margin:15px 0;
+}
+
+.overs{
+  color:#aaa;
+  font-size:18px;
+}
+
+.control-panel{
+  background:#111;
+  border:1px solid #292929;
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:20px;
+}
+
+.control-panel h3{
+  margin-bottom:18px;
+  color:#fff;
+}
+
+.run-buttons{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:10px;
+}
+
+.run-btn{
+  min-height:70px;
+  border:0;
+  border-radius:12px;
+  background:#222;
+  color:white;
+  font-size:25px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.run-btn:hover{
+  background:#333;
+}
+
+.run-btn.four{
+  background:#1677ff;
+}
+
+.run-btn.six{
+  background:#7c3aed;
+}
+
+.extra-buttons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.extra-btn{
+  min-height:55px;
+  border:0;
+  border-radius:10px;
+  font-weight:900;
+  cursor:pointer;
+  background:#252525;
+  color:white;
+}
+
+.wicket{
+  background:#d50000;
+}
+
+.wide{
+  background:#d97706;
+}
+
+.noball{
+  background:#c026d3;
+}
+
+.undo{
+  background:#444;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.info-box{
+  background:#171717;
+  border:1px solid #292929;
+  border-radius:12px;
+  padding:18px;
+}
+
+.info-box small{
+  display:block;
+  color:#888;
+}
+
+.info-box strong{
+  display:block;
+  font-size:22px;
+  margin-top:5px;
+}
+
+.event-message{
+  margin-top:15px;
+  min-height:50px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#080808;
+  border:1px solid #292929;
+  border-radius:12px;
+  font-weight:900;
+  color:#ff4444;
+}
+
+@media(max-width:700px){
+  .run-buttons{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .extra-buttons{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .main-score{
+    font-size:52px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+
+  <a class="logo" href="index.html">
+    <img src="hccl-logo.png">
+    <span>HCCL</span>
+  </a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="match.html">Live Match</a>
+    <a class="active" href="scorer.html">Scoring</a>
+  </nav>
+
+  <a class="live-nav" href="match.html">
+    <i></i> VIEW LIVE
+  </a>
+
+</header>
+
+
+<main class="scorer-wrap">
+
+<div class="scorer-title">
+  <span class="tag">HCCL MATCH CONTROL</span>
+  <h1>Live Scoring Panel</h1>
+</div>
+
+
+<section class="score-display">
+
+  <img src="hccl-logo.png">
+
+  <h2>HCCL REDS</h2>
+
+  <div class="main-score">
+    <span id="runs">0</span>/<span id="wickets">0</span>
+  </div>
+
+  <div class="overs">
+    <span id="overs">0.0</span> Overs
+  </div>
+
+</section>
+
+
+<section class="control-panel">
+
+<h3>RUNS</h3>
+
+<div class="run-buttons">
+
+<button class="run-btn" onclick="addRuns(0)">0</button>
+
+<button class="run-btn" onclick="addRuns(1)">1</button>
+
+<button class="run-btn" onclick="addRuns(2)">2</button>
+
+<button class="run-btn" onclick="addRuns(3)">3</button>
+
+<button class="run-btn four" onclick="addRuns(4)">4</button>
+
+<button class="run-btn" onclick="addRuns(5)">5</button>
+
+<button class="run-btn six" onclick="addRuns(6)">6</button>
+
+</div>
+
+</section>
+
+
+<section class="control-panel">
+
+<h3>EXTRAS / WICKET</h3>
+
+<div class="extra-buttons">
+
+<button class="extra-btn wide" onclick="wideBall()">
+WIDE +1
+</button>
+
+<button class="extra-btn noball" onclick="noBall()">
+NO BALL +1
+</button>
+
+<button class="extra-btn wicket" onclick="wicketBall()">
+WICKET
+</button>
+
+<button class="extra-btn undo" onclick="undoBall()">
+UNDO
+</button>
+
+</div>
+
+</section>
+
+
+<section class="control-panel">
+
+<h3>MATCH STATUS</h3>
+
+<div class="info-grid">
+
+<div class="info-box">
+<small>TOTAL RUNS</small>
+<strong id="infoRuns">0</strong>
+</div>
+
+<div class="info-box">
+<small>WICKETS</small>
+<strong id="infoWickets">0</strong>
+</div>
+
+<div class="info-box">
+<small>OVERS</small>
+<strong id="infoOvers">0.0</strong>
+</div>
+
+</div>
+
+<div class="event-message" id="eventMessage">
+READY TO SCORE
+</div>
+
+</section>
+
+</main>
+
+
+<script>
+
+let runs = 0;
+let wickets = 0;
+let balls = 0;
+
+let history = [];
+
+
+function saveHistory(){
+
+history.push({
+runs:runs,
+wickets:wickets,
+balls:balls
+});
+
+}
+
+
+function updateScore(){
+
+document.getElementById("runs").textContent = runs;
+
+document.getElementById("wickets").textContent = wickets;
+
+let overNumber = Math.floor(balls / 6);
+
+let ballNumber = balls % 6;
+
+let oversText = overNumber + "." + ballNumber;
+
+document.getElementById("overs").textContent = oversText;
+
+document.getElementById("infoRuns").textContent = runs;
+
+document.getElementById("infoWickets").textContent = wickets;
+
+document.getElementById("infoOvers").textContent = oversText;
+
+}
+
+
+function message(text){
+
+document.getElementById("eventMessage").textContent = text;
+
+}
+
+
+function addRuns(value){
+
+saveHistory();
+
+runs += value;
+
+balls++;
+
+if(value === 0){
+message("DOT BALL");
+}
+
+if(value === 1){
+message("1 RUN");
+}
+
+if(value === 2){
+message("2 RUNS");
+}
+
+if(value === 3){
+message("3 RUNS");
+}
+
+if(value === 4){
+message("FOUR!");
+}
+
+if(value === 5){
+message("5 RUNS");
+}
+
+if(value === 6){
+message("SIX!");
+}
+
+updateScore();
+
+}
+
+
+function wideBall(){
+
+saveHistory();
+
+runs++;
+
+message("WIDE BALL +1");
+
+updateScore();
+
+}
+
+
+function noBall(){
+
+saveHistory();
+
+runs++;
+
+message("NO BALL +1");
+
+updateScore();
+
+}
+
+
+function wicketBall(){
+
+if(wickets >= 10){
+message("ALL OUT");
+return;
+}
+
+saveHistory();
+
+wickets++;
+
+balls++;
+
+message("WICKET!");
+
+updateScore();
+
+}
+
+
+function undoBall(){
+
+if(history.length === 0){
+
+message("NOTHING TO UNDO");
+
+return;
+
+}
+
+let previous = history.pop();
+
+runs = previous.runs;
+
+wickets = previous.wickets;
+
+balls = previous.balls;
+
+message("LAST BALL UNDONE");
+
+updateScore();
+
+}
+
+
+updateScore();
+
+</script>
+
+</body>
+</html>
