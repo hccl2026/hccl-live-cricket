@@ -1129,3 +1129,16 @@ footer small{
         height: 300px !important;
     }
 }
+/* ===== SMALLER HERO TITLE ===== */
+
+.hero-copy h1{
+    font-size: clamp(46px, 6vw, 82px) !important;
+    line-height: 0.92 !important;
+    letter-spacing: -2px !important;
+}
+
+@media (max-width: 700px){
+    .hero-copy h1{
+        font-size: 48px !important;
+    }
+}
