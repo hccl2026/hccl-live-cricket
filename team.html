@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -10,105 +12,69 @@
 
 <style>
 
-/* ==================================================
+/* =========================================================
    TEAM PAGE
-================================================== */
+========================================================= */
 
 .team-page{
-  width:min(1250px,calc(100% - 30px));
+  width:min(1260px,calc(100% - 28px));
   margin:auto;
-  padding:55px 0 90px;
+  padding:48px 0 90px;
 }
 
-/* ==================================================
-   ONE OUTER FRAME ONLY
-================================================== */
+
+/* =========================================================
+   ONE OUTER FRAME
+========================================================= */
 
 .team-frame{
   position:relative;
   overflow:hidden;
 
-  border:1px solid rgba(51,101,148,.75);
-  border-radius:28px;
+  padding:38px 34px 50px;
 
-  padding:42px 42px 55px;
+  border:1px solid rgba(50,96,139,.70);
+  border-radius:26px;
 
   background:
     radial-gradient(
-      circle at 10% 18%,
-      rgba(20,85,145,.20),
-      transparent 32%
+      circle at 8% 20%,
+      rgba(25,87,148,.18),
+      transparent 33%
     ),
     radial-gradient(
       circle at 92% 25%,
-      rgba(239,27,27,.13),
+      rgba(239,27,27,.12),
       transparent 34%
     ),
     linear-gradient(
       110deg,
-      rgba(4,23,44,.80),
-      rgba(2,7,13,.90) 52%,
-      rgba(31,4,8,.78)
+      rgba(7,26,52,.84),
+      rgba(2,5,10,.94) 52%,
+      rgba(33,5,8,.82)
     );
-
-  box-shadow:
-    inset 0 0 50px rgba(0,0,0,.18);
 }
 
-/* subtle decorative background */
 
-.team-frame:before{
-  content:"";
-  position:absolute;
-  width:400px;
-  height:400px;
-  left:-180px;
-  top:-180px;
+/* =========================================================
+   TEAM HEADER
+========================================================= */
 
-  border-radius:50%;
-  border:1px solid rgba(47,108,163,.12);
-
-  pointer-events:none;
-}
-
-.team-frame:after{
-  content:"";
-  position:absolute;
-  width:450px;
-  height:450px;
-  right:-230px;
-  bottom:-230px;
-
-  border-radius:50%;
-  border:1px solid rgba(239,27,27,.10);
-
-  pointer-events:none;
-}
-
-/* ==================================================
-   TEAM HERO
-================================================== */
-
-.team-hero{
-  position:relative;
-  z-index:2;
-
+.team-head{
   display:grid;
-  grid-template-columns:180px 1fr auto;
-  gap:28px;
+  grid-template-columns:160px 1fr auto;
   align-items:center;
+  gap:25px;
 
-  padding-bottom:35px;
+  padding-bottom:30px;
 
   border-bottom:
-    1px solid rgba(71,106,140,.25);
+    1px solid rgba(57,99,140,.22);
 }
 
-/* TEAM LOGO CIRCLE */
-
 .team-logo-circle{
-  width:155px;
-  height:155px;
+  width:140px;
+  height:140px;
 
   border-radius:50%;
 
@@ -116,237 +82,202 @@
   align-items:center;
   justify-content:center;
 
+  border:2px solid #315f89;
+
   background:
     radial-gradient(
       circle,
-      rgba(10,38,67,.80),
-      rgba(2,9,16,.35)
+      #0d2c4d,
+      #06111f 70%
     );
-
-  border:2px solid #315f89;
-
-  box-shadow:
-    0 0 30px rgba(35,98,154,.15);
 }
 
 .team-logo-circle img{
-  width:105px;
-  height:105px;
+  width:100px;
+  height:100px;
   object-fit:contain;
 }
 
-/* TEAM TITLE */
-
 .team-kicker{
-  display:block;
-
   color:#ef1b1b;
-
   font-size:10px;
   font-weight:1000;
   letter-spacing:2px;
 }
 
 .team-title h1{
-  margin:7px 0 6px;
+  margin:6px 0 4px;
 
-  font-size:clamp(40px,5vw,62px);
+  font-size:clamp(38px,5vw,60px);
   line-height:1;
 }
 
 .team-title p{
-  margin:0;
-  color:#91a0ae;
-  font-size:14px;
+  color:#8f9ba7;
+  font-size:13px;
 }
 
-.session{
-  padding:10px 16px;
+.session-pill{
+  padding:10px 15px;
 
-  border:1px solid rgba(61,116,166,.60);
+  border:1px solid #31577e;
   border-radius:999px;
 
-  color:#fff;
-  background:rgba(5,25,45,.55);
+  background:#07182c;
 
   font-size:10px;
   font-weight:1000;
-
-  white-space:nowrap;
 }
 
-/* ==================================================
-   TEAM INFORMATION — NO BOXES
-================================================== */
 
-.team-info{
-  position:relative;
-  z-index:2;
+/* =========================================================
+   TEAM META
+========================================================= */
 
+.team-meta{
   display:grid;
   grid-template-columns:repeat(4,1fr);
 
-  margin-top:5px;
-
-  padding:28px 0;
+  padding:24px 0;
 
   border-bottom:
-    1px solid rgba(71,106,140,.22);
+    1px solid rgba(57,99,140,.20);
 }
 
-.team-info-item{
+.team-meta-item{
   position:relative;
-
-  padding:4px 24px;
+  padding:3px 22px;
 }
 
-/* only small divider */
+.team-meta-item:first-child{
+  padding-left:0;
+}
 
-.team-info-item:not(:last-child):after{
+.team-meta-item:not(:last-child):after{
   content:"";
 
   position:absolute;
   right:0;
-  top:5px;
+  top:3px;
 
   width:1px;
-  height:38px;
+  height:40px;
 
   background:
     linear-gradient(
       transparent,
-      rgba(65,113,157,.45),
+      rgba(65,110,151,.45),
       transparent
     );
 }
 
-.team-info-item:first-child{
-  padding-left:0;
-}
-
-.team-info-item small{
+.team-meta-item small{
   display:block;
 
-  color:#77899a;
+  color:#748697;
 
-  font-size:9px;
+  font-size:8px;
   font-weight:1000;
-  letter-spacing:.7px;
 }
 
-.team-info-item strong{
+.team-meta-item strong{
   display:block;
 
-  margin-top:7px;
+  margin-top:6px;
 
-  color:#fff;
-
-  font-size:16px;
+  font-size:15px;
 }
 
-/* ==================================================
-   PLAYERS HEADING
-================================================== */
+
+/* =========================================================
+   PLAYERS HEADER
+========================================================= */
 
 .players-head{
-  position:relative;
-  z-index:2;
-
   display:flex;
   justify-content:space-between;
   align-items:end;
 
-  margin-top:36px;
-  margin-bottom:22px;
+  margin:32px 0 15px;
 }
 
 .players-head small{
-  display:block;
-
   color:#ef1b1b;
-
   font-size:9px;
   font-weight:1000;
-
-  letter-spacing:2px;
+  letter-spacing:1.7px;
 }
 
 .players-head h2{
-  margin:5px 0 0;
-
-  font-size:30px;
+  margin-top:4px;
+  font-size:29px;
 }
 
 .players-count{
-  color:#8fa0b0;
-
-  font-size:10px;
+  color:#8594a3;
+  font-size:9px;
 }
 
-/* ==================================================
-   PLAYER OPEN GRID
-   NO PLAYER CARD BOXES
-================================================== */
+
+/* =========================================================
+   OPEN PLAYER GRID
+========================================================= */
 
 .players-grid{
-  position:relative;
-  z-index:2;
-
   display:grid;
   grid-template-columns:repeat(4,1fr);
 
-  column-gap:0;
-  row-gap:42px;
+  row-gap:38px;
 }
 
-/* NO BACKGROUND BOX */
+
+/* NO CARD BOX */
 
 .player{
   position:relative;
 
-  min-width:0;
-
-  padding:18px 25px 15px;
-
   text-align:center;
 
-  background:transparent;
+  padding:17px 22px 22px;
+
+  min-width:0;
 }
 
-/* vertical "net" divider */
+
+/* subtle divider only */
 
 .player:not(:nth-child(4n)):after{
   content:"";
 
   position:absolute;
-
   right:0;
-  top:15%;
+  top:12%;
 
   width:1px;
-  height:70%;
+  height:75%;
 
   background:
     linear-gradient(
       transparent,
-      rgba(62,111,156,.30),
-      rgba(239,27,27,.13),
+      rgba(55,103,145,.30),
+      rgba(239,27,27,.10),
       transparent
     );
 }
 
-/* soft content highlight only */
+
+/* soft glow */
 
 .player:before{
   content:"";
 
   position:absolute;
 
-  width:160px;
-  height:160px;
+  width:145px;
+  height:145px;
 
-  left:50%;
   top:0;
+  left:50%;
 
   transform:translateX(-50%);
 
@@ -355,190 +286,807 @@
   background:
     radial-gradient(
       circle,
-      rgba(24,78,127,.12),
-      transparent 70%
+      rgba(36,99,155,.10),
+      transparent 72%
     );
 
   pointer-events:none;
 }
 
-/* ==================================================
-   AVATAR
-================================================== */
 
-.player-avatar{
-  position:relative;
-  z-index:2;
+/* =========================================================
+   HUMAN AVATAR
+========================================================= */
+
+.human-avatar{
+  --skin:#d99468;
+  --skin2:#b96f48;
+  --hair:#241512;
+  --hair2:#0e0908;
+  --shirt:#151a22;
 
   width:112px;
   height:112px;
 
   margin:auto;
 
-  border-radius:50%;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
+  position:relative;
   overflow:hidden;
+
+  border-radius:50%;
 
   border:2px solid #315f89;
 
   background:
     radial-gradient(
-      circle at 50% 35%,
-      #12375b,
-      #07192c 55%,
-      #03080e
+      circle at 50% 28%,
+      #153f69 0%,
+      #081c31 55%,
+      #03080e 100%
     );
 
   box-shadow:
-    0 0 22px rgba(42,104,160,.17);
+    0 0 20px rgba(41,105,168,.20);
 }
 
-.player-avatar img{
-  width:100%;
-  height:100%;
 
-  object-fit:cover;
+/* BODY */
+
+.avatar-body{
+  position:absolute;
+
+  width:86px;
+  height:50px;
+
+  left:50%;
+  bottom:-15px;
+
+  transform:translateX(-50%);
+
+  border-radius:52% 52% 0 0;
+
+  background:var(--shirt);
+
+  z-index:1;
+}
+
+
+/* NECK */
+
+.avatar-neck{
+  position:absolute;
+
+  width:23px;
+  height:30px;
+
+  left:50%;
+  bottom:21px;
+
+  transform:translateX(-50%);
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--skin2),
+      var(--skin),
+      var(--skin2)
+    );
+
+  border-radius:6px;
+
+  z-index:2;
+}
+
+
+/* EARS */
+
+.avatar-ear{
+  position:absolute;
+
+  width:11px;
+  height:20px;
+
+  top:47px;
+
+  border-radius:50%;
+
+  background:var(--skin);
+
+  z-index:3;
+}
+
+.avatar-ear.left{
+  left:23px;
+}
+
+.avatar-ear.right{
+  right:23px;
+}
+
+
+/* FACE */
+
+.avatar-face{
+  position:absolute;
+
+  width:57px;
+  height:69px;
+
+  left:50%;
+  top:22px;
+
+  transform:translateX(-50%);
+
+  border-radius:
+    48% 48% 45% 45% /
+    42% 42% 58% 58%;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--skin2),
+      var(--skin) 48%,
+      #e5a47b
+    );
+
+  z-index:4;
+}
+
+
+/* EYEBROWS */
+
+.eyebrow{
+  position:absolute;
+
+  width:14px;
+  height:2px;
+
+  top:22px;
+
+  border-radius:4px;
+
+  background:var(--hair2);
+}
+
+.eyebrow.left{
+  left:9px;
+}
+
+.eyebrow.right{
+  right:9px;
+}
+
+
+/* EYES */
+
+.eye{
+  position:absolute;
+
+  width:8px;
+  height:5px;
+
+  top:28px;
+
+  border-radius:50%;
+
+  background:#fff;
+}
+
+.eye.left{
+  left:13px;
+}
+
+.eye.right{
+  right:13px;
+}
+
+.eye:after{
+  content:"";
+
+  position:absolute;
+
+  width:3px;
+  height:3px;
+
+  left:2.5px;
+  top:1px;
+
+  border-radius:50%;
+
+  background:#21130e;
+}
+
+
+/* NOSE */
+
+.avatar-nose{
+  position:absolute;
+
+  width:6px;
+  height:14px;
+
+  left:50%;
+  top:32px;
+
+  transform:translateX(-50%);
+
+  border-right:
+    1px solid rgba(92,48,32,.35);
+
+  border-bottom:
+    1px solid rgba(92,48,32,.35);
+}
+
+
+/* MOUTH */
+
+.avatar-mouth{
+  position:absolute;
+
+  width:14px;
+  height:5px;
+
+  left:50%;
+  top:52px;
+
+  transform:translateX(-50%);
+
+  border-bottom:2px solid #84483d;
+
   border-radius:50%;
 }
 
-.avatar-emoji{
-  font-size:62px;
-  line-height:1;
 
-  transform:translateY(5px);
+/* HAIR */
+
+.avatar-hair{
+  position:absolute;
+
+  width:65px;
+  height:33px;
+
+  top:13px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--hair2),
+      var(--hair),
+      var(--hair2)
+    );
+
+  border-radius:58% 47% 27% 30%;
+
+  z-index:8;
 }
 
-/* ==================================================
-   STARS
-================================================== */
 
-.player-rating{
-  margin-top:11px;
+/* BEARD */
+
+.avatar-beard{
+  display:none;
+
+  position:absolute;
+
+  width:47px;
+  height:34px;
+
+  left:50%;
+  top:49px;
+
+  transform:translateX(-50%);
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--hair2),
+      var(--hair),
+      var(--hair2)
+    );
+
+  clip-path:
+    polygon(
+      4% 0,
+      96% 0,
+      87% 62%,
+      67% 87%,
+      50% 100%,
+      33% 87%,
+      13% 62%
+    );
+
+  z-index:7;
+}
+
+
+/* MOUSTACHE */
+
+.avatar-moustache{
+  display:none;
+
+  position:absolute;
+
+  width:25px;
+  height:6px;
+
+  left:50%;
+  top:48px;
+
+  transform:translateX(-50%);
+
+  background:var(--hair2);
+
+  border-radius:50%;
+
+  z-index:8;
+}
+
+
+/* FEMALE LONG HAIR */
+
+.avatar-long-hair{
+  display:none;
+
+  position:absolute;
+
+  width:77px;
+  height:83px;
+
+  top:14px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  border-radius:55% 55% 42% 42%;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--hair2),
+      var(--hair),
+      var(--hair2)
+    );
+
+  z-index:2;
+}
+
+
+/* PONY */
+
+.avatar-pony{
+  display:none;
+
+  position:absolute;
+
+  width:25px;
+  height:43px;
+
+  right:17px;
+  top:31px;
+
+  border-radius:60% 45% 70% 40%;
+
+  background:var(--hair);
+
+  transform:rotate(-15deg);
+
+  z-index:2;
+}
+
+
+/* BUN */
+
+.avatar-bun{
+  display:none;
+
+  position:absolute;
+
+  width:28px;
+  height:28px;
+
+  top:7px;
+  right:22px;
+
+  border-radius:50%;
+
+  background:var(--hair);
+
+  z-index:4;
+}
+
+
+/* COLLAR */
+
+.avatar-collar{
+  position:absolute;
+
+  width:40px;
+  height:15px;
+
+  bottom:11px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  border-top:3px solid #ef1b1b;
+
+  border-radius:50%;
+
+  z-index:5;
+}
+
+
+/* =========================================================
+   MALE 1–8
+========================================================= */
+
+.male.v1{
+  --skin:#d99669;
+  --skin2:#bc7049;
+  --hair:#2d1b16;
+  --hair2:#110a09;
+  --shirt:#152132;
+}
+.male.v1 .avatar-beard{
+  display:block;
+}
+
+
+.male.v2{
+  --skin:#bc764e;
+  --skin2:#995638;
+  --hair:#151110;
+  --hair2:#050404;
+  --shirt:#1e2430;
+}
+.male.v2 .avatar-moustache{
+  display:block;
+}
+.male.v2 .avatar-hair{
+  height:24px;
+}
+
+
+.male.v3{
+  --skin:#e5aa80;
+  --skin2:#c9875f;
+  --hair:#4a2b1e;
+  --hair2:#25130c;
+  --shirt:#172837;
+}
+.male.v3 .avatar-face{
+  width:53px;
+}
+.male.v3 .avatar-hair{
+  width:59px;
+  height:37px;
+}
+
+
+.male.v4{
+  --skin:#8f5439;
+  --skin2:#683823;
+  --hair:#0d0a09;
+  --hair2:#020202;
+  --shirt:#202329;
+}
+.male.v4 .avatar-beard{
+  display:block;
+  height:29px;
+}
+
+
+.male.v5{
+  --skin:#d58f64;
+  --skin2:#af6744;
+  --hair:#1d1411;
+  --hair2:#070505;
+  --shirt:#111f2b;
+}
+.male.v5 .avatar-hair{
+  width:58px;
+  height:22px;
+  top:17px;
+}
+.male.v5 .avatar-moustache{
+  display:block;
+}
+
+
+.male.v6{
+  --skin:#edb089;
+  --skin2:#ca8963;
+  --hair:#35241e;
+  --hair2:#17100d;
+  --shirt:#221820;
+}
+.male.v6 .avatar-hair{
+  width:68px;
+  height:39px;
+  top:10px;
+}
+
+
+.male.v7{
+  --skin:#a96345;
+  --skin2:#82452e;
+  --hair:#16100d;
+  --hair2:#050403;
+  --shirt:#192634;
+}
+.male.v7 .avatar-beard{
+  display:block;
+  width:43px;
+  height:27px;
+}
+
+
+.male.v8{
+  --skin:#cf845a;
+  --skin2:#a75d3b;
+  --hair:#54372d;
+  --hair2:#2d1b16;
+  --shirt:#19202a;
+}
+.male.v8 .avatar-face{
+  width:55px;
+}
+.male.v8 .avatar-hair{
+  width:69px;
+  height:31px;
+}
+
+
+/* =========================================================
+   FEMALE 9–16
+========================================================= */
+
+.female.v9{
+  --skin:#d99b70;
+  --skin2:#b96f49;
+  --hair:#2a1815;
+  --hair2:#0d0706;
+  --shirt:#182438;
+}
+.female.v9 .avatar-long-hair{
+  display:block;
+}
+
+
+.female.v10{
+  --skin:#e5ac84;
+  --skin2:#c7815c;
+  --hair:#18110f;
+  --hair2:#050403;
+  --shirt:#25202f;
+}
+.female.v10 .avatar-pony{
+  display:block;
+}
+
+
+.female.v11{
+  --skin:#a96849;
+  --skin2:#82482f;
+  --hair:#0e0b0a;
+  --hair2:#020202;
+  --shirt:#17293a;
+}
+.female.v11 .avatar-bun{
+  display:block;
+}
+
+
+.female.v12{
+  --skin:#efb48d;
+  --skin2:#cf8b67;
+  --hair:#553529;
+  --hair2:#281812;
+  --shirt:#202430;
+}
+.female.v12 .avatar-long-hair{
+  display:block;
+}
+.female.v12 .avatar-face{
+  width:54px;
+}
+
+
+.female.v13{
+  --skin:#c77d58;
+  --skin2:#a35c3e;
+  --hair:#211612;
+  --hair2:#080504;
+  --shirt:#1f1a29;
+}
+.female.v13 .avatar-pony{
+  display:block;
+}
+
+
+.female.v14{
+  --skin:#8c533b;
+  --skin2:#683a27;
+  --hair:#0c0908;
+  --hair2:#020202;
+  --shirt:#132432;
+}
+.female.v14 .avatar-long-hair{
+  display:block;
+}
+
+
+.female.v15{
+  --skin:#d88f63;
+  --skin2:#ae653f;
+  --hair:#3b241c;
+  --hair2:#17100c;
+  --shirt:#20242c;
+}
+.female.v15 .avatar-bun{
+  display:block;
+}
+
+
+.female.v16{
+  --skin:#e9aa7e;
+  --skin2:#c67d57;
+  --hair:#17100e;
+  --hair2:#050403;
+  --shirt:#16283a;
+}
+.female.v16 .avatar-long-hair{
+  display:block;
+}
+
+
+/* =========================================================
+   TRUE PARTIAL STAR RATING
+========================================================= */
+
+.rating-row{
+  margin-top:10px;
 
   display:flex;
   justify-content:center;
   align-items:center;
 
-  gap:5px;
+  gap:7px;
 }
 
-.stars{
+.star-meter{
+  position:relative;
+
+  display:inline-block;
+
   font-size:16px;
-  font-weight:1000;
-  letter-spacing:.5px;
+  line-height:1;
+
+  letter-spacing:1px;
+
+  white-space:nowrap;
+}
+
+.star-meter:before{
+  content:"★★★★★";
+  color:#27333f;
+}
+
+.star-fill{
+  position:absolute;
+
+  left:0;
+  top:0;
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  width:0%;
+}
+
+.star-fill:before{
+  content:"★★★★★";
 }
 
 .rating-number{
   color:#fff;
-
-  font-size:11px;
+  font-size:10px;
   font-weight:1000;
 }
 
-.star-gold{
+
+/* COLORS */
+
+.rating-gold .star-fill{
   color:#ffe14b;
 }
 
-.star-green{
+.rating-green .star-fill{
   color:#58dc78;
 }
 
-.star-yellow{
-  color:#dbe346;
+.rating-yellow .star-fill{
+  color:#dce447;
 }
 
-.star-orange{
-  color:#ff9d2d;
+.rating-orange .star-fill{
+  color:#ff9f2e;
 }
 
-.star-red{
+.rating-red .star-fill{
   color:#ff4b4b;
 }
 
-/* ==================================================
-   PLAYER NAME
-================================================== */
+
+/* =========================================================
+   PLAYER DETAILS
+========================================================= */
 
 .player-name{
   margin-top:12px;
 
   color:#fff;
 
-  font-size:18px;
+  font-size:16px;
   font-weight:1000;
 }
 
-/* ==================================================
-   ROLE
-================================================== */
-
 .player-role{
-  margin-top:7px;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  gap:6px;
+  margin-top:6px;
 
   color:#ef1b1b;
 
-  font-size:10px;
+  font-size:9px;
   font-weight:1000;
 }
 
-.role-icon{
-  font-size:18px;
+.role-symbol{
+  margin-right:5px;
+  font-size:15px;
 }
-
-/* ==================================================
-   PLAYER META — OPEN TEXT
-================================================== */
 
 .player-meta{
-  margin-top:14px;
-
   display:flex;
   justify-content:center;
-  align-items:center;
 
-  gap:14px;
+  gap:16px;
+
+  margin-top:12px;
 }
 
-.player-meta-item{
+.player-meta div{
   position:relative;
 }
 
-.player-meta-item:first-child{
-  padding-right:14px;
+.player-meta div:first-child{
+  padding-right:16px;
 }
 
-.player-meta-item:first-child:after{
+.player-meta div:first-child:after{
   content:"";
 
   position:absolute;
-
   right:0;
-  top:2px;
+  top:3px;
 
   width:1px;
-  height:27px;
+  height:25px;
 
   background:
-    rgba(75,113,150,.35);
+    rgba(64,108,149,.34);
 }
 
 .player-meta small{
   display:block;
 
-  color:#718497;
+  color:#6f8293;
 
-  font-size:8px;
-  font-weight:900;
+  font-size:7px;
+  font-weight:1000;
 }
 
 .player-meta strong{
@@ -546,97 +1094,69 @@
 
   margin-top:3px;
 
-  color:#dce5ed;
-
-  font-size:11px;
+  font-size:10px;
 }
-
-/* ==================================================
-   PROFILE LINK
-================================================== */
 
 .profile-link{
   display:inline-flex;
 
-  margin-top:15px;
+  margin-top:13px;
 
-  align-items:center;
-  justify-content:center;
+  color:#ff3838;
 
-  color:#ff3636;
-
-  font-size:9px;
+  font-size:8px;
   font-weight:1000;
-
-  letter-spacing:.4px;
-
-  transition:.2s;
 }
 
 .profile-link:hover{
   color:#fff;
-  transform:translateY(-2px);
 }
 
-/* ==================================================
-   MOBILE
-================================================== */
 
-@media(max-width:1000px){
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:980px){
 
   .players-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .player:not(:nth-child(4n)):after{
-    display:none;
+  .player:after{
+    display:none !important;
   }
 
   .player:nth-child(odd):after{
-    display:block;
+    display:block !important;
 
     content:"";
 
     position:absolute;
-
     right:0;
-    top:15%;
+    top:12%;
 
     width:1px;
-    height:70%;
+    height:75%;
 
     background:
       linear-gradient(
         transparent,
-        rgba(62,111,156,.30),
+        rgba(55,103,145,.30),
         transparent
       );
   }
 
-  .team-info{
+  .team-meta{
     grid-template-columns:repeat(2,1fr);
-    row-gap:25px;
-  }
-
-  .team-info-item:nth-child(2):after{
-    display:none;
+    row-gap:20px;
   }
 
 }
 
-@media(max-width:760px){
+@media(max-width:700px){
 
-  .team-page{
-    width:calc(100% - 20px);
-    padding-top:25px;
-  }
-
-  .team-frame{
-    padding:28px 18px 42px;
-    border-radius:22px;
-  }
-
-  .team-hero{
+  .team-head{
     grid-template-columns:1fr;
     text-align:center;
   }
@@ -645,13 +1165,17 @@
     margin:auto;
   }
 
-  .session{
+  .session-pill{
     justify-self:center;
   }
 
 }
 
-@media(max-width:560px){
+@media(max-width:520px){
+
+  .team-frame{
+    padding:26px 14px 40px;
+  }
 
   .players-grid{
     grid-template-columns:1fr;
@@ -665,55 +1189,48 @@
     padding:20px 5px 28px;
 
     border-bottom:
-      1px solid rgba(62,111,156,.16);
+      1px solid rgba(55,103,145,.16);
   }
 
-  .player:last-child{
-    border-bottom:0;
-  }
-
-  .team-info{
+  .team-meta{
     grid-template-columns:1fr 1fr;
   }
 
-  .team-info-item{
-    padding:5px 12px;
+  .team-meta-item{
+    padding:4px 10px;
     text-align:center;
   }
 
-  .team-info-item:first-child{
-    padding-left:12px;
-  }
-
-  .team-info-item:nth-child(odd):after{
-    display:block;
-  }
-
-  .team-info-item:nth-child(even):after{
-    display:none;
-  }
-
-  .players-head{
-    align-items:start;
+  .team-meta-item:first-child{
+    padding-left:10px;
   }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<!-- ==================================================
-     NAVIGATION
-================================================== -->
 
 <header class="nav">
 
-<a class="logo" href="index.html">
-  <img src="hccl-logo.png" alt="HCCL">
-  <span>HCCL</span>
+<a
+class="logo"
+href="index.html">
+
+<img
+src="hccl-logo.png"
+alt="HCCL">
+
+<span>
+HCCL
+</span>
+
 </a>
+
 
 <nav>
 
@@ -730,12 +1247,19 @@
 
 </nav>
 
-<a class="live-nav" href="match.html">
+
+<a
+class="live-nav"
+href="match.html">
+
 <i></i>
+
 LIVE MATCH
+
 </a>
 
 </header>
+
 
 
 <main class="team-page">
@@ -743,24 +1267,27 @@ LIVE MATCH
 <div class="team-frame">
 
 
-<!-- ==================================================
-     TEAM HERO
-================================================== -->
+<!-- TEAM HEADER -->
 
-<section class="team-hero">
+<section class="team-head">
+
 
 <div class="team-logo-circle">
+
 <img
 id="teamLogo"
 src="hccl-logo.png"
 alt="Team">
+
 </div>
 
 
 <div class="team-title">
 
 <span class="team-kicker">
+
 HEROES CHAMPIONS CRICKET LEAGUE
+
 </span>
 
 <h1 id="teamName">
@@ -774,47 +1301,82 @@ Official HCCL Franchise Squad
 </div>
 
 
-<div class="session">
-HCCL 2026 • SESSION 2
+<div class="session-pill">
+
+HCCL 2026 · SESSION 2
+
 </div>
+
 
 </section>
 
 
-<!-- ==================================================
-     TEAM INFO
-================================================== -->
 
-<section class="team-info">
+<!-- TEAM META -->
 
-<div class="team-info-item">
-<small>FRANCHISE</small>
-<strong id="franchiseName">HCCL Reds</strong>
+<section class="team-meta">
+
+
+<div class="team-meta-item">
+
+<small>
+FRANCHISE
+</small>
+
+<strong id="franchise">
+HCCL Reds
+</strong>
+
 </div>
 
-<div class="team-info-item">
-<small>TEAM OWNER</small>
-<strong>To Be Announced</strong>
+
+<div class="team-meta-item">
+
+<small>
+TEAM OWNER
+</small>
+
+<strong>
+To Be Announced
+</strong>
+
 </div>
 
-<div class="team-info-item">
-<small>CAPTAIN</small>
-<strong>To Be Announced</strong>
+
+<div class="team-meta-item">
+
+<small>
+CAPTAIN
+</small>
+
+<strong>
+To Be Announced
+</strong>
+
 </div>
 
-<div class="team-info-item">
-<small>TOTAL SQUAD</small>
-<strong id="totalSquad">6 Players</strong>
+
+<div class="team-meta-item">
+
+<small>
+TOTAL SQUAD
+</small>
+
+<strong id="squadTotal">
+6 Players
+</strong>
+
 </div>
+
 
 </section>
 
 
-<!-- ==================================================
-     PLAYERS TITLE
-================================================== -->
+
+<!-- PLAYERS HEADER -->
 
 <div class="players-head">
+
 
 <div>
 
@@ -828,18 +1390,21 @@ Players
 
 </div>
 
-<span
+
+<div
 class="players-count"
-id="playersCount">
+id="playerCount">
+
 6 Players
-</span>
 
 </div>
 
 
-<!-- ==================================================
-     PLAYERS
-================================================== -->
+</div>
+
+
+
+<!-- PLAYERS -->
 
 <div
 class="players-grid"
@@ -852,9 +1417,12 @@ id="playersGrid">
 </main>
 
 
+
 <footer>
 
-<img src="hccl-logo.png" alt="HCCL">
+<img
+src="hccl-logo.png"
+alt="HCCL">
 
 <span>
 Heroes Champions Cricket League
@@ -867,11 +1435,12 @@ Official HCCL Tournament Portal
 </footer>
 
 
+
 <script>
 
-/* ==================================================
-   TEAM DATA
-================================================== */
+/* =========================================================
+   TEAMS
+========================================================= */
 
 const teams = {
 
@@ -918,316 +1487,347 @@ eagles:{
 };
 
 
-/* ==================================================
+/* =========================================================
    SAMPLE PLAYERS
-================================================== */
+
+   Later each team can have up to 26 players.
+========================================================= */
 
 const players = [
 
 {
  id:1,
  name:"Player 01",
+ gender:"Male",
  role:"Batsman",
  district:"Ghaziabad",
- score:94,
- photo:""
+ score:94
 },
 
 {
  id:2,
  name:"Player 02",
+ gender:"Male",
  role:"All-Rounder",
  district:"Noida",
- score:84,
- photo:""
+ score:88
 },
 
 {
  id:3,
  name:"Player 03",
+ gender:"Male",
  role:"Spin Bowler",
  district:"Meerut",
- score:67,
- photo:""
+ score:71
 },
 
 {
  id:4,
  name:"Player 04",
+ gender:"Male",
  role:"Fast Bowler",
  district:"Hapur",
- score:58,
- photo:""
+ score:61
 },
 
 {
  id:5,
  name:"Player 05",
+ gender:"Male",
  role:"Medium Pacer",
  district:"Modinagar",
- score:38,
- photo:""
+ score:43
 },
 
 {
  id:6,
  name:"Player 06",
+ gender:"Male",
  role:"Wicket Keeper Batsman",
  district:"Muzaffarnagar",
- score:74,
- photo:""
+ score:80
 }
 
 ];
 
 
-/* ==================================================
-   SELECT TEAM
-================================================== */
+/* =========================================================
+   TEAM FROM URL
+========================================================= */
 
 const params =
 new URLSearchParams(
 window.location.search
 );
 
+
 const teamKey =
 params.get("team") || "reds";
+
 
 const team =
 teams[teamKey] || teams.reds;
 
 
-/* ==================================================
-   STAR RATING
-================================================== */
+/* =========================================================
+   RATING = EXACT PARTIAL FILL
+========================================================= */
 
 function getRating(score){
 
- if(score >= 90) return 5.0;
- if(score >= 80) return 4.5;
- if(score >= 70) return 4.0;
- if(score >= 60) return 3.5;
- if(score >= 50) return 3.0;
- if(score >= 40) return 2.5;
- if(score >= 30) return 2.0;
- if(score >= 20) return 1.5;
-
- return 1.0;
-
-}
+let result =
+(score / 100) * 5;
 
 
-function getStars(rating){
+result =
+Math.max(
+0,
+Math.min(
+5,
+result
+)
+);
 
- if(rating === 5)
-   return "★★★★★";
 
- if(rating === 4.5)
-   return "★★★★½";
-
- if(rating === 4)
-   return "★★★★☆";
-
- if(rating === 3.5)
-   return "★★★½☆";
-
- if(rating === 3)
-   return "★★★☆☆";
-
- if(rating === 2.5)
-   return "★★½☆☆";
-
- if(rating === 2)
-   return "★★☆☆☆";
-
- if(rating === 1.5)
-   return "★½☆☆☆";
-
- return "★☆☆☆☆";
+return Math.round(
+result * 100
+) / 100;
 
 }
 
 
-/* ==================================================
-   STAR COLORS
-================================================== */
+function fillPercent(
+rating
+){
 
-function starClass(rating){
-
- if(rating >= 4.5)
-   return "star-gold";
-
- if(rating >= 3.5)
-   return "star-green";
-
- if(rating >= 3)
-   return "star-yellow";
-
- if(rating >= 2.5)
-   return "star-orange";
-
- return "star-red";
+return(
+rating / 5
+) * 100;
 
 }
 
 
-/* ==================================================
+function ratingClass(
+rating
+){
+
+if(rating >= 4.5){
+return "rating-gold";
+}
+
+if(rating >= 3.5){
+return "rating-green";
+}
+
+if(rating >= 3){
+return "rating-yellow";
+}
+
+if(rating >= 2.5){
+return "rating-orange";
+}
+
+return "rating-red";
+
+}
+
+
+/* =========================================================
    BASE POINTS
-================================================== */
+========================================================= */
 
-function basePoints(rating){
+function basePoints(
+rating
+){
 
- if(rating >= 4.5)
-   return 50;
+if(rating >= 4.5){
+return 50;
+}
 
- if(rating >= 3.5)
-   return 25;
+if(rating >= 3.5){
+return 25;
+}
 
- return 10;
+return 10;
 
 }
 
 
-/* ==================================================
-   PLAYER AVATAR / ROLE
-================================================== */
+/* =========================================================
+   ROLE
+========================================================= */
 
-function playerStyle(role){
+function roleInfo(
+role
+){
 
- const r =
- role.toLowerCase();
-
-
- if(
-   r.includes("keeper")
- ){
-
-   return{
-     avatar:"🧑",
-     symbol:"🧤 🏏",
-     label:"WICKET KEEPER"
-   };
-
- }
+const value =
+role.toLowerCase();
 
 
- if(
-   r.includes("all-rounder") ||
-   r.includes("all rounder")
- ){
+if(
+value.includes("keeper")
+){
 
-   return{
-     avatar:"👨‍🦰",
-     symbol:"🏏 🔴",
-     label:"ALL-ROUNDER"
-   };
-
- }
-
-
- if(
-   r.includes("spin")
- ){
-
-   return{
-     avatar:"🧔",
-     symbol:"🔴 🌀",
-     label:"SPIN BOWLER"
-   };
-
- }
-
-
- if(
-   r.includes("fast")
- ){
-
-   return{
-     avatar:"👨",
-     symbol:"🔴 ⚡",
-     label:"FAST BOWLER"
-   };
-
- }
-
-
- if(
-   r.includes("medium") ||
-   r.includes("pacer")
- ){
-
-   return{
-     avatar:"🧑‍🦱",
-     symbol:"🔴 🎯",
-     label:"MEDIUM PACER"
-   };
-
- }
-
-
- if(
-   r.includes("batsman")
- ){
-
-   return{
-     avatar:"👨‍🦱",
-     symbol:"🏏",
-     label:"BATSMAN"
-   };
-
- }
-
-
- return{
-   avatar:"👤",
-   symbol:"🏏",
-   label:"PLAYER"
- };
+return{
+symbol:"🧤",
+label:"WICKET KEEPER"
+};
 
 }
 
 
-/* ==================================================
-   TEAM INFO
-================================================== */
+if(
+value.includes("all-rounder") ||
+value.includes("all rounder")
+){
+
+return{
+symbol:"🏏 🔴",
+label:"ALL-ROUNDER"
+};
+
+}
+
+
+if(
+value.includes("spin")
+){
+
+return{
+symbol:"🔴 🌀",
+label:"SPIN BOWLER"
+};
+
+}
+
+
+if(
+value.includes("fast")
+){
+
+return{
+symbol:"🔴 ⚡",
+label:"FAST BOWLER"
+};
+
+}
+
+
+if(
+value.includes("medium") ||
+value.includes("pacer")
+){
+
+return{
+symbol:"🔴 🎯",
+label:"MEDIUM PACER"
+};
+
+}
+
+
+return{
+symbol:"🏏",
+label:"BATSMAN"
+};
+
+}
+
+
+/* =========================================================
+   AVATAR CLASS
+========================================================= */
+
+function avatarClass(
+player
+){
+
+if(
+player.gender
+.toLowerCase() === "female"
+){
+
+const number =
+9 +
+((player.id - 1) % 8);
+
+return(
+"female v" +
+number
+);
+
+}
+
+
+const number =
+1 +
+((player.id - 1) % 8);
+
+
+return(
+"male v" +
+number
+);
+
+}
+
+
+/* =========================================================
+   TEAM DISPLAY
+========================================================= */
 
 document.title =
-team.name + " — HCCL";
+team.name +
+" — HCCL";
 
 
-document.getElementById(
+document
+.getElementById(
 "teamName"
-).textContent =
+)
+.textContent =
 team.name;
 
 
-document.getElementById(
-"franchiseName"
-).textContent =
+document
+.getElementById(
+"franchise"
+)
+.textContent =
 team.name;
 
 
-document.getElementById(
+document
+.getElementById(
 "teamLogo"
-).src =
+)
+.src =
 team.logo;
 
 
-document.getElementById(
-"totalSquad"
-).textContent =
-players.length + " Players";
+document
+.getElementById(
+"squadTotal"
+)
+.textContent =
+players.length +
+" Players";
 
 
-document.getElementById(
-"playersCount"
-).textContent =
-players.length + " Players";
+document
+.getElementById(
+"playerCount"
+)
+.textContent =
+players.length +
+" Players";
 
 
-/* ==================================================
+/* =========================================================
    PLAYER RENDER
-================================================== */
+========================================================= */
 
 const grid =
 document.getElementById(
@@ -1236,164 +1836,210 @@ document.getElementById(
 
 
 grid.innerHTML =
-players.map(player => {
+players
+.map(
+player => {
 
 
- const rating =
- getRating(player.score);
+const rating =
+getRating(
+player.score
+);
 
 
- const stars =
- getStars(rating);
+const fill =
+fillPercent(
+rating
+);
 
 
- const colour =
- starClass(rating);
+const color =
+ratingClass(
+rating
+);
 
 
- const points =
- basePoints(rating);
+const base =
+basePoints(
+rating
+);
 
 
- const style =
- playerStyle(player.role);
+const role =
+roleInfo(
+player.role
+);
 
 
- let avatar;
+const avatar =
+avatarClass(
+player
+);
 
 
- if(
-   player.photo &&
-   player.photo.trim() !== ""
- ){
+return `
 
-   avatar = `
 
-   <img
-   src="${player.photo}"
-   alt="${player.name}">
+<article class="player">
 
-   `;
 
- }
+<div
+class="human-avatar ${avatar}">
 
- else{
 
-   avatar = `
+<div class="avatar-body"></div>
 
-   <div class="avatar-emoji">
+<div class="avatar-neck"></div>
 
-   ${style.avatar}
 
-   </div>
+<div class="avatar-long-hair"></div>
 
-   `;
+<div class="avatar-pony"></div>
 
- }
+<div class="avatar-bun"></div>
 
 
- return `
+<div class="avatar-ear left"></div>
 
+<div class="avatar-ear right"></div>
 
- <article class="player">
 
+<div class="avatar-face">
 
-   <div class="player-avatar">
 
-     ${avatar}
+<div class="eyebrow left"></div>
 
-   </div>
+<div class="eyebrow right"></div>
 
 
-   <div class="player-rating">
+<div class="eye left"></div>
 
-     <span class="stars ${colour}">
+<div class="eye right"></div>
 
-       ${stars}
 
-     </span>
+<div class="avatar-nose"></div>
 
-     <span class="rating-number">
+<div class="avatar-mouth"></div>
 
-       ${rating.toFixed(1)}
 
-     </span>
+<div class="avatar-moustache"></div>
 
-   </div>
+<div class="avatar-beard"></div>
 
 
-   <div class="player-name">
+</div>
 
-     ${player.name}
 
-   </div>
+<div class="avatar-hair"></div>
 
+<div class="avatar-collar"></div>
 
-   <div class="player-role">
 
-     <span class="role-icon">
+</div>
 
-       ${style.symbol}
 
-     </span>
 
-     <span>
+<!-- PARTIAL STAR RATING -->
 
-       ${style.label}
+<div class="rating-row">
 
-     </span>
 
-   </div>
+<div
+class="star-meter ${color}">
 
 
-   <div class="player-meta">
+<span
+class="star-fill"
+style="width:${fill}%">
+</span>
 
 
-     <div class="player-meta-item">
+</div>
 
-       <small>
-       BASE POINTS
-       </small>
 
-       <strong>
-       ${points}
-       </strong>
+<span class="rating-number">
 
-     </div>
+${rating.toFixed(1)}
 
+</span>
 
-     <div class="player-meta-item">
 
-       <small>
-       DISTRICT
-       </small>
+</div>
 
-       <strong>
-       ${player.district}
-       </strong>
 
-     </div>
 
+<div class="player-name">
 
-   </div>
+${player.name}
 
+</div>
 
-   <a
-   class="profile-link"
-   href="player-profile.html?id=${player.id}">
 
-   VIEW PLAYER PROFILE →
 
-   </a>
+<div class="player-role">
 
+<span class="role-symbol">
 
- </article>
+${role.symbol}
 
+</span>
 
- `;
+${role.label}
 
+</div>
 
-}).join("");
+
+
+<div class="player-meta">
+
+
+<div>
+
+<small>
+BASE POINTS
+</small>
+
+<strong>
+${base}
+</strong>
+
+</div>
+
+
+<div>
+
+<small>
+DISTRICT
+</small>
+
+<strong>
+${player.district}
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+<a
+class="profile-link"
+href="player-profile.html?id=${player.id}">
+
+VIEW PLAYER PROFILE →
+
+</a>
+
+
+</article>
+
+
+`;
+
+}
+)
+.join("");
 
 
 </script>
