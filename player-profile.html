@@ -1,749 +1,1102 @@
 <!doctype html>
 <html lang="en">
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>HCCL — MVP Players</title>
+<title>HCCL — Player Profile</title>
 
 <link rel="stylesheet" href="site.css">
 
 <style>
 
-/* ================================
-   MVP PLAYERS PAGE
-================================ */
+/* =========================================================
+   PAGE
+========================================================= */
 
-.players-page{
-  width:min(1250px,calc(100% - 32px));
+.profile-page{
+  width:min(1180px,calc(100% - 32px));
   margin:auto;
   padding:55px 0 90px;
 }
 
-.players-head{
-  text-align:center;
-  margin-bottom:30px;
-}
-
-.players-head .tag{
-  color:#ef1b1b;
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:2px;
-}
-
-.players-head h1{
-  margin:7px 0;
-  font-size:clamp(38px,5vw,62px);
-}
-
-.players-head p{
-  max-width:760px;
-  margin:auto;
-  color:#98a3af;
-}
-
-
-/* SUMMARY */
-
-.mvp-summary{
+.player-profile-hero{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin:30px 0;
-}
+  grid-template-columns:300px 1fr;
+  gap:38px;
+  align-items:center;
 
-.mvp-summary-card{
-  padding:18px;
-  border:1px solid #203a58;
-  border-radius:14px;
+  padding:38px;
+
+  border:1px solid rgba(54,101,145,.70);
+  border-radius:26px;
 
   background:
-  linear-gradient(
-    145deg,
-    #071a34,
-    #05070b 65%,
-    #160507
-  );
-}
-
-.mvp-summary-card small{
-  display:block;
-  color:#8995a3;
-  font-size:10px;
-  font-weight:900;
-}
-
-.mvp-summary-card strong{
-  display:block;
-  margin-top:6px;
-  font-size:25px;
+    radial-gradient(circle at 10% 35%,rgba(28,91,150,.19),transparent 34%),
+    radial-gradient(circle at 90% 40%,rgba(239,27,27,.13),transparent 36%),
+    linear-gradient(
+      110deg,
+      rgba(7,26,52,.90),
+      rgba(2,5,9,.96) 53%,
+      rgba(29,5,8,.88)
+    );
 }
 
 
-/* CATEGORY TABS */
+/* =========================================================
+   HUMAN AVATAR
+========================================================= */
 
-.mvp-tabs{
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  padding-bottom:10px;
-  margin-bottom:18px;
+.profile-visual{
+  text-align:center;
 }
 
-.mvp-tab{
-  flex:0 0 auto;
-  padding:11px 16px;
+.human-avatar{
+  --skin:#d99468;
+  --skin2:#b96f48;
+  --hair:#241512;
+  --hair2:#0e0908;
+  --shirt:#151a22;
 
-  border:1px solid #29415e;
-  border-radius:999px;
+  width:220px;
+  height:220px;
 
-  background:#071323;
-  color:#b9c1ca;
+  margin:auto;
 
-  font-size:11px;
-  font-weight:900;
-
-  cursor:pointer;
-}
-
-.mvp-tab:hover,
-.mvp-tab.active{
-  background:#ef1b1b;
-  border-color:#ef1b1b;
-  color:#fff;
-}
-
-
-/* TOOLBAR */
-
-.mvp-toolbar{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:15px;
-}
-
-.player-search{
-  width:min(390px,100%);
-  padding:12px 14px;
-
-  border:1px solid #29415e;
-  border-radius:9px;
-
-  background:#06101d;
-  color:#fff;
-  outline:none;
-}
-
-.download-list{
-  padding:11px 18px;
-
-  border:1px solid #31577e;
-  border-radius:9px;
-
-  background:#07182c;
-  color:#fff;
-
-  font-size:11px;
-  font-weight:900;
-
-  cursor:pointer;
-}
-
-
-/* GRADE GUIDE */
-
-.grade-guide{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:20px;
-}
-
-.grade-guide span{
-  padding:7px 11px;
-  border:1px solid #203a58;
-  border-radius:8px;
-  background:#071323;
-  font-size:11px;
-}
-
-.grade-guide .grade-a-text{
-  color:#ffd34d;
-}
-
-.grade-guide .grade-b-text{
-  color:#79baff;
-}
-
-.grade-guide .grade-c-text{
-  color:#c8cdd3;
-}
-
-
-/* TITLE */
-
-.ranking-title{
-  margin:23px 0 12px;
-}
-
-.ranking-title span{
-  color:#ef1b1b;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:1.5px;
-}
-
-.ranking-title h2{
-  margin-top:4px;
-  font-size:26px;
-}
-
-
-/* TABLE */
-
-.mvp-table-wrap{
-  overflow-x:auto;
-
-  border:1px solid #203a58;
-  border-radius:16px;
-
-  background:
-  linear-gradient(
-    145deg,
-    #07182c,
-    #04070c 65%,
-    #140506
-  );
-}
-
-.mvp-table{
-  width:100%;
-  min-width:1180px;
-  border-collapse:collapse;
-}
-
-.mvp-table th{
-  padding:14px 10px;
-
-  text-align:left;
-
-  background:#08172a;
-  color:#8793a0;
-
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:.5px;
-}
-
-.mvp-table td{
-  padding:13px 10px;
-
-  border-top:1px solid #172a40;
-
-  color:#e9edf1;
-  font-size:12px;
-}
-
-.mvp-table tbody tr:hover{
-  background:rgba(239,27,27,.05);
-}
-
-
-/* PLAYER */
-
-.player-cell{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  min-width:200px;
-}
-
-.player-avatar{
-  width:44px;
-  height:44px;
-
-  object-fit:cover;
-  border-radius:50%;
-
-  border:2px solid #31577e;
-  background:#071323;
-}
-
-.player-name{
-  display:block;
-  color:#fff;
-  font-weight:900;
-}
-
-.player-detail{
-  display:block;
-  margin-top:2px;
-  color:#7f8b98;
-  font-size:9px;
-}
-
-.rank{
-  font-size:17px;
-  font-weight:900;
-}
-
-
-/* GRADE */
-
-.grade-circle{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-
-  width:31px;
-  height:31px;
+  position:relative;
+  overflow:hidden;
 
   border-radius:50%;
 
-  font-weight:1000;
-}
+  border:3px solid #315f89;
 
-.grade-A{
-  color:#ffd34d;
-  border:1px solid #ffd34d;
-  background:rgba(255,211,77,.1);
-}
+  background:
+    radial-gradient(
+      circle at 50% 28%,
+      #153f69 0%,
+      #081c31 55%,
+      #03080e 100%
+    );
 
-.grade-B{
-  color:#79baff;
-  border:1px solid #79baff;
-  background:rgba(121,186,255,.1);
-}
-
-.grade-C{
-  color:#c8cdd3;
-  border:1px solid #929ba5;
-  background:rgba(195,200,206,.08);
-}
-
-.base-points{
-  font-weight:900;
-}
-
-.mvp-score{
-  color:#ff4545;
-  font-weight:1000;
+  box-shadow:
+    0 0 28px rgba(41,105,168,.25),
+    0 20px 45px rgba(0,0,0,.28);
 }
 
 
-/* PROFILE BUTTON */
+/* BODY */
 
-.view-profile{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
+.avatar-body{
+  position:absolute;
+  width:164px;
+  height:93px;
 
-  padding:8px 11px;
+  left:50%;
+  bottom:-28px;
+
+  transform:translateX(-50%);
+
+  border-radius:52% 52% 0 0;
+
+  background:var(--shirt);
+
+  z-index:1;
+}
+
+
+/* NECK */
+
+.avatar-neck{
+  position:absolute;
+
+  width:43px;
+  height:56px;
+
+  left:50%;
+  bottom:43px;
+
+  transform:translateX(-50%);
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--skin2),
+      var(--skin) 50%,
+      var(--skin2)
+    );
+
+  border-radius:11px;
+
+  z-index:2;
+}
+
+
+/* EARS */
+
+.avatar-ear{
+  position:absolute;
+
+  width:21px;
+  height:38px;
+
+  top:90px;
+
+  border-radius:50%;
+
+  background:var(--skin);
+
+  z-index:3;
+}
+
+.avatar-ear.left{
+  left:46px;
+}
+
+.avatar-ear.right{
+  right:46px;
+}
+
+
+/* FACE */
+
+.avatar-face{
+  position:absolute;
+
+  width:108px;
+  height:132px;
+
+  left:50%;
+  top:44px;
+
+  transform:translateX(-50%);
+
+  border-radius:
+    48% 48% 45% 45% /
+    42% 42% 58% 58%;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--skin2),
+      var(--skin) 47%,
+      #e8aa7f
+    );
+
+  z-index:4;
+}
+
+
+/* EYEBROWS */
+
+.eyebrow{
+  position:absolute;
+
+  width:27px;
+  height:4px;
+
+  top:43px;
 
   border-radius:7px;
 
-  background:#ef1b1b;
+  background:var(--hair2);
+}
+
+.eyebrow.left{
+  left:18px;
+  transform:rotate(-6deg);
+}
+
+.eyebrow.right{
+  right:18px;
+  transform:rotate(6deg);
+}
+
+
+/* EYES */
+
+.eye{
+  position:absolute;
+
+  width:15px;
+  height:9px;
+
+  top:54px;
+
+  border-radius:50%;
+
+  background:#fff;
+}
+
+.eye.left{
+  left:25px;
+}
+
+.eye.right{
+  right:25px;
+}
+
+.eye:after{
+  content:"";
+
+  position:absolute;
+
+  width:6px;
+  height:6px;
+
+  left:4px;
+  top:1.5px;
+
+  border-radius:50%;
+
+  background:#21130e;
+}
+
+
+/* NOSE */
+
+.avatar-nose{
+  position:absolute;
+
+  width:11px;
+  height:28px;
+
+  left:50%;
+  top:62px;
+
+  transform:translateX(-50%);
+
+  border-right:2px solid rgba(92,48,32,.32);
+  border-bottom:2px solid rgba(92,48,32,.32);
+
+  border-radius:0 0 8px 0;
+}
+
+
+/* MOUTH */
+
+.avatar-mouth{
+  position:absolute;
+
+  width:27px;
+  height:8px;
+
+  left:50%;
+  top:99px;
+
+  transform:translateX(-50%);
+
+  border-bottom:3px solid #84483d;
+
+  border-radius:50%;
+}
+
+
+/* HAIR */
+
+.avatar-hair{
+  position:absolute;
+
+  width:122px;
+  height:62px;
+
+  top:27px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--hair2),
+      var(--hair) 55%,
+      var(--hair2)
+    );
+
+  border-radius:58% 47% 27% 30%;
+
+  z-index:8;
+}
+
+
+/* BEARD */
+
+.avatar-beard{
+  display:none;
+
+  position:absolute;
+
+  width:88px;
+  height:62px;
+
+  left:50%;
+  top:94px;
+
+  transform:translateX(-50%);
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--hair2),
+      var(--hair),
+      var(--hair2)
+    );
+
+  clip-path:
+    polygon(
+      4% 0,
+      96% 0,
+      87% 62%,
+      67% 87%,
+      50% 100%,
+      33% 87%,
+      13% 62%
+    );
+
+  z-index:7;
+}
+
+
+/* MOUSTACHE */
+
+.avatar-moustache{
+  display:none;
+
+  position:absolute;
+
+  width:48px;
+  height:12px;
+
+  left:50%;
+  top:91px;
+
+  transform:translateX(-50%);
+
+  background:var(--hair2);
+
+  border-radius:50% 50% 35% 35%;
+
+  z-index:8;
+}
+
+
+/* FEMALE LONG HAIR */
+
+.avatar-long-hair{
+  display:none;
+
+  position:absolute;
+
+  width:145px;
+  height:155px;
+
+  top:28px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  border-radius:55% 55% 42% 42%;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--hair2),
+      var(--hair),
+      var(--hair2)
+    );
+
+  z-index:2;
+}
+
+
+/* PONY */
+
+.avatar-pony{
+  display:none;
+
+  position:absolute;
+
+  width:47px;
+  height:78px;
+
+  right:35px;
+  top:62px;
+
+  border-radius:60% 45% 70% 40%;
+
+  background:var(--hair);
+
+  transform:rotate(-15deg);
+
+  z-index:2;
+}
+
+
+/* BUN */
+
+.avatar-bun{
+  display:none;
+
+  position:absolute;
+
+  width:52px;
+  height:52px;
+
+  top:16px;
+  right:44px;
+
+  border-radius:50%;
+
+  background:var(--hair);
+
+  z-index:4;
+}
+
+
+/* COLLAR */
+
+.avatar-collar{
+  position:absolute;
+
+  width:76px;
+  height:28px;
+
+  bottom:22px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  border-top:4px solid #ef1b1b;
+
+  border-radius:50%;
+
+  z-index:5;
+}
+
+
+/* =========================================================
+   8 MALE AVATARS
+========================================================= */
+
+.male.v1{
+  --skin:#d99669;
+  --skin2:#bc7049;
+  --hair:#2d1b16;
+  --hair2:#110a09;
+  --shirt:#152132;
+}
+.male.v1 .avatar-beard{
+  display:block;
+}
+
+.male.v2{
+  --skin:#bc764e;
+  --skin2:#995638;
+  --hair:#151110;
+  --hair2:#050404;
+  --shirt:#1e2430;
+}
+.male.v2 .avatar-moustache{
+  display:block;
+}
+.male.v2 .avatar-hair{
+  height:42px;
+}
+
+.male.v3{
+  --skin:#e5aa80;
+  --skin2:#c9875f;
+  --hair:#4a2b1e;
+  --hair2:#25130c;
+  --shirt:#172837;
+}
+.male.v3 .avatar-face{
+  width:101px;
+}
+.male.v3 .avatar-hair{
+  width:111px;
+  height:67px;
+}
+
+.male.v4{
+  --skin:#8f5439;
+  --skin2:#683823;
+  --hair:#0d0a09;
+  --hair2:#020202;
+  --shirt:#202329;
+}
+.male.v4 .avatar-beard{
+  display:block;
+  height:52px;
+}
+
+.male.v5{
+  --skin:#d58f64;
+  --skin2:#af6744;
+  --hair:#1d1411;
+  --hair2:#070505;
+  --shirt:#111f2b;
+}
+.male.v5 .avatar-hair{
+  width:110px;
+  height:39px;
+  top:34px;
+}
+.male.v5 .avatar-moustache{
+  display:block;
+}
+
+.male.v6{
+  --skin:#edb089;
+  --skin2:#ca8963;
+  --hair:#35241e;
+  --hair2:#17100d;
+  --shirt:#221820;
+}
+.male.v6 .avatar-hair{
+  width:128px;
+  height:72px;
+  top:21px;
+}
+
+.male.v7{
+  --skin:#a96345;
+  --skin2:#82452e;
+  --hair:#16100d;
+  --hair2:#050403;
+  --shirt:#192634;
+}
+.male.v7 .avatar-beard{
+  display:block;
+  width:80px;
+  height:48px;
+}
+
+.male.v8{
+  --skin:#cf845a;
+  --skin2:#a75d3b;
+  --hair:#54372d;
+  --hair2:#2d1b16;
+  --shirt:#19202a;
+}
+.male.v8 .avatar-face{
+  width:104px;
+}
+.male.v8 .avatar-hair{
+  width:130px;
+  height:56px;
+}
+
+
+/* =========================================================
+   8 FEMALE AVATARS
+========================================================= */
+
+.female.v9{
+  --skin:#d99b70;
+  --skin2:#b96f49;
+  --hair:#2a1815;
+  --hair2:#0d0706;
+  --shirt:#182438;
+}
+.female.v9 .avatar-long-hair{
+  display:block;
+}
+
+.female.v10{
+  --skin:#e5ac84;
+  --skin2:#c7815c;
+  --hair:#18110f;
+  --hair2:#050403;
+  --shirt:#25202f;
+}
+.female.v10 .avatar-pony{
+  display:block;
+}
+
+.female.v11{
+  --skin:#a96849;
+  --skin2:#82482f;
+  --hair:#0e0b0a;
+  --hair2:#020202;
+  --shirt:#17293a;
+}
+.female.v11 .avatar-bun{
+  display:block;
+}
+
+.female.v12{
+  --skin:#efb48d;
+  --skin2:#cf8b67;
+  --hair:#553529;
+  --hair2:#281812;
+  --shirt:#202430;
+}
+.female.v12 .avatar-long-hair{
+  display:block;
+}
+.female.v12 .avatar-face{
+  width:102px;
+}
+
+.female.v13{
+  --skin:#c77d58;
+  --skin2:#a35c3e;
+  --hair:#211612;
+  --hair2:#080504;
+  --shirt:#1f1a29;
+}
+.female.v13 .avatar-pony{
+  display:block;
+}
+
+.female.v14{
+  --skin:#8c533b;
+  --skin2:#683a27;
+  --hair:#0c0908;
+  --hair2:#020202;
+  --shirt:#132432;
+}
+.female.v14 .avatar-long-hair{
+  display:block;
+}
+
+.female.v15{
+  --skin:#d88f63;
+  --skin2:#ae653f;
+  --hair:#3b241c;
+  --hair2:#17100c;
+  --shirt:#20242c;
+}
+.female.v15 .avatar-bun{
+  display:block;
+}
+
+.female.v16{
+  --skin:#e9aa7e;
+  --skin2:#c67d57;
+  --hair:#17100e;
+  --hair2:#050403;
+  --shirt:#16283a;
+}
+.female.v16 .avatar-long-hair{
+  display:block;
+}
+
+
+/* =========================================================
+   REAL PARTIAL STAR RATING
+========================================================= */
+
+.rating-wrap{
+  margin-top:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:9px;
+}
+
+
+/* 5 EMPTY STARS */
+
+.star-meter{
+  position:relative;
+
+  display:inline-block;
+
+  font-size:24px;
+  line-height:1;
+
+  letter-spacing:2px;
+
+  white-space:nowrap;
+}
+
+
+/* BACKGROUND EMPTY STARS */
+
+.star-meter::before{
+  content:"★★★★★";
+
+  color:#26323f;
+}
+
+
+/* FILLED STARS OVERLAY */
+
+.star-fill{
+  position:absolute;
+
+  left:0;
+  top:0;
+
+  width:0%;
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  pointer-events:none;
+}
+
+
+/* SAME 5 STARS INSIDE FILL */
+
+.star-fill::before{
+  content:"★★★★★";
+}
+
+
+/* RATING NUMBER */
+
+.rating-number{
   color:#fff;
 
-  text-decoration:none;
-
-  font-size:9px;
+  font-size:14px;
   font-weight:1000;
 }
 
-.view-profile:hover{
-  background:#ff3030;
+
+/* COLOR LEVELS */
+
+.rating-gold .star-fill{
+  color:#ffe14b;
+
+  text-shadow:
+    0 0 8px rgba(255,225,75,.30);
+}
+
+.rating-green .star-fill{
+  color:#58dc78;
+
+  text-shadow:
+    0 0 7px rgba(88,220,120,.20);
+}
+
+.rating-yellow .star-fill{
+  color:#dce447;
+}
+
+.rating-orange .star-fill{
+  color:#ff9f2e;
+}
+
+.rating-red .star-fill{
+  color:#ff4b4b;
 }
 
 
-/* EMPTY */
+/* =========================================================
+   ROLE
+========================================================= */
 
-.empty-row{
-  padding:55px 20px !important;
-  text-align:center;
-  color:#8793a0 !important;
+.avatar-role{
+  margin-top:10px;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:8px;
+
+  padding:7px 14px;
+
+  border:1px solid #294c70;
+  border-radius:999px;
+
+  background:#061323;
+
+  font-size:10px;
+  font-weight:1000;
+}
+
+.role-symbol{
+  font-size:18px;
 }
 
 
-/* MOBILE */
+/* =========================================================
+   PROFILE DETAILS
+========================================================= */
 
-@media(max-width:800px){
+.profile-kicker{
+  color:#ef1b1b;
 
-  .mvp-summary{
+  font-size:10px;
+  font-weight:1000;
+
+  letter-spacing:2px;
+}
+
+.profile-info h1{
+  margin:7px 0;
+
+  font-size:clamp(40px,5vw,62px);
+
+  line-height:1;
+}
+
+.player-location{
+  color:#98a4b1;
+
+  font-size:13px;
+}
+
+.profile-badges{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:8px;
+
+  margin-top:18px;
+}
+
+.profile-badge{
+  padding:8px 12px;
+
+  border:1px solid #294762;
+  border-radius:999px;
+
+  background:#071525;
+
+  font-size:10px;
+  font-weight:900;
+}
+
+.profile-badge.verified{
+  color:#51db82;
+  border-color:#256b43;
+}
+
+.profile-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+
+  margin-top:20px;
+}
+
+.profile-btn{
+  min-height:42px;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:0 16px;
+
+  border-radius:9px;
+
+  background:#ef1b1b;
+
+  font-size:10px;
+  font-weight:1000;
+}
+
+.profile-btn.alt{
+  background:#07182c;
+
+  border:1px solid #31577e;
+}
+
+
+/* =========================================================
+   SUMMARY / STATS
+========================================================= */
+
+.profile-summary{
+  display:grid;
+
+  grid-template-columns:repeat(4,1fr);
+
+  gap:12px;
+
+  margin-top:22px;
+}
+
+.summary-box,
+.stat-card{
+  padding:17px;
+
+  border:1px solid #203850;
+  border-radius:13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(7,24,44,.94),
+      rgba(5,7,11,.94)
+    );
+}
+
+.summary-box small,
+.stat-card small{
+  display:block;
+
+  color:#84909d;
+
+  font-size:9px;
+  font-weight:900;
+}
+
+.summary-box strong,
+.stat-card strong{
+  display:block;
+
+  margin-top:6px;
+
+  font-size:21px;
+}
+
+.profile-section{
+  margin-top:35px;
+}
+
+.section-title span{
+  color:#ef1b1b;
+
+  font-size:9px;
+  font-weight:1000;
+
+  letter-spacing:1.5px;
+}
+
+.section-title h2{
+  margin:4px 0 14px;
+
+  font-size:25px;
+}
+
+.stats-grid{
+  display:grid;
+
+  grid-template-columns:repeat(5,1fr);
+
+  gap:12px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+  .player-profile-hero{
+    grid-template-columns:1fr;
+
+    text-align:center;
+  }
+
+  .profile-badges,
+  .profile-actions{
+    justify-content:center;
+  }
+
+  .profile-summary{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .mvp-toolbar{
-    flex-direction:column;
+  .stats-grid{
+    grid-template-columns:repeat(3,1fr);
   }
 
 }
 
-@media(max-width:450px){
+@media(max-width:600px){
 
-  .mvp-summary{
-    grid-template-columns:1fr 1fr;
+  .human-avatar{
+    width:190px;
+    height:190px;
+  }
+
+  .star-meter{
+    font-size:21px;
+  }
+
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
   }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- ========================================
-     NAVIGATION
-======================================== -->
 
 <header class="nav">
 
 <a class="logo" href="index.html">
 
-  <img src="hccl-logo.png" alt="HCCL">
+<img src="hccl-logo.png" alt="HCCL">
 
-  <span>HCCL</span>
+<span>
+HCCL
+</span>
 
 </a>
 
 
 <nav>
 
-  <a href="index.html">
-    Home
-  </a>
+<a href="index.html">Home</a>
 
-  <a href="schedule.html">
-    Schedule
-  </a>
+<a href="schedule.html">Schedule</a>
 
-  <a href="match.html">
-    Live
-  </a>
+<a href="match.html">Live</a>
 
-  <a href="match.html#scorecard">
-    Scorecard
-  </a>
+<a href="match.html#scorecard">Scorecard</a>
 
-  <a href="index.html#teams">
-    Teams
-  </a>
+<a href="index.html#teams">Teams</a>
 
-  <a href="index.html#table">
-    Points
-  </a>
+<a href="index.html#table">Points</a>
 
-  <a class="active" href="players.html">
-    MVP Players
-  </a>
+<a href="players.html">MVP Players</a>
 
-  <a href="player-profile.html?id=1">
-    Player Profile
-  </a>
+<a
+class="active"
+href="player-profile.html?id=1">
+Player Profile
+</a>
 
-  <a href="registration.html">
-    Player Registration
-  </a>
+<a href="registration.html">
+Player Registration
+</a>
 
-  <a href="scorer.html">
-    Scoring
-  </a>
+<a href="scorer.html">
+Scoring
+</a>
 
 </nav>
 
 
-<a class="live-nav" href="match.html">
+<a
+class="live-nav"
+href="match.html">
 
-  <i></i>
+<i></i>
 
-  LIVE MATCH
+LIVE MATCH
 
 </a>
 
 </header>
 
 
-
-<!-- ========================================
-     MVP PAGE
-======================================== -->
-
-<main class="players-page">
-
-
-<div class="players-head">
-
-  <span class="tag">
-    HCCL PLAYER PERFORMANCE CENTRE
-  </span>
-
-  <h1>
-    MVP Players
-  </h1>
-
-  <p>
-    HCCL player rankings by batting, bowling,
-    all-round performance and wicket keeping.
-  </p>
-
-</div>
-
-
-
-<!-- SUMMARY -->
-
-<section class="mvp-summary">
-
-
-<div class="mvp-summary-card">
-
-  <small>
-    TOTAL PLAYERS
-  </small>
-
-  <strong id="totalPlayers">
-    0
-  </strong>
-
-</div>
-
-
-<div class="mvp-summary-card">
-
-  <small>
-    A GRADE · 50 POINTS
-  </small>
-
-  <strong id="gradeACount">
-    0
-  </strong>
-
-</div>
-
-
-<div class="mvp-summary-card">
-
-  <small>
-    B GRADE · 25 POINTS
-  </small>
-
-  <strong id="gradeBCount">
-    0
-  </strong>
-
-</div>
-
-
-<div class="mvp-summary-card">
-
-  <small>
-    C GRADE · 10 POINTS
-  </small>
-
-  <strong id="gradeCCount">
-    0
-  </strong>
-
-</div>
-
-
-</section>
-
-
-
-<!-- CATEGORY TABS -->
-
-<div class="mvp-tabs">
-
-
-<button
-class="mvp-tab active"
-data-category="all">
-
-Overall MVP
-
-</button>
-
-
-<button
-class="mvp-tab"
-data-category="Batsman">
-
-Batsmen
-
-</button>
-
-
-<button
-class="mvp-tab"
-data-category="All-Rounder">
-
-All-Rounders
-
-</button>
-
-
-<button
-class="mvp-tab"
-data-category="Spin Bowler">
-
-Spin Bowlers
-
-</button>
-
-
-<button
-class="mvp-tab"
-data-category="pace">
-
-Fast / Medium Pacers
-
-</button>
-
-
-<button
-class="mvp-tab"
-data-category="keeper">
-
-Wicket Keepers
-
-</button>
-
-
-</div>
-
-
-
-<!-- SEARCH -->
-
-<div class="mvp-toolbar">
-
-
-<input
-type="search"
-class="player-search"
-id="playerSearch"
-placeholder="Search player, district or role...">
-
-
-<button
-class="download-list"
-id="downloadCSV">
-
-DOWNLOAD LIST ↓
-
-</button>
-
-
-</div>
-
-
-
-<!-- GRADES -->
-
-<div class="grade-guide">
-
-<span class="grade-a-text">
-A Grade = 50 Base Points
-</span>
-
-<span class="grade-b-text">
-B Grade = 25 Base Points
-</span>
-
-<span class="grade-c-text">
-C Grade = 10 Base Points
-</span>
-
-</div>
-
-
-
-<!-- CATEGORY TITLE -->
-
-<div class="ranking-title">
-
-<span>
-HCCL RANKINGS
-</span>
-
-<h2 id="rankingHeading">
-Overall MVP Rankings
-</h2>
-
-</div>
-
-
-
-<!-- TABLE -->
-
-<div class="mvp-table-wrap">
-
-<table class="mvp-table">
-
-<thead>
-
-<tr>
-
-<th>RANK</th>
-
-<th>PLAYER</th>
-
-<th>GRADE</th>
-
-<th>BASE</th>
-
-<th>MVP SCORE</th>
-
-<th>RUNS</th>
-
-<th>BALLS FACED</th>
-
-<th>BAT AVG</th>
-
-<th>SR</th>
-
-<th>WKTS</th>
-
-<th>BALLS BOWLED</th>
-
-<th>ECON</th>
-
-<th>CATCHES</th>
-
-<th>PROFILE</th>
-
-</tr>
-
-</thead>
-
-
-<tbody id="playerTableBody">
-</tbody>
-
-
-</table>
-
-</div>
-
-
+<main
+class="profile-page"
+id="profilePage">
 </main>
 
 
-
-<!-- ========================================
-     FOOTER
-======================================== -->
-
 <footer>
 
-<img src="hccl-logo.png" alt="HCCL">
+<img
+src="hccl-logo.png"
+alt="HCCL">
 
 <span>
 Heroes Champions Cricket League
@@ -756,689 +1109,1145 @@ Official HCCL Tournament Portal
 </footer>
 
 
-
 <script>
 
-/* ==========================================
-   SAMPLE PLAYER DATA
-
-   Later registered player/database data
-   will replace this.
-========================================== */
+/* =========================================================
+   16 SAMPLE PLAYERS
+========================================================= */
 
 const players = [
 
 {
-  id:1,
-  name:"Sample Player 1",
-  district:"Ghaziabad",
-  role:"Batsman",
-  grade:"A",
-  base:50,
-  score:82,
-  runs:620,
-  ballsFaced:418,
-  batAvg:41.3,
-  strikeRate:148.2,
-  wickets:2,
-  ballsBowled:72,
-  economy:8.4,
-  catches:11,
-  photo:"hccl-logo.png"
+ id:1,
+ name:"Player 01",
+ gender:"Male",
+ district:"Ghaziabad",
+ state:"Uttar Pradesh",
+ role:"Batsman",
+ batting:"Right Hand Bat",
+ bowling:"Right Arm Medium",
+ score:94,
+ matches:18,
+ runs:620,
+ ballsFaced:418,
+ average:41.3,
+ strikeRate:148.2,
+ wickets:2,
+ ballsBowled:72,
+ economy:8.4,
+ catches:11
 },
 
 {
-  id:2,
-  name:"Sample Player 2",
-  district:"Noida",
-  role:"All-Rounder",
-  grade:"A",
-  base:50,
-  score:78,
-  runs:410,
-  ballsFaced:301,
-  batAvg:34.1,
-  strikeRate:136.4,
-  wickets:21,
-  ballsBowled:420,
-  economy:6.4,
-  catches:8,
-  photo:"hccl-logo.png"
+ id:2,
+ name:"Player 02",
+ gender:"Male",
+ district:"Noida",
+ state:"Uttar Pradesh",
+ role:"All-Rounder",
+ batting:"Left Hand Bat",
+ bowling:"Right Arm Off Spin",
+ score:84,
+ matches:20,
+ runs:410,
+ ballsFaced:301,
+ average:34.1,
+ strikeRate:136.4,
+ wickets:21,
+ ballsBowled:420,
+ economy:6.4,
+ catches:8
 },
 
 {
-  id:3,
-  name:"Sample Player 3",
-  district:"Meerut",
-  role:"Spin Bowler",
-  grade:"B",
-  base:25,
-  score:64,
-  runs:85,
-  ballsFaced:81,
-  batAvg:12.1,
-  strikeRate:105.5,
-  wickets:28,
-  ballsBowled:516,
-  economy:5.9,
-  catches:7,
-  photo:"hccl-logo.png"
+ id:3,
+ name:"Player 03",
+ gender:"Male",
+ district:"Meerut",
+ state:"Uttar Pradesh",
+ role:"Spin Bowler",
+ batting:"Right Hand Bat",
+ bowling:"Right Arm Leg Spin",
+ score:67,
+ matches:22,
+ runs:85,
+ ballsFaced:81,
+ average:12.1,
+ strikeRate:105.5,
+ wickets:28,
+ ballsBowled:516,
+ economy:5.9,
+ catches:7
 },
 
 {
-  id:4,
-  name:"Sample Player 4",
-  district:"Hapur",
-  role:"Fast Bowler",
-  grade:"B",
-  base:25,
-  score:61,
-  runs:102,
-  ballsFaced:91,
-  batAvg:14.5,
-  strikeRate:112.3,
-  wickets:25,
-  ballsBowled:420,
-  economy:6.7,
-  catches:5,
-  photo:"hccl-logo.png"
+ id:4,
+ name:"Player 04",
+ gender:"Male",
+ district:"Hapur",
+ state:"Uttar Pradesh",
+ role:"Fast Bowler",
+ batting:"Right Hand Bat",
+ bowling:"Right Arm Fast",
+ score:58,
+ matches:18,
+ runs:102,
+ ballsFaced:91,
+ average:14.5,
+ strikeRate:112.3,
+ wickets:25,
+ ballsBowled:420,
+ economy:6.7,
+ catches:5
 },
 
 {
-  id:5,
-  name:"Sample Player 5",
-  district:"Modinagar",
-  role:"Medium Pacer",
-  grade:"C",
-  base:10,
-  score:41,
-  runs:75,
-  ballsFaced:76,
-  batAvg:10.7,
-  strikeRate:98.6,
-  wickets:13,
-  ballsBowled:270,
-  economy:7.8,
-  catches:4,
-  photo:"hccl-logo.png"
+ id:5,
+ name:"Player 05",
+ gender:"Male",
+ district:"Modinagar",
+ state:"Uttar Pradesh",
+ role:"Medium Pacer",
+ batting:"Right Hand Bat",
+ bowling:"Right Arm Medium",
+ score:52,
+ matches:17,
+ runs:97,
+ ballsFaced:92,
+ average:13.8,
+ strikeRate:105.4,
+ wickets:23,
+ ballsBowled:390,
+ economy:6.9,
+ catches:4
 },
 
 {
-  id:6,
-  name:"Sample Player 6",
-  district:"Muzaffarnagar",
-  role:"Wicket Keeper Batsman",
-  grade:"A",
-  base:50,
-  score:75,
-  runs:485,
-  ballsFaced:342,
-  batAvg:37.3,
-  strikeRate:141.8,
-  wickets:0,
-  ballsBowled:0,
-  economy:0,
-  catches:19,
-  photo:"hccl-logo.png"
+ id:6,
+ name:"Player 06",
+ gender:"Male",
+ district:"Muzaffarnagar",
+ state:"Uttar Pradesh",
+ role:"Wicket Keeper Batsman",
+ batting:"Right Hand Bat",
+ bowling:"—",
+ score:74,
+ matches:19,
+ runs:485,
+ ballsFaced:342,
+ average:37.3,
+ strikeRate:141.8,
+ wickets:0,
+ ballsBowled:0,
+ economy:0,
+ catches:19
+},
+
+{
+ id:7,
+ name:"Player 07",
+ gender:"Male",
+ district:"Meerut",
+ state:"Uttar Pradesh",
+ role:"Batsman",
+ batting:"Left Hand Bat",
+ bowling:"—",
+ score:79,
+ matches:21,
+ runs:540,
+ ballsFaced:389,
+ average:38.6,
+ strikeRate:138.8,
+ wickets:0,
+ ballsBowled:0,
+ economy:0,
+ catches:9
+},
+
+{
+ id:8,
+ name:"Player 08",
+ gender:"Male",
+ district:"Noida",
+ state:"Uttar Pradesh",
+ role:"All-Rounder",
+ batting:"Right Hand Bat",
+ bowling:"Right Arm Medium",
+ score:82,
+ matches:20,
+ runs:390,
+ ballsFaced:295,
+ average:31.4,
+ strikeRate:132.2,
+ wickets:19,
+ ballsBowled:372,
+ economy:6.5,
+ catches:10
+},
+
+{
+ id:9,
+ name:"Player 09",
+ gender:"Female",
+ district:"Ghaziabad",
+ state:"Uttar Pradesh",
+ role:"Batsman",
+ batting:"Right Hand Bat",
+ bowling:"—",
+ score:91,
+ matches:17,
+ runs:590,
+ ballsFaced:401,
+ average:42.1,
+ strikeRate:147.1,
+ wickets:0,
+ ballsBowled:0,
+ economy:0,
+ catches:8
+},
+
+{
+ id:10,
+ name:"Player 10",
+ gender:"Female",
+ district:"Noida",
+ state:"Uttar Pradesh",
+ role:"All-Rounder",
+ batting:"Left Hand Bat",
+ bowling:"Right Arm Off Spin",
+ score:86,
+ matches:18,
+ runs:420,
+ ballsFaced:304,
+ average:35,
+ strikeRate:138.1,
+ wickets:20,
+ ballsBowled:384,
+ economy:6.1,
+ catches:11
+},
+
+{
+ id:11,
+ name:"Player 11",
+ gender:"Female",
+ district:"Meerut",
+ state:"Uttar Pradesh",
+ role:"Spin Bowler",
+ batting:"Right Hand Bat",
+ bowling:"Right Arm Leg Spin",
+ score:72,
+ matches:19,
+ runs:120,
+ ballsFaced:110,
+ average:17.1,
+ strikeRate:109,
+ wickets:25,
+ ballsBowled:444,
+ economy:5.8,
+ catches:7
+},
+
+{
+ id:12,
+ name:"Player 12",
+ gender:"Female",
+ district:"Hapur",
+ state:"Uttar Pradesh",
+ role:"Fast Bowler",
+ batting:"Right Hand Bat",
+ bowling:"Right Arm Fast",
+ score:64,
+ matches:18,
+ runs:95,
+ ballsFaced:90,
+ average:13.5,
+ strikeRate:105.5,
+ wickets:24,
+ ballsBowled:408,
+ economy:6.3,
+ catches:6
+},
+
+{
+ id:13,
+ name:"Player 13",
+ gender:"Female",
+ district:"Modinagar",
+ state:"Uttar Pradesh",
+ role:"Medium Pacer",
+ batting:"Right Hand Bat",
+ bowling:"Right Arm Medium",
+ score:57,
+ matches:16,
+ runs:88,
+ ballsFaced:82,
+ average:12.5,
+ strikeRate:107.3,
+ wickets:20,
+ ballsBowled:360,
+ economy:6.8,
+ catches:4
+},
+
+{
+ id:14,
+ name:"Player 14",
+ gender:"Female",
+ district:"Muzaffarnagar",
+ state:"Uttar Pradesh",
+ role:"Wicket Keeper Batsman",
+ batting:"Right Hand Bat",
+ bowling:"—",
+ score:77,
+ matches:18,
+ runs:460,
+ ballsFaced:335,
+ average:35.3,
+ strikeRate:137.3,
+ wickets:0,
+ ballsBowled:0,
+ economy:0,
+ catches:21
+},
+
+{
+ id:15,
+ name:"Player 15",
+ gender:"Female",
+ district:"Meerut",
+ state:"Uttar Pradesh",
+ role:"Batsman",
+ batting:"Left Hand Bat",
+ bowling:"—",
+ score:81,
+ matches:18,
+ runs:515,
+ ballsFaced:365,
+ average:39.6,
+ strikeRate:141.1,
+ wickets:0,
+ ballsBowled:0,
+ economy:0,
+ catches:9
+},
+
+{
+ id:16,
+ name:"Player 16",
+ gender:"Female",
+ district:"Ghaziabad",
+ state:"Uttar Pradesh",
+ role:"All-Rounder",
+ batting:"Right Hand Bat",
+ bowling:"Left Arm Spin",
+ score:88,
+ matches:20,
+ runs:430,
+ ballsFaced:306,
+ average:35.8,
+ strikeRate:140.5,
+ wickets:22,
+ ballsBowled:402,
+ economy:6.0,
+ catches:12
 }
 
 ];
 
 
-let currentCategory = "all";
+/* =========================================================
+   GET PLAYER
+========================================================= */
 
+const params =
+new URLSearchParams(
+  window.location.search
+);
 
-/* ==========================================
-   CATEGORY FILTER
-========================================== */
+let playerId =
+Number(
+  params.get("id")
+);
 
-function categoryMatch(player,category){
-
-  if(category === "all"){
-    return true;
-  }
-
-  if(category === "pace"){
-
-    return (
-      player.role === "Fast Bowler" ||
-      player.role === "Medium Pacer"
-    );
-
-  }
-
-  if(category === "keeper"){
-
-    return (
-      player.role === "Wicket Keeper" ||
-      player.role === "Wicket Keeper Batsman"
-    );
-
-  }
-
-  return player.role === category;
-
+if(!playerId){
+  playerId = 1;
 }
 
-
-/* ==========================================
-   FILTERED PLAYER LIST
-========================================== */
-
-function getPlayers(){
-
-  const search =
-  document
-  .getElementById("playerSearch")
-  .value
-  .trim()
-  .toLowerCase();
-
-
-  return players
-
-  .filter(player =>
-    categoryMatch(
-      player,
-      currentCategory
-    )
-  )
-
-  .filter(player => {
-
-    const searchable =
-    (
-      player.name +
-      " " +
-      player.district +
-      " " +
-      player.role
-    ).toLowerCase();
-
-    return searchable.includes(search);
-
-  })
-
-  .sort(
-    (a,b) =>
-    b.score - a.score
-  );
-
-}
-
-
-/* ==========================================
-   RENDER PLAYERS
-========================================== */
-
-function renderPlayers(){
-
-  const list =
-  getPlayers();
-
-
-  const tbody =
-  document.getElementById(
-    "playerTableBody"
-  );
-
-
-  tbody.innerHTML = "";
-
-
-  if(list.length === 0){
-
-    tbody.innerHTML = `
-
-      <tr>
-
-        <td
-        colspan="14"
-        class="empty-row">
-
-        No players found.
-
-        </td>
-
-      </tr>
-
-    `;
-
-    return;
-
-  }
-
-
-  list.forEach(
-  (player,index) => {
-
-
-    const row =
-    document.createElement("tr");
-
-
-    row.innerHTML = `
-
-
-      <td>
-
-        <span class="rank">
-          #${index + 1}
-        </span>
-
-      </td>
-
-
-      <td>
-
-        <div class="player-cell">
-
-          <img
-          class="player-avatar"
-          src="${player.photo}"
-          alt="${player.name}">
-
-
-          <div>
-
-            <span class="player-name">
-
-              ${player.name}
-
-            </span>
-
-
-            <span class="player-detail">
-
-              ${player.role}
-              ·
-              ${player.district}
-
-            </span>
-
-          </div>
-
-        </div>
-
-      </td>
-
-
-      <td>
-
-        <span
-        class="grade-circle grade-${player.grade}">
-
-          ${player.grade}
-
-        </span>
-
-      </td>
-
-
-      <td class="base-points">
-
-        ${player.base}
-
-      </td>
-
-
-      <td class="mvp-score">
-
-        ${player.score}
-
-      </td>
-
-
-      <td>
-
-        ${player.runs}
-
-      </td>
-
-
-      <td>
-
-        ${player.ballsFaced}
-
-      </td>
-
-
-      <td>
-
-        ${player.batAvg}
-
-      </td>
-
-
-      <td>
-
-        ${player.strikeRate}
-
-      </td>
-
-
-      <td>
-
-        ${player.wickets}
-
-      </td>
-
-
-      <td>
-
-        ${player.ballsBowled}
-
-      </td>
-
-
-      <td>
-
-        ${player.economy}
-
-      </td>
-
-
-      <td>
-
-        ${player.catches}
-
-      </td>
-
-
-      <td>
-
-        <a
-        class="view-profile"
-        href="player-profile.html?id=${player.id}">
-
-        VIEW PROFILE
-
-        </a>
-
-      </td>
-
-
-    `;
-
-
-    tbody.appendChild(row);
-
-  });
-
-}
-
-
-/* ==========================================
-   SUMMARY
-========================================== */
-
-function updateSummary(){
-
-  document
-  .getElementById("totalPlayers")
-  .textContent =
-  players.length;
-
-
-  document
-  .getElementById("gradeACount")
-  .textContent =
-  players.filter(
-    p => p.grade === "A"
-  ).length;
-
-
-  document
-  .getElementById("gradeBCount")
-  .textContent =
-  players.filter(
-    p => p.grade === "B"
-  ).length;
-
-
-  document
-  .getElementById("gradeCCount")
-  .textContent =
-  players.filter(
-    p => p.grade === "C"
-  ).length;
-
-}
-
-
-/* ==========================================
-   TAB HEADINGS
-========================================== */
-
-const categoryHeadings = {
-
-  all:
-  "Overall MVP Rankings",
-
-  Batsman:
-  "Top Batsmen",
-
-  "All-Rounder":
-  "Top All-Rounders",
-
-  "Spin Bowler":
-  "Top Spin Bowlers",
-
-  pace:
-  "Top Fast / Medium Pacers",
-
-  keeper:
-  "Top Wicket Keepers"
-
-};
-
-
-/* ==========================================
-   TAB CLICK
-========================================== */
-
-document
-.querySelectorAll(".mvp-tab")
-.forEach(button => {
-
-
-  button.addEventListener(
-  "click",
-  function(){
-
-
-    document
-    .querySelectorAll(".mvp-tab")
-    .forEach(
-      tab =>
-      tab.classList.remove("active")
-    );
-
-
-    this.classList.add("active");
-
-
-    currentCategory =
-    this.dataset.category;
-
-
-    document
-    .getElementById("rankingHeading")
-    .textContent =
-    categoryHeadings[currentCategory];
-
-
-    renderPlayers();
-
-  });
-
-});
-
-
-/* ==========================================
-   SEARCH
-========================================== */
-
-document
-.getElementById("playerSearch")
-.addEventListener(
-"input",
-renderPlayers
+const player =
+players.find(
+  p => p.id === playerId
 );
 
 
-/* ==========================================
-   DOWNLOAD CSV
-========================================== */
+/* =========================================================
+   SCORE → EXACT RATING
 
-document
-.getElementById("downloadCSV")
-.addEventListener(
-"click",
-function(){
+   100 score = 5.00
+   94 score = 4.70
+   67 score = 3.35
 
+   This allows true partial star fills.
+========================================================= */
 
-  const list =
-  getPlayers();
+function getRating(score){
 
+  let result =
+    (score / 100) * 5;
 
-  if(list.length === 0){
-
-    alert(
-      "No players available to download."
+  result =
+    Math.max(
+      0,
+      Math.min(5,result)
     );
 
-    return;
+  return Math.round(
+    result * 100
+  ) / 100;
+
+}
+
+
+/* =========================================================
+   STAR FILL %
+========================================================= */
+
+function getFillPercentage(rating){
+
+  return(
+    rating / 5
+  ) * 100;
+
+}
+
+
+/* =========================================================
+   COLOR
+========================================================= */
+
+function ratingClass(rating){
+
+  if(rating >= 4.5){
+    return "rating-gold";
+  }
+
+  if(rating >= 3.5){
+    return "rating-green";
+  }
+
+  if(rating >= 3){
+    return "rating-yellow";
+  }
+
+  if(rating >= 2.5){
+    return "rating-orange";
+  }
+
+  return "rating-red";
+
+}
+
+
+/* =========================================================
+   BASE POINTS
+========================================================= */
+
+function basePoints(rating){
+
+  if(rating >= 4.5){
+    return 50;
+  }
+
+  if(rating >= 3.5){
+    return 25;
+  }
+
+  return 10;
+
+}
+
+
+/* =========================================================
+   ROLE
+========================================================= */
+
+function roleData(role){
+
+  const r =
+    role.toLowerCase();
+
+
+  if(r.includes("keeper")){
+
+    return{
+      symbol:"🧤 🏏",
+      title:"WICKET KEEPER"
+    };
 
   }
 
 
-  const rows = [
+  if(r.includes("all-rounder")){
 
-    [
-      "Rank",
-      "Player Name",
-      "District",
-      "Role",
-      "Grade",
-      "Base Points",
-      "MVP Score",
-      "Runs",
-      "Balls Faced",
-      "Batting Average",
-      "Strike Rate",
-      "Wickets",
-      "Balls Bowled",
-      "Economy",
-      "Catches"
-    ]
+    return{
+      symbol:"🏏 🔴",
+      title:"ALL-ROUNDER"
+    };
 
-  ];
+  }
 
 
-  list.forEach(
-  (player,index) => {
+  if(r.includes("spin")){
+
+    return{
+      symbol:"🔴 🌀",
+      title:"SPIN BOWLER"
+    };
+
+  }
 
 
-    rows.push([
+  if(r.includes("fast")){
 
-      index + 1,
+    return{
+      symbol:"🔴 ⚡",
+      title:"FAST BOWLER"
+    };
 
-      player.name,
-
-      player.district,
-
-      player.role,
-
-      player.grade,
-
-      player.base,
-
-      player.score,
-
-      player.runs,
-
-      player.ballsFaced,
-
-      player.batAvg,
-
-      player.strikeRate,
-
-      player.wickets,
-
-      player.ballsBowled,
-
-      player.economy,
-
-      player.catches
-
-    ]);
-
-  });
+  }
 
 
-  const csv =
-  rows
-  .map(
-    row =>
-    row
-    .map(
-      value =>
-      `"${String(value).replace(/"/g,'""')}"`
-    )
-    .join(",")
-  )
-  .join("\n");
+  if(
+    r.includes("medium") ||
+    r.includes("pacer")
+  ){
+
+    return{
+      symbol:"🔴 🎯",
+      title:"MEDIUM PACER"
+    };
+
+  }
 
 
-  const blob =
-  new Blob(
-    [csv],
-    {
-      type:
-      "text/csv;charset=utf-8;"
-    }
+  return{
+    symbol:"🏏",
+    title:"BATSMAN"
+  };
+
+}
+
+
+/* =========================================================
+   AVATAR CLASS
+========================================================= */
+
+function avatarClass(player){
+
+  if(
+    player.gender
+    .toLowerCase() === "female"
+  ){
+
+    const number =
+      9 +
+      ((player.id - 1) % 8);
+
+    return(
+      "female v" +
+      number
+    );
+
+  }
+
+
+  const number =
+    1 +
+    ((player.id - 1) % 8);
+
+
+  return(
+    "male v" +
+    number
   );
 
-
-  const url =
-  URL.createObjectURL(blob);
+}
 
 
-  const link =
-  document.createElement("a");
+/* =========================================================
+   RENDER
+========================================================= */
+
+const page =
+document.getElementById(
+  "profilePage"
+);
 
 
-  link.href = url;
+if(!player){
+
+  page.innerHTML = `
+
+    <div style="
+      text-align:center;
+      padding:90px 20px;
+    ">
+
+      <h1>
+        Player Not Found
+      </h1>
+
+      <a
+        href="players.html"
+        class="profile-btn"
+        style="margin-top:20px;">
+
+        BACK TO MVP PLAYERS
+
+      </a>
+
+    </div>
+
+  `;
+
+}
+
+else{
 
 
-  link.download =
-  "HCCL_MVP_Player_Rankings.csv";
+  const rating =
+    getRating(
+      player.score
+    );
 
 
-  document.body.appendChild(link);
+  const fill =
+    getFillPercentage(
+      rating
+    );
 
 
-  link.click();
+  const colour =
+    ratingClass(
+      rating
+    );
 
 
-  link.remove();
+  const base =
+    basePoints(
+      rating
+    );
 
 
-  URL.revokeObjectURL(url);
+  const role =
+    roleData(
+      player.role
+    );
 
-});
+
+  const avatar =
+    avatarClass(
+      player
+    );
 
 
-/* ==========================================
-   START
-========================================== */
+  document.title =
+    player.name +
+    " — HCCL";
 
-updateSummary();
 
-renderPlayers();
+  page.innerHTML = `
+
+
+  <!-- HERO -->
+
+  <section class="player-profile-hero">
+
+
+    <!-- AVATAR -->
+
+    <div class="profile-visual">
+
+
+      <div
+        class="human-avatar ${avatar}">
+
+
+        <div class="avatar-body"></div>
+
+        <div class="avatar-neck"></div>
+
+
+        <div class="avatar-long-hair"></div>
+
+        <div class="avatar-pony"></div>
+
+        <div class="avatar-bun"></div>
+
+
+        <div class="avatar-ear left"></div>
+
+        <div class="avatar-ear right"></div>
+
+
+        <div class="avatar-face">
+
+
+          <div class="eyebrow left"></div>
+
+          <div class="eyebrow right"></div>
+
+
+          <div class="eye left"></div>
+
+          <div class="eye right"></div>
+
+
+          <div class="avatar-nose"></div>
+
+          <div class="avatar-mouth"></div>
+
+
+          <div class="avatar-moustache"></div>
+
+          <div class="avatar-beard"></div>
+
+
+        </div>
+
+
+        <div class="avatar-hair"></div>
+
+        <div class="avatar-collar"></div>
+
+
+      </div>
+
+
+
+      <!-- TRUE PARTIAL STAR RATING -->
+
+      <div class="rating-wrap">
+
+
+        <div
+          class="star-meter ${colour}">
+
+
+          <span
+            class="star-fill"
+            style="width:${fill}%">
+          </span>
+
+
+        </div>
+
+
+        <span class="rating-number">
+
+          ${rating.toFixed(2)}
+
+        </span>
+
+
+      </div>
+
+
+
+      <!-- ROLE -->
+
+      <div class="avatar-role">
+
+
+        <span class="role-symbol">
+
+          ${role.symbol}
+
+        </span>
+
+
+        ${role.title}
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- PROFILE INFO -->
+
+    <div class="profile-info">
+
+
+      <span class="profile-kicker">
+
+        HEROES CHAMPIONS CRICKET LEAGUE
+
+      </span>
+
+
+      <h1>
+
+        ${player.name}
+
+      </h1>
+
+
+      <div class="player-location">
+
+        ${player.gender}
+        •
+        ${player.role}
+        •
+        ${player.district},
+        ${player.state}
+
+      </div>
+
+
+
+      <div class="profile-badges">
+
+
+        <span class="profile-badge">
+
+          ${role.symbol}
+          ${player.role}
+
+        </span>
+
+
+        <span class="profile-badge">
+
+          BASE ${base} POINTS
+
+        </span>
+
+
+        <span class="profile-badge">
+
+          MVP SCORE
+          ${player.score}/100
+
+        </span>
+
+
+        <span
+          class="profile-badge verified">
+
+          ✓ VERIFIED PLAYER
+
+        </span>
+
+
+      </div>
+
+
+
+      <div class="profile-actions">
+
+
+        <a
+          class="profile-btn"
+          href="#">
+
+          CRICHEROES PROFILE
+
+        </a>
+
+
+        <a
+          class="profile-btn alt"
+          href="players.html">
+
+          MVP RANKINGS
+
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- SUMMARY -->
+
+  <section class="profile-summary">
+
+
+    <div class="summary-box">
+
+      <small>
+        STAR RATING
+      </small>
+
+
+      <div
+        class="rating-wrap"
+        style="
+          justify-content:flex-start;
+          margin-top:8px;
+        ">
+
+
+        <div
+          class="star-meter ${colour}">
+
+
+          <span
+            class="star-fill"
+            style="width:${fill}%">
+          </span>
+
+
+        </div>
+
+
+        <strong
+          style="
+            margin:0;
+            font-size:16px;
+          ">
+
+          ${rating.toFixed(2)}
+
+        </strong>
+
+
+      </div>
+
+
+    </div>
+
+
+    <div class="summary-box">
+
+      <small>
+        MVP SCORE
+      </small>
+
+      <strong>
+        ${player.score}/100
+      </strong>
+
+    </div>
+
+
+    <div class="summary-box">
+
+      <small>
+        BASE POINTS
+      </small>
+
+      <strong>
+        ${base}
+      </strong>
+
+    </div>
+
+
+    <div class="summary-box">
+
+      <small>
+        MATCHES
+      </small>
+
+      <strong>
+        ${player.matches}
+      </strong>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- BATTING -->
+
+  <section class="profile-section">
+
+
+    <div class="section-title">
+
+      <span>
+        🏏 BATTING PERFORMANCE
+      </span>
+
+      <h2>
+        Batting Statistics
+      </h2>
+
+    </div>
+
+
+    <div class="stats-grid">
+
+
+      <div class="stat-card">
+
+        <small>
+          RUNS
+        </small>
+
+        <strong>
+          ${player.runs}
+        </strong>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <small>
+          BALLS FACED
+        </small>
+
+        <strong>
+          ${player.ballsFaced}
+        </strong>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <small>
+          AVERAGE
+        </small>
+
+        <strong>
+          ${player.average}
+        </strong>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <small>
+          STRIKE RATE
+        </small>
+
+        <strong>
+          ${player.strikeRate}
+        </strong>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <small>
+          MATCHES
+        </small>
+
+        <strong>
+          ${player.matches}
+        </strong>
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- BOWLING -->
+
+  <section class="profile-section">
+
+
+    <div class="section-title">
+
+      <span>
+        🔴 BOWLING PERFORMANCE
+      </span>
+
+      <h2>
+        Bowling Statistics
+      </h2>
+
+    </div>
+
+
+    <div class="stats-grid">
+
+
+      <div class="stat-card">
+
+        <small>
+          WICKETS
+        </small>
+
+        <strong>
+          ${player.wickets}
+        </strong>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <small>
+          BALLS BOWLED
+        </small>
+
+        <strong>
+          ${player.ballsBowled}
+        </strong>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <small>
+          ECONOMY
+        </small>
+
+        <strong>
+          ${player.economy}
+        </strong>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <small>
+          CATCHES
+        </small>
+
+        <strong>
+          ${player.catches}
+        </strong>
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+  `;
+
+}
 
 </script>
+
 
 </body>
 </html>
