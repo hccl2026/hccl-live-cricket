@@ -6,34 +6,32 @@
 <title>HCCL — Heroes Champions Cricket League</title>
 
 <style>
-:root {
-  --navy: #071a34;
-  --black: #020306;
-  --red: #ef1b1b;
-  --muted: #9ca6b2;
-  --line: #203a58;
-  --max: 1180px;
+:root{
+  --navy:#071a34;
+  --red:#ef1b1b;
+  --muted:#9ca6b2;
+  --max:1180px;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-html {
-  scroll-behavior: smooth;
+html{
+  scroll-behavior:smooth;
 }
 
-body {
-  min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #fff;
-  line-height: 1.5;
-  overflow-x: hidden;
+body{
+  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#fff;
+  line-height:1.5;
+  overflow-x:hidden;
   background:
-    radial-gradient(circle at 8% 35%, rgba(10,55,105,.30), transparent 38%),
-    radial-gradient(circle at 92% 55%, rgba(150,5,12,.22), transparent 40%),
+    radial-gradient(circle at 8% 35%,rgba(10,55,105,.30),transparent 38%),
+    radial-gradient(circle at 92% 55%,rgba(150,5,12,.22),transparent 40%),
     linear-gradient(
       90deg,
       #071a34 0%,
@@ -46,140 +44,128 @@ body {
     );
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
 img,
-video {
-  display: block;
-  max-width: 100%;
+video{
+  display:block;
+  max-width:100%;
 }
 
-button,
-input,
-select,
-textarea {
-  font-family: inherit;
+button{
+  font-family:inherit;
 }
 
-section[id] {
-  scroll-margin-top: 95px;
+section[id]{
+  scroll-margin-top:95px;
 }
 
-:focus-visible {
-  outline: 3px solid #f3cf61;
-  outline-offset: 4px;
-}
-
-/* HEADER */
-
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  min-height: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 7px max(16px, calc((100% - 1180px)/2));
-  background: linear-gradient(
+.nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:7px max(16px,calc((100% - var(--max))/2));
+  background:linear-gradient(
     90deg,
     rgba(7,26,52,.97),
     rgba(3,8,16,.97) 52%,
     rgba(47,5,8,.97)
   );
-  border-bottom: 1px solid rgba(239,27,27,.18);
+  border-bottom:1px solid rgba(239,27,27,.18);
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
+.logo{
+  display:flex;
+  align-items:center;
+  white-space:nowrap;
 }
 
-.nav .logo img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
+.logo img{
+  width:48px;
+  height:48px;
+  object-fit:contain;
 }
 
-.logo span {
-  font-size: 20px;
-  font-weight: 900;
+.logo span{
+  font-size:20px;
+  font-weight:900;
 }
 
-.nav nav {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
+.nav nav{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
 }
 
-.nav nav a {
-  padding: 8px 9px;
-  border-radius: 999px;
-  color: #e8e8e8;
-  font-size: 11px;
-  font-weight: 800;
-  white-space: nowrap;
+.nav nav a{
+  padding:8px 9px;
+  border-radius:999px;
+  color:#e8e8e8;
+  font-size:11px;
+  font-weight:800;
+  white-space:nowrap;
 }
 
 .nav nav a:hover,
-.nav nav a.active {
-  background: rgba(239,27,27,.14);
+.nav nav a.active{
+  background:rgba(239,27,27,.14);
 }
 
-.live-nav {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 11px 16px;
-  border-radius: 11px;
-  background: #ef1b1b;
-  font-size: 11px;
-  font-weight: 900;
-  white-space: nowrap;
+.live-nav{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:11px 16px;
+  border-radius:11px;
+  background:#ef1b1b;
+  font-size:11px;
+  font-weight:900;
+  white-space:nowrap;
 }
 
-.live-nav i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #ff5757;
+.live-nav i{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#ff5757;
 }
 
-.menu-toggle {
-  display: none;
-  color: white;
-  background: #10243a;
-  border: 1px solid #31577e;
-  border-radius: 9px;
-  padding: 10px 14px;
-  font-size: 15px;
-  min-height: 44px;
-  cursor: pointer;
+.menu-toggle{
+  display:none;
+  color:#fff;
+  background:#10243a;
+  border:1px solid #31577e;
+  border-radius:9px;
+  padding:10px 14px;
+  min-height:44px;
+  font-size:15px;
+  cursor:pointer;
 }
 
-/* MAIN HERO */
-
-.hero {
-  min-height: 650px;
-  display: grid;
+.hero{
+  min-height:650px;
+  display:grid;
   grid-template-columns:
     minmax(0,1fr)
     minmax(0,1.25fr)
     minmax(0,1fr);
-  align-items: center;
-  gap: 25px;
-  padding: 52px max(20px, calc((100% - var(--max))/2));
-  overflow: hidden;
+  align-items:center;
+  gap:25px;
+  padding:52px max(20px,calc((100% - var(--max))/2));
+  overflow:hidden;
   background:
-    radial-gradient(circle at 19% 50%, rgba(20,67,116,.27), transparent 35%),
-    radial-gradient(circle at 82% 50%, rgba(239,27,27,.20), transparent 37%),
+    radial-gradient(circle at 19% 50%,rgba(20,67,116,.27),transparent 35%),
+    radial-gradient(circle at 82% 50%,rgba(239,27,27,.20),transparent 37%),
     linear-gradient(
       90deg,
       #071a34 0%,
@@ -190,228 +176,218 @@ section[id] {
     );
 }
 
-.hero-side {
-  min-width: 0;
-  min-height: 430px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.hero-side{
+  min-width:0;
+  min-height:430px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-/* TWO VIDEO CIRCLES */
-
-.hero-circle {
-  position: relative;
-  width: min(100%,340px);
-  aspect-ratio: 1/1;
-  flex: 0 0 auto;
-  overflow: hidden;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #081525;
+.hero-circle{
+  position:relative;
+  width:min(100%,340px);
+  aspect-ratio:1/1;
+  overflow:hidden;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#081525;
 }
 
-.hero-circle video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  min-width: 100%;
-  min-height: 100%;
-  max-width: none;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 50%;
-  clip-path: circle(49.9% at 50% 50%);
-  transform: scale(1.01);
+.hero-circle video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  min-width:100%;
+  min-height:100%;
+  max-width:none;
+  object-fit:cover;
+  object-position:center;
+  border-radius:50%;
+  clip-path:circle(49.9% at 50% 50%);
+  transform:scale(1.01);
 }
 
-.trophy-circle {
-  border: 3px solid #1f5b91;
+.trophy-circle{
+  border:3px solid #1f5b91;
   box-shadow:
     0 0 25px rgba(31,91,145,.28),
     0 0 60px rgba(31,91,145,.14);
 }
 
-.league-circle {
-  border: 3px solid #ef1b1b;
+.league-circle{
+  border:3px solid #ef1b1b;
   box-shadow:
     0 0 25px rgba(239,27,27,.25),
     0 0 60px rgba(239,27,27,.13);
 }
 
-.video-toggle {
-  position: absolute;
-  bottom: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  color: #fff;
-  background: rgba(0,0,0,.8);
-  border: 1px solid #aaa;
-  border-radius: 20px;
-  padding: 6px 12px;
-  min-height: 36px;
-  cursor: pointer;
-  font-size: 12px;
+.video-toggle{
+  position:absolute;
+  bottom:14px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:2;
+  color:#fff;
+  background:rgba(0,0,0,.8);
+  border:1px solid #aaa;
+  border-radius:20px;
+  padding:6px 12px;
+  min-height:36px;
+  cursor:pointer;
+  font-size:12px;
 }
 
-.video-toggle[hidden] {
-  display: none;
+.video-toggle[hidden]{
+  display:none;
 }
 
-/* CENTER TITLE */
-
-.hero-center {
-  position: relative;
-  z-index: 3;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.hero-center{
+  position:relative;
+  z-index:3;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
 
-.hero-main-tag,
-.hero-center .tag {
-  color: #ff3434;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 1.7px;
+.hero-main-tag{
+  color:#ff3434;
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:2px;
+  line-height:1.25;
+  text-shadow:0 0 18px rgba(239,27,27,.28);
 }
 
-.hero-tagline {
-  margin: 8px 0 17px;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 4px;
+.hero-tagline{
+  margin:12px 0 17px;
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:4px;
 }
 
-.hero-tagline i {
-  color: #ef1b1b;
-  font-style: normal;
-  margin: 0 7px;
+.hero-tagline i{
+  color:#ef1b1b;
+  font-style:normal;
+  margin:0 7px;
 }
 
-.hero-center h1 {
-  margin: 4px 0 18px;
-  font-size: clamp(52px,6vw,86px);
-  line-height: .88;
-  letter-spacing: -3px;
-  font-weight: 1000;
+.hero-center h1{
+  margin:4px 0 18px;
+  font-size:clamp(52px,6vw,86px);
+  line-height:.88;
+  letter-spacing:-3px;
+  font-weight:1000;
 }
 
-.hero-center h1 em {
-  color: #ef1b1b;
-  font-style: normal;
+.hero-center h1 em{
+  color:#ef1b1b;
+  font-style:normal;
 }
 
-.hero-center p {
-  max-width: 540px;
-  color: #d6d9de;
-  font-size: 14px;
+.hero-center p{
+  max-width:540px;
+  color:#d6d9de;
+  font-size:14px;
 }
 
-.hero-actions {
-  margin-top: 26px;
-  display: flex;
-  gap: 13px;
-  justify-content: center;
+.hero-actions{
+  margin-top:26px;
+  display:flex;
+  gap:13px;
+  justify-content:center;
 }
 
 .primary,
-.secondary {
-  min-width: 145px;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 17px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 900;
+.secondary{
+  min-width:145px;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 17px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:900;
 }
 
-.primary {
-  background: #ef1b1b;
+.primary{
+  background:#ef1b1b;
 }
 
-.secondary {
-  background: #07182c;
-  border: 1px solid #31577e;
+.secondary{
+  background:#07182c;
+  border:1px solid #31577e;
 }
 
-/* SCORE STRIP */
-
-.live-strip {
-  width: min(1180px,calc(100% - 32px));
-  margin: 0 auto;
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 22px;
-  border: 1px solid #29405a;
-  border-radius: 16px;
-  background: linear-gradient(100deg,#081e37,#07080d,#250709);
-  flex-wrap: wrap;
+.live-strip{
+  width:min(1180px,calc(100% - 32px));
+  margin:0 auto;
+  display:flex;
+  gap:20px;
+  align-items:center;
+  justify-content:space-between;
+  padding:22px;
+  border:1px solid #29405a;
+  border-radius:16px;
+  background:linear-gradient(100deg,#081e37,#07080d,#250709);
+  flex-wrap:wrap;
 }
 
 .live-title,
-.live-team {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
+.live-team{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
 }
 
-.live-title small {
-  display: block;
-  color: #9ca6b2;
-  font-size: 12px;
+.live-title small{
+  color:#9ca6b2;
+  font-size:12px;
 }
 
-.live-team strong {
-  font-size: 28px;
+.live-team img{
+  width:38px;
+  height:38px;
+  object-fit:contain;
 }
 
-.live-team img {
-  width: 38px;
-  height: 38px;
-  object-fit: contain;
+.live-team strong{
+  font-size:28px;
 }
 
-.live-note {
-  flex-basis: 100%;
-  font-size: 12px;
-  color: #aebac8;
+.live-strip>a{
+  color:#ff6464;
+  font-size:13px;
+  font-weight:900;
 }
 
-.live-strip > a {
-  color: #ff6464;
-  font-size: 13px;
-  font-weight: bold;
+.live-note{
+  flex-basis:100%;
+  color:#aebac8;
+  font-size:12px;
 }
 
-/* SECTIONS */
-
-.section {
-  width: min(var(--max),calc(100% - 32px));
-  margin: auto;
-  padding: 65px 0;
-  background: transparent;
+.section{
+  width:min(var(--max),calc(100% - 32px));
+  margin:auto;
+  padding:65px 0;
 }
 
-.section.dark {
-  width: 100%;
-  max-width: none;
-  padding-left: max(16px,calc((100% - var(--max))/2));
-  padding-right: max(16px,calc((100% - var(--max))/2));
-  background: linear-gradient(
+.section.dark{
+  width:100%;
+  max-width:none;
+  padding-left:max(16px,calc((100% - var(--max))/2));
+  padding-right:max(16px,calc((100% - var(--max))/2));
+  background:linear-gradient(
     90deg,
     rgba(7,26,52,.48),
     rgba(2,3,6,.45) 52%,
@@ -419,85 +395,81 @@ section[id] {
   );
 }
 
-.section-head {
-  margin-bottom: 26px;
+.section-head{
+  margin-bottom:26px;
 }
 
-.section-head .tag {
-  color: #ef1b1b;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 1.5px;
+.section-head .tag{
+  color:#ef1b1b;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.5px;
 }
 
-.section-head h2 {
-  margin-top: 5px;
-  font-size: clamp(28px,4vw,40px);
+.section-head h2{
+  margin-top:5px;
+  font-size:clamp(28px,4vw,40px);
 }
 
-/* TEAM CARDS */
-
-.teams {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 14px;
+.teams{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
 }
 
-.team-card {
-  min-height: 165px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: 17px;
-  gap: 8px;
-  border: 1px solid #1d3855;
-  border-radius: 16px;
-  transition: transform .2s,border-color .2s;
-  background: linear-gradient(
+.team-card{
+  min-height:165px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:flex-start;
+  padding:17px;
+  gap:8px;
+  border:1px solid #1d3855;
+  border-radius:16px;
+  background:linear-gradient(
     145deg,
     rgba(7,26,52,.94),
     rgba(4,7,12,.95) 68%,
     rgba(20,5,7,.94)
   );
+  transition:.2s ease;
 }
 
-.team-card:hover {
-  transform: translateY(-3px);
-  border-color: #e83a3a;
+.team-card:hover{
+  transform:translateY(-3px);
+  border-color:#e83a3a;
 }
 
-.team-card img {
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
-  margin-bottom: auto;
+.team-card img{
+  width:70px;
+  height:70px;
+  object-fit:contain;
+  margin-bottom:auto;
 }
 
-.team-card b {
-  font-size: 15px;
+.team-card b{
+  font-size:15px;
 }
 
-.team-card span {
-  margin-top: 5px;
-  color: #ff4747;
-  font-size: 10px;
-  font-weight: 900;
+.team-card span{
+  margin-top:5px;
+  color:#ff4747;
+  font-size:10px;
+  font-weight:900;
 }
 
-/* POINTS TABLE */
-
-.standings-note {
-  color: #aebac8;
-  font-size: 14px;
-  margin-bottom: 18px;
+.standings-note{
+  color:#aebac8;
+  font-size:14px;
+  margin-bottom:18px;
 }
 
-.points {
-  overflow-x: auto;
-  border: 1px solid #1d3855;
-  border-radius: 16px;
-  background: linear-gradient(
+.points{
+  overflow-x:auto;
+  border:1px solid #1d3855;
+  border-radius:16px;
+  background:linear-gradient(
     90deg,
     rgba(7,20,38,.95),
     rgba(5,7,11,.95),
@@ -505,287 +477,233 @@ section[id] {
   );
 }
 
-.points > div {
-  min-height: 54px;
-  min-width: 640px;
-  display: grid;
+.points>div{
+  min-height:54px;
+  min-width:640px;
+  display:grid;
   grid-template-columns:
     50px
     minmax(170px,2fr)
     repeat(5,minmax(60px,1fr));
-  align-items: center;
-  padding: 0 15px;
-  border-bottom: 1px solid #17283d;
+  align-items:center;
+  padding:0 15px;
+  border-bottom:1px solid #17283d;
 }
 
-.pt-head {
-  color: #9ca6b2;
-  font-size: 12px;
-  font-weight: bold;
+.pt-head{
+  color:#9ca6b2;
+  font-size:12px;
+  font-weight:900;
 }
 
-/* FOOTER */
-
-footer {
-  min-height: 120px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 24px max(20px,calc((100% - var(--max))/2));
-  background: linear-gradient(90deg,#071a34,#020306 55%,#2a0608);
-  border-top: 1px solid rgba(239,27,27,.18);
-  color: #98a1ab;
+footer{
+  min-height:120px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:24px max(20px,calc((100% - var(--max))/2));
+  background:linear-gradient(90deg,#071a34,#020306 55%,#2a0608);
+  border-top:1px solid rgba(239,27,27,.18);
+  color:#98a1ab;
 }
 
-footer img {
-  width: 54px;
+footer img{
+  width:54px;
 }
 
-footer span {
-  color: #fff;
-  font-weight: 900;
+footer span{
+  color:#fff;
+  font-weight:900;
 }
 
-footer small {
-  margin-left: auto;
+footer small{
+  margin-left:auto;
 }
 
-/* TABLET */
-
-@media(max-width:1250px) {
-  .nav {
-    flex-wrap: wrap;
-    padding: 10px 18px;
-    min-height: 70px;
+@media(max-width:1250px){
+  .nav{
+    flex-wrap:wrap;
+    padding:10px 18px;
   }
 
-  .menu-toggle {
-    display: block;
-    margin-left: auto;
+  .menu-toggle{
+    display:block;
+    margin-left:auto;
   }
 
-  .nav nav {
-    display: none;
-    flex-basis: 100%;
-    order: 4;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 10px 0;
+  .nav nav{
+    display:none;
+    flex-basis:100%;
+    order:4;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    padding:10px 0;
   }
 
-  .nav nav.open {
-    display: flex;
+  .nav nav.open{
+    display:flex;
   }
 
-  .nav nav a {
-    font-size: 14px;
-    padding: 12px;
+  .nav nav a{
+    font-size:14px;
+    padding:12px;
   }
 
-  .hero {
-    padding: 48px 24px;
-    gap: 20px;
-    min-height: 580px;
+  .hero{
+    padding:48px 24px;
+    gap:20px;
+    min-height:580px;
   }
 
-  .hero-side {
-    min-height: 300px;
-  }
-
-  .hero-center h1 {
-    font-size: clamp(46px,6.3vw,78px);
-  }
-
-  .hero-actions {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .primary,
-  .secondary {
-    min-width: 0;
-    min-height: 46px;
-    padding: 12px 16px;
+  .hero-side{
+    min-height:300px;
   }
 }
 
-/* MOBILE */
-
-@media(max-width:760px) {
-  .nav {
-    gap: 10px;
-    padding: 10px 14px;
+@media(max-width:760px){
+  .nav{
+    gap:10px;
+    padding:10px 14px;
   }
 
-  .nav .logo img {
-    width: 42px;
-    height: 42px;
+  .logo img{
+    width:42px;
+    height:42px;
   }
 
-  .logo span {
-    font-size: 21px;
+  .logo span{
+    font-size:21px;
   }
 
-  .live-nav {
-    display: none;
+  .live-nav{
+    display:none;
   }
 
-  .hero {
-    grid-template-columns: repeat(2,minmax(0,1fr));
+  .hero{
+    grid-template-columns:repeat(2,minmax(0,1fr));
     grid-template-areas:
       "title title"
       "trophy league";
-    gap: 28px 18px;
-    padding: 38px 18px 44px;
-    min-height: 0;
+    gap:28px 18px;
+    padding:38px 18px 44px;
+    min-height:0;
   }
 
-  .hero-center {
-    grid-area: title;
-    padding: 0;
+  .hero-center{
+    grid-area:title;
   }
 
-  .trophy-side {
-    grid-area: trophy;
+  .trophy-side{
+    grid-area:trophy;
   }
 
-  .league-side {
-    grid-area: league;
+  .league-side{
+    grid-area:league;
   }
 
-  .hero-side {
-    min-height: 0;
+  .hero-side{
+    min-height:0;
   }
 
-  .hero-circle {
-    width: min(100%,230px);
+  .hero-circle{
+    width:min(100%,230px);
   }
 
-  .hero-center h1 {
-    font-size: clamp(58px,14vw,82px);
-    letter-spacing: -2px;
-    line-height: .94;
-    margin: 12px 0 20px;
+  .hero-main-tag{
+    font-size:15px;
+    letter-spacing:1.2px;
   }
 
-  .hero-center .tag {
-    font-size: 10px;
-    letter-spacing: 1.5px;
+  .hero-tagline{
+    font-size:11px;
+    letter-spacing:2.5px;
+    margin:10px 0;
   }
 
-  .hero-tagline {
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    margin: 8px 0;
+  .hero-center h1{
+    font-size:clamp(58px,14vw,82px);
+    line-height:.94;
+    letter-spacing:-2px;
+    margin:12px 0 20px;
   }
 
-  .hero-center p {
-    font-size: 14px;
-    line-height: 1.65;
-    max-width: 440px;
+  .hero-center p{
+    font-size:14px;
+    line-height:1.65;
   }
 
-  .hero-actions {
-    margin-top: 22px;
-    width: 100%;
-    gap: 10px;
-  }
-
-  .primary,
-  .secondary {
-    font-size: 13px;
-    flex: 1;
-    max-width: 220px;
-    padding: 12px 10px;
-    min-height: 46px;
-  }
-
-  .teams {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-  }
-
-  .team-card {
-    padding: 16px;
-    min-width: 0;
-  }
-
-  .team-card b {
-    font-size: 14px;
-  }
-
-  .section {
-    padding: 42px 0;
-  }
-
-  .live-strip {
-    padding: 18px;
-    gap: 16px;
-  }
-
-  .live-title {
-    flex-basis: 100%;
-  }
-
-  .live-team {
-    gap: 8px;
-  }
-
-  .live-note {
-    line-height: 1.6;
-  }
-
-  footer {
-    padding: 24px 16px;
-    flex-wrap: wrap;
-  }
-
-  footer small {
-    flex-basis: 100%;
-    margin-left: 0;
-  }
-}
-
-@media(max-width:360px) {
-  .hero {
-    padding-left: 14px;
-    padding-right: 14px;
-    gap: 24px 12px;
-  }
-
-  .hero-center h1 {
-    font-size: 56px;
-  }
-
-  .hero-center .tag {
-    font-size: 9px;
-  }
-
-  .hero-tagline {
-    letter-spacing: 2px;
+  .hero-actions{
+    margin-top:22px;
+    width:100%;
+    gap:10px;
   }
 
   .primary,
-  .secondary {
-    font-size: 12px;
+  .secondary{
+    flex:1;
+    max-width:220px;
+    min-width:0;
+    min-height:46px;
+    padding:12px 10px;
+    font-size:13px;
+  }
+
+  .teams{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .team-card{
+    padding:16px;
+    min-width:0;
+  }
+
+  .section{
+    padding:42px 0;
+  }
+
+  .live-strip{
+    padding:18px;
+  }
+
+  .live-title{
+    flex-basis:100%;
+  }
+
+  footer{
+    padding:24px 16px;
+    flex-wrap:wrap;
+  }
+
+  footer small{
+    flex-basis:100%;
+    margin-left:0;
   }
 }
 
-@media(prefers-reduced-motion:reduce) {
-  html {
-    scroll-behavior: auto;
+@media(max-width:360px){
+  .hero{
+    padding-left:14px;
+    padding-right:14px;
+    gap:24px 12px;
   }
 
-  * {
-    animation: none !important;
-    transition: none !important;
+  .hero-main-tag{
+    font-size:13px;
+  }
+
+  .hero-center h1{
+    font-size:56px;
+  }
+
+  .primary,
+  .secondary{
+    font-size:12px;
   }
 }
 </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
 
 <header class="nav">
   <a class="logo" href="index.html">
@@ -797,12 +715,11 @@ footer small {
     class="menu-toggle"
     id="menuToggle"
     type="button"
-    aria-expanded="false"
-    aria-controls="mainNav">
+    aria-expanded="false">
     ☰ Menu
   </button>
 
-  <nav id="mainNav" aria-label="Main navigation">
+  <nav id="mainNav">
     <a class="active" href="index.html">Home</a>
     <a href="schedule.html">Schedule</a>
     <a href="match.html">Live</a>
@@ -823,11 +740,7 @@ footer small {
 
 <main>
 
-<!-- HERO -->
-
 <section class="hero">
-
-  <!-- LEFT TROPHY VIDEO -->
 
   <div class="hero-side trophy-side">
     <div class="hero-circle trophy-circle">
@@ -837,24 +750,17 @@ footer small {
         muted
         loop
         playsinline
-        preload="metadata"
-        aria-label="HCCL trophy animation">
+        preload="metadata">
       </video>
 
-      <button
-        class="video-toggle"
-        type="button"
-        aria-label="Play animation"
-        hidden>
+      <button class="video-toggle" type="button" hidden>
         Play
       </button>
     </div>
   </div>
 
-  <!-- CENTER HEADLINE -->
-
   <div class="hero-center">
-    <span class="tag hero-main-tag">
+    <span class="hero-main-tag">
       HEROES CHAMPIONS CRICKET LEAGUE
     </span>
 
@@ -885,8 +791,6 @@ footer small {
     </div>
   </div>
 
-  <!-- RIGHT HCCL VIDEO -->
-
   <div class="hero-side league-side">
     <div class="hero-circle league-circle">
       <video
@@ -895,15 +799,10 @@ footer small {
         muted
         loop
         playsinline
-        preload="metadata"
-        aria-label="HCCL logo animation">
+        preload="metadata">
       </video>
 
-      <button
-        class="video-toggle"
-        type="button"
-        aria-label="Play animation"
-        hidden>
+      <button class="video-toggle" type="button" hidden>
         Play
       </button>
     </div>
@@ -911,16 +810,14 @@ footer small {
 
 </section>
 
-<!-- SCORE STRIP -->
-
-<section class="live-strip" aria-label="Latest match score">
+<section class="live-strip">
   <div class="live-title">
     <b id="scoreStatus">NO SCORE YET</b>
     <small>HCCL Match Centre</small>
   </div>
 
   <div class="live-team">
-    <img src="hccl-logo.png" alt="">
+    <img src="hccl-logo.png" alt="HCCL">
     <span id="scoreTeam">Awaiting match</span>
     <strong id="scoreRuns">—</strong>
     <small id="scoreOvers">—</small>
@@ -934,8 +831,6 @@ footer small {
     No score received in this browser.
   </p>
 </section>
-
-<!-- MATCH CENTRE -->
 
 <section class="section">
   <div class="section-head">
@@ -981,8 +876,6 @@ footer small {
     </a>
   </div>
 </section>
-
-<!-- TEAMS -->
 
 <section id="teams" class="section dark">
   <div class="section-head">
@@ -1041,8 +934,6 @@ footer small {
   </div>
 </section>
 
-<!-- POINTS TABLE -->
-
 <section id="table" class="section">
   <div class="section-head">
     <span class="tag">LEAGUE TABLE</span>
@@ -1050,16 +941,10 @@ footer small {
   </div>
 
   <p class="standings-note">
-    Standings pending. Official results are not connected yet;
-    dashes are not scores.
+    Official points table will appear after match results.
   </p>
 
-  <div
-    class="points"
-    role="region"
-    aria-label="Points table, scroll horizontally on mobile"
-    tabindex="0">
-
+  <div class="points">
     <div class="pt-head">
       <span>#</span>
       <span>TEAM</span>
@@ -1073,88 +958,62 @@ footer small {
     <div>
       <span>—</span>
       <span><b>HCCL Reds</b></span>
-      <span>—</span>
-      <span>—</span>
-      <span>—</span>
-      <span>—</span>
-      <strong>—</strong>
-    </div>
-
-    <div>
-      <span>—</span>
-      <span><b>HCCL Lions</b></span>
-      <span>—</span>
-      < Chengspan>—</span>
-      <span>—</span>
-      <span>—</span>
-      <strong>—</strong>
+      <span>—</span><span>—</span><span>—</span>
+      <span>—</span><strong>—</strong>
     </div>
 
     <div>
       <span>—</span>
       <span><b>HCCL Blues</b></span>
-      <span>—</span>
-      <span>—</span>
-      <span>—</span>
-      <span>—</span>
-      <strong>—</strong>
-    </div>
-
-    <div>
-      <span>—</span>
-      <span><b>HCCL Titans</b></span>
-      <span>—</span>
-      <span>—</span>
-      <span>—</span>
-      <span>—</span>
-      <strong>—</strong>
+      <span>—</span><span>—</span><span>—</span>
+      <span>—</span><strong>—</strong>
     </div>
 
     <div>
       <span>—</span>
       <span><b>HCCL Warriors</b></span>
+      <span>—</span><span>—</span><span>—</span>
+      <span>—</span><strong>—</strong>
+    </div>
+
+    <div>
       <span>—</span>
-      <span>—</span>
-      <span>—</span>
-      <span>—</span>
-      <strong>—</strong>
+      <span><b>HCCL Titans</b></span>
+      <span>—</span><span>—</span><span>—</span>
+      <span>—</span><strong>—</strong>
     </div>
 
     <div>
       <span>—</span>
       <span><b>HCCL Kings</b></span>
-      <span>—</span>
-      <span>—</span>
-      <span>—</span>
-      <span>—</span>
-      <strong>—</strong>
+      <span>—</span><span>—</span><span>—</span>
+      <span>—</span><strong>—</strong>
     </div>
 
     <div>
       <span>—</span>
       <span><b>HCCL Strikers</b></span>
+      <span>—</span><span>—</span><span>—</span>
+      <span>—</span><strong>—</strong>
+    </div>
+
+    <div>
       <span>—</span>
-      <span>—</span>
-      <span>—</span>
-      <span>—</span>
-      <strong>—</strong>
+      <span><b>HCCL Lions</b></span>
+      <span>—</span><span>—</span><span>—</span>
+      <span>—</span><strong>—</strong>
     </div>
 
     <div>
       <span>—</span>
       <span><b>HCCL Eagles</b></span>
-      <span>—</span>
-      <span>—</span>
-      <span>—</span>
-      <span>—</span>
-      <strong>—</strong>
+      <span>—</span><span>—</span><span>—</span>
+      <span>—</span><strong>—</strong>
     </div>
   </div>
 </section>
 
 </main>
-
-<!-- FOOTER -->
 
 <footer>
   <img src="hccl-logo.png" alt="HCCL Logo">
@@ -1163,66 +1022,43 @@ footer small {
 </footer>
 
 <script>
-"use strict";
-
-/* MOBILE MENU */
-
 const menu = document.getElementById("menuToggle");
 const nav = document.getElementById("mainNav");
 
-function closeMenu() {
-  nav.classList.remove("open");
-  menu.setAttribute("aria-expanded", "false");
-}
-
-menu.addEventListener("click", function () {
-  const isOpen = nav.classList.toggle("open");
-  menu.setAttribute("aria-expanded", String(isOpen));
+menu.addEventListener("click", function(){
+  const open = nav.classList.toggle("open");
+  menu.setAttribute("aria-expanded", String(open));
 });
 
-nav.querySelectorAll("a").forEach(function (link) {
-  link.addEventListener("click", closeMenu);
+nav.querySelectorAll("a").forEach(function(link){
+  link.addEventListener("click", function(){
+    nav.classList.remove("open");
+    menu.setAttribute("aria-expanded","false");
+  });
 });
 
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") {
-    closeMenu();
-  }
-});
-
-/* SCORE DATA */
-
-function readScore(key) {
-  try {
+function readScore(key){
+  try{
     const value = JSON.parse(localStorage.getItem(key));
 
-    if (
-      value &&
-      typeof value === "object" &&
-      !Array.isArray(value)
-    ) {
+    if(value && typeof value === "object" && !Array.isArray(value)){
       return value;
     }
+  }catch(error){}
 
-    return null;
-  } catch (error) {
-    return null;
-  }
+  return null;
 }
 
-function text(id, value) {
+function setText(id,value){
   document.getElementById(id).textContent = value;
 }
 
-function safeNumber(value) {
+function safeNumber(value){
   const number = Number(value);
-
-  return Number.isFinite(number) && number >= 0
-    ? number
-    : 0;
+  return Number.isFinite(number) && number >= 0 ? number : 0;
 }
 
-function updateScore() {
+function updateScore(){
   const current = readScore("HCCL_LIVE_SCORE");
 
   const score =
@@ -1230,44 +1066,33 @@ function updateScore() {
     readScore("hccl_state") ||
     readScore("hccl_v4_state");
 
-  if (!score) {
-    text("scoreStatus", "NO SCORE YET");
-    text("scoreTeam", "Awaiting match");
-    text("scoreRuns", "—");
-    text("scoreOvers", "—");
-    text("scoreTarget", "Target not available");
-    text("scoreNote", "No score received in this browser.");
+  if(!score){
+    setText("scoreStatus","NO SCORE YET");
+    setText("scoreTeam","Awaiting match");
+    setText("scoreRuns","—");
+    setText("scoreOvers","—");
+    setText("scoreTarget","Target not available");
+    setText("scoreNote","No score received in this browser.");
     return;
   }
 
   const team = current
     ? score.team
-    : (
-        score.teamA ||
-        score.battingTeamName ||
-        score.teamAName
-      );
+    : score.teamA || score.battingTeamName || score.teamAName;
 
-  text(
+  setText(
     "scoreTeam",
     typeof team === "string" && team.trim()
       ? team
       : "Batting team"
   );
 
-  const runs = safeNumber(
-    score.runs ?? score.totalRuns
-  );
+  const runs = safeNumber(score.runs ?? score.totalRuns);
+  const wickets = safeNumber(score.wickets ?? score.wkts);
 
-  const wickets = safeNumber(
-    score.wickets ?? score.wkts
-  );
+  setText("scoreRuns",runs + "/" + wickets);
 
-  text("scoreRuns", runs + "/" + wickets);
-
-  const balls = safeNumber(
-    score.legalBalls ?? score.balls
-  );
+  const balls = safeNumber(score.legalBalls ?? score.balls);
 
   const overs = String(
     score.overs ??
@@ -1275,7 +1100,7 @@ function updateScore() {
     (Math.floor(balls / 6) + "." + (balls % 6))
   );
 
-  text(
+  setText(
     "scoreOvers",
     /^\d+(\.[0-5])?$/.test(overs)
       ? overs + " OV"
@@ -1284,78 +1109,54 @@ function updateScore() {
 
   const target = safeNumber(score.target);
 
-  text(
+  setText(
     "scoreTarget",
-    target > 0
-      ? "Target " + target
-      : "Target not available"
+    target > 0 ? "Target " + target : "Target not available"
   );
 
-  text("scoreStatus", "LAST RECEIVED SCORE");
+  setText("scoreStatus","LAST RECEIVED SCORE");
 
-  text(
+  setText(
     "scoreNote",
-    "Saved score from this browser. Public live sync requires a server connection."
+    "Saved score from this browser."
   );
 }
 
 updateScore();
+window.addEventListener("storage",updateScore);
+setInterval(updateScore,1000);
 
-window.addEventListener("storage", updateScore);
-
-setInterval(updateScore, 1000);
-
-/* VIDEO PLAYBACK */
-
-document.querySelectorAll(".hero-circle").forEach(function (circle) {
+document.querySelectorAll(".hero-circle").forEach(function(circle){
   const video = circle.querySelector("video");
   const button = circle.querySelector("button");
 
-  const reducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
-
   video.muted = true;
 
-  function showPlay() {
+  function showPlay(){
     button.hidden = false;
     button.textContent = "Play";
-    button.setAttribute("aria-label", "Play animation");
   }
 
-  function showPause() {
+  function showPause(){
     button.hidden = false;
     button.textContent = "Pause";
-    button.setAttribute("aria-label", "Pause animation");
   }
 
-  button.addEventListener("click", function () {
-    if (video.paused) {
+  button.addEventListener("click",function(){
+    if(video.paused){
       video.play().catch(showPlay);
-    } else {
+    }else{
       video.pause();
     }
   });
 
-  video.addEventListener("playing", showPause);
-  video.addEventListener("pause", showPlay);
+  video.addEventListener("playing",showPause);
+  video.addEventListener("pause",showPlay);
 
-  video.addEventListener("error", function () {
-    button.hidden = false;
-    button.disabled = true;
-    button.textContent = "Video unavailable";
-  });
+  const playPromise = video.play();
 
-  if (reducedMotion) {
-    video.autoplay = false;
-    video.pause();
-    showPlay();
-  } else {
-    const playPromise = video.play();
-
-    if (playPromise) {
-      playPromise.catch(showPlay);
-    }
+  if(playPromise){
+    playPromise.catch(showPlay);
   }
 });
 </script>
