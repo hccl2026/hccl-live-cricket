@@ -23,10 +23,37 @@ html{
 
 body{
   min-height:100vh;
+
   font-family:Arial,Helvetica,sans-serif;
-  background:#020306;
+
+  background:
+    radial-gradient(
+      circle at 8% 35%,
+      rgba(10,55,105,.30),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 92% 55%,
+      rgba(150,5,12,.22),
+      transparent 40%
+    ),
+    linear-gradient(
+      90deg,
+      #071a34 0%,
+      #06162c 18%,
+      #030b16 34%,
+      #020306 50%,
+      #080305 66%,
+      #190507 82%,
+      #300609 100%
+    );
+
+  background-attachment:fixed;
+
   color:#fff;
+
   line-height:1.5;
+
   overflow-x:hidden;
 }
 
@@ -39,6 +66,13 @@ img,
 video{
   display:block;
   max-width:100%;
+}
+
+button,
+input,
+select,
+textarea{
+  font-family:inherit;
 }
 
 
@@ -56,36 +90,49 @@ video{
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   gap:18px;
 
-  padding:8px max(20px,calc((100% - var(--max))/2));
+  padding:
+    8px
+    max(20px,calc((100% - var(--max))/2));
 
   background:
     linear-gradient(
       90deg,
-      #071a34 0%,
-      #06152b 20%,
-      #020306 55%,
-      #150507 82%,
-      #2b0608 100%
+      rgba(7,26,52,.96) 0%,
+      rgba(6,21,43,.96) 20%,
+      rgba(2,3,6,.96) 55%,
+      rgba(21,5,7,.96) 82%,
+      rgba(43,6,8,.96) 100%
     );
 
-  border-bottom:1px solid rgba(239,27,27,.20);
-  box-shadow:0 8px 30px rgba(0,0,0,.30);
+  border-bottom:
+    1px solid rgba(239,27,27,.20);
+
+  box-shadow:
+    0 8px 30px rgba(0,0,0,.30);
+
+  backdrop-filter:blur(12px);
 }
 
 .logo{
   display:flex;
   align-items:center;
+
   gap:0;
+
   white-space:nowrap;
+
   font-weight:900;
 }
 
 .logo img{
   width:68px !important;
   height:68px !important;
+
   object-fit:contain;
+
   margin-right:-6px;
 }
 
@@ -98,28 +145,36 @@ video{
   display:flex;
   align-items:center;
   justify-content:center;
+
   gap:3px;
+
   flex:1;
 }
 
 .nav nav a{
   padding:9px 10px;
+
   border-radius:999px;
+
   color:#e7e7e7;
+
   font-size:12px;
   font-weight:800;
+
   white-space:nowrap;
 }
 
 .nav nav a:hover,
 .nav nav a.active{
   background:rgba(239,27,27,.13);
+
   color:#fff;
 }
 
 .live-nav{
   display:inline-flex;
   align-items:center;
+
   gap:8px;
 
   padding:12px 18px;
@@ -143,7 +198,9 @@ video{
 .live-nav i{
   width:8px;
   height:8px;
+
   border-radius:50%;
+
   background:#ff4949;
 }
 
@@ -156,12 +213,14 @@ video{
   min-height:650px;
 
   display:grid;
+
   grid-template-columns:
     minmax(280px,.90fr)
     minmax(390px,1.10fr)
     minmax(280px,.90fr);
 
   align-items:center;
+
   gap:28px;
 
   padding:
@@ -170,32 +229,29 @@ video{
 
   background:
     radial-gradient(
-      circle at 22% 50%,
-      rgba(20,67,116,.25),
-      transparent 34%
+      circle at 20% 50%,
+      rgba(20,67,116,.27),
+      transparent 36%
     ),
     radial-gradient(
-      circle at 80% 50%,
+      circle at 82% 50%,
       rgba(239,27,27,.20),
-      transparent 36%
+      transparent 38%
     ),
     linear-gradient(
       90deg,
-      #071a34 0%,
-      #06162d 18%,
-      #031020 30%,
-      #020306 44%,
-      #020306 59%,
-      #090406 70%,
-      #190507 82%,
-      #350608 100%
+      rgba(7,26,52,.94) 0%,
+      rgba(6,22,45,.92) 18%,
+      rgba(3,16,32,.90) 30%,
+      rgba(2,3,6,.92) 44%,
+      rgba(2,3,6,.94) 59%,
+      rgba(9,4,6,.92) 70%,
+      rgba(25,5,7,.90) 82%,
+      rgba(53,6,8,.90) 100%
     );
 
   overflow:hidden;
 }
-
-
-/* CENTER HERO */
 
 .hero-center{
   text-align:center;
@@ -206,14 +262,17 @@ video{
   justify-content:center;
 
   position:relative;
+
   z-index:5;
 }
 
 .hero-main-tag,
 .hero-center .tag{
   color:#ff3b3b;
+
   font-size:12px;
   font-weight:900;
+
   letter-spacing:1.8px;
 }
 
@@ -225,12 +284,15 @@ video{
 
   font-size:12px;
   font-weight:800;
+
   letter-spacing:4px;
 }
 
 .hero-tagline i{
   color:#ef1b1b;
+
   font-style:normal;
+
   margin:0 7px;
 }
 
@@ -238,19 +300,25 @@ video{
   margin:5px 0 18px;
 
   font-size:clamp(54px,5.8vw,88px);
+
   line-height:.88;
+
   letter-spacing:-3px;
+
   font-weight:1000;
 }
 
 .hero-center h1 em{
   color:#ef1b1b;
+
   font-style:normal;
 }
 
 .hero-center p{
   max-width:540px;
+
   color:#d4d7dc;
+
   font-size:15px;
 }
 
@@ -259,6 +327,7 @@ video{
 
   display:flex;
   justify-content:center;
+
   gap:14px;
 }
 
@@ -304,7 +373,7 @@ video{
 
 
 /* =====================================================
-   PERFECT ROUND HERO VIDEOS
+   HERO CIRCLES
 ===================================================== */
 
 .hero-side{
@@ -322,7 +391,8 @@ video{
   position:relative;
 
   width:340px;
-  aspect-ratio:1 / 1;
+
+  aspect-ratio:1/1;
 
   border-radius:50%;
 
@@ -337,25 +407,29 @@ video{
 
 .hero-circle video{
   position:absolute;
+
   inset:0;
 
   width:100% !important;
   height:100% !important;
+
+  min-width:100% !important;
+  min-height:100% !important;
+
+  max-width:none !important;
 
   border-radius:50% !important;
 
   object-fit:cover !important;
   object-position:center center !important;
 
-  overflow:hidden !important;
+  clip-path:
+    circle(50% at 50% 50%);
 
-  transform:scale(1.01);
+  transform:scale(1.015);
 
   z-index:3;
 }
-
-
-/* LEFT TROPHY */
 
 .trophy-circle{
   border:3px solid #1d4d7c;
@@ -365,39 +439,6 @@ video{
     0 0 55px rgba(10,45,82,.25),
     0 0 85px rgba(7,26,52,.35);
 }
-
-.trophy-circle::before{
-  content:"";
-
-  position:absolute;
-
-  inset:-22px;
-
-  border-radius:50%;
-
-  border:
-    1px solid rgba(44,102,162,.35);
-
-  pointer-events:none;
-}
-
-.trophy-circle::after{
-  content:"";
-
-  position:absolute;
-
-  inset:-42px;
-
-  border-radius:50%;
-
-  border:
-    1px solid rgba(44,102,162,.16);
-
-  pointer-events:none;
-}
-
-
-/* RIGHT HCCL */
 
 .league-circle{
   border:
@@ -409,46 +450,23 @@ video{
     0 0 85px rgba(239,27,27,.15);
 }
 
-.league-circle::before{
-  content:"";
-
-  position:absolute;
-
-  inset:-22px;
-
-  border-radius:50%;
-
-  border:
-    1px solid rgba(239,27,27,.30);
-
-  pointer-events:none;
-}
-
-.league-circle::after{
-  content:"";
-
-  position:absolute;
-
-  inset:-42px;
-
-  border-radius:50%;
-
-  border:
-    1px solid rgba(239,27,27,.13);
-
-  pointer-events:none;
-}
-
 
 /* =====================================================
    LIVE STRIP
 ===================================================== */
 
 .live-strip{
-  width:min(var(--max),calc(100% - 32px));
-  margin:0 auto 35px;
+  width:
+    min(
+      var(--max),
+      calc(100% - 32px)
+    );
+
+  margin:
+    0 auto 35px;
 
   display:grid;
+
   grid-template-columns:
     1.1fr
     1fr
@@ -457,6 +475,7 @@ video{
     auto;
 
   align-items:center;
+
   gap:16px;
 
   padding:18px 20px;
@@ -466,27 +485,34 @@ video{
   background:
     linear-gradient(
       90deg,
-      #071a34 0%,
-      #061426 25%,
-      #05070b 52%,
-      #100506 75%,
-      #2b0608 100%
+      rgba(7,26,52,.94) 0%,
+      rgba(6,20,38,.94) 25%,
+      rgba(5,7,11,.94) 52%,
+      rgba(16,5,6,.94) 75%,
+      rgba(43,6,8,.94) 100%
     );
 
   border:1px solid #243650;
+
+  box-shadow:
+    0 14px 35px rgba(0,0,0,.20);
 }
 
 .live-title{
   display:flex;
   align-items:center;
+
   gap:8px;
+
   flex-wrap:wrap;
 }
 
 .dot{
   width:8px;
   height:8px;
+
   border-radius:50%;
+
   background:#ff3333;
 }
 
@@ -496,18 +522,24 @@ video{
 
 .live-title small{
   width:100%;
+
   color:#9da5ae;
 }
 
 .live-team{
   display:grid;
-  grid-template-columns:42px 1fr;
+
+  grid-template-columns:
+    42px 1fr;
+
   align-items:center;
+
   gap:2px 10px;
 }
 
 .live-team img{
   width:42px;
+
   grid-row:1/3;
 }
 
@@ -522,7 +554,9 @@ video{
 
 .live-team.right{
   text-align:right;
-  grid-template-columns:1fr 42px;
+
+  grid-template-columns:
+    1fr 42px;
 }
 
 .live-team.right img{
@@ -532,6 +566,7 @@ video{
 
 .vs{
   color:#7b8189;
+
   font-weight:900;
 }
 
@@ -552,35 +587,57 @@ video{
 ===================================================== */
 
 .section{
-  width:min(var(--max),calc(100% - 32px));
+  width:
+    min(
+      var(--max),
+      calc(100% - 32px)
+    );
+
   margin:0 auto;
+
   padding:70px 0;
+
+  background:transparent;
 }
 
 .section.dark{
   width:100%;
+
   max-width:none;
 
   padding-left:
-    max(16px,calc((100% - var(--max))/2));
+    max(
+      16px,
+      calc((100% - var(--max))/2)
+    );
 
   padding-right:
-    max(16px,calc((100% - var(--max))/2));
+    max(
+      16px,
+      calc((100% - var(--max))/2)
+    );
 
   background:
     linear-gradient(
       90deg,
-      #071a34 0%,
-      #020306 52%,
-      #160507 80%,
-      #2a0608 100%
+      rgba(7,26,52,.55) 0%,
+      rgba(2,3,6,.55) 52%,
+      rgba(22,5,7,.55) 80%,
+      rgba(42,6,8,.55) 100%
     );
+
+  border-top:
+    1px solid rgba(255,255,255,.04);
+
+  border-bottom:
+    1px solid rgba(239,27,27,.08);
 }
 
 .section-head{
   display:flex;
   align-items:flex-end;
   justify-content:space-between;
+
   gap:24px;
 
   margin-bottom:28px;
@@ -591,6 +648,7 @@ video{
 
   font-size:12px;
   font-weight:900;
+
   letter-spacing:1.7px;
 }
 
@@ -608,8 +666,12 @@ video{
 
 .teams{
   display:grid;
+
   grid-template-columns:
-    repeat(4,minmax(0,1fr));
+    repeat(
+      4,
+      minmax(0,1fr)
+    );
 
   gap:14px;
 }
@@ -634,17 +696,21 @@ video{
     ),
     linear-gradient(
       145deg,
-      #071a34 0%,
-      #07111f 44%,
-      #05070b 76%,
-      #110506 100%
+      rgba(7,26,52,.95) 0%,
+      rgba(7,17,31,.95) 44%,
+      rgba(5,7,11,.95) 76%,
+      rgba(17,5,6,.95) 100%
     );
 
   border:1px solid #1b3552;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.15);
 }
 
 .team-card img{
   width:72px;
+
   margin-bottom:auto;
 }
 
@@ -674,9 +740,9 @@ video{
   background:
     linear-gradient(
       90deg,
-      #071426,
-      #05070b 52%,
-      #110506
+      rgba(7,20,38,.95),
+      rgba(5,7,11,.95) 52%,
+      rgba(17,5,6,.95)
     );
 
   border:1px solid #1b3552;
@@ -728,22 +794,27 @@ video{
 
 footer{
   width:100%;
+
   min-height:130px;
 
   display:flex;
   align-items:center;
+
   gap:14px;
 
   padding:
     25px
-    max(24px,calc((100% - var(--max))/2));
+    max(
+      24px,
+      calc((100% - var(--max))/2)
+    );
 
   background:
     linear-gradient(
       90deg,
-      #071a34,
-      #020306 54%,
-      #210507
+      rgba(7,26,52,.96),
+      rgba(2,3,6,.96) 54%,
+      rgba(33,5,7,.96)
     );
 
   border-top:
@@ -758,6 +829,7 @@ footer img{
 
 footer span{
   color:#fff;
+
   font-weight:800;
 }
 
@@ -767,18 +839,28 @@ footer small{
 
 
 /* =====================================================
-   TABLE / FORM GLOBAL SAFETY
+   GLOBAL CARDS / FORMS
 ===================================================== */
 
-table{
-  max-width:100%;
-}
-
-input,
-select,
-textarea,
-button{
-  font-family:inherit;
+.registration-card,
+.status-card,
+.profile-hero,
+.player-hero,
+.team-hero,
+.mvp-summary-card,
+.summary-card,
+.summary-box,
+.info-card,
+.stat-card,
+.verification-card,
+.detail-card,
+.squad-player,
+.classification-card,
+.grade-box,
+.payment-box,
+.profile-box,
+.aadhaar-box{
+  backdrop-filter:blur(4px);
 }
 
 
@@ -790,11 +872,14 @@ button{
 
   .nav{
     flex-wrap:wrap;
-    padding:8px 16px;
+
+    padding:
+      8px 16px;
   }
 
   .nav nav{
     order:3;
+
     width:100%;
 
     justify-content:flex-start;
@@ -815,6 +900,7 @@ button{
 
   .hero-center{
     grid-column:1/3;
+
     order:1;
   }
 
@@ -830,22 +916,49 @@ button{
     width:320px;
   }
 
+  .teams{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
 }
 
 
 /* =====================================================
    MOBILE
-   KEEP SAME ROUND LOOK
 ===================================================== */
 
 @media(max-width:760px){
 
-  .nav{
-    position:sticky;
+  body{
+    background:
+      radial-gradient(
+        circle at 50% 15%,
+        rgba(10,55,105,.28),
+        transparent 36%
+      ),
+      radial-gradient(
+        circle at 50% 85%,
+        rgba(150,5,12,.20),
+        transparent 38%
+      ),
+      linear-gradient(
+        180deg,
+        #071a34 0%,
+        #06162c 20%,
+        #020306 48%,
+        #120506 72%,
+        #300609 100%
+      );
 
+    background-attachment:scroll;
+  }
+
+  .nav{
     min-height:auto;
 
-    padding:7px 12px;
+    padding:
+      7px 12px;
 
     gap:8px;
   }
@@ -853,6 +966,7 @@ button{
   .logo img{
     width:52px !important;
     height:52px !important;
+
     margin-right:-4px;
   }
 
@@ -861,7 +975,9 @@ button{
   }
 
   .live-nav{
-    padding:10px 12px;
+    padding:
+      10px 12px;
+
     font-size:10px;
   }
 
@@ -871,16 +987,19 @@ button{
 
   .nav nav a{
     font-size:10px;
-    padding:8px 10px;
+
+    padding:
+      8px 10px;
   }
 
 
-  /* HERO */
+  /* HERO MOBILE */
 
   .hero{
     min-height:auto;
 
-    grid-template-columns:1fr;
+    grid-template-columns:
+      1fr;
 
     gap:38px;
 
@@ -891,22 +1010,22 @@ button{
 
     background:
       radial-gradient(
-        circle at 50% 20%,
+        circle at 50% 15%,
         rgba(12,65,115,.22),
         transparent 34%
       ),
       radial-gradient(
-        circle at 50% 80%,
+        circle at 50% 85%,
         rgba(239,27,27,.18),
         transparent 34%
       ),
       linear-gradient(
         180deg,
-        #071a34 0%,
-        #06142b 20%,
-        #020306 48%,
-        #120506 75%,
-        #330608 100%
+        rgba(7,26,52,.90) 0%,
+        rgba(6,20,43,.90) 20%,
+        rgba(2,3,6,.92) 48%,
+        rgba(18,5,6,.90) 75%,
+        rgba(51,6,8,.90) 100%
       );
 
     overflow:hidden;
@@ -914,6 +1033,7 @@ button{
 
   .hero-center{
     grid-column:auto;
+
     order:1;
   }
 
@@ -927,24 +1047,22 @@ button{
 
   .hero-side{
     min-height:auto;
-    width:100%;
 
-    overflow:visible;
+    width:100%;
   }
 
-
-  /* THIS IS THE MAIN MOBILE CIRCLE FIX */
-
   .hero-circle{
-    width:min(78vw,320px);
+    width:
+      min(
+        78vw,
+        320px
+      );
 
-    aspect-ratio:1 / 1;
+    aspect-ratio:1/1;
 
     border-radius:50% !important;
 
     overflow:hidden !important;
-
-    flex:0 0 auto;
   }
 
   .hero-circle video{
@@ -963,30 +1081,26 @@ button{
     border-radius:50% !important;
 
     object-fit:cover !important;
-    object-position:center center !important;
 
-    clip-path:circle(50% at 50% 50%);
+    clip-path:
+      circle(
+        49.9%
+        at
+        50%
+        50%
+      );
 
-    transform:scale(1.015);
-
-    background:#020306;
+    transform:
+      scale(1.015);
   }
-
-
-  .trophy-circle::before,
-  .league-circle::before{
-    inset:-18px;
-  }
-
-  .trophy-circle::after,
-  .league-circle::after{
-    inset:-34px;
-  }
-
 
   .hero-center h1{
     font-size:
-      clamp(48px,15vw,68px);
+      clamp(
+        48px,
+        15vw,
+        68px
+      );
 
     letter-spacing:-2px;
   }
@@ -998,11 +1112,13 @@ button{
 
   .hero-tagline{
     font-size:10px;
+
     letter-spacing:3px;
   }
 
   .hero-center p{
     max-width:94%;
+
     font-size:13px;
   }
 
@@ -1011,12 +1127,13 @@ button{
   }
 
 
-  /* LIVE */
+  /* LIVE MOBILE */
 
   .live-strip{
     grid-template-columns:1fr;
 
-    width:calc(100% - 24px);
+    width:
+      calc(100% - 24px);
 
     padding:16px;
 
@@ -1032,7 +1149,32 @@ button{
 
   .live-team.right img{
     grid-column:1;
+
     grid-row:1/3;
+  }
+
+
+  /* SECTIONS */
+
+  .section{
+    width:
+      calc(100% - 24px);
+
+    padding:
+      55px 0;
+  }
+
+  .section.dark{
+    padding-left:12px;
+    padding-right:12px;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7,26,52,.45),
+        rgba(2,3,6,.45) 50%,
+        rgba(42,6,8,.45)
+      );
   }
 
 
@@ -1049,11 +1191,13 @@ button{
   footer{
     flex-wrap:wrap;
 
-    padding:22px 16px;
+    padding:
+      22px 16px;
   }
 
   footer small{
     width:100%;
+
     margin-left:0;
   }
 
@@ -1067,12 +1211,11 @@ button{
 @media(max-width:520px){
 
   .hero-circle{
-    width:min(82vw,290px);
-  }
-
-  .hero-circle video{
-    clip-path:
-      circle(49.9% at 50% 50%);
+    width:
+      min(
+        82vw,
+        290px
+      );
   }
 
   .teams{
@@ -1102,7 +1245,11 @@ button{
 @media(max-width:390px){
 
   .hero-circle{
-    width:min(84vw,270px);
+    width:
+      min(
+        84vw,
+        270px
+      );
   }
 
   .hero-center h1{
