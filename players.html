@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 
 <meta charset="utf-8">
@@ -10,10 +11,6 @@
 <link rel="stylesheet" href="site.css">
 
 <style>
-
-/* ================================
-   MVP PLAYERS PAGE
-================================ */
 
 .players-page{
   width:min(1250px,calc(100% - 32px));
@@ -56,16 +53,17 @@
 
 .mvp-summary-card{
   padding:18px;
+
   border:1px solid #203a58;
   border-radius:14px;
 
   background:
-  linear-gradient(
-    145deg,
-    #071a34,
-    #05070b 65%,
-    #160507
-  );
+    linear-gradient(
+      145deg,
+      rgba(7,26,52,.96),
+      rgba(5,7,11,.96) 65%,
+      rgba(22,5,7,.96)
+    );
 }
 
 .mvp-summary-card small{
@@ -82,7 +80,7 @@
 }
 
 
-/* CATEGORY TABS */
+/* TABS */
 
 .mvp-tabs{
   display:flex;
@@ -94,6 +92,7 @@
 
 .mvp-tab{
   flex:0 0 auto;
+
   padding:11px 16px;
 
   border:1px solid #29415e;
@@ -127,6 +126,7 @@
 
 .player-search{
   width:min(390px,100%);
+
   padding:12px 14px;
 
   border:1px solid #29415e;
@@ -134,6 +134,7 @@
 
   background:#06101d;
   color:#fff;
+
   outline:none;
 }
 
@@ -153,33 +154,45 @@
 }
 
 
-/* GRADE GUIDE */
+/* STAR GUIDE */
 
-.grade-guide{
+.star-guide{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
   margin-bottom:20px;
 }
 
-.grade-guide span{
-  padding:7px 11px;
+.star-guide span{
+  padding:8px 12px;
+
   border:1px solid #203a58;
   border-radius:8px;
+
   background:#071323;
+
   font-size:11px;
+  font-weight:900;
 }
 
-.grade-guide .grade-a-text{
-  color:#ffd34d;
+.star-five{
+  color:#ffe04a;
 }
 
-.grade-guide .grade-b-text{
-  color:#79baff;
+.star-four{
+  color:#58dc78;
 }
 
-.grade-guide .grade-c-text{
-  color:#c8cdd3;
+.star-three{
+  color:#d9e23f;
+}
+
+.star-twohalf{
+  color:#ff9e2b;
+}
+
+.star-low{
+  color:#ff4d4d;
 }
 
 
@@ -211,17 +224,17 @@
   border-radius:16px;
 
   background:
-  linear-gradient(
-    145deg,
-    #07182c,
-    #04070c 65%,
-    #140506
-  );
+    linear-gradient(
+      145deg,
+      rgba(7,24,44,.96),
+      rgba(4,7,12,.96) 65%,
+      rgba(20,5,6,.96)
+    );
 }
 
 .mvp-table{
   width:100%;
-  min-width:1180px;
+  min-width:1200px;
   border-collapse:collapse;
 }
 
@@ -235,7 +248,6 @@
 
   font-size:9px;
   font-weight:900;
-  letter-spacing:.5px;
 }
 
 .mvp-table td{
@@ -244,6 +256,7 @@
   border-top:1px solid #172a40;
 
   color:#e9edf1;
+
   font-size:12px;
 }
 
@@ -258,6 +271,7 @@
   display:flex;
   align-items:center;
   gap:10px;
+
   min-width:200px;
 }
 
@@ -266,9 +280,11 @@
   height:44px;
 
   object-fit:cover;
+
   border-radius:50%;
 
   border:2px solid #31577e;
+
   background:#071323;
 }
 
@@ -291,41 +307,65 @@
 }
 
 
-/* GRADE */
+/* STAR RATING */
 
-.grade-circle{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-
-  width:31px;
-  height:31px;
-
-  border-radius:50%;
+.player-rating{
+  min-width:115px;
+  white-space:nowrap;
 
   font-weight:1000;
+  letter-spacing:1px;
 }
 
-.grade-A{
-  color:#ffd34d;
-  border:1px solid #ffd34d;
-  background:rgba(255,211,77,.1);
+.player-rating .stars{
+  font-size:17px;
 }
 
-.grade-B{
-  color:#79baff;
-  border:1px solid #79baff;
-  background:rgba(121,186,255,.1);
+.player-rating .rating-number{
+  margin-left:5px;
+  color:#fff;
+  font-size:11px;
 }
 
-.grade-C{
-  color:#c8cdd3;
-  border:1px solid #929ba5;
-  background:rgba(195,200,206,.08);
+
+/* COLOR LEVELS */
+
+.rating-5,
+.rating-45{
+  color:#ffe14c;
+
+  text-shadow:
+    0 0 8px rgba(255,225,76,.25);
 }
+
+.rating-4,
+.rating-35{
+  color:#55db75;
+
+  text-shadow:
+    0 0 8px rgba(85,219,117,.20);
+}
+
+.rating-3{
+  color:#d7df3d;
+}
+
+.rating-25{
+  color:#ff9f2f;
+}
+
+.rating-2,
+.rating-15,
+.rating-1{
+  color:#ff4b4b;
+}
+
+
+/* BASE */
 
 .base-points{
   font-weight:900;
+  color:#fff;
 }
 
 .mvp-score{
@@ -334,7 +374,7 @@
 }
 
 
-/* PROFILE BUTTON */
+/* PROFILE */
 
 .view-profile{
   display:inline-flex;
@@ -347,8 +387,6 @@
 
   background:#ef1b1b;
   color:#fff;
-
-  text-decoration:none;
 
   font-size:9px;
   font-weight:1000;
@@ -382,14 +420,6 @@
 
 }
 
-@media(max-width:450px){
-
-  .mvp-summary{
-    grid-template-columns:1fr 1fr;
-  }
-
-}
-
 </style>
 
 </head>
@@ -398,71 +428,69 @@
 <body>
 
 
-<!-- ========================================
-     NAVIGATION
-======================================== -->
-
 <header class="nav">
 
 <a class="logo" href="index.html">
 
   <img src="hccl-logo.png" alt="HCCL">
 
-  <span>HCCL</span>
+  <span>
+    HCCL
+  </span>
 
 </a>
 
 
 <nav>
 
-  <a href="index.html">
-    Home
-  </a>
+<a href="index.html">
+Home
+</a>
 
-  <a href="schedule.html">
-    Schedule
-  </a>
+<a href="schedule.html">
+Schedule
+</a>
 
-  <a href="match.html">
-    Live
-  </a>
+<a href="match.html">
+Live
+</a>
 
-  <a href="match.html#scorecard">
-    Scorecard
-  </a>
+<a href="match.html#scorecard">
+Scorecard
+</a>
 
-  <a href="index.html#teams">
-    Teams
-  </a>
+<a href="index.html#teams">
+Teams
+</a>
 
-  <a href="index.html#table">
-    Points
-  </a>
+<a href="index.html#table">
+Points
+</a>
 
-  <a class="active" href="players.html">
-    MVP Players
-  </a>
+<a class="active" href="players.html">
+MVP Players
+</a>
 
-  <a href="player-profile.html?id=1">
-    Player Profile
-  </a>
+<a href="player-profile.html?id=1">
+Player Profile
+</a>
 
-  <a href="registration.html">
-    Player Registration
-  </a>
+<a href="registration.html">
+Player Registration
+</a>
 
-  <a href="scorer.html">
-    Scoring
-  </a>
+<a href="scorer.html">
+Scoring
+</a>
 
 </nav>
 
 
 <a class="live-nav" href="match.html">
 
-  <i></i>
+<i></i>
 
-  LIVE MATCH
+LIVE MATCH
 
 </a>
 
@@ -470,27 +498,23 @@
 
 
 
-<!-- ========================================
-     MVP PAGE
-======================================== -->
-
 <main class="players-page">
 
 
 <div class="players-head">
 
-  <span class="tag">
-    HCCL PLAYER PERFORMANCE CENTRE
-  </span>
+<span class="tag">
+HCCL PLAYER PERFORMANCE CENTRE
+</span>
 
-  <h1>
-    MVP Players
-  </h1>
+<h1>
+MVP Players
+</h1>
 
-  <p>
-    HCCL player rankings by batting, bowling,
-    all-round performance and wicket keeping.
-  </p>
+<p>
+Player performance rankings based on batting,
+bowling, all-round ability, fielding and wicket keeping.
+</p>
 
 </div>
 
@@ -503,52 +527,52 @@
 
 <div class="mvp-summary-card">
 
-  <small>
-    TOTAL PLAYERS
-  </small>
+<small>
+TOTAL PLAYERS
+</small>
 
-  <strong id="totalPlayers">
-    0
-  </strong>
-
-</div>
-
-
-<div class="mvp-summary-card">
-
-  <small>
-    A GRADE · 50 POINTS
-  </small>
-
-  <strong id="gradeACount">
-    0
-  </strong>
+<strong id="totalPlayers">
+0
+</strong>
 
 </div>
 
 
 <div class="mvp-summary-card">
 
-  <small>
-    B GRADE · 25 POINTS
-  </small>
+<small>
+ELITE · 4.5–5 STARS
+</small>
 
-  <strong id="gradeBCount">
-    0
-  </strong>
+<strong id="elitePlayers">
+0
+</strong>
 
 </div>
 
 
 <div class="mvp-summary-card">
 
-  <small>
-    C GRADE · 10 POINTS
-  </small>
+<small>
+STRONG · 3.5–4 STARS
+</small>
 
-  <strong id="gradeCCount">
-    0
-  </strong>
+<strong id="strongPlayers">
+0
+</strong>
+
+</div>
+
+
+<div class="mvp-summary-card">
+
+<small>
+DEVELOPING · BELOW 3.5
+</small>
+
+<strong id="developingPlayers">
+0
+</strong>
 
 </div>
 
@@ -557,7 +581,7 @@
 
 
 
-<!-- CATEGORY TABS -->
+<!-- CATEGORY -->
 
 <div class="mvp-tabs">
 
@@ -620,7 +644,7 @@ Wicket Keepers
 
 
 
-<!-- SEARCH -->
+<!-- TOOLBAR -->
 
 <div class="mvp-toolbar">
 
@@ -645,27 +669,33 @@ DOWNLOAD LIST ↓
 
 
 
-<!-- GRADES -->
+<!-- STAR GUIDE -->
 
-<div class="grade-guide">
+<div class="star-guide">
 
-<span class="grade-a-text">
-A Grade = 50 Base Points
+<span class="star-five">
+★★★★★ 5.0 · Elite
 </span>
 
-<span class="grade-b-text">
-B Grade = 25 Base Points
+<span class="star-four">
+★★★★☆ 4.0 · Strong
 </span>
 
-<span class="grade-c-text">
-C Grade = 10 Base Points
+<span class="star-three">
+★★★☆☆ 3.0 · Good
+</span>
+
+<span class="star-twohalf">
+★★½☆☆ 2.5 · Developing
+</span>
+
+<span class="star-low">
+★★☆☆☆ 2.0 & Below
 </span>
 
 </div>
 
 
-
-<!-- CATEGORY TITLE -->
 
 <div class="ranking-title">
 
@@ -681,11 +711,10 @@ Overall MVP Rankings
 
 
 
-<!-- TABLE -->
-
 <div class="mvp-table-wrap">
 
 <table class="mvp-table">
+
 
 <thead>
 
@@ -695,7 +724,7 @@ Overall MVP Rankings
 
 <th>PLAYER</th>
 
-<th>GRADE</th>
+<th>RATING</th>
 
 <th>BASE</th>
 
@@ -737,10 +766,6 @@ Overall MVP Rankings
 
 
 
-<!-- ========================================
-     FOOTER
-======================================== -->
-
 <footer>
 
 <img src="hccl-logo.png" alt="HCCL">
@@ -759,127 +784,113 @@ Official HCCL Tournament Portal
 
 <script>
 
-/* ==========================================
-   SAMPLE PLAYER DATA
 
-   Later registered player/database data
-   will replace this.
-========================================== */
+/* =============================================
+   SAMPLE PLAYER DATA
+============================================= */
 
 const players = [
 
 {
-  id:1,
-  name:"Sample Player 1",
-  district:"Ghaziabad",
-  role:"Batsman",
-  grade:"A",
-  base:50,
-  score:82,
-  runs:620,
-  ballsFaced:418,
-  batAvg:41.3,
-  strikeRate:148.2,
-  wickets:2,
-  ballsBowled:72,
-  economy:8.4,
-  catches:11,
-  photo:"hccl-logo.png"
+id:1,
+name:"Sample Player 1",
+district:"Ghaziabad",
+role:"Batsman",
+score:94,
+runs:620,
+ballsFaced:418,
+batAvg:41.3,
+strikeRate:148.2,
+wickets:2,
+ballsBowled:72,
+economy:8.4,
+catches:11,
+photo:"hccl-logo.png"
 },
 
 {
-  id:2,
-  name:"Sample Player 2",
-  district:"Noida",
-  role:"All-Rounder",
-  grade:"A",
-  base:50,
-  score:78,
-  runs:410,
-  ballsFaced:301,
-  batAvg:34.1,
-  strikeRate:136.4,
-  wickets:21,
-  ballsBowled:420,
-  economy:6.4,
-  catches:8,
-  photo:"hccl-logo.png"
+id:2,
+name:"Sample Player 2",
+district:"Noida",
+role:"All-Rounder",
+score:84,
+runs:410,
+ballsFaced:301,
+batAvg:34.1,
+strikeRate:136.4,
+wickets:21,
+ballsBowled:420,
+economy:6.4,
+catches:8,
+photo:"hccl-logo.png"
 },
 
 {
-  id:3,
-  name:"Sample Player 3",
-  district:"Meerut",
-  role:"Spin Bowler",
-  grade:"B",
-  base:25,
-  score:64,
-  runs:85,
-  ballsFaced:81,
-  batAvg:12.1,
-  strikeRate:105.5,
-  wickets:28,
-  ballsBowled:516,
-  economy:5.9,
-  catches:7,
-  photo:"hccl-logo.png"
+id:3,
+name:"Sample Player 3",
+district:"Meerut",
+role:"Spin Bowler",
+score:67,
+runs:85,
+ballsFaced:81,
+batAvg:12.1,
+strikeRate:105.5,
+wickets:28,
+ballsBowled:516,
+economy:5.9,
+catches:7,
+photo:"hccl-logo.png"
 },
 
 {
-  id:4,
-  name:"Sample Player 4",
-  district:"Hapur",
-  role:"Fast Bowler",
-  grade:"B",
-  base:25,
-  score:61,
-  runs:102,
-  ballsFaced:91,
-  batAvg:14.5,
-  strikeRate:112.3,
-  wickets:25,
-  ballsBowled:420,
-  economy:6.7,
-  catches:5,
-  photo:"hccl-logo.png"
+id:4,
+name:"Sample Player 4",
+district:"Hapur",
+role:"Fast Bowler",
+score:58,
+runs:102,
+ballsFaced:91,
+batAvg:14.5,
+strikeRate:112.3,
+wickets:25,
+ballsBowled:420,
+economy:6.7,
+catches:5,
+photo:"hccl-logo.png"
 },
 
 {
-  id:5,
-  name:"Sample Player 5",
-  district:"Modinagar",
-  role:"Medium Pacer",
-  grade:"C",
-  base:10,
-  score:41,
-  runs:75,
-  ballsFaced:76,
-  batAvg:10.7,
-  strikeRate:98.6,
-  wickets:13,
-  ballsBowled:270,
-  economy:7.8,
-  catches:4,
-  photo:"hccl-logo.png"
+id:5,
+name:"Sample Player 5",
+district:"Modinagar",
+role:"Medium Pacer",
+score:38,
+runs:75,
+ballsFaced:76,
+batAvg:10.7,
+strikeRate:98.6,
+wickets:13,
+ballsBowled:270,
+economy:7.8,
+catches:4,
+photo:"hccl-logo.png"
 },
 
 {
-  id:6,
-  name:"Sample Player 6",
-  district:"Muzaffarnagar",
-  role:"Wicket Keeper Batsman",
-  grade:"A",
-  base:50,
-  score:75,
-  runs:485,
-  ballsFaced:342,
-  batAvg:37.3,
-  strikeRate:141.8,
-  wickets:0,
-  ballsBowled:0,
-  economy:0,
-  catches:19,
-  photo:"hccl-logo.png"
+id:6,
+name:"Sample Player 6",
+district:"Muzaffarnagar",
+role:"Wicket Keeper Batsman",
+score:74,
+runs:485,
+ballsFaced:342,
+batAvg:37.3,
+strikeRate:141.8,
+wickets:0,
+ballsBowled:0,
+economy:0,
+catches:19,
+photo:"hccl-logo.png"
 }
 
 ];
@@ -888,557 +899,773 @@ const players = [
 let currentCategory = "all";
 
 
-/* ==========================================
+/* =============================================
+   SCORE → STAR RATING
+============================================= */
+
+function getRating(score){
+
+if(score >= 90){
+return 5;
+}
+
+if(score >= 80){
+return 4.5;
+}
+
+if(score >= 70){
+return 4;
+}
+
+if(score >= 60){
+return 3.5;
+}
+
+if(score >= 50){
+return 3;
+}
+
+if(score >= 40){
+return 2.5;
+}
+
+if(score >= 30){
+return 2;
+}
+
+if(score >= 20){
+return 1.5;
+}
+
+return 1;
+
+}
+
+
+/* =============================================
+   STAR TEXT
+============================================= */
+
+function getStarText(rating){
+
+const stars = {
+
+5:
+"★★★★★",
+
+4.5:
+"★★★★½",
+
+4:
+"★★★★☆",
+
+3.5:
+"★★★½☆",
+
+3:
+"★★★☆☆",
+
+2.5:
+"★★½☆☆",
+
+2:
+"★★☆☆☆",
+
+1.5:
+"★½☆☆☆",
+
+1:
+"★☆☆☆☆"
+
+};
+
+return stars[rating];
+
+}
+
+
+/* =============================================
+   STAR COLOR CLASS
+============================================= */
+
+function getRatingClass(rating){
+
+if(rating === 5){
+return "rating-5";
+}
+
+if(rating === 4.5){
+return "rating-45";
+}
+
+if(rating === 4){
+return "rating-4";
+}
+
+if(rating === 3.5){
+return "rating-35";
+}
+
+if(rating === 3){
+return "rating-3";
+}
+
+if(rating === 2.5){
+return "rating-25";
+}
+
+if(rating === 2){
+return "rating-2";
+}
+
+if(rating === 1.5){
+return "rating-15";
+}
+
+return "rating-1";
+
+}
+
+
+/* =============================================
+   INTERNAL BASE POINTS
+============================================= */
+
+function getBasePoints(rating){
+
+if(rating >= 4.5){
+
+return 50;
+
+}
+
+if(rating >= 3.5){
+
+return 25;
+
+}
+
+return 10;
+
+}
+
+
+/* =============================================
    CATEGORY FILTER
-========================================== */
+============================================= */
 
 function categoryMatch(player,category){
 
-  if(category === "all"){
-    return true;
-  }
+if(category === "all"){
+return true;
+}
 
-  if(category === "pace"){
+if(category === "pace"){
 
-    return (
-      player.role === "Fast Bowler" ||
-      player.role === "Medium Pacer"
-    );
+return(
+player.role === "Fast Bowler" ||
+player.role === "Medium Pacer"
+);
 
-  }
+}
 
-  if(category === "keeper"){
+if(category === "keeper"){
 
-    return (
-      player.role === "Wicket Keeper" ||
-      player.role === "Wicket Keeper Batsman"
-    );
+return(
+player.role === "Wicket Keeper" ||
+player.role === "Wicket Keeper Batsman"
+);
 
-  }
+}
 
-  return player.role === category;
+return player.role === category;
 
 }
 
 
-/* ==========================================
-   FILTERED PLAYER LIST
-========================================== */
+/* =============================================
+   FILTER PLAYERS
+============================================= */
 
 function getPlayers(){
 
-  const search =
-  document
-  .getElementById("playerSearch")
-  .value
-  .trim()
-  .toLowerCase();
+const search =
+document
+.getElementById("playerSearch")
+.value
+.toLowerCase()
+.trim();
 
 
-  return players
+return players
 
-  .filter(player =>
-    categoryMatch(
-      player,
-      currentCategory
-    )
-  )
+.filter(
+player =>
+categoryMatch(
+player,
+currentCategory
+)
+)
 
-  .filter(player => {
+.filter(
+player => {
 
-    const searchable =
-    (
-      player.name +
-      " " +
-      player.district +
-      " " +
-      player.role
-    ).toLowerCase();
+const text =
+(
+player.name +
+" " +
+player.district +
+" " +
+player.role
+).toLowerCase();
 
-    return searchable.includes(search);
+return text.includes(search);
 
-  })
+}
+)
 
-  .sort(
-    (a,b) =>
-    b.score - a.score
-  );
+.sort(
+(a,b) =>
+b.score - a.score
+);
 
 }
 
 
-/* ==========================================
-   RENDER PLAYERS
-========================================== */
+/* =============================================
+   RENDER
+============================================= */
 
 function renderPlayers(){
 
-  const list =
-  getPlayers();
+const list =
+getPlayers();
 
 
-  const tbody =
-  document.getElementById(
-    "playerTableBody"
-  );
+const body =
+document.getElementById(
+"playerTableBody"
+);
 
 
-  tbody.innerHTML = "";
+body.innerHTML = "";
 
 
-  if(list.length === 0){
+if(list.length === 0){
 
-    tbody.innerHTML = `
+body.innerHTML = `
 
-      <tr>
+<tr>
 
-        <td
-        colspan="14"
-        class="empty-row">
+<td
+colspan="14"
+class="empty-row">
 
-        No players found.
+No players found.
 
-        </td>
+</td>
 
-      </tr>
+</tr>
 
-    `;
+`;
 
-    return;
-
-  }
-
-
-  list.forEach(
-  (player,index) => {
-
-
-    const row =
-    document.createElement("tr");
-
-
-    row.innerHTML = `
-
-
-      <td>
-
-        <span class="rank">
-          #${index + 1}
-        </span>
-
-      </td>
-
-
-      <td>
-
-        <div class="player-cell">
-
-          <img
-          class="player-avatar"
-          src="${player.photo}"
-          alt="${player.name}">
-
-
-          <div>
-
-            <span class="player-name">
-
-              ${player.name}
-
-            </span>
-
-
-            <span class="player-detail">
-
-              ${player.role}
-              ·
-              ${player.district}
-
-            </span>
-
-          </div>
-
-        </div>
-
-      </td>
-
-
-      <td>
-
-        <span
-        class="grade-circle grade-${player.grade}">
-
-          ${player.grade}
-
-        </span>
-
-      </td>
-
-
-      <td class="base-points">
-
-        ${player.base}
-
-      </td>
-
-
-      <td class="mvp-score">
-
-        ${player.score}
-
-      </td>
-
-
-      <td>
-
-        ${player.runs}
-
-      </td>
-
-
-      <td>
-
-        ${player.ballsFaced}
-
-      </td>
-
-
-      <td>
-
-        ${player.batAvg}
-
-      </td>
-
-
-      <td>
-
-        ${player.strikeRate}
-
-      </td>
-
-
-      <td>
-
-        ${player.wickets}
-
-      </td>
-
-
-      <td>
-
-        ${player.ballsBowled}
-
-      </td>
-
-
-      <td>
-
-        ${player.economy}
-
-      </td>
-
-
-      <td>
-
-        ${player.catches}
-
-      </td>
-
-
-      <td>
-
-        <a
-        class="view-profile"
-        href="player-profile.html?id=${player.id}">
-
-        VIEW PROFILE
-
-        </a>
-
-      </td>
-
-
-    `;
-
-
-    tbody.appendChild(row);
-
-  });
+return;
 
 }
 
 
-/* ==========================================
+list.forEach(
+(player,index) => {
+
+
+const rating =
+getRating(
+player.score
+);
+
+
+const starText =
+getStarText(
+rating
+);
+
+
+const ratingClass =
+getRatingClass(
+rating
+);
+
+
+const base =
+getBasePoints(
+rating
+);
+
+
+const row =
+document.createElement(
+"tr"
+);
+
+
+row.innerHTML = `
+
+
+<td>
+
+<span class="rank">
+#${index + 1}
+</span>
+
+</td>
+
+
+<td>
+
+<div class="player-cell">
+
+
+<img
+class="player-avatar"
+src="${player.photo}"
+alt="${player.name}">
+
+
+<div>
+
+<span class="player-name">
+
+${player.name}
+
+</span>
+
+
+<span class="player-detail">
+
+${player.role}
+·
+${player.district}
+
+</span>
+
+</div>
+
+
+</div>
+
+</td>
+
+
+<td>
+
+<div
+class="player-rating ${ratingClass}">
+
+<span class="stars">
+${starText}
+</span>
+
+<span class="rating-number">
+${rating.toFixed(1)}
+</span>
+
+</div>
+
+</td>
+
+
+<td class="base-points">
+
+${base} PTS
+
+</td>
+
+
+<td class="mvp-score">
+
+${player.score}
+
+</td>
+
+
+<td>
+${player.runs}
+</td>
+
+
+<td>
+${player.ballsFaced}
+</td>
+
+
+<td>
+${player.batAvg}
+</td>
+
+
+<td>
+${player.strikeRate}
+</td>
+
+
+<td>
+${player.wickets}
+</td>
+
+
+<td>
+${player.ballsBowled}
+</td>
+
+
+<td>
+${player.economy}
+</td>
+
+
+<td>
+${player.catches}
+</td>
+
+
+<td>
+
+<a
+class="view-profile"
+href="player-profile.html?id=${player.id}">
+
+VIEW PROFILE
+
+</a>
+
+</td>
+
+
+`;
+
+
+body.appendChild(
+row
+);
+
+});
+
+}
+
+
+/* =============================================
    SUMMARY
-========================================== */
+============================================= */
 
 function updateSummary(){
 
-  document
-  .getElementById("totalPlayers")
-  .textContent =
-  players.length;
+document
+.getElementById("totalPlayers")
+.textContent =
+players.length;
 
 
-  document
-  .getElementById("gradeACount")
-  .textContent =
-  players.filter(
-    p => p.grade === "A"
-  ).length;
+document
+.getElementById("elitePlayers")
+.textContent =
+players.filter(
+player =>
+getRating(player.score) >= 4.5
+).length;
 
 
-  document
-  .getElementById("gradeBCount")
-  .textContent =
-  players.filter(
-    p => p.grade === "B"
-  ).length;
+document
+.getElementById("strongPlayers")
+.textContent =
+players.filter(
+player => {
+
+const rating =
+getRating(player.score);
+
+return(
+rating >= 3.5 &&
+rating < 4.5
+);
+
+}
+).length;
 
 
-  document
-  .getElementById("gradeCCount")
-  .textContent =
-  players.filter(
-    p => p.grade === "C"
-  ).length;
+document
+.getElementById("developingPlayers")
+.textContent =
+players.filter(
+player =>
+getRating(player.score) < 3.5
+).length;
 
 }
 
 
-/* ==========================================
-   TAB HEADINGS
-========================================== */
+/* =============================================
+   HEADINGS
+============================================= */
 
-const categoryHeadings = {
+const headings = {
 
-  all:
-  "Overall MVP Rankings",
+all:
+"Overall MVP Rankings",
 
-  Batsman:
-  "Top Batsmen",
+Batsman:
+"Top Batsmen",
 
-  "All-Rounder":
-  "Top All-Rounders",
+"All-Rounder":
+"Top All-Rounders",
 
-  "Spin Bowler":
-  "Top Spin Bowlers",
+"Spin Bowler":
+"Top Spin Bowlers",
 
-  pace:
-  "Top Fast / Medium Pacers",
+pace:
+"Top Fast / Medium Pacers",
 
-  keeper:
-  "Top Wicket Keepers"
+keeper:
+"Top Wicket Keepers"
 
 };
 
 
-/* ==========================================
-   TAB CLICK
-========================================== */
+/* =============================================
+   TABS
+============================================= */
 
 document
-.querySelectorAll(".mvp-tab")
-.forEach(button => {
+.querySelectorAll(
+".mvp-tab"
+)
+.forEach(
+button => {
 
 
-  button.addEventListener(
-  "click",
-  function(){
+button.addEventListener(
+"click",
+function(){
 
 
-    document
-    .querySelectorAll(".mvp-tab")
-    .forEach(
-      tab =>
-      tab.classList.remove("active")
-    );
+document
+.querySelectorAll(
+".mvp-tab"
+)
+.forEach(
+tab =>
+tab.classList.remove(
+"active"
+)
+);
 
 
-    this.classList.add("active");
+this.classList.add(
+"active"
+);
 
 
-    currentCategory =
-    this.dataset.category;
+currentCategory =
+this.dataset.category;
 
 
-    document
-    .getElementById("rankingHeading")
-    .textContent =
-    categoryHeadings[currentCategory];
+document
+.getElementById(
+"rankingHeading"
+)
+.textContent =
+headings[currentCategory];
 
 
-    renderPlayers();
+renderPlayers();
 
-  });
+});
 
 });
 
 
-/* ==========================================
+/* =============================================
    SEARCH
-========================================== */
+============================================= */
 
 document
-.getElementById("playerSearch")
+.getElementById(
+"playerSearch"
+)
 .addEventListener(
 "input",
 renderPlayers
 );
 
 
-/* ==========================================
-   DOWNLOAD CSV
-========================================== */
+/* =============================================
+   CSV DOWNLOAD
+============================================= */
 
 document
-.getElementById("downloadCSV")
+.getElementById(
+"downloadCSV"
+)
 .addEventListener(
 "click",
 function(){
 
 
-  const list =
-  getPlayers();
+const list =
+getPlayers();
 
 
-  if(list.length === 0){
+if(list.length === 0){
 
-    alert(
-      "No players available to download."
-    );
+alert(
+"No players available."
+);
 
-    return;
+return;
 
-  }
-
-
-  const rows = [
-
-    [
-      "Rank",
-      "Player Name",
-      "District",
-      "Role",
-      "Grade",
-      "Base Points",
-      "MVP Score",
-      "Runs",
-      "Balls Faced",
-      "Batting Average",
-      "Strike Rate",
-      "Wickets",
-      "Balls Bowled",
-      "Economy",
-      "Catches"
-    ]
-
-  ];
+}
 
 
-  list.forEach(
-  (player,index) => {
+const rows = [
+
+[
+"Rank",
+"Player",
+"District",
+"Role",
+"Star Rating",
+"Base Points",
+"MVP Score",
+"Runs",
+"Balls Faced",
+"Bat Avg",
+"Strike Rate",
+"Wickets",
+"Balls Bowled",
+"Economy",
+"Catches"
+]
+
+];
 
 
-    rows.push([
-
-      index + 1,
-
-      player.name,
-
-      player.district,
-
-      player.role,
-
-      player.grade,
-
-      player.base,
-
-      player.score,
-
-      player.runs,
-
-      player.ballsFaced,
-
-      player.batAvg,
-
-      player.strikeRate,
-
-      player.wickets,
-
-      player.ballsBowled,
-
-      player.economy,
-
-      player.catches
-
-    ]);
-
-  });
+list.forEach(
+(player,index) => {
 
 
-  const csv =
-  rows
-  .map(
-    row =>
-    row
-    .map(
-      value =>
-      `"${String(value).replace(/"/g,'""')}"`
-    )
-    .join(",")
-  )
-  .join("\n");
+const rating =
+getRating(
+player.score
+);
 
 
-  const blob =
-  new Blob(
-    [csv],
-    {
-      type:
-      "text/csv;charset=utf-8;"
-    }
-  );
+rows.push([
 
+index + 1,
 
-  const url =
-  URL.createObjectURL(blob);
+player.name,
 
+player.district,
 
-  const link =
-  document.createElement("a");
+player.role,
 
+rating,
 
-  link.href = url;
+getBasePoints(rating),
 
+player.score,
 
-  link.download =
-  "HCCL_MVP_Player_Rankings.csv";
+player.runs,
 
+player.ballsFaced,
 
-  document.body.appendChild(link);
+player.batAvg,
 
+player.strikeRate,
 
-  link.click();
+player.wickets,
 
+player.ballsBowled,
 
-  link.remove();
+player.economy,
 
+player.catches
 
-  URL.revokeObjectURL(url);
+]);
 
 });
 
 
-/* ==========================================
+const csv =
+rows
+.map(
+row =>
+row
+.map(
+value =>
+`"${String(value).replace(/"/g,'""')}"`
+)
+.join(",")
+)
+.join("\n");
+
+
+const blob =
+new Blob(
+[csv],
+{
+type:"text/csv;charset=utf-8;"
+}
+);
+
+
+const url =
+URL.createObjectURL(
+blob
+);
+
+
+const link =
+document.createElement(
+"a"
+);
+
+
+link.href =
+url;
+
+
+link.download =
+"HCCL_Player_Star_Rankings.csv";
+
+
+document.body.appendChild(
+link
+);
+
+
+link.click();
+
+
+link.remove();
+
+
+URL.revokeObjectURL(
+url
+);
+
+});
+
+
+/* =============================================
    START
-========================================== */
+============================================= */
 
 updateSummary();
 
 renderPlayers();
 
 </script>
+
 
 </body>
 </html>
