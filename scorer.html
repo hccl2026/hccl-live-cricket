@@ -4,73 +4,67 @@
 <head>
 
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<meta name="viewport"
-content="width=device-width,initial-scale=1">
+<title>HCCL — Scorer v3</title>
 
-<title>
-HCCL — Match Control v2
-</title>
-
-<link rel="stylesheet"
-href="site.css">
+<link rel="stylesheet" href="site.css">
 
 <style>
 
-/* ============================================================
+/* =========================================================
    PAGE
-============================================================ */
+========================================================= */
 
-.control-page{
+.scorer-page{
   width:min(1320px,calc(100% - 28px));
   margin:auto;
   padding:36px 0 90px;
 }
 
-.control-title{
+.scorer-title{
   margin-bottom:24px;
 }
 
-.control-title small{
+.scorer-title small{
   color:#ef1b1b;
   font-size:10px;
   font-weight:1000;
   letter-spacing:2px;
 }
 
-.control-title h1{
+.scorer-title h1{
   margin-top:5px;
   font-size:clamp(34px,5vw,56px);
 }
 
-.control-title p{
+.scorer-title p{
+  color:#8997a4;
   margin-top:6px;
-  color:#8e9aa6;
 }
 
 
-/* ============================================================
+/* =========================================================
    COMMON PANEL
-============================================================ */
+========================================================= */
 
-.control-panel{
+.panel{
   padding:22px;
 
-  border:1px solid rgba(50,91,130,.58);
-
+  border:1px solid rgba(48,90,128,.58);
   border-radius:18px;
 
   background:
     radial-gradient(
-      circle at 90% 15%,
+      circle at 90% 10%,
       rgba(239,27,27,.08),
       transparent 30%
     ),
     linear-gradient(
       145deg,
-      rgba(7,24,44,.88),
-      rgba(4,7,12,.92) 67%,
-      rgba(19,5,7,.80)
+      rgba(7,24,44,.90),
+      rgba(3,7,12,.93) 67%,
+      rgba(21,5,7,.84)
     );
 }
 
@@ -81,135 +75,151 @@ href="site.css">
   letter-spacing:1.5px;
 }
 
-.panel-title{
-  margin-top:3px;
-  margin-bottom:15px;
+.panel h2{
+  margin:4px 0 15px;
   font-size:22px;
 }
 
 
-/* ============================================================
-   SETUP STEP BAR
-============================================================ */
+/* =========================================================
+   STEP BAR
+========================================================= */
 
-.step-bar{
+.steps{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+  grid-template-columns:repeat(6,1fr);
   gap:8px;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 .step{
-  padding:11px;
+  padding:10px 7px;
+
+  text-align:center;
 
   border:1px solid #294563;
-  border-radius:10px;
+  border-radius:9px;
 
   background:#061220;
 
-  color:#788796;
+  color:#718190;
 
-  font-size:9px;
+  font-size:8px;
   font-weight:900;
-  text-align:center;
 }
 
-.step.on{
-  color:#fff;
+.step.active{
   background:#ef1b1b;
+  border-color:#ef1b1b;
+  color:#fff;
+}
+
+
+/* =========================================================
+   MATCH CATEGORY
+========================================================= */
+
+.category-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.category-card{
+  min-height:108px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+  padding:14px;
+
+  border:1px solid #294664;
+  border-radius:13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #07182c,
+      #04070c
+    );
+
+  cursor:pointer;
+}
+
+.category-card:hover{
   border-color:#ef1b1b;
 }
 
+.category-card.selected{
+  border-color:#ef1b1b;
 
-/* ============================================================
-   TODAY MATCHES
-============================================================ */
+  box-shadow:
+    0 0 22px rgba(239,27,27,.12);
+}
+
+.category-card b{
+  font-size:13px;
+}
+
+.category-card small{
+  margin-top:4px;
+  color:#7e8d9c;
+  font-size:8px;
+}
+
+
+/* =========================================================
+   MATCH LIST
+========================================================= */
 
 .match-list{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:12px;
+  gap:10px;
 }
 
-.match-choice{
-  padding:18px;
+.match-card{
+  padding:16px;
 
-  border:1px solid #284866;
-  border-radius:15px;
+  border:1px solid #294664;
+  border-radius:13px;
 
   background:
     linear-gradient(
       135deg,
       rgba(7,26,52,.88),
-      rgba(4,7,12,.90),
-      rgba(28,5,8,.76)
+      rgba(4,7,12,.93),
+      rgba(31,5,8,.80)
     );
 
   cursor:pointer;
-
-  transition:.18s;
 }
 
-.match-choice:hover{
-  transform:translateY(-2px);
+.match-card.selected{
   border-color:#ef1b1b;
 }
 
-.match-choice.selected{
-  border-color:#ef1b1b;
-
-  box-shadow:
-    0 0 25px rgba(239,27,27,.12);
-}
-
-.match-time{
-  color:#ff4747;
-  font-size:10px;
-  font-weight:1000;
-}
-
-.match-teams{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  gap:12px;
-
-  margin-top:12px;
-}
-
-.match-team{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.match-team img{
-  width:42px;
-  height:42px;
-  object-fit:contain;
-}
-
-.match-team b{
-  font-size:13px;
-}
-
-.vs{
-  color:#687685;
-  font-size:10px;
-  font-weight:1000;
-}
-
-.match-meta{
-  margin-top:11px;
-  color:#7f8d9a;
+.match-card .time{
+  color:#ff4444;
   font-size:9px;
+  font-weight:1000;
+}
+
+.match-card h3{
+  margin:8px 0 4px;
+  font-size:15px;
+}
+
+.match-card p{
+  color:#7e8b98;
+  font-size:8px;
 }
 
 
-/* ============================================================
-   FORM
-============================================================ */
+/* =========================================================
+   FORMS
+========================================================= */
 
 .form-grid{
   display:grid;
@@ -226,26 +236,24 @@ href="site.css">
 }
 
 .field{
-  margin-bottom:12px;
+  margin-bottom:11px;
 }
 
 .field label{
   display:block;
+  margin-bottom:5px;
 
-  margin-bottom:6px;
-
-  color:#80909f;
-
-  font-size:9px;
+  color:#8493a1;
+  font-size:8px;
   font-weight:900;
 }
 
 .field input,
 .field select{
   width:100%;
-  height:44px;
+  height:43px;
 
-  padding:0 12px;
+  padding:0 11px;
 
   border:1px solid #294664;
   border-radius:9px;
@@ -257,75 +265,9 @@ href="site.css">
 }
 
 
-/* ============================================================
-   XI SELECT
-============================================================ */
-
-.xi-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-}
-
-.team-xi-title{
-  margin-bottom:12px;
-  color:#fff;
-  font-size:16px;
-}
-
-.player-pool{
-  display:grid;
-  gap:8px;
-}
-
-.player-check{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  gap:8px;
-
-  padding:9px 11px;
-
-  border-bottom:
-    1px solid rgba(54,92,128,.22);
-}
-
-.player-check label{
-  display:flex;
-  align-items:center;
-  gap:8px;
-
-  cursor:pointer;
-}
-
-.player-check small{
-  color:#7f8d9b;
-}
-
-
-/* ============================================================
-   ADD PLAYER
-============================================================ */
-
-.add-player-line{
-  margin-top:15px;
-
-  padding-top:15px;
-
-  border-top:1px solid rgba(52,92,130,.25);
-}
-
-.helper-text{
-  color:#718292;
-  font-size:9px;
-  margin-top:5px;
-}
-
-
-/* ============================================================
+/* =========================================================
    BUTTONS
-============================================================ */
+========================================================= */
 
 .btn{
   min-height:42px;
@@ -334,7 +276,7 @@ href="site.css">
   align-items:center;
   justify-content:center;
 
-  padding:0 16px;
+  padding:0 15px;
 
   border:1px solid #315578;
   border-radius:9px;
@@ -342,7 +284,7 @@ href="site.css">
   background:#07182c;
   color:#fff;
 
-  font-size:10px;
+  font-size:9px;
   font-weight:1000;
 
   cursor:pointer;
@@ -353,45 +295,80 @@ href="site.css">
 }
 
 .btn.red{
-  border-color:#ef1b1b;
   background:#ef1b1b;
+  border-color:#ef1b1b;
 }
 
 .btn.green{
-  border-color:#2b7e4d;
-  background:#165934;
+  background:#155a34;
+  border-color:#2b7f4e;
 }
 
 .btn.gold{
-  border-color:#a88724;
-  background:#57440c;
+  background:#654d0b;
+  border-color:#aa8524;
 }
 
 .btn.warning{
-  color:#ffce4b;
+  color:#ffd34f;
+}
+
+.actions{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:17px;
 }
 
 
-/* ============================================================
-   DLS
-============================================================ */
+/* =========================================================
+   SQUAD / XI
+========================================================= */
 
-.dls-panel{
-  border-left:3px solid #d4a629;
+.squad-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
 }
 
-.dls-note{
-  margin-bottom:15px;
+.squad-title{
+  margin-bottom:11px;
+  font-size:15px;
+}
 
-  color:#ae9c60;
-  font-size:9px;
-  line-height:1.5;
+.player-list{
+  max-height:430px;
+  overflow-y:auto;
+}
+
+.player-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:10px;
+
+  padding:8px 4px;
+
+  border-bottom:1px solid rgba(53,91,126,.20);
+}
+
+.player-row label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  cursor:pointer;
+}
+
+.player-row small{
+  color:#758695;
 }
 
 
-/* ============================================================
-   SCORING HERO
-============================================================ */
+/* =========================================================
+   SCORE HERO
+========================================================= */
 
 .score-hero{
   padding:24px;
@@ -401,27 +378,27 @@ href="site.css">
 
   background:
     radial-gradient(
-      circle at 10% 30%,
-      rgba(31,92,149,.22),
+      circle at 10% 35%,
+      rgba(30,91,147,.22),
       transparent 35%
     ),
     radial-gradient(
-      circle at 90% 30%,
-      rgba(239,27,27,.15),
-      transparent 35%
+      circle at 90% 35%,
+      rgba(239,27,27,.16),
+      transparent 36%
     ),
     linear-gradient(
       110deg,
-      rgba(7,26,52,.92),
-      rgba(3,6,11,.97) 52%,
-      rgba(30,5,8,.88)
+      rgba(7,26,52,.93),
+      rgba(2,5,9,.97) 52%,
+      rgba(32,5,8,.89)
     );
 }
 
 .score-top{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:12px;
 }
 
@@ -436,56 +413,51 @@ href="site.css">
 
   background:#ef1b1b;
 
-  font-size:9px;
+  font-size:8px;
   font-weight:1000;
 }
 
 .live-pill i{
   width:7px;
   height:7px;
+
   border-radius:50%;
-  background:#ff7575;
+
+  background:#ff6a6a;
 }
 
 .score-center{
   text-align:center;
-  padding:18px 0;
+  padding:17px 0;
 }
 
-.score-team-name{
-  color:#9aa6b2;
-  font-size:11px;
+.score-team{
+  color:#9ba7b2;
+  font-size:10px;
   font-weight:900;
 }
 
 .big-score{
-  margin-top:5px;
+  margin-top:3px;
 
-  font-size:clamp(60px,8vw,94px);
+  font-size:clamp(58px,8vw,92px);
   font-weight:1000;
   line-height:1;
 }
 
-.over-text{
-  margin-top:7px;
-  color:#81909e;
-  font-size:12px;
+.overs-text{
+  margin-top:6px;
+  color:#80909e;
+  font-size:11px;
 }
 
-
-/* ============================================================
-   SCORE METRICS
-============================================================ */
-
-.score-metrics{
+.metrics{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:8px;
+  grid-template-columns:repeat(6,1fr);
 
-  border-top:
-    1px solid rgba(55,97,137,.24);
+  padding-top:15px;
 
-  padding-top:16px;
+  border-top:1px solid rgba(52,94,133,.25);
 }
 
 .metric{
@@ -494,45 +466,44 @@ href="site.css">
 
 .metric small{
   display:block;
-  color:#758594;
-  font-size:8px;
+  color:#738393;
+  font-size:7px;
   font-weight:900;
 }
 
 .metric strong{
   display:block;
-  margin-top:5px;
-  font-size:17px;
+  margin-top:4px;
+  font-size:16px;
 }
 
 
-/* ============================================================
-   MAIN SCORING GRID
-============================================================ */
+/* =========================================================
+   SCORING LAYOUT
+========================================================= */
 
-.scoring-grid{
+.scoring-layout{
   display:grid;
-  grid-template-columns:1.2fr .8fr;
+  grid-template-columns:1.15fr .85fr;
   gap:16px;
-
-  margin-top:18px;
+  margin-top:16px;
 }
 
 
-/* ============================================================
-   PLAYERS
-============================================================ */
+/* =========================================================
+   CURRENT PLAYERS
+========================================================= */
 
-.current-players{
+.current-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
 
 .current-player{
-  padding:13px;
+  padding:12px;
 
-  border-left:2px solid #315a82;
+  border-left:2px solid #315578;
 }
 
 .current-player.striker{
@@ -540,27 +511,27 @@ href="site.css">
 }
 
 .current-player small{
-  color:#748594;
-  font-size:8px;
+  color:#738393;
+  font-size:7px;
   font-weight:900;
 }
 
 .current-player strong{
   display:block;
   margin-top:3px;
-  font-size:15px;
 }
 
-.player-stat{
+.current-player span{
+  display:block;
   margin-top:4px;
-  color:#99a4af;
-  font-size:10px;
+  color:#9aa6b1;
+  font-size:9px;
 }
 
 
-/* ============================================================
+/* =========================================================
    RUN BUTTONS
-============================================================ */
+========================================================= */
 
 .run-grid{
   display:grid;
@@ -568,8 +539,8 @@ href="site.css">
   gap:9px;
 }
 
-.run-button{
-  min-height:62px;
+.run-btn{
+  min-height:59px;
 
   border:1px solid #315578;
   border-radius:11px;
@@ -577,35 +548,26 @@ href="site.css">
   background:#07182c;
   color:#fff;
 
-  font-size:21px;
+  font-size:20px;
   font-weight:1000;
 
   cursor:pointer;
 }
 
-.run-button:hover{
-  transform:translateY(-2px);
+.run-btn.four{
+  background:#115432;
+  border-color:#2c8050;
 }
 
-.run-button.four{
-  background:#125434;
-  border-color:#2a8554;
+.run-btn.six{
+  background:#745509;
+  border-color:#b58b20;
 }
 
-.run-button.six{
-  background:#705208;
-  border-color:#c19a28;
+.run-btn.wicket{
+  background:#731219;
+  border-color:#c8323e;
 }
-
-.run-button.wicket{
-  background:#711219;
-  border-color:#cc3540;
-}
-
-
-/* ============================================================
-   EXTRAS
-============================================================ */
 
 .extra-grid{
   display:grid;
@@ -613,25 +575,25 @@ href="site.css">
   gap:8px;
 }
 
-.extra-button{
-  min-height:42px;
+.extra-btn{
+  min-height:41px;
 
   border:1px solid #315578;
-  border-radius:9px;
+  border-radius:8px;
 
   background:#07182c;
   color:#fff;
 
-  font-size:9px;
+  font-size:8px;
   font-weight:900;
 
   cursor:pointer;
 }
 
 
-/* ============================================================
+/* =========================================================
    RECENT BALLS
-============================================================ */
+========================================================= */
 
 .recent-balls{
   display:flex;
@@ -640,8 +602,8 @@ href="site.css">
 }
 
 .ball{
-  width:34px;
-  height:34px;
+  width:33px;
+  height:33px;
 
   display:flex;
   align-items:center;
@@ -650,22 +612,23 @@ href="site.css">
   border-radius:50%;
 
   border:1px solid #315578;
+
   background:#07182c;
 
-  font-size:10px;
+  font-size:9px;
   font-weight:1000;
 }
 
 .ball.four{
-  background:#145936;
+  background:#145736;
 }
 
 .ball.six{
-  background:#79580a;
+  background:#76570a;
 }
 
 .ball.wicket{
-  background:#75141b;
+  background:#76141b;
 }
 
 .ball.extra{
@@ -673,53 +636,18 @@ href="site.css">
 }
 
 
-/* ============================================================
-   TICKER SELECTOR
-============================================================ */
+/* =========================================================
+   MATCH STATUS
+========================================================= */
 
-.ticker-grid{
+.status-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:8px;
 }
 
-.ticker-choice{
-  padding:10px;
-
-  border:1px solid #294563;
-  border-radius:9px;
-
-  background:#061220;
-
-  color:#8f9baa;
-
-  font-size:8px;
-  font-weight:900;
-
-  cursor:pointer;
-
-  text-align:center;
-}
-
-.ticker-choice.active{
-  background:#ef1b1b;
-  border-color:#ef1b1b;
-  color:#fff;
-}
-
-
-/* ============================================================
-   EVENT TRIGGERS
-============================================================ */
-
-.event-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-}
-
-.event-button{
-  min-height:43px;
+.status-btn{
+  min-height:42px;
 
   border:1px solid #315578;
   border-radius:9px;
@@ -727,28 +655,93 @@ href="site.css">
   background:#07182c;
   color:#fff;
 
-  font-size:9px;
+  font-size:8px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.status-btn.active{
+  background:#ef1b1b;
+  border-color:#ef1b1b;
+}
+
+
+/* =========================================================
+   TICKER MODELS
+========================================================= */
+
+.ticker-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+}
+
+.ticker-btn{
+  min-height:40px;
+
+  padding:6px;
+
+  border:1px solid #294563;
+  border-radius:8px;
+
+  background:#061220;
+  color:#8c9aa7;
+
+  font-size:7px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.ticker-btn.active{
+  background:#ef1b1b;
+  color:#fff;
+  border-color:#ef1b1b;
+}
+
+
+/* =========================================================
+   BROADCAST EVENTS
+========================================================= */
+
+.event-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.event-btn{
+  min-height:42px;
+
+  border:1px solid #315578;
+  border-radius:8px;
+
+  background:#07182c;
+  color:#fff;
+
+  font-size:8px;
   font-weight:1000;
 
   cursor:pointer;
 }
 
-.event-button.hot{
+.event-btn.red{
   background:#ef1b1b;
   border-color:#ef1b1b;
 }
 
-.event-button.gold{
-  background:#6e5208;
-  border-color:#b48b20;
+.event-btn.gold{
+  background:#6f540a;
+  border-color:#a98625;
 }
 
 
-/* ============================================================
-   STREAM PREVIEW
-============================================================ */
+/* =========================================================
+   PREVIEW
+========================================================= */
 
-.stream-preview{
+.preview{
   position:relative;
 
   aspect-ratio:16/9;
@@ -756,27 +749,32 @@ href="site.css">
   overflow:hidden;
 
   border:1px solid #315578;
-  border-radius:14px;
+  border-radius:13px;
 
   background:
     linear-gradient(
       110deg,
       #071a34,
       #020306 52%,
-      #2b0608
+      #2c0608
     );
 }
 
-.preview-center{
+.preview-main{
   position:absolute;
   inset:0;
 
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
+  align-items:center;
 
   text-align:center;
+}
+
+.preview-main img{
+  width:50px;
+  margin-bottom:6px;
 }
 
 .preview-score{
@@ -784,9 +782,10 @@ href="site.css">
   font-weight:1000;
 }
 
-.preview-meta{
-  color:#9ba6b1;
-  font-size:10px;
+.preview-info{
+  margin-top:3px;
+  color:#929fac;
+  font-size:9px;
 }
 
 .preview-event{
@@ -798,17 +797,17 @@ href="site.css">
   align-items:center;
   justify-content:center;
 
+  text-align:center;
+
   background:
     radial-gradient(
       circle,
-      rgba(239,27,27,.22),
-      rgba(2,3,6,.96)
+      rgba(239,27,27,.25),
+      rgba(2,3,6,.97)
     );
 
-  font-size:clamp(42px,7vw,90px);
+  font-size:clamp(38px,7vw,80px);
   font-weight:1000;
-
-  letter-spacing:-2px;
 
   z-index:5;
 }
@@ -816,39 +815,27 @@ href="site.css">
 .preview-event.show{
   display:flex;
 
-  animation:
-    eventZoom .7s ease,
-    eventPulse .8s ease .7s;
+  animation:eventPop .7s ease;
 }
 
-@keyframes eventZoom{
+@keyframes eventPop{
 
   from{
     opacity:0;
-    transform:scale(.25) rotate(-8deg);
+    transform:scale(.25) rotate(-7deg);
   }
 
   to{
     opacity:1;
-    transform:scale(1) rotate(0);
+    transform:scale(1);
   }
 
 }
 
-@keyframes eventPulse{
 
-  0%{filter:brightness(1);}
-  50%{filter:brightness(1.8);}
-  100%{filter:brightness(1);}
+/* INTERRUPTION */
 
-}
-
-
-/* ============================================================
-   OVER SUMMARY
-============================================================ */
-
-.over-summary-overlay{
+.interruption{
   position:absolute;
   inset:0;
 
@@ -865,37 +852,67 @@ href="site.css">
       rgba(43,6,8,.98)
     );
 
-  z-index:6;
-}
+  z-index:7;
 
-.over-summary-overlay.show{
-  display:flex;
-}
-
-.over-summary-inner{
-  width:80%;
   text-align:center;
 }
 
-.over-summary-inner small{
-  color:#ef1b1b;
-  font-weight:1000;
+.interruption.show{
+  display:flex;
 }
 
-.over-summary-inner h2{
-  margin-top:4px;
-  font-size:36px;
+.interruption h2{
+  font-size:34px;
 }
 
-.over-summary-inner p{
-  color:#9faab5;
-  margin-top:8px;
+.interruption p{
+  margin-top:6px;
+  color:#9ca8b3;
 }
 
 
-/* ============================================================
+/* =========================================================
+   TRIAL MODE
+========================================================= */
+
+.trial-stages{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+}
+
+.trial-stage{
+  padding:12px;
+
+  text-align:center;
+
+  border:1px solid #294563;
+  border-radius:9px;
+
+  background:#061220;
+
+  color:#7c8a98;
+
+  font-size:8px;
+  font-weight:900;
+}
+
+.trial-stage.active{
+  background:#ef1b1b;
+  color:#fff;
+  border-color:#ef1b1b;
+}
+
+.trial-stage.done{
+  background:#155a34;
+  border-color:#2c7d4e;
+  color:#fff;
+}
+
+
+/* =========================================================
    LOG
-============================================================ */
+========================================================= */
 
 .log{
   max-height:280px;
@@ -906,11 +923,11 @@ href="site.css">
   padding:8px 0;
 
   border-bottom:
-    1px solid rgba(48,88,126,.22);
+    1px solid rgba(52,91,126,.20);
 
-  color:#98a3ad;
+  color:#95a1ac;
 
-  font-size:9px;
+  font-size:8px;
 }
 
 .log-row b{
@@ -918,35 +935,48 @@ href="site.css">
 }
 
 
-/* ============================================================
+/* =========================================================
    HIDDEN
-============================================================ */
+========================================================= */
 
 .hidden{
   display:none !important;
 }
 
 
-/* ============================================================
+/* =========================================================
    MOBILE
-============================================================ */
+========================================================= */
 
-@media(max-width:950px){
+@media(max-width:1000px){
 
-  .scoring-grid{
+  .category-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .scoring-layout{
     grid-template-columns:1fr;
   }
 
-  .score-metrics{
+  .metrics{
     grid-template-columns:repeat(3,1fr);
+    row-gap:15px;
   }
 
 }
 
 @media(max-width:760px){
 
+  .steps{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .category-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
   .match-list,
-  .xi-grid{
+  .squad-grid{
     grid-template-columns:1fr;
   }
 
@@ -954,10 +984,6 @@ href="site.css">
   .form-grid.three,
   .form-grid.four{
     grid-template-columns:1fr;
-  }
-
-  .step-bar{
-    grid-template-columns:repeat(2,1fr);
   }
 
   .ticker-grid{
@@ -968,17 +994,17 @@ href="site.css">
 
 @media(max-width:520px){
 
-  .score-metrics{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .current-players{
+  .current-grid{
     grid-template-columns:1fr;
   }
 
-  .extra-grid,
-  .event-grid{
+  .event-grid,
+  .status-grid{
     grid-template-columns:repeat(2,1fr);
+  }
+
+  .trial-stages{
+    grid-template-columns:repeat(5,1fr);
   }
 
 }
@@ -991,13 +1017,10 @@ href="site.css">
 <body>
 
 
-<!-- ============================================================
-     NAV
-============================================================ -->
-
 <header class="nav">
 
-<a class="logo"
+<a
+class="logo"
 href="index.html">
 
 <img
@@ -1013,49 +1036,16 @@ HCCL
 
 <nav>
 
-<a href="index.html">
-Home
-</a>
-
-<a href="schedule.html">
-Schedule
-</a>
-
-<a href="match.html">
-Live
-</a>
-
-<a href="match.html#scorecard">
-Scorecard
-</a>
-
-<a href="index.html#teams">
-Teams
-</a>
-
-<a href="index.html#table">
-Points
-</a>
-
-<a href="players.html">
-MVP Players
-</a>
-
-<a href="player-profile.html?id=1">
-Player Profile
-</a>
-
-<a href="registration.html">
-Player Registration
-</a>
-
-<a
-class="active"
-href="scorer.html">
-
-Scoring
-
-</a>
+<a href="index.html">Home</a>
+<a href="schedule.html">Schedule</a>
+<a href="match.html">Live</a>
+<a href="match.html#scorecard">Scorecard</a>
+<a href="index.html#teams">Teams</a>
+<a href="index.html#table">Points</a>
+<a href="players.html">MVP Players</a>
+<a href="player-profile.html?id=1">Player Profile</a>
+<a href="registration.html">Player Registration</a>
+<a class="active" href="scorer.html">Scoring</a>
 
 </nav>
 
@@ -1065,7 +1055,6 @@ class="live-nav"
 href="match.html">
 
 <i></i>
-
 LIVE MATCH
 
 </a>
@@ -1074,98 +1063,74 @@ LIVE MATCH
 
 
 
-<main class="control-page">
+<main class="scorer-page">
 
 
-<div class="control-title">
+<div class="scorer-title">
 
 <small>
-HCCL BROADCAST MATCH CONTROL
+HCCL MATCH & BROADCAST CONTROL
 </small>
 
 <h1>
-Match Control v2
+Scorer v3
 </h1>
 
 <p>
-Match selection, playing XI, DLS controls, live scoring,
-ticker selection and broadcast animation triggers.
+Official matches, trials, practice, DLS, replay markers,
+broadcast tickers and event animations.
 </p>
 
 </div>
 
 
 
-<!-- ============================================================
-     STEP BAR
-============================================================ -->
+<div class="steps">
 
-<div class="step-bar">
-
-<div class="step on"
-id="step1">
-1 · MATCH
-</div>
-
-<div class="step"
-id="step2">
-2 · PLAYING XI
-</div>
-
-<div class="step"
-id="step3">
-3 · MATCH SETUP
-</div>
-
-<div class="step"
-id="step4">
-4 · DLS / OVERS
-</div>
-
-<div class="step"
-id="step5">
-5 · SCORING
-</div>
+<div class="step active" id="step1">1 · CATEGORY</div>
+<div class="step" id="step2">2 · MATCH</div>
+<div class="step" id="step3">3 · SQUAD / XI</div>
+<div class="step" id="step4">4 · TOSS</div>
+<div class="step" id="step5">5 · RULES</div>
+<div class="step" id="step6">6 · SCORING</div>
 
 </div>
 
 
 
-<!-- ============================================================
-     STEP 1 MATCH SELECT
-============================================================ -->
+<!-- =========================================================
+     STEP 1 CATEGORY
+========================================================= -->
 
 <section
-class="control-panel"
-id="matchStep">
+class="panel"
+id="categoryStep">
 
 
 <div class="panel-label">
-TODAY'S SCHEDULE
+MATCH MODULE
 </div>
 
-<h2 class="panel-title">
-Select Match
+<h2>
+Select Match Category
 </h2>
 
 
 <div
-class="match-list"
-id="matchList">
+class="category-grid"
+id="categoryGrid">
 </div>
 
 
-<div style="
-display:flex;
-justify-content:flex-end;
-margin-top:16px;
-">
+<div
+class="actions"
+style="justify-content:flex-end">
 
 <button
 class="btn red"
-id="toXI">
+id="categoryNext">
 
-NEXT · PLAYING XI
+NEXT · MATCH
 
 </button>
 
@@ -1176,38 +1141,158 @@ NEXT · PLAYING XI
 
 
 
-<!-- ============================================================
-     STEP 2 XI
-============================================================ -->
+<!-- =========================================================
+     STEP 2 MATCH
+========================================================= -->
 
 <section
-class="control-panel hidden"
-id="xiStep">
+class="panel hidden"
+id="matchStep">
 
 
 <div class="panel-label">
-TEAM SELECTION
+MATCH SELECTION
 </div>
 
-<h2 class="panel-title">
-Select Playing XI
+<h2>
+Scheduled / Custom Match
 </h2>
 
 
-<div class="xi-grid">
+<div
+class="match-list"
+id="matchList">
+</div>
+
+
+<div
+style="
+margin-top:18px;
+padding-top:15px;
+border-top:1px solid rgba(55,95,132,.24);
+">
+
+
+<div class="panel-label">
+CUSTOM MATCH
+</div>
+
+
+<div class="form-grid three"
+style="margin-top:10px">
+
+
+<div class="field">
+
+<label>
+TEAM A
+</label>
+
+<input
+id="customTeamA"
+placeholder="Team A">
+
+</div>
+
+
+<div class="field">
+
+<label>
+TEAM B
+</label>
+
+<input
+id="customTeamB"
+placeholder="Team B">
+
+</div>
+
+
+<div class="field">
+
+<label>
+MATCH NAME
+</label>
+
+<input
+id="customMatchName"
+placeholder="Practice / Trial / Custom">
+
+</div>
+
+
+</div>
+
+
+<button
+class="btn"
+id="useCustomMatch">
+
+USE CUSTOM MATCH
+
+</button>
+
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="btn"
+id="matchBack">
+
+← CATEGORY
+
+</button>
+
+<button
+class="btn red"
+id="matchNext">
+
+NEXT · SQUAD
+
+</button>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     STEP 3 SQUAD
+========================================================= -->
+
+<section
+class="panel hidden"
+id="squadStep">
+
+
+<div class="panel-label">
+SQUAD SELECTION
+</div>
+
+<h2>
+26 Player Squad / Playing XI
+</h2>
+
+
+<div class="squad-grid">
 
 
 <div>
 
 <h3
-class="team-xi-title"
-id="teamAXITitle">
+class="squad-title"
+id="teamATitle">
 Team A
 </h3>
 
 <div
-class="player-pool"
-id="teamAPool">
+class="player-list"
+id="teamAList">
 </div>
 
 </div>
@@ -1216,14 +1301,14 @@ id="teamAPool">
 <div>
 
 <h3
-class="team-xi-title"
-id="teamBXITitle">
+class="squad-title"
+id="teamBTitle">
 Team B
 </h3>
 
 <div
-class="player-pool"
-id="teamBPool">
+class="player-list"
+id="teamBList">
 </div>
 
 </div>
@@ -1233,19 +1318,22 @@ id="teamBPool">
 
 
 
-<div class="add-player-line">
+<div
+style="
+margin-top:18px;
+padding-top:15px;
+border-top:1px solid rgba(55,95,132,.24);
+">
+
 
 <div class="panel-label">
-ADD TEMPORARY PLAYER
+ADD PLAYER
 </div>
 
-<h3
-style="margin:5px 0 12px">
-Add Player by Mobile
-</h3>
 
-
-<div class="form-grid four">
+<div
+class="form-grid four"
+style="margin-top:10px">
 
 
 <div class="field">
@@ -1254,9 +1342,7 @@ Add Player by Mobile
 TEAM
 </label>
 
-<select
-id="addPlayerTeam">
-</select>
+<select id="addPlayerTeam"></select>
 
 </div>
 
@@ -1268,8 +1354,9 @@ MOBILE NUMBER
 </label>
 
 <input
-id="newPlayerMobile"
+id="addMobile"
 placeholder="+91">
+
 </div>
 
 
@@ -1280,8 +1367,9 @@ PLAYER NAME
 </label>
 
 <input
-id="newPlayerName"
+id="addName"
 placeholder="Player name">
+
 </div>
 
 
@@ -1291,15 +1379,14 @@ placeholder="Player name">
 ROLE
 </label>
 
-<select
-id="newPlayerRole">
+<select id="addRole">
 
 <option>Batsman</option>
 <option>All-Rounder</option>
 <option>Fast Bowler</option>
 <option>Medium Pacer</option>
 <option>Spin Bowler</option>
-<option>Wicket Keeper Batsman</option>
+<option>Wicket Keeper</option>
 
 </select>
 
@@ -1311,30 +1398,21 @@ id="newPlayerRole">
 
 <button
 class="btn"
-id="addPlayerBtn">
+id="addPlayer">
 
 + ADD PLAYER
 
 </button>
 
-<p class="helper-text">
-Frontend demo: later mobile number will search the registered-player database.
-</p>
-
 
 </div>
 
 
-
-<div style="
-display:flex;
-justify-content:space-between;
-margin-top:18px;
-">
+<div class="actions">
 
 <button
 class="btn"
-id="backMatch">
+id="squadBack">
 
 ← MATCH
 
@@ -1342,9 +1420,9 @@ id="backMatch">
 
 <button
 class="btn red"
-id="toSetup">
+id="squadNext">
 
-NEXT · MATCH SETUP
+NEXT · TOSS
 
 </button>
 
@@ -1355,21 +1433,21 @@ NEXT · MATCH SETUP
 
 
 
-<!-- ============================================================
-     STEP 3 MATCH SETUP
-============================================================ -->
+<!-- =========================================================
+     STEP 4 TOSS / IMPACT
+========================================================= -->
 
 <section
-class="control-panel hidden"
-id="setupStep">
+class="panel hidden"
+id="tossStep">
 
 
 <div class="panel-label">
-MATCH CONFIGURATION
+TOSS & SUBSTITUTES
 </div>
 
-<h2 class="panel-title">
-Toss & Playing Conditions
+<h2>
+Toss / Impact Player / Super Sub
 </h2>
 
 
@@ -1382,8 +1460,22 @@ Toss & Playing Conditions
 TOSS WINNER
 </label>
 
-<select
-id="tossWinner">
+<select id="tossWinner"></select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+DECISION
+</label>
+
+<select id="tossDecision">
+
+<option value="bat">Bat</option>
+<option value="bowl">Bowl</option>
+
 </select>
 
 </div>
@@ -1392,41 +1484,20 @@ id="tossWinner">
 <div class="field">
 
 <label>
-TOSS DECISION
+IMPACT / SUPER SUB RULE
 </label>
 
-<select
-id="tossDecision">
+<select id="impactEnabled">
 
-<option value="bat">
-Bat
-</option>
-
-<option value="bowl">
-Bowl
-</option>
+<option value="yes">Enabled</option>
+<option value="no">Disabled</option>
 
 </select>
 
 </div>
 
 
-<div class="field">
-
-<label>
-MATCH OVERS
-</label>
-
-<input
-id="matchOvers"
-type="number"
-value="20"
-min="1">
 </div>
-
-
-</div>
-
 
 
 <div class="form-grid three">
@@ -1435,12 +1506,10 @@ min="1">
 <div class="field">
 
 <label>
-STRIKER
+TEAM A IMPACT PLAYER
 </label>
 
-<select
-id="setupStriker">
-</select>
+<select id="impactA"></select>
 
 </div>
 
@@ -1448,12 +1517,10 @@ id="setupStriker">
 <div class="field">
 
 <label>
-NON-STRIKER
+TEAM B IMPACT PLAYER
 </label>
 
-<select
-id="setupNonStriker">
-</select>
+<select id="impactB"></select>
 
 </div>
 
@@ -1461,11 +1528,14 @@ id="setupNonStriker">
 <div class="field">
 
 <label>
-OPENING BOWLER
+IMPACT DISPLAY
 </label>
 
-<select
-id="setupBowler">
+<select id="impactDisplay">
+
+<option value="show">Show on Broadcast</option>
+<option value="hide">Hide</option>
+
 </select>
 
 </div>
@@ -1474,26 +1544,21 @@ id="setupBowler">
 </div>
 
 
-
-<div style="
-display:flex;
-justify-content:space-between;
-margin-top:18px;
-">
+<div class="actions">
 
 <button
 class="btn"
-id="backXI">
+id="tossBack">
 
-← PLAYING XI
+← SQUAD
 
 </button>
 
 <button
 class="btn red"
-id="toDLS">
+id="tossNext">
 
-NEXT · DLS / OVERS
+NEXT · RULES
 
 </button>
 
@@ -1504,44 +1569,89 @@ NEXT · DLS / OVERS
 
 
 
-<!-- ============================================================
-     STEP 4 DLS
-============================================================ -->
+<!-- =========================================================
+     STEP 5 RULES
+========================================================= -->
 
 <section
-class="control-panel dls-panel hidden"
-id="dlsStep">
+class="panel hidden"
+id="rulesStep">
 
 
 <div class="panel-label">
-DLS / INTERRUPTED MATCH CONTROL
+MATCH RULES
 </div>
 
-<h2 class="panel-title">
-Overs & Revised Target
+<h2>
+Overs / Balls / Target / DLS
 </h2>
 
 
-<p class="dls-note">
-This frontend does not claim to calculate the official DLS target.
-Enter the official/revised target supplied by your approved DLS source.
-</p>
-
-
-<div class="form-grid four">
+<div
+class="form-grid four">
 
 
 <div class="field">
 
 <label>
-ORIGINAL OVERS
+MAX OVERS
 </label>
 
 <input
-id="originalOvers"
+id="maxOvers"
 type="number"
 value="20">
+
 </div>
+
+
+<div class="field">
+
+<label>
+MAX BALLS
+</label>
+
+<input
+id="maxBalls"
+type="number"
+value="120">
+
+</div>
+
+
+<div class="field">
+
+<label>
+WICKET LIMIT
+</label>
+
+<input
+id="wicketLimit"
+type="number"
+value="10">
+
+</div>
+
+
+<div class="field">
+
+<label>
+TARGET
+</label>
+
+<input
+id="target"
+type="number"
+value="0">
+
+</div>
+
+
+</div>
+
+
+
+<div class="form-grid four">
 
 
 <div class="field">
@@ -1554,109 +1664,157 @@ REVISED OVERS
 id="revisedOvers"
 type="number"
 value="20">
+
 </div>
 
 
 <div class="field">
 
 <label>
-TARGET
-</label>
-
-<input
-id="matchTarget"
-type="number"
-value="0">
-</div>
-
-
-<div class="field">
-
-<label>
-OFFICIAL DLS TARGET
+OFFICIAL / DLS TARGET
 </label>
 
 <input
 id="dlsTarget"
 type="number"
 value="0">
-</div>
 
-
-</div>
-
-
-<div class="form-grid three">
-
-
-<div class="field">
-
-<label>
-INTERRUPTION SCORE
-</label>
-
-<input
-id="interruptScore"
-placeholder="Example 80">
 </div>
 
 
 <div class="field">
 
 <label>
-WICKETS LOST
+TARGET LOCK
 </label>
 
-<input
-id="interruptWickets"
-type="number"
-value="0">
-</div>
+<select id="targetLock">
 
-
-<div class="field">
-
-<label>
-DLS STATUS
-</label>
-
-<select
-id="dlsStatus">
-
-<option value="off">
-Normal Match
-</option>
-
-<option value="on">
-DLS / Revised Target Active
-</option>
+<option value="locked">LOCK TARGET</option>
+<option value="editable">EDITABLE</option>
 
 </select>
 
 </div>
 
 
+<div class="field">
+
+<label>
+MATCH DAY
+</label>
+
+<input
+id="matchDay"
+type="number"
+value="1">
+
+</div>
+
+
 </div>
 
 
 
-<div style="
-display:flex;
-justify-content:space-between;
+<div
+id="trialConfig"
+class="hidden"
+style="
 margin-top:18px;
+padding-top:15px;
+border-top:1px solid rgba(54,94,132,.25);
 ">
+
+
+<div class="panel-label">
+5 STAGE TRIAL
+</div>
+
+
+<div class="form-grid three"
+style="margin-top:10px">
+
+
+<div class="field">
+
+<label>
+TRIAL PLAYER
+</label>
+
+<select id="trialPlayer"></select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+TRIAL BOWLER
+</label>
+
+<select id="trialBowler"></select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+TRIAL NAME
+</label>
+
+<input
+id="trialName"
+placeholder="Trial Round 01">
+
+</div>
+
+
+</div>
+
+
+<div class="trial-stages">
+
+<div class="trial-stage active" id="trial1">
+STAGE 1<br>OVER 1
+</div>
+
+<div class="trial-stage" id="trial2">
+STAGE 2<br>OVER 2
+</div>
+
+<div class="trial-stage" id="trial3">
+STAGE 3<br>OVER 3
+</div>
+
+<div class="trial-stage" id="trial4">
+STAGE 4<br>OVER 4
+</div>
+
+<div class="trial-stage" id="trial5">
+STAGE 5<br>OVER 5
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<div class="actions">
 
 <button
 class="btn"
-id="backSetup">
+id="rulesBack">
 
-← MATCH SETUP
+← TOSS
 
 </button>
 
 <button
 class="btn green"
-id="startMatch">
+id="startScoring">
 
 START SCORING
 
@@ -1669,30 +1827,24 @@ START SCORING
 
 
 
-<!-- ============================================================
-     STEP 5 SCORING CONSOLE
-============================================================ -->
+<!-- =========================================================
+     STEP 6 SCORING
+========================================================= -->
 
 <section
-id="scoringStep"
-class="hidden">
+class="hidden"
+id="scoringStep">
 
-
-<!-- SCORE -->
 
 <div class="score-hero">
 
 
 <div class="score-top">
 
-<div>
-
-<span class="panel-label"
-id="liveMatchLabel">
+<div class="panel-label"
+id="matchLabel">
 
 HCCL LIVE MATCH
-
-</span>
 
 </div>
 
@@ -1700,10 +1852,10 @@ HCCL LIVE MATCH
 <div class="live-pill">
 
 <i></i>
-
-SCORING LIVE
+LIVE
 
 </div>
+
 
 </div>
 
@@ -1711,39 +1863,34 @@ SCORING LIVE
 
 <div class="score-center">
 
-
 <div
-class="score-team-name"
-id="battingTeamName">
+class="score-team"
+id="battingTeam">
 
-HCCL REDS
+TEAM
 
 </div>
 
 
 <div class="big-score">
 
-<span id="scoreRuns">
+<span id="runs">
 0
 </span>
 
-/
-
-<span id="scoreWickets">
+/<span id="wickets">
 0
 </span>
 
 </div>
 
 
-<div class="over-text">
+<div class="overs-text">
 
-<span id="scoreOvers">
+<span id="oversDisplay">
 0.0
 </span>
 
-Overs
-
 </div>
 
 
@@ -1751,14 +1898,12 @@ Overs
 
 
 
-<div class="score-metrics">
+<div class="metrics">
 
 
 <div class="metric">
 
-<small>
-CRR
-</small>
+<small>CRR</small>
 
 <strong id="crr">
 0.00
@@ -1769,11 +1914,9 @@ CRR
 
 <div class="metric">
 
-<small>
-TARGET
-</small>
+<small>TARGET</small>
 
-<strong id="targetDisplay">
+<strong id="targetView">
 —
 </strong>
 
@@ -1782,9 +1925,7 @@ TARGET
 
 <div class="metric">
 
-<small>
-RRR
-</small>
+<small>RRR</small>
 
 <strong id="rrr">
 —
@@ -1795,12 +1936,10 @@ RRR
 
 <div class="metric">
 
-<small>
-BALLS LEFT
-</small>
+<small>BALLS LEFT</small>
 
 <strong id="ballsLeft">
-120
+—
 </strong>
 
 </div>
@@ -1808,9 +1947,7 @@ BALLS LEFT
 
 <div class="metric">
 
-<small>
-THIS OVER
-</small>
+<small>THIS OVER</small>
 
 <strong id="overRuns">
 0
@@ -1819,51 +1956,56 @@ THIS OVER
 </div>
 
 
+<div class="metric">
+
+<small>DAY / STAGE</small>
+
+<strong id="dayStage">
+—
+</strong>
+
 </div>
 
 
 </div>
 
 
+</div>
 
-<div class="scoring-grid">
 
 
-<!-- ========================================================
-     LEFT
-========================================================= -->
+<div class="scoring-layout">
+
+
+<!-- LEFT -->
 
 <div>
 
 
-<!-- PLAYERS -->
-
-<div class="control-panel">
+<div class="panel">
 
 
 <div class="panel-label">
-CURRENT PLAY
+CURRENT PLAYERS
 </div>
 
-<h2 class="panel-title">
-Players
+<h2>
+Batting / Bowling
 </h2>
 
 
-<div class="current-players">
+<div class="current-grid">
 
 
 <div class="current-player striker">
 
-<small>
-STRIKER
-</small>
+<small>STRIKER</small>
 
 <strong id="strikerName">
 —
 </strong>
 
-<div class="player-stat">
+<span>
 
 <span id="strikerRuns">
 0
@@ -1877,22 +2019,20 @@ STRIKER
 
 )
 
-</div>
+</span>
 
 </div>
 
 
 <div class="current-player">
 
-<small>
-NON-STRIKER
-</small>
+<small>NON-STRIKER</small>
 
 <strong id="nonStrikerName">
 —
 </strong>
 
-<div class="player-stat">
+<span>
 
 <span id="nonStrikerRuns">
 0
@@ -1906,7 +2046,7 @@ NON-STRIKER
 
 )
 
-</div>
+</span>
 
 </div>
 
@@ -1914,43 +2054,34 @@ NON-STRIKER
 </div>
 
 
-
-<div class="form-grid three"
+<div
+class="form-grid three"
 style="margin-top:14px">
 
 
 <div class="field">
 
-<label>
-STRIKER
-</label>
+<label>STRIKER</label>
 
-<select id="liveStriker">
-</select>
+<select id="liveStriker"></select>
 
 </div>
 
 
 <div class="field">
 
-<label>
-NON-STRIKER
-</label>
+<label>NON-STRIKER</label>
 
-<select id="liveNonStriker">
-</select>
+<select id="liveNonStriker"></select>
 
 </div>
 
 
 <div class="field">
 
-<label>
-BOWLER
-</label>
+<label>BOWLER</label>
 
-<select id="liveBowler">
-</select>
+<select id="liveBowler"></select>
 
 </div>
 
@@ -1961,11 +2092,9 @@ BOWLER
 </div>
 
 
-
-<!-- RUNS -->
 
 <div
-class="control-panel"
+class="panel"
 style="margin-top:16px">
 
 
@@ -1973,140 +2102,64 @@ style="margin-top:16px">
 BALL RESULT
 </div>
 
-<h2 class="panel-title">
-Runs
+<h2>
+Scoring
 </h2>
 
 
 <div class="run-grid">
 
 
-<button
-class="run-button"
-data-run="0">
-0
-</button>
+<button class="run-btn" data-run="0">0</button>
+<button class="run-btn" data-run="1">1</button>
+<button class="run-btn" data-run="2">2</button>
+<button class="run-btn" data-run="3">3</button>
+<button class="run-btn four" data-run="4">4</button>
+<button class="run-btn" data-run="5">5</button>
+<button class="run-btn six" data-run="6">6</button>
+<button class="run-btn wicket" id="wicketBtn">W</button>
 
-
-<button
-class="run-button"
-data-run="1">
-1
-</button>
-
-
-<button
-class="run-button"
-data-run="2">
-2
-</button>
-
-
-<button
-class="run-button"
-data-run="3">
-3
-</button>
-
-
-<button
-class="run-button four"
-data-run="4">
-4
-</button>
-
-
-<button
-class="run-button"
-data-run="5">
-5
-</button>
-
-
-<button
-class="run-button six"
-data-run="6">
-6
-</button>
-
-
-<button
-class="run-button wicket"
-id="wicketButton">
-W
-</button>
-
-
-</div>
-
-
-
-<div
-class="panel-label"
-style="margin-top:20px">
-
-EXTRAS
 
 </div>
 
 
 <div
 class="extra-grid"
-style="margin-top:9px">
+style="margin-top:12px">
 
 
-<button
-class="extra-button"
-data-extra="WD">
-
-WIDE +1
-
+<button class="extra-btn" data-extra="WD">
+WIDE
 </button>
 
-
-<button
-class="extra-button"
-data-extra="NB">
-
-NO BALL +1
-
+<button class="extra-btn" data-extra="NB">
+NO BALL
 </button>
 
-
-<button
-class="extra-button"
-data-extra="B">
-
-BYE +1
-
+<button class="extra-btn" data-extra="B">
+BYE
 </button>
 
-
-<button
-class="extra-button"
-data-extra="LB">
-
-LEG BYE +1
-
+<button class="extra-btn" data-extra="LB">
+LEG BYE
 </button>
 
 
 </div>
 
 
-
 <div
 style="
 display:flex;
-gap:8px;
 flex-wrap:wrap;
-margin-top:16px;
+gap:8px;
+margin-top:15px;
 ">
 
 
 <button
 class="btn warning"
-id="undoButton">
+id="undoBtn">
 
 UNDO
 
@@ -2115,16 +2168,16 @@ UNDO
 
 <button
 class="btn"
-id="swapButton">
+id="swapBtn">
 
-SWAP STRIKE
+SWAP
 
 </button>
 
 
 <button
 class="btn"
-id="nextOverButton">
+id="newOverBtn">
 
 NEXT OVER
 
@@ -2133,7 +2186,7 @@ NEXT OVER
 
 <button
 class="btn red"
-id="endInningsButton">
+id="endInningsBtn">
 
 END INNINGS
 
@@ -2147,10 +2200,8 @@ END INNINGS
 
 
 
-<!-- RECENT -->
-
 <div
-class="control-panel"
+class="panel"
 style="margin-top:16px">
 
 
@@ -2158,7 +2209,7 @@ style="margin-top:16px">
 CURRENT OVER
 </div>
 
-<h2 class="panel-title">
+<h2>
 Recent Balls
 </h2>
 
@@ -2176,39 +2227,30 @@ id="recentBalls">
 
 
 
-<!-- ========================================================
-     RIGHT
-========================================================= -->
+<!-- RIGHT -->
 
 <div>
 
 
-<!-- STREAM PREVIEW -->
-
-<div class="control-panel">
+<div class="panel">
 
 
 <div class="panel-label">
-STREAM OUTPUT
+BROADCAST PREVIEW
 </div>
 
-<h2 class="panel-title">
-Broadcast Preview
+<h2>
+Streaming Output
 </h2>
 
 
-<div class="stream-preview"
-id="streamPreview">
+<div class="preview">
 
 
-<div class="preview-center">
+<div class="preview-main">
 
 <img
 src="hccl-logo.png"
-style="
-width:58px;
-margin-bottom:8px;
-"
 alt="HCCL">
 
 
@@ -2222,8 +2264,8 @@ id="previewScore">
 
 
 <div
-class="preview-meta"
-id="previewMeta">
+class="preview-info"
+id="previewInfo">
 
 0.0 OVERS
 
@@ -2243,30 +2285,120 @@ FOUR
 
 
 <div
-class="over-summary-overlay"
-id="overSummary">
+class="interruption"
+id="interruptionScreen">
 
 
-<div class="over-summary-inner">
+<div>
+
+<h2 id="interruptionTitle">
+MATCH INTERRUPTED
+</h2>
+
+<p id="interruptionInfo">
+Please stand by
+</p>
+
+</div>
 
 
-<small>
-OVER COMPLETE
-</small>
+</div>
 
 
-<h2 id="overSummaryScore">
+</div>
 
-0/0
 
+</div>
+
+
+
+<div
+class="panel"
+style="margin-top:16px">
+
+
+<div class="panel-label">
+MATCH STATUS
+</div>
+
+<h2>
+Interruption Control
 </h2>
 
 
-<p id="overSummaryBalls">
+<div class="status-grid">
 
-—
 
-</p>
+<button
+class="status-btn"
+data-status="RAIN DELAY">
+
+RAIN DELAY
+
+</button>
+
+
+<button
+class="status-btn"
+data-status="BAD LIGHT">
+
+BAD LIGHT
+
+</button>
+
+
+<button
+class="status-btn"
+data-status="TECHNICAL ISSUE">
+
+TECHNICAL ISSUE
+
+</button>
+
+
+<button
+class="status-btn"
+data-status="GROUND ISSUE">
+
+GROUND ISSUE
+
+</button>
+
+
+<button
+class="status-btn"
+data-status="INJURY BREAK">
+
+INJURY BREAK
+
+</button>
+
+
+<button
+class="status-btn"
+data-status="DRINKS BREAK">
+
+DRINKS BREAK
+
+</button>
+
+
+<button
+class="status-btn"
+data-status="MATCH SUSPENDED">
+
+SUSPEND
+
+</button>
+
+
+<button
+class="status-btn"
+id="resumeBtn">
+
+RESUME LIVE
+
+</button>
 
 
 </div>
@@ -2275,17 +2407,9 @@ OVER COMPLETE
 </div>
 
 
-</div>
-
-
-</div>
-
-
-
-<!-- TICKER MODE -->
 
 <div
-class="control-panel"
+class="panel"
 style="margin-top:16px">
 
 
@@ -2293,8 +2417,8 @@ style="margin-top:16px">
 BROADCAST TICKER
 </div>
 
-<h2 class="panel-title">
-Ticker Style
+<h2>
+18 Ticker Models
 </h2>
 
 
@@ -2308,157 +2432,69 @@ id="tickerGrid">
 
 
 
-<!-- EVENTS -->
-
 <div
-class="control-panel"
+class="panel"
 style="margin-top:16px">
 
 
 <div class="panel-label">
-BROADCAST EVENTS
+EVENT ANIMATIONS
 </div>
 
-<h2 class="panel-title">
-Manual Animation Trigger
+<h2>
+Broadcast Trigger
 </h2>
 
 
 <div class="event-grid">
 
 
-<button
-class="event-button hot"
-data-event="FOUR">
-
+<button class="event-btn red" data-event="FOUR">
 FOUR
-
 </button>
 
-
-<button
-class="event-button hot"
-data-event="SIX">
-
+<button class="event-btn red" data-event="SIX">
 SIX
-
 </button>
 
-
-<button
-class="event-button hot"
-data-event="WICKET">
-
+<button class="event-btn red" data-event="WICKET">
 WICKET
-
 </button>
 
-
-<button
-class="event-button gold"
-data-event="FIFTY">
-
+<button class="event-btn gold" data-event="FIFTY">
 50
-
 </button>
 
-
-<button
-class="event-button gold"
-data-event="CENTURY">
-
+<button class="event-btn gold" data-event="CENTURY">
 100
-
 </button>
 
-
-<button
-class="event-button"
-data-event="5 WICKETS">
-
+<button class="event-btn" data-event="5 WICKETS">
 5 WICKETS
-
 </button>
 
-
-<button
-class="event-button"
-data-event="TEAM 50">
-
+<button class="event-btn" data-event="TEAM 50">
 TEAM 50
-
 </button>
 
-
-<button
-class="event-button"
-data-event="TEAM 100">
-
+<button class="event-btn" data-event="TEAM 100">
 TEAM 100
-
 </button>
 
-
-<button
-class="event-button"
-data-event="TEAM 150">
-
+<button class="event-btn" data-event="TEAM 150">
 TEAM 150
-
 </button>
 
-
-<button
-class="event-button"
-data-event="TEAM 200">
-
+<button class="event-btn" data-event="TEAM 200">
 TEAM 200
-
 </button>
 
-
-<button
-class="event-button"
-data-event="FREE HIT">
-
+<button class="event-btn" data-event="FREE HIT">
 FREE HIT
-
 </button>
 
-
-<button
-class="event-button"
-data-event="DLS TARGET">
-
-DLS
-
-</button>
-
-
-<button
-class="event-button"
-data-event="POWERPLAY END">
-
-POWERPLAY
-
-</button>
-
-
-<button
-class="event-button gold"
-data-event="MATCH WINNER">
-
+<button class="event-btn gold" data-event="MATCH WINNER">
 WINNER
-
-</button>
-
-
-<button
-class="event-button"
-data-event="PLAYER OF THE MATCH">
-
-POTM
-
 </button>
 
 
@@ -2468,58 +2504,106 @@ POTM
 </div>
 
 
-
-<!-- LIVE SETTINGS -->
 
 <div
-class="control-panel"
+class="panel"
 style="margin-top:16px">
 
 
 <div class="panel-label">
-LIVE MATCH SETTINGS
+REPLAY / HIGHLIGHTS
 </div>
 
-<h2 class="panel-title">
-Overs / Target
+<h2>
+Replay Markers
 </h2>
 
 
-<div class="form-grid">
+<div
+class="form-grid three">
 
 
 <div class="field">
 
-<label>
-REVISED OVERS
-</label>
+<label>REPLAY LENGTH</label>
 
-<input
-id="liveOvers"
-type="number">
+<select id="replayLength">
+
+<option value="5">Last 5 sec</option>
+<option value="10">Last 10 sec</option>
+<option value="15">Last 15 sec</option>
+<option value="20">Last 20 sec</option>
+
+</select>
+
 </div>
 
 
 <div class="field">
 
-<label>
-TARGET
-</label>
+<label>SPEED</label>
 
-<input
-id="liveTarget"
-type="number">
+<select id="replaySpeed">
+
+<option value="1">1×</option>
+<option value="2">2×</option>
+<option value="3">3×</option>
+<option value="4">4×</option>
+
+<option value="0.5">½× Slow</option>
+<option value="0.333">⅓× Slow</option>
+<option value="0.25">¼× Slow</option>
+<option value="0.2">⅕× Slow</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>MARK TYPE</label>
+
+<select id="highlightType">
+
+<option>Auto Highlight</option>
+<option>Boundary</option>
+<option>Wicket</option>
+<option>Catch</option>
+<option>Run Out</option>
+<option>Milestone</option>
+<option>Winning Moment</option>
+
+</select>
+
 </div>
 
 
 </div>
+
+
+<div
+style="
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+">
 
 
 <button
 class="btn"
-id="applyLiveSettings">
+id="markReplay">
 
-APPLY
+MARK REPLAY
+
+</button>
+
+
+<button
+class="btn gold"
+id="markHighlight">
+
+MARK HIGHLIGHT
 
 </button>
 
@@ -2527,11 +2611,12 @@ APPLY
 </div>
 
 
+</div>
 
-<!-- LOG -->
+
 
 <div
-class="control-panel"
+class="panel"
 style="margin-top:16px">
 
 
@@ -2539,8 +2624,8 @@ style="margin-top:16px">
 MATCH LOG
 </div>
 
-<h2 class="panel-title">
-History
+<h2>
+Events
 </h2>
 
 
@@ -2586,137 +2671,216 @@ Official HCCL Tournament Portal
 
 <script>
 
-/* ============================================================
-   TODAY'S MATCHES
-============================================================ */
+/* =========================================================
+   MATCH MODULES
+========================================================= */
 
-const todayMatches = [
+const modules = [
 
 {
- id:"M01",
- time:"3:00 PM",
- venue:"HCCL Stadium",
- overs:20,
- teamA:"HCCL Reds",
- keyA:"reds",
- teamB:"HCCL Blues",
- keyB:"blues"
+id:"t20",
+name:"T20 Match",
+desc:"20 overs per innings",
+overs:20,
+balls:120,
+wickets:10
 },
 
 {
- id:"M02",
- time:"6:30 PM",
- venue:"HCCL Stadium",
- overs:20,
- teamA:"HCCL Warriors",
- keyA:"warriors",
- teamB:"HCCL Titans",
- keyB:"titans"
+id:"odi",
+name:"ODI Match",
+desc:"50 overs per innings",
+overs:50,
+balls:300,
+wickets:10
+},
+
+{
+id:"hundred",
+name:"100 Balls Match",
+desc:"100 legal balls",
+overs:0,
+balls:100,
+wickets:10
+},
+
+{
+id:"test",
+name:"Test Match",
+desc:"Multi-day · 90 overs/day",
+overs:90,
+balls:540,
+wickets:10
+},
+
+{
+id:"super",
+name:"Super Over",
+desc:"1 over · 2 wickets",
+overs:1,
+balls:6,
+wickets:2
+},
+
+{
+id:"scheme",
+name:"Target Chase / Scheme",
+desc:"Manual target → lock → chase",
+overs:20,
+balls:120,
+wickets:10
+},
+
+{
+id:"practice",
+name:"Practice Match",
+desc:"Editable overs & players",
+overs:10,
+balls:60,
+wickets:10
+},
+
+{
+id:"trial",
+name:"5 Stage Trial",
+desc:"5 stages · 1 over each",
+overs:5,
+balls:30,
+wickets:10
+},
+
+{
+id:"custom",
+name:"Custom Match",
+desc:"Overs / balls / wickets editable",
+overs:20,
+balls:120,
+wickets:10
 }
 
 ];
 
 
-/* ============================================================
-   TEAM PLAYERS
-============================================================ */
+/* =========================================================
+   MATCHES
+========================================================= */
 
-const squads = {
+const scheduledMatches = [
 
-"HCCL Reds":[
-"Reds Player 01",
-"Reds Player 02",
-"Reds Player 03",
-"Reds Player 04",
-"Reds Player 05",
-"Reds Player 06",
-"Reds Player 07",
-"Reds Player 08",
-"Reds Player 09",
-"Reds Player 10",
-"Reds Player 11",
-"Reds Player 12",
-"Reds Player 13"
-],
+{
+id:"M01",
+time:"3:00 PM",
+teamA:"HCCL Reds",
+teamB:"HCCL Blues",
+venue:"HCCL Stadium"
+},
 
-"HCCL Blues":[
-"Blues Player 01",
-"Blues Player 02",
-"Blues Player 03",
-"Blues Player 04",
-"Blues Player 05",
-"Blues Player 06",
-"Blues Player 07",
-"Blues Player 08",
-"Blues Player 09",
-"Blues Player 10",
-"Blues Player 11",
-"Blues Player 12",
-"Blues Player 13"
-],
+{
+id:"M02",
+time:"6:30 PM",
+teamA:"HCCL Warriors",
+teamB:"HCCL Titans",
+venue:"HCCL Stadium"
+}
 
-"HCCL Warriors":[
-"Warriors Player 01",
-"Warriors Player 02",
-"Warriors Player 03",
-"Warriors Player 04",
-"Warriors Player 05",
-"Warriors Player 06",
-"Warriors Player 07",
-"Warriors Player 08",
-"Warriors Player 09",
-"Warriors Player 10",
-"Warriors Player 11"
-],
+];
 
-"HCCL Titans":[
-"Titans Player 01",
-"Titans Player 02",
-"Titans Player 03",
-"Titans Player 04",
-"Titans Player 05",
-"Titans Player 06",
-"Titans Player 07",
-"Titans Player 08",
-"Titans Player 09",
-"Titans Player 10",
-"Titans Player 11"
+
+/* =========================================================
+   CREATE 26 PLAYER SQUADS
+========================================================= */
+
+const squads = {};
+
+
+function createSquad(team){
+
+if(squads[team]){
+return;
+}
+
+squads[team] = [];
+
+for(let i=1;i<=26;i++){
+
+squads[team].push({
+
+name:
+team.replace("HCCL ","")
++
+" Player "
++
+String(i).padStart(2,"0"),
+
+mobile:
+"",
+
+role:
+i % 6 === 0
+? "Wicket Keeper"
+: i % 5 === 0
+? "All-Rounder"
+: i % 4 === 0
+? "Fast Bowler"
+: i % 3 === 0
+? "Spin Bowler"
+: "Batsman"
+
+});
+
+}
+
+}
+
+
+[
+"HCCL Reds",
+"HCCL Blues",
+"HCCL Warriors",
+"HCCL Titans",
+"HCCL Kings",
+"HCCL Strikers",
+"HCCL Lions",
+"HCCL Eagles"
 ]
+.forEach(
+createSquad
+);
 
-};
 
-
-/* ============================================================
-   TICKER MODELS — 18
-============================================================ */
+/* =========================================================
+   TICKERS
+========================================================= */
 
 const tickerModels = [
 
 "01 Compact Score",
 "02 Wide Broadcast",
-"03 Minimal",
+"03 Minimal Score",
 "04 Batting Focus",
 "05 Bowling Focus",
 "06 Partnership",
-"07 Chase / RRR",
+"07 Required Rate",
 "08 Powerplay",
 "09 Over Summary",
 "10 Wicket Alert",
 "11 Milestone",
-"12 DLS Target",
-"13 Toss",
+"12 DLS / Revised Target",
+"13 Toss Display",
 "14 Match Result",
 "15 Player Spotlight",
-"16 Full Width",
+"16 Full Width Broadcast",
 "17 Transparent OBS",
 "18 Sponsor Ready"
 
 ];
 
 
-/* ============================================================
-   MATCH CONTROL
-============================================================ */
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let selectedModule = null;
 
 let selectedMatch = null;
 
@@ -2727,83 +2891,64 @@ let battingTeam = "";
 let bowlingTeam = "";
 
 
-/* ============================================================
-   SCORE STATE
-============================================================ */
+let trialStage = 1;
 
-const initialState = {
+
+const baseState = {
 
 runs:0,
-
 wickets:0,
-
 legalBalls:0,
 
 maxOvers:20,
+maxBalls:120,
+wicketLimit:10,
 
 target:0,
 
 striker:"",
-
 nonStriker:"",
-
 bowler:"",
 
-batterStats:{},
+batters:{},
+
+recent:[],
+currentOver:[],
+overRuns:0,
 
 history:[],
 
-recent:[],
+ticker:1,
 
-currentOverBalls:[],
-
-currentOverRuns:0,
-
-ticker:1
+matchDay:1
 
 };
 
 
 let state =
-JSON.parse(
-localStorage.getItem(
-"HCCL_MATCH_CONTROL_V2"
-)
-) || structuredClone(initialState);
+structuredClone(
+baseState
+);
 
 
 let undoStack = [];
 
 
-/* ============================================================
-   SAVE
-============================================================ */
-
-function saveState(){
-
-localStorage.setItem(
-"HCCL_MATCH_CONTROL_V2",
-JSON.stringify(state)
-);
-
-}
-
-
-/* ============================================================
+/* =========================================================
    STEP
-============================================================ */
+========================================================= */
 
-function setStep(number){
+function setStep(n){
 
-for(let i=1;i<=5;i++){
+for(let i=1;i<=6;i++){
 
 document
 .getElementById(
 "step"+i
 )
 .classList.toggle(
-"on",
-i === number
+"active",
+i===n
 );
 
 }
@@ -2811,80 +2956,32 @@ i === number
 }
 
 
-/* ============================================================
-   MATCH LIST
-============================================================ */
+/* =========================================================
+   CATEGORY
+========================================================= */
 
-function renderMatches(){
-
-const list =
+const categoryGrid =
 document.getElementById(
-"matchList"
+"categoryGrid"
 );
 
 
-list.innerHTML =
-todayMatches
+categoryGrid.innerHTML =
+modules
 .map(
-match => `
+m => `
 
 <div
-class="match-choice"
-data-id="${match.id}">
-
-
-<div class="match-time">
-
-${match.time}
-
-</div>
-
-
-<div class="match-teams">
-
-
-<div class="match-team">
-
-<img
-src="hccl-logo.png">
+class="category-card"
+data-id="${m.id}">
 
 <b>
-${match.teamA}
+${m.name}
 </b>
 
-</div>
-
-
-<div class="vs">
-VS
-</div>
-
-
-<div class="match-team">
-
-<b>
-${match.teamB}
-</b>
-
-<img
-src="hccl-logo.png">
-
-</div>
-
-
-</div>
-
-
-<div class="match-meta">
-
-${match.id}
-•
-${match.overs} Overs
-•
-${match.venue}
-
-</div>
-
+<small>
+${m.desc}
+</small>
 
 </div>
 
@@ -2895,20 +2992,151 @@ ${match.venue}
 
 document
 .querySelectorAll(
-".match-choice"
+".category-card"
 )
 .forEach(
 card => {
 
 
-card.addEventListener(
-"click",
+card.onclick =
 function(){
 
 
 document
 .querySelectorAll(
-".match-choice"
+".category-card"
+)
+.forEach(
+x => x.classList.remove(
+"selected"
+)
+);
+
+
+this.classList.add(
+"selected"
+);
+
+
+selectedModule =
+modules.find(
+m =>
+m.id === this.dataset.id
+);
+
+
+};
+
+
+});
+
+
+/* =========================================================
+   CATEGORY NEXT
+========================================================= */
+
+document
+.getElementById(
+"categoryNext"
+)
+.onclick =
+function(){
+
+
+if(!selectedModule){
+
+alert(
+"Select match category."
+);
+
+return;
+
+}
+
+
+document
+.getElementById(
+"categoryStep"
+)
+.classList.add(
+"hidden"
+);
+
+
+document
+.getElementById(
+"matchStep"
+)
+.classList.remove(
+"hidden"
+);
+
+
+setStep(2);
+
+
+renderMatches();
+
+};
+
+
+/* =========================================================
+   MATCH LIST
+========================================================= */
+
+function renderMatches(){
+
+document
+.getElementById(
+"matchList"
+)
+.innerHTML =
+scheduledMatches
+.map(
+m => `
+
+<div
+class="match-card"
+data-id="${m.id}">
+
+<div class="time">
+${m.time}
+</div>
+
+<h3>
+${m.teamA}
+&nbsp; VS &nbsp;
+${m.teamB}
+</h3>
+
+<p>
+${m.id}
+•
+${m.venue}
+</p>
+
+</div>
+
+`
+)
+.join("");
+
+
+document
+.querySelectorAll(
+".match-card"
+)
+.forEach(
+card => {
+
+
+card.onclick =
+function(){
+
+
+document
+.querySelectorAll(
+".match-card"
 )
 .forEach(
 x => x.classList.remove(
@@ -2923,59 +3151,199 @@ this.classList.add(
 
 
 selectedMatch =
-todayMatches.find(
+scheduledMatches.find(
 m =>
 m.id === this.dataset.id
 );
 
 
-});
+};
+
 
 });
 
 }
 
 
-/* ============================================================
-   XI SCREEN
-============================================================ */
+/* =========================================================
+   CUSTOM MATCH
+========================================================= */
 
-function buildPlayerPool(
-team,
-elementID
-){
+document
+.getElementById(
+"useCustomMatch"
+)
+.onclick =
+function(){
 
-const players =
-squads[team] || [];
+
+const a =
+document
+.getElementById(
+"customTeamA"
+).value.trim();
+
+
+const b =
+document
+.getElementById(
+"customTeamB"
+).value.trim();
+
+
+if(!a || !b){
+
+alert(
+"Enter both teams."
+);
+
+return;
+
+}
+
+
+createSquad(a);
+createSquad(b);
+
+
+selectedMatch = {
+
+id:"CUSTOM",
+
+time:"CUSTOM",
+
+teamA:a,
+
+teamB:b,
+
+venue:
+document
+.getElementById(
+"customMatchName"
+).value || "Custom Match"
+
+};
+
+
+alert(
+"Custom match selected."
+);
+
+
+};
+
+
+/* =========================================================
+   MATCH NAVIGATION
+========================================================= */
+
+document
+.getElementById(
+"matchBack"
+)
+.onclick =
+function(){
+
+document
+.getElementById(
+"matchStep"
+)
+.classList.add(
+"hidden"
+);
+
+document
+.getElementById(
+"categoryStep"
+)
+.classList.remove(
+"hidden"
+);
+
+setStep(1);
+
+};
 
 
 document
 .getElementById(
-elementID
+"matchNext"
+)
+.onclick =
+function(){
+
+
+if(!selectedMatch){
+
+alert(
+"Select match."
+);
+
+return;
+
+}
+
+
+loadSquads();
+
+
+document
+.getElementById(
+"matchStep"
+)
+.classList.add(
+"hidden"
+);
+
+document
+.getElementById(
+"squadStep"
+)
+.classList.remove(
+"hidden"
+);
+
+setStep(3);
+
+};
+
+
+/* =========================================================
+   SQUADS
+========================================================= */
+
+function renderSquad(
+team,
+container
+){
+
+document
+.getElementById(
+container
 )
 .innerHTML =
-players
+squads[team]
 .map(
-(name,index) => `
+(p,index) => `
 
-<div class="player-check">
+<div class="player-row">
 
 <label>
 
 <input
 type="checkbox"
-value="${name}"
 data-team="${team}"
+value="${p.name}"
 ${index < 11 ? "checked" : ""}>
 
 <span>
-${name}
+${p.name}
 </span>
 
 </label>
 
 <small>
-PLAYER
+${p.role}
 </small>
 
 </div>
@@ -2987,41 +3355,47 @@ PLAYER
 }
 
 
-function loadXI(){
+function loadSquads(){
+
+createSquad(
+selectedMatch.teamA
+);
+
+createSquad(
+selectedMatch.teamB
+);
+
 
 document
 .getElementById(
-"teamAXITitle"
+"teamATitle"
 ).textContent =
 selectedMatch.teamA;
 
 
 document
 .getElementById(
-"teamBXITitle"
+"teamBTitle"
 ).textContent =
 selectedMatch.teamB;
 
 
-buildPlayerPool(
+renderSquad(
 selectedMatch.teamA,
-"teamAPool"
+"teamAList"
 );
 
 
-buildPlayerPool(
+renderSquad(
 selectedMatch.teamB,
-"teamBPool"
+"teamBList"
 );
 
 
-const addTeam =
-document.getElementById(
+document
+.getElementById(
 "addPlayerTeam"
-);
-
-
-addTeam.innerHTML = `
+).innerHTML = `
 
 <option>
 ${selectedMatch.teamA}
@@ -3036,44 +3410,50 @@ ${selectedMatch.teamB}
 }
 
 
-/* ============================================================
+/* =========================================================
    ADD PLAYER
-============================================================ */
+========================================================= */
 
 document
 .getElementById(
-"addPlayerBtn"
+"addPlayer"
 )
-.addEventListener(
-"click",
+.onclick =
 function(){
 
 
 const team =
-document.getElementById(
+document
+.getElementById(
 "addPlayerTeam"
 ).value;
 
 
-const mobile =
-document.getElementById(
-"newPlayerMobile"
-).value.trim();
-
-
 const name =
-document.getElementById(
-"newPlayerName"
+document
+.getElementById(
+"addName"
 ).value.trim();
 
 
-if(
-!mobile ||
-!name
-){
+const mobile =
+document
+.getElementById(
+"addMobile"
+).value.trim();
+
+
+const role =
+document
+.getElementById(
+"addRole"
+).value;
+
+
+if(!name || !mobile){
 
 alert(
-"Enter mobile number and player name."
+"Enter name and mobile."
 );
 
 return;
@@ -3081,121 +3461,62 @@ return;
 }
 
 
-if(
-!squads[team]
-){
+squads[team].push({
 
-squads[team] = [];
-
-}
-
-
-squads[team].push(
-name
-);
-
-
-loadXI();
-
-
-alert(
-name +
-" added to " +
-team
-);
-
+name,
+mobile,
+role
 
 });
 
 
+loadSquads();
 
-/* ============================================================
-   NAVIGATION SETUP
-============================================================ */
-
-document
-.getElementById(
-"toXI"
-)
-.addEventListener(
-"click",
-function(){
-
-
-if(!selectedMatch){
 
 alert(
-"Select today's match first."
+"Player added."
 );
-
-return;
-
-}
-
-
-document
-.getElementById(
-"matchStep"
-)
-.classList.add(
-"hidden"
-);
-
-
-document
-.getElementById(
-"xiStep"
-)
-.classList.remove(
-"hidden"
-);
-
-
-loadXI();
-
-setStep(2);
-
-
-});
-
-
-document
-.getElementById(
-"backMatch"
-)
-.onclick = function(){
-
-document
-.getElementById(
-"xiStep"
-)
-.classList.add(
-"hidden"
-);
-
-document
-.getElementById(
-"matchStep"
-)
-.classList.remove(
-"hidden"
-);
-
-setStep(1);
 
 };
 
 
-/* ============================================================
-   XI TO SETUP
-============================================================ */
+/* =========================================================
+   SQUAD NEXT
+========================================================= */
 
 document
 .getElementById(
-"toSetup"
+"squadBack"
 )
-.addEventListener(
-"click",
+.onclick =
+function(){
+
+document
+.getElementById(
+"squadStep"
+)
+.classList.add(
+"hidden"
+);
+
+document
+.getElementById(
+"matchStep"
+)
+.classList.remove(
+"hidden"
+);
+
+setStep(2);
+
+};
+
+
+document
+.getElementById(
+"squadNext"
+)
+.onclick =
 function(){
 
 
@@ -3205,7 +3526,9 @@ teamAXI =
 `input[data-team="${selectedMatch.teamA}"]:checked`
 )
 ]
-.map(x => x.value);
+.map(
+x => x.value
+);
 
 
 teamBXI =
@@ -3214,7 +3537,9 @@ teamBXI =
 `input[data-team="${selectedMatch.teamB}"]:checked`
 )
 ]
-.map(x => x.value);
+.map(
+x => x.value
+);
 
 
 if(
@@ -3231,42 +3556,12 @@ return;
 }
 
 
-document
-.getElementById(
-"xiStep"
-)
-.classList.add(
-"hidden"
-);
+loadToss();
 
 
 document
 .getElementById(
-"setupStep"
-)
-.classList.remove(
-"hidden"
-);
-
-
-setStep(3);
-
-
-loadMatchSetup();
-
-
-});
-
-
-document
-.getElementById(
-"backXI"
-)
-.onclick = function(){
-
-document
-.getElementById(
-"setupStep"
+"squadStep"
 )
 .classList.add(
 "hidden"
@@ -3274,43 +3569,39 @@ document
 
 document
 .getElementById(
-"xiStep"
+"tossStep"
 )
 .classList.remove(
 "hidden"
 );
 
-setStep(2);
+setStep(4);
 
 };
 
 
-/* ============================================================
-   SETUP
-============================================================ */
+/* =========================================================
+   TOSS
+========================================================= */
 
-function options(
-list
-){
+function options(list){
 
 return list
 .map(
-x => `<option>${x}</option>`
+x =>
+`<option>${x}</option>`
 )
 .join("");
 
 }
 
 
-function loadMatchSetup(){
+function loadToss(){
 
-const toss =
-document.getElementById(
+document
+.getElementById(
 "tossWinner"
-);
-
-
-toss.innerHTML = `
+).innerHTML = `
 
 <option>
 ${selectedMatch.teamA}
@@ -3325,42 +3616,88 @@ ${selectedMatch.teamB}
 
 document
 .getElementById(
-"matchOvers"
-).value =
-selectedMatch.overs;
+"impactA"
+).innerHTML =
+options(
+teamAXI
+);
 
 
-updateOpeningPlayers();
+document
+.getElementById(
+"impactB"
+).innerHTML =
+options(
+teamBXI
+);
 
 }
 
 
-function updateOpeningPlayers(){
+/* =========================================================
+   TOSS NEXT
+========================================================= */
 
-const tossWinner =
-document.getElementById(
+document
+.getElementById(
+"tossBack"
+)
+.onclick =
+function(){
+
+document
+.getElementById(
+"tossStep"
+)
+.classList.add(
+"hidden"
+);
+
+document
+.getElementById(
+"squadStep"
+)
+.classList.remove(
+"hidden"
+);
+
+setStep(3);
+
+};
+
+
+document
+.getElementById(
+"tossNext"
+)
+.onclick =
+function(){
+
+
+const winner =
+document
+.getElementById(
 "tossWinner"
 ).value;
 
 
 const decision =
-document.getElementById(
+document
+.getElementById(
 "tossDecision"
 ).value;
 
 
-if(
-decision === "bat"
-){
+if(decision === "bat"){
 
 battingTeam =
-tossWinner;
+winner;
 
 }
 else{
 
 battingTeam =
-tossWinner === selectedMatch.teamA
+winner === selectedMatch.teamA
 ? selectedMatch.teamB
 : selectedMatch.teamA;
 
@@ -3372,6 +3709,77 @@ battingTeam === selectedMatch.teamA
 ? selectedMatch.teamB
 : selectedMatch.teamA;
 
+
+loadRules();
+
+
+document
+.getElementById(
+"tossStep"
+)
+.classList.add(
+"hidden"
+);
+
+document
+.getElementById(
+"rulesStep"
+)
+.classList.remove(
+"hidden"
+);
+
+setStep(5);
+
+};
+
+
+/* =========================================================
+   RULES
+========================================================= */
+
+function loadRules(){
+
+document
+.getElementById(
+"maxOvers"
+).value =
+selectedModule.overs;
+
+
+document
+.getElementById(
+"maxBalls"
+).value =
+selectedModule.balls;
+
+
+document
+.getElementById(
+"wicketLimit"
+).value =
+selectedModule.wickets;
+
+
+document
+.getElementById(
+"revisedOvers"
+).value =
+selectedModule.overs;
+
+
+document
+.getElementById(
+"trialConfig"
+).classList.toggle(
+"hidden",
+selectedModule.id !== "trial"
+);
+
+
+if(
+selectedModule.id === "trial"
+){
 
 const battingXI =
 battingTeam === selectedMatch.teamA
@@ -3387,7 +3795,7 @@ bowlingTeam === selectedMatch.teamA
 
 document
 .getElementById(
-"setupStriker"
+"trialPlayer"
 ).innerHTML =
 options(
 battingXI
@@ -3396,18 +3804,7 @@ battingXI
 
 document
 .getElementById(
-"setupNonStriker"
-).innerHTML =
-options(
-[
-...battingXI
-].reverse()
-);
-
-
-document
-.getElementById(
-"setupBowler"
+"trialBowler"
 ).innerHTML =
 options(
 bowlingXI
@@ -3415,186 +3812,169 @@ bowlingXI
 
 }
 
+}
+
+
+/* =========================================================
+   RULES BACK
+========================================================= */
 
 document
 .getElementById(
-"tossWinner"
+"rulesBack"
 )
-.addEventListener(
-"change",
-updateOpeningPlayers
-);
-
-
-document
-.getElementById(
-"tossDecision"
-)
-.addEventListener(
-"change",
-updateOpeningPlayers
-);
-
-
-
-document
-.getElementById(
-"toDLS"
-)
-.addEventListener(
-"click",
+.onclick =
 function(){
 
-
-updateOpeningPlayers();
-
-
 document
 .getElementById(
-"originalOvers"
-).value =
-document.getElementById(
-"matchOvers"
-).value;
-
-
-document
-.getElementById(
-"revisedOvers"
-).value =
-document.getElementById(
-"matchOvers"
-).value;
-
-
-document
-.getElementById(
-"setupStep"
+"rulesStep"
 )
 .classList.add(
 "hidden"
 );
 
-
 document
 .getElementById(
-"dlsStep"
+"tossStep"
 )
 .classList.remove(
 "hidden"
 );
-
 
 setStep(4);
-
-
-});
-
-
-document
-.getElementById(
-"backSetup"
-)
-.onclick = function(){
-
-document
-.getElementById(
-"dlsStep"
-)
-.classList.add(
-"hidden"
-);
-
-document
-.getElementById(
-"setupStep"
-)
-.classList.remove(
-"hidden"
-);
-
-setStep(3);
 
 };
 
 
-/* ============================================================
-   START MATCH
-============================================================ */
+/* =========================================================
+   START SCORING
+========================================================= */
 
 document
 .getElementById(
-"startMatch"
+"startScoring"
 )
-.addEventListener(
-"click",
+.onclick =
 function(){
-
-
-const dlsOn =
-document
-.getElementById(
-"dlsStatus"
-)
-.value === "on";
-
-
-const revised =
-Number(
-document.getElementById(
-"revisedOvers"
-).value
-) || 20;
-
-
-const normalTarget =
-Number(
-document.getElementById(
-"matchTarget"
-).value
-) || 0;
-
-
-const officialDLS =
-Number(
-document.getElementById(
-"dlsTarget"
-).value
-) || 0;
 
 
 state =
 structuredClone(
-initialState
+baseState
 );
 
 
 state.maxOvers =
-revised;
+Number(
+document
+.getElementById(
+"revisedOvers"
+).value
+) || 0;
+
+
+state.maxBalls =
+Number(
+document
+.getElementById(
+"maxBalls"
+).value
+) || (
+state.maxOvers * 6
+);
+
+
+state.wicketLimit =
+Number(
+document
+.getElementById(
+"wicketLimit"
+).value
+) || 10;
+
+
+const dls =
+Number(
+document
+.getElementById(
+"dlsTarget"
+).value
+);
+
+
+const target =
+Number(
+document
+.getElementById(
+"target"
+).value
+);
 
 
 state.target =
-dlsOn && officialDLS > 0
-? officialDLS
-: normalTarget;
+dls > 0
+? dls
+: target;
 
+
+state.matchDay =
+Number(
+document
+.getElementById(
+"matchDay"
+).value
+) || 1;
+
+
+let battingXI =
+battingTeam === selectedMatch.teamA
+? teamAXI
+: teamBXI;
+
+
+let bowlingXI =
+bowlingTeam === selectedMatch.teamA
+? teamAXI
+: teamBXI;
+
+
+if(
+selectedModule.id === "trial"
+){
 
 state.striker =
-document.getElementById(
-"setupStriker"
+document
+.getElementById(
+"trialPlayer"
 ).value;
 
 
 state.nonStriker =
-document.getElementById(
-"setupNonStriker"
-).value;
+state.striker;
 
 
 state.bowler =
-document.getElementById(
-"setupBowler"
+document
+.getElementById(
+"trialBowler"
 ).value;
+
+}
+else{
+
+state.striker =
+battingXI[0];
+
+
+state.nonStriker =
+battingXI[1];
+
+
+state.bowler =
+bowlingXI[0];
+
+}
 
 
 ensureBatter(
@@ -3607,9 +3987,12 @@ state.nonStriker
 );
 
 
+loadLiveSelectors();
+
+
 document
 .getElementById(
-"dlsStep"
+"rulesStep"
 )
 .classList.add(
 "hidden"
@@ -3625,34 +4008,25 @@ document
 );
 
 
-setStep(5);
+setStep(6);
 
-
-loadLiveSelectors();
 
 renderScore();
 
+};
 
-});
 
+/* =========================================================
+   BATTERS
+========================================================= */
 
-/* ============================================================
-   BATTER
-============================================================ */
-
-function ensureBatter(
-name
-){
+function ensureBatter(name){
 
 if(
-!state.batterStats[
-name
-]
+!state.batters[name]
 ){
 
-state.batterStats[
-name
-] = {
+state.batters[name] = {
 
 runs:0,
 balls:0
@@ -3664,9 +4038,9 @@ balls:0
 }
 
 
-/* ============================================================
+/* =========================================================
    LIVE SELECTORS
-============================================================ */
+========================================================= */
 
 function loadLiveSelectors(){
 
@@ -3729,125 +4103,28 @@ document
 ).value =
 state.bowler;
 
-
-document
-.getElementById(
-"liveOvers"
-).value =
-state.maxOvers;
-
-
-document
-.getElementById(
-"liveTarget"
-).value =
-state.target;
-
-
-document
-.getElementById(
-"liveMatchLabel"
-).textContent =
-selectedMatch.id +
-" · " +
-selectedMatch.teamA +
-" VS " +
-selectedMatch.teamB;
-
 }
 
 
-/* ============================================================
-   TICKERS
-============================================================ */
-
-function renderTickerModels(){
-
-const grid =
-document.getElementById(
-"tickerGrid"
-);
-
-
-grid.innerHTML =
-tickerModels
-.map(
-(label,index) => `
-
-<div
-class="ticker-choice ${
-index === 0 ? "active" : ""
-}"
-data-ticker="${index + 1}">
-
-${label}
-
-</div>
-
-`
-)
-.join("");
-
-
-document
-.querySelectorAll(
-".ticker-choice"
-)
-.forEach(
-ticker => {
-
-
-ticker.addEventListener(
-"click",
-function(){
-
-
-document
-.querySelectorAll(
-".ticker-choice"
-)
-.forEach(
-x =>
-x.classList.remove(
-"active"
-)
-);
-
-
-this.classList.add(
-"active"
-);
-
-
-state.ticker =
-Number(
-this.dataset.ticker
-);
-
-
-saveState();
-
-
-localStorage.setItem(
-"HCCL_TICKER_MODEL",
-String(
-state.ticker
-)
-);
-
-
-});
-
-});
-
-}
-
-
-/* ============================================================
-   SCORE HELPERS
-============================================================ */
+/* =========================================================
+   HELPERS
+========================================================= */
 
 function oversText(){
+
+if(
+selectedModule.id === "hundred"
+){
+
+return(
+state.legalBalls +
+" / " +
+state.maxBalls +
+" BALLS"
+);
+
+}
+
 
 return(
 Math.floor(
@@ -3859,6 +4136,8 @@ state.legalBalls / 6
 (
 state.legalBalls % 6
 )
++
+" OVERS"
 );
 
 }
@@ -3878,7 +4157,7 @@ old;
 }
 
 
-function currentRunRate(){
+function crr(){
 
 if(
 state.legalBalls === 0
@@ -3898,18 +4177,18 @@ state.legalBalls / 6
 }
 
 
-function ballsRemaining(){
+function ballsLeft(){
 
 return Math.max(
 0,
-state.maxOvers * 6 -
+state.maxBalls -
 state.legalBalls
 );
 
 }
 
 
-function requiredRate(){
+function rrr(){
 
 if(
 state.target <= 0
@@ -3920,36 +4199,31 @@ return 0;
 }
 
 
-const left =
-ballsRemaining();
+const remaining =
+ballsLeft();
 
 
-if(left <= 0){
+if(remaining <= 0){
 
 return 0;
 
 }
 
 
-const needed =
+return(
 Math.max(
 0,
 state.target -
 state.runs
-);
-
-
-return(
-needed /
-(left / 6)
+)
+/
+(
+remaining / 6
+)
 );
 
 }
 
-
-/* ============================================================
-   SNAPSHOT
-============================================================ */
 
 function snapshot(){
 
@@ -3962,13 +4236,11 @@ state
 }
 
 
-/* ============================================================
-   NORMAL BALL
-============================================================ */
+/* =========================================================
+   RUNS
+========================================================= */
 
-function addRuns(
-runs
-){
+function addRuns(value){
 
 undoStack.push(
 snapshot()
@@ -3980,86 +4252,97 @@ state.striker
 );
 
 
-state.runs += runs;
+state.runs += value;
 
-state.currentOverRuns += runs;
+state.overRuns += value;
 
 state.legalBalls++;
 
 
-state.batterStats[
+state.batters[
 state.striker
-].runs += runs;
+].runs += value;
 
 
-state.batterStats[
+state.batters[
 state.striker
 ].balls++;
 
 
 state.recent.push(
-String(runs)
+String(value)
 );
 
 
-state.currentOverBalls.push(
-String(runs)
+state.currentOver.push(
+String(value)
 );
 
 
 state.history.push(
-`${state.striker}: ${runs} run${runs === 1 ? "" : "s"}`
+
+state.striker
++
+": "
++
+value
++
+" run"
++
+(
+value === 1
+? ""
+: "s"
+)
+
 );
 
 
-/* automatic animation */
+if(value === 4){
 
-if(runs === 4){
-
-triggerBroadcast(
+triggerEvent(
 "FOUR"
+);
+
+markAutoHighlight(
+"BOUNDARY"
 );
 
 }
 
-if(runs === 6){
 
-triggerBroadcast(
+if(value === 6){
+
+triggerEvent(
+"SIX"
+);
+
+markAutoHighlight(
 "SIX"
 );
 
 }
 
 
-/* strike */
-
 if(
-runs % 2 === 1
+value % 2 === 1
 ){
 
 swapStrike();
 
 }
 
-
-/* OVER COMPLETE */
 
 if(
 state.legalBalls % 6 === 0
 ){
 
-swapStrike();
-
-showOverSummary();
-
-state.currentOverRuns = 0;
-
-state.currentOverBalls = [];
+handleOverComplete();
 
 }
 
 
-checkMilestones();
+checkTrialStage();
 
 
 renderScore();
@@ -4067,14 +4350,15 @@ renderScore();
 }
 
 
-/* ============================================================
+/* =========================================================
    WICKET
-============================================================ */
+========================================================= */
 
-function addWicket(){
+function wicket(){
 
 if(
-state.wickets >= 10
+state.wickets >=
+state.wicketLimit
 ){
 
 return;
@@ -4097,7 +4381,7 @@ state.wickets++;
 state.legalBalls++;
 
 
-state.batterStats[
+state.batters[
 state.striker
 ].balls++;
 
@@ -4107,17 +4391,23 @@ state.recent.push(
 );
 
 
-state.currentOverBalls.push(
+state.currentOver.push(
 "W"
 );
 
 
 state.history.push(
-`${state.striker}: WICKET`
+state.striker +
+": WICKET"
 );
 
 
-triggerBroadcast(
+triggerEvent(
+"WICKET"
+);
+
+
+markAutoHighlight(
 "WICKET"
 );
 
@@ -4126,15 +4416,12 @@ if(
 state.legalBalls % 6 === 0
 ){
 
-swapStrike();
-
-showOverSummary();
-
-state.currentOverRuns = 0;
-
-state.currentOverBalls = [];
+handleOverComplete();
 
 }
+
+
+checkTrialStage();
 
 
 renderScore();
@@ -4142,13 +4429,11 @@ renderScore();
 }
 
 
-/* ============================================================
-   EXTRA
-============================================================ */
+/* =========================================================
+   EXTRAS
+========================================================= */
 
-function addExtra(
-type
-){
+function extra(type){
 
 undoStack.push(
 snapshot()
@@ -4157,7 +4442,7 @@ snapshot()
 
 state.runs++;
 
-state.currentOverRuns++;
+state.overRuns++;
 
 
 const legal =
@@ -4169,11 +4454,13 @@ if(legal){
 
 state.legalBalls++;
 
+
 ensureBatter(
 state.striker
 );
 
-state.batterStats[
+
+state.batters[
 state.striker
 ].balls++;
 
@@ -4185,21 +4472,20 @@ type
 );
 
 
-state.currentOverBalls.push(
+state.currentOver.push(
 type
 );
 
 
 state.history.push(
-`${type} +1`
+type +
+" +1"
 );
 
 
-if(
-type === "NB"
-){
+if(type === "NB"){
 
-triggerBroadcast(
+triggerEvent(
 "FREE HIT"
 );
 
@@ -4211,15 +4497,12 @@ legal &&
 state.legalBalls % 6 === 0
 ){
 
-swapStrike();
-
-showOverSummary();
-
-state.currentOverRuns = 0;
-
-state.currentOverBalls = [];
+handleOverComplete();
 
 }
+
+
+checkTrialStage();
 
 
 renderScore();
@@ -4227,56 +4510,137 @@ renderScore();
 }
 
 
-/* ============================================================
-   MILESTONES
-============================================================ */
+/* =========================================================
+   OVER COMPLETE
+========================================================= */
 
-const firedMilestones =
-new Set();
+function handleOverComplete(){
 
-
-function checkMilestones(){
-
-const batter =
-state.batterStats[
-state.striker
-];
+triggerEvent(
+"OVER COMPLETE"
+);
 
 
-if(batter){
+state.history.push(
+"OVER COMPLETE"
+);
+
+
+swapStrike();
+
+
+localStorage.setItem(
+"HCCL_OVER_SUMMARY",
+JSON.stringify({
+
+score:
+state.runs +
+"/" +
+state.wickets,
+
+balls:[
+...state.currentOver
+],
+
+runs:
+state.overRuns,
+
+timestamp:
+Date.now()
+
+})
+);
+
+
+state.currentOver = [];
+
+state.overRuns = 0;
+
+}
+
+
+/* =========================================================
+   TRIAL STAGES
+========================================================= */
+
+function checkTrialStage(){
+
+if(
+selectedModule.id !== "trial"
+){
+
+return;
+
+}
+
+
+const completedOvers =
+Math.floor(
+state.legalBalls / 6
+);
 
 
 if(
-batter.runs >= 50 &&
-!firedMilestones.has(
-state.striker + "_50"
-)
+completedOvers >= trialStage &&
+trialStage <= 5
 ){
 
-firedMilestones.add(
-state.striker + "_50"
+document
+.getElementById(
+"trial" + trialStage
+)
+?.classList.remove(
+"active"
 );
 
-triggerBroadcast(
-"FIFTY"
+
+document
+.getElementById(
+"trial" + trialStage
+)
+?.classList.add(
+"done"
 );
+
+
+trialStage++;
+
+
+if(trialStage <= 5){
+
+document
+.getElementById(
+"trial" + trialStage
+)
+?.classList.add(
+"active"
+);
+
+}
+
+
+state.history.push(
+
+"TRIAL STAGE "
++
+(
+trialStage - 1
+)
++
+" COMPLETE"
+
+);
+
 
 }
 
 
 if(
-batter.runs >= 100 &&
-!firedMilestones.has(
-state.striker + "_100"
-)
+state.legalBalls >= 30
 ){
 
-firedMilestones.add(
-state.striker + "_100"
-);
-
-triggerBroadcast(
-"CENTURY"
+triggerEvent(
+"TRIAL COMPLETE"
 );
 
 }
@@ -4284,59 +4648,18 @@ triggerBroadcast(
 }
 
 
-/* team milestones */
+/* =========================================================
+   EVENT
+========================================================= */
 
-[
-50,
-100,
-150,
-200,
-250,
-300
-]
-.forEach(
-milestone => {
+let eventTimer;
 
 
-if(
-state.runs >= milestone &&
-!firedMilestones.has(
-"TEAM_" + milestone
-)
-){
-
-firedMilestones.add(
-"TEAM_" + milestone
-);
-
-
-triggerBroadcast(
-"TEAM " + milestone
-);
-
-}
-
-});
-
-}
-
-
-/* ============================================================
-   BROADCAST EVENT
-============================================================ */
-
-let animationTimer = null;
-
-
-function triggerBroadcast(
-eventName
-){
+function triggerEvent(name){
 
 const payload = {
 
-event:eventName,
-
-timestamp:Date.now(),
+event:name,
 
 team:battingTeam,
 
@@ -4345,11 +4668,20 @@ state.runs +
 "/" +
 state.wickets,
 
-overs:oversText(),
+overs:
+oversText(),
 
-striker:state.striker,
+striker:
+state.striker,
 
-ticker:state.ticker
+bowler:
+state.bowler,
+
+ticker:
+state.ticker,
+
+timestamp:
+Date.now()
 
 };
 
@@ -4362,129 +4694,102 @@ payload
 );
 
 
-const preview =
-document.getElementById(
+const screen =
+document
+.getElementById(
 "previewEvent"
 );
 
 
-preview.textContent =
-eventName;
+screen.textContent =
+name;
 
 
-preview.classList.remove(
+screen.classList.remove(
 "show"
 );
 
 
-void preview.offsetWidth;
+void screen.offsetWidth;
 
 
-preview.classList.add(
+screen.classList.add(
 "show"
 );
 
 
 clearTimeout(
-animationTimer
+eventTimer
 );
 
 
-animationTimer =
+eventTimer =
 setTimeout(
 function(){
 
-preview
+screen
 .classList.remove(
 "show"
 );
 
 },
-2800
+3000
 );
-
 
 }
 
 
-/* ============================================================
-   OVER SUMMARY
-============================================================ */
+/* =========================================================
+   HIGHLIGHT MARKER
+========================================================= */
 
-function showOverSummary(){
+function markAutoHighlight(type){
 
-const overlay =
-document.getElementById(
-"overSummary"
-);
+const marker = {
 
-
-document
-.getElementById(
-"overSummaryScore"
-).textContent =
-state.runs +
-"/" +
-state.wickets;
-
-
-document
-.getElementById(
-"overSummaryBalls"
-).textContent =
-state.currentOverBalls
-.join(
-"  •  "
-);
-
-
-overlay.classList.add(
-"show"
-);
-
-
-localStorage.setItem(
-"HCCL_BROADCAST_EVENT",
-JSON.stringify({
-
-event:"OVER SUMMARY",
-
-timestamp:Date.now(),
+type:type,
 
 score:
 state.runs +
 "/" +
 state.wickets,
 
-overs:oversText(),
+ball:
+state.legalBalls,
 
-balls:[
-...state.currentOverBalls
-],
+timestamp:
+Date.now()
 
-ticker:9
+};
 
-})
+
+const stored =
+JSON.parse(
+localStorage.getItem(
+"HCCL_HIGHLIGHT_MARKERS"
+)
+|| "[]"
 );
 
 
-setTimeout(
-function(){
-
-overlay.classList.remove(
-"show"
+stored.push(
+marker
 );
 
-},
-6000
+
+localStorage.setItem(
+"HCCL_HIGHLIGHT_MARKERS",
+JSON.stringify(
+stored
+)
 );
 
 }
 
 
-/* ============================================================
-   RENDER
-============================================================ */
+/* =========================================================
+   RENDER SCORE
+========================================================= */
 
 function renderScore(){
 
@@ -4499,28 +4804,44 @@ state.nonStriker
 
 document
 .getElementById(
-"battingTeamName"
+"matchLabel"
 ).textContent =
-battingTeam.toUpperCase();
+
+selectedModule.name
++
+" · "
++
+selectedMatch.teamA
++
+" VS "
++
+selectedMatch.teamB;
 
 
 document
 .getElementById(
-"scoreRuns"
+"battingTeam"
+).textContent =
+battingTeam;
+
+
+document
+.getElementById(
+"runs"
 ).textContent =
 state.runs;
 
 
 document
 .getElementById(
-"scoreWickets"
+"wickets"
 ).textContent =
 state.wickets;
 
 
 document
 .getElementById(
-"scoreOvers"
+"oversDisplay"
 ).textContent =
 oversText();
 
@@ -4529,13 +4850,12 @@ document
 .getElementById(
 "crr"
 ).textContent =
-currentRunRate()
-.toFixed(2);
+crr().toFixed(2);
 
 
 document
 .getElementById(
-"targetDisplay"
+"targetView"
 ).textContent =
 state.target > 0
 ? state.target
@@ -4547,8 +4867,7 @@ document
 "rrr"
 ).textContent =
 state.target > 0
-? requiredRate()
-.toFixed(2)
+? rrr().toFixed(2)
 : "—";
 
 
@@ -4556,14 +4875,28 @@ document
 .getElementById(
 "ballsLeft"
 ).textContent =
-ballsRemaining();
+ballsLeft();
 
 
 document
 .getElementById(
 "overRuns"
 ).textContent =
-state.currentOverRuns;
+state.overRuns;
+
+
+document
+.getElementById(
+"dayStage"
+).textContent =
+
+selectedModule.id === "trial"
+? "STAGE " + trialStage
+
+: selectedModule.id === "test"
+? "DAY " + state.matchDay
+
+: "—";
 
 
 document
@@ -4584,7 +4917,7 @@ document
 .getElementById(
 "strikerRuns"
 ).textContent =
-state.batterStats[
+state.batters[
 state.striker
 ].runs;
 
@@ -4593,7 +4926,7 @@ document
 .getElementById(
 "strikerBalls"
 ).textContent =
-state.batterStats[
+state.batters[
 state.striker
 ].balls;
 
@@ -4602,7 +4935,7 @@ document
 .getElementById(
 "nonStrikerRuns"
 ).textContent =
-state.batterStats[
+state.batters[
 state.nonStriker
 ].runs;
 
@@ -4611,12 +4944,10 @@ document
 .getElementById(
 "nonStrikerBalls"
 ).textContent =
-state.batterStats[
+state.batters[
 state.nonStriker
 ].balls;
 
-
-/* preview */
 
 document
 .getElementById(
@@ -4629,13 +4960,10 @@ state.wickets;
 
 document
 .getElementById(
-"previewMeta"
+"previewInfo"
 ).textContent =
-oversText() +
-" OVERS";
+oversText();
 
-
-/* recent */
 
 document
 .getElementById(
@@ -4646,7 +4974,9 @@ state.recent
 .map(
 value => {
 
+
 let cls = "";
+
 
 if(value === "4"){
 cls = "four";
@@ -4669,6 +4999,7 @@ cls = "extra";
 
 }
 
+
 return `
 
 <div class="ball ${cls}">
@@ -4677,11 +5008,10 @@ ${value}
 
 `;
 
+
 })
 .join("");
 
-
-/* log */
 
 document
 .getElementById(
@@ -4708,8 +5038,6 @@ ${item}
 .join("");
 
 
-/* selectors */
-
 document
 .getElementById(
 "liveStriker"
@@ -4731,11 +5059,6 @@ document
 state.bowler;
 
 
-saveState();
-
-
-/* state for overlay */
-
 localStorage.setItem(
 "HCCL_LIVE_SCORE",
 JSON.stringify({
@@ -4744,53 +5067,65 @@ runs:state.runs,
 
 wickets:state.wickets,
 
-overs:oversText(),
+overs:
+oversText(),
 
-team:battingTeam,
+team:
+battingTeam,
 
-striker:state.striker,
+striker:
+state.striker,
 
-nonStriker:state.nonStriker,
+nonStriker:
+state.nonStriker,
 
-bowler:state.bowler,
+bowler:
+state.bowler,
 
-target:state.target,
+target:
+state.target,
 
 crr:
-currentRunRate()
-.toFixed(2),
+crr().toFixed(2),
 
 rrr:
 state.target > 0
-? requiredRate()
-.toFixed(2)
+? rrr().toFixed(2)
 : "—",
 
-ticker:state.ticker,
+ticker:
+state.ticker,
 
-timestamp:Date.now()
+timestamp:
+Date.now()
 
 })
 );
 
 
+localStorage.setItem(
+"HCCL_SCORER_V3",
+JSON.stringify(
+state
+)
+);
+
 }
 
 
-/* ============================================================
-   RUN EVENTS
-============================================================ */
+/* =========================================================
+   SCORE BUTTON EVENTS
+========================================================= */
 
 document
 .querySelectorAll(
-".run-button[data-run]"
+".run-btn[data-run]"
 )
 .forEach(
 button => {
 
 
-button.addEventListener(
-"click",
+button.onclick =
 function(){
 
 addRuns(
@@ -4799,79 +5134,51 @@ this.dataset.run
 )
 );
 
-});
+};
+
 
 });
 
 
 document
 .getElementById(
-"wicketButton"
+"wicketBtn"
 )
 .onclick =
-addWicket;
+wicket;
 
 
 document
 .querySelectorAll(
-".extra-button"
+".extra-btn"
 )
 .forEach(
 button => {
 
 
-button.addEventListener(
-"click",
+button.onclick =
 function(){
 
-addExtra(
+extra(
 this.dataset.extra
 );
 
-});
+};
 
-});
-
-
-/* ============================================================
-   MANUAL EVENTS
-============================================================ */
-
-document
-.querySelectorAll(
-".event-button"
-)
-.forEach(
-button => {
-
-
-button.addEventListener(
-"click",
-function(){
-
-triggerBroadcast(
-this.dataset.event
-);
-
-});
 
 });
 
 
-/* ============================================================
-   STRIKE
-============================================================ */
+/* =========================================================
+   SWAP / UNDO
+========================================================= */
 
 document
 .getElementById(
-"swapButton"
+"swapBtn"
 )
 .onclick =
 function(){
-
-undoStack.push(
-snapshot()
-);
 
 swapStrike();
 
@@ -4879,6 +5186,105 @@ renderScore();
 
 };
 
+
+document
+.getElementById(
+"undoBtn"
+)
+.onclick =
+function(){
+
+
+if(
+undoStack.length === 0
+){
+
+alert(
+"Nothing to undo."
+);
+
+return;
+
+}
+
+
+state =
+undoStack.pop();
+
+
+renderScore();
+
+};
+
+
+/* =========================================================
+   NEW OVER
+========================================================= */
+
+document
+.getElementById(
+"newOverBtn"
+)
+.onclick =
+function(){
+
+state.currentOver = [];
+
+state.overRuns = 0;
+
+state.recent = [];
+
+renderScore();
+
+};
+
+
+/* =========================================================
+   END INNINGS
+========================================================= */
+
+document
+.getElementById(
+"endInningsBtn"
+)
+.onclick =
+function(){
+
+
+if(
+!confirm(
+"End current innings?"
+)
+){
+
+return;
+
+}
+
+
+triggerEvent(
+"INNINGS COMPLETE"
+);
+
+
+markAutoHighlight(
+"INNINGS COMPLETE"
+);
+
+
+state.history.push(
+"INNINGS COMPLETE"
+);
+
+
+renderScore();
+
+};
+
+
+/* =========================================================
+   LIVE SELECTORS
+========================================================= */
 
 document
 .getElementById(
@@ -4933,130 +5339,81 @@ renderScore();
 };
 
 
-/* ============================================================
-   UNDO
-============================================================ */
+/* =========================================================
+   STATUS
+========================================================= */
 
 document
-.getElementById(
-"undoButton"
+.querySelectorAll(
+".status-btn[data-status]"
 )
-.onclick =
-function(){
-
-if(
-undoStack.length === 0
-){
-
-alert(
-"Nothing to undo."
-);
-
-return;
-
-}
+.forEach(
+button => {
 
 
-state =
-undoStack.pop();
-
-
-renderScore();
-
-};
-
-
-/* ============================================================
-   NEXT OVER
-============================================================ */
-
-document
-.getElementById(
-"nextOverButton"
-)
-.onclick =
-function(){
-
-state.currentOverRuns = 0;
-
-state.currentOverBalls = [];
-
-state.recent = [];
-
-renderScore();
-
-};
-
-
-/* ============================================================
-   LIVE OVERS / TARGET
-============================================================ */
-
-document
-.getElementById(
-"applyLiveSettings"
-)
-.onclick =
+button.onclick =
 function(){
 
 
-state.maxOvers =
-Number(
-document.getElementById(
-"liveOvers"
-).value
-) || state.maxOvers;
+const status =
+this.dataset.status;
 
 
-state.target =
-Number(
-document.getElementById(
-"liveTarget"
-).value
-) || 0;
+document
+.getElementById(
+"interruptionTitle"
+).textContent =
+status;
 
 
-renderScore();
+document
+.getElementById(
+"interruptionInfo"
+).textContent =
+
+state.runs
++
+"/"
++
+state.wickets
++
+" · "
++
+oversText();
 
 
-triggerBroadcast(
-"DLS TARGET"
+document
+.getElementById(
+"interruptionScreen"
+)
+.classList.add(
+"show"
 );
 
 
-};
+localStorage.setItem(
+"HCCL_MATCH_STATUS",
+JSON.stringify({
 
+status:status,
 
-/* ============================================================
-   END INNINGS
-============================================================ */
+score:
+state.runs +
+"/" +
+state.wickets,
 
-document
-.getElementById(
-"endInningsButton"
-)
-.onclick =
-function(){
+overs:
+oversText(),
 
+timestamp:
+Date.now()
 
-if(
-!confirm(
-"End current innings?"
-)
-){
-
-return;
-
-}
-
-
-triggerBroadcast(
-"INNINGS COMPLETE"
+})
 );
 
 
 state.history.push(
-"INNINGS COMPLETED"
+status
 );
 
 
@@ -5065,13 +5422,299 @@ renderScore();
 };
 
 
-/* ============================================================
-   INIT
-============================================================ */
+});
 
-renderMatches();
 
-renderTickerModels();
+document
+.getElementById(
+"resumeBtn"
+)
+.onclick =
+function(){
+
+document
+.getElementById(
+"interruptionScreen"
+)
+.classList.remove(
+"show"
+);
+
+
+localStorage.setItem(
+"HCCL_MATCH_STATUS",
+JSON.stringify({
+
+status:"LIVE",
+
+timestamp:
+Date.now()
+
+})
+);
+
+
+state.history.push(
+"MATCH RESUMED"
+);
+
+
+renderScore();
+
+};
+
+
+/* =========================================================
+   TICKERS
+========================================================= */
+
+document
+.getElementById(
+"tickerGrid"
+)
+.innerHTML =
+tickerModels
+.map(
+(name,index) => `
+
+<button
+class="ticker-btn ${
+index === 0
+? "active"
+: ""
+}"
+data-id="${index + 1}">
+
+${name}
+
+</button>
+
+`
+)
+.join("");
+
+
+document
+.querySelectorAll(
+".ticker-btn"
+)
+.forEach(
+button => {
+
+
+button.onclick =
+function(){
+
+
+document
+.querySelectorAll(
+".ticker-btn"
+)
+.forEach(
+x => x.classList.remove(
+"active"
+)
+);
+
+
+this.classList.add(
+"active"
+);
+
+
+state.ticker =
+Number(
+this.dataset.id
+);
+
+
+localStorage.setItem(
+"HCCL_TICKER_MODEL",
+String(
+state.ticker
+)
+);
+
+
+renderScore();
+
+};
+
+
+});
+
+
+/* =========================================================
+   MANUAL EVENTS
+========================================================= */
+
+document
+.querySelectorAll(
+".event-btn"
+)
+.forEach(
+button => {
+
+
+button.onclick =
+function(){
+
+triggerEvent(
+this.dataset.event
+);
+
+};
+
+
+});
+
+
+/* =========================================================
+   REPLAY MARKERS
+========================================================= */
+
+document
+.getElementById(
+"markReplay"
+)
+.onclick =
+function(){
+
+
+const marker = {
+
+length:
+document
+.getElementById(
+"replayLength"
+).value,
+
+speed:
+document
+.getElementById(
+"replaySpeed"
+).value,
+
+score:
+state.runs +
+"/" +
+state.wickets,
+
+ball:
+state.legalBalls,
+
+timestamp:
+Date.now()
+
+};
+
+
+const stored =
+JSON.parse(
+localStorage.getItem(
+"HCCL_REPLAY_MARKERS"
+)
+|| "[]"
+);
+
+
+stored.push(
+marker
+);
+
+
+localStorage.setItem(
+"HCCL_REPLAY_MARKERS",
+JSON.stringify(
+stored
+)
+);
+
+
+state.history.push(
+"REPLAY MARKED"
+);
+
+
+renderScore();
+
+
+alert(
+"Replay marker saved."
+);
+
+};
+
+
+/* =========================================================
+   HIGHLIGHT MARKER
+========================================================= */
+
+document
+.getElementById(
+"markHighlight"
+)
+.onclick =
+function(){
+
+
+const marker = {
+
+type:
+document
+.getElementById(
+"highlightType"
+).value,
+
+score:
+state.runs +
+"/" +
+state.wickets,
+
+ball:
+state.legalBalls,
+
+timestamp:
+Date.now()
+
+};
+
+
+const stored =
+JSON.parse(
+localStorage.getItem(
+"HCCL_HIGHLIGHT_MARKERS"
+)
+|| "[]"
+);
+
+
+stored.push(
+marker
+);
+
+
+localStorage.setItem(
+"HCCL_HIGHLIGHT_MARKERS",
+JSON.stringify(
+stored
+)
+);
+
+
+state.history.push(
+"HIGHLIGHT MARKED"
+);
+
+
+renderScore();
+
+
+alert(
+"Highlight marker saved."
+);
+
+};
 
 </script>
 
