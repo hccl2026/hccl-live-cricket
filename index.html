@@ -1,1899 +1,1363 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>HCCL | Live Cricket</title>
-
-  <meta
-    name="description"
-    content="HCCL Live Cricket - Live matches, schedules, teams, players and scoring."
-  />
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --navy: #03142f;
-      --navy2: #061d43;
-      --blue: #0a54ff;
-      --cyan: #00d4ff;
-      --white: #ffffff;
-      --muted: #a8b8d8;
-      --card: rgba(12, 36, 77, 0.78);
-      --border: rgba(255,255,255,0.10);
-      --green: #20d984;
-      --red: #ff315a;
-      --gold: #ffcc48;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(10,84,255,.20), transparent 35%),
-        radial-gradient(circle at 85% 30%, rgba(0,212,255,.09), transparent 30%),
-        linear-gradient(180deg, #020d21, #03142f 45%, #020b1c);
-      min-height: 100vh;
-      color: var(--white);
-      overflow-x: hidden;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-    /* HEADER */
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(2, 13, 33, .86);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav {
-      max-width: 1450px;
-      margin: auto;
-      height: 82px;
-      padding: 0 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand img {
-      width: 54px;
-      height: 54px;
-      object-fit: contain;
-    }
-
-    .brand-text h1 {
-      font-size: 24px;
-      letter-spacing: 1.5px;
-      line-height: 1;
-    }
-
-    .brand-text p {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 6px;
-      letter-spacing: 1px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .nav-links a {
-      color: #c8d6ef;
-      font-size: 14px;
-      padding: 11px 13px;
-      border-radius: 10px;
-      transition: .25s ease;
-    }
-
-    .nav-links a:hover {
-      background: rgba(255,255,255,.07);
-      color: #fff;
-    }
-
-    .scorer-btn {
-      background: linear-gradient(135deg, #0a54ff, #00a9ff) !important;
-      color: white !important;
-      font-weight: 700;
-      box-shadow: 0 7px 25px rgba(10,84,255,.30);
-    }
-
-    .menu-btn {
-      display: none;
-      background: rgba(255,255,255,.08);
-      border: 1px solid var(--border);
-      color: white;
-      font-size: 24px;
-      width: 44px;
-      height: 44px;
-      border-radius: 11px;
-      cursor: pointer;
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 620px;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: .19;
-      pointer-events: none;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(2,11,28,.98) 0%,
-          rgba(2,13,33,.91) 42%,
-          rgba(2,13,33,.62) 72%,
-          rgba(2,13,33,.82) 100%
-        ),
-        linear-gradient(
-          0deg,
-          #020d21 0%,
-          transparent 35%
-        );
-    }
-
-    .hero-grid {
-      position: relative;
-      z-index: 2;
-      max-width: 1450px;
-      margin: auto;
-      min-height: 620px;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 60px;
-      align-items: center;
-      padding: 60px 28px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 50px;
-      background: rgba(32,217,132,.10);
-      border: 1px solid rgba(32,217,132,.28);
-      color: #70f1b6;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.1px;
-      margin-bottom: 18px;
-    }
-
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 0 6px rgba(32,217,132,.10);
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      50% {
-        box-shadow: 0 0 0 10px rgba(32,217,132,0);
-      }
-    }
-
-    .hero-copy h2 {
-      font-size: clamp(46px, 6vw, 92px);
-      line-height: .94;
-      letter-spacing: -4px;
-      max-width: 820px;
-    }
-
-    .hero-copy h2 span {
-      background: linear-gradient(90deg, #ffffff, #6ddcff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-copy p {
-      color: #afbdd7;
-      font-size: 17px;
-      line-height: 1.75;
-      max-width: 690px;
-      margin-top: 25px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .primary-button,
-    .secondary-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 13px;
-      font-size: 14px;
-      font-weight: 700;
-      transition: transform .2s ease;
-    }
-
-    .primary-button {
-      background: linear-gradient(135deg, #0a54ff, #00a9ff);
-      color: white;
-      box-shadow: 0 14px 40px rgba(10,84,255,.33);
-    }
-
-    .secondary-button {
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color: white;
-    }
-
-    .primary-button:hover,
-    .secondary-button:hover {
-      transform: translateY(-2px);
-    }
-
-    /* HERO SCORE */
-
-    .hero-score-card {
-      position: relative;
-      background: linear-gradient(
-        145deg,
-        rgba(8,31,69,.94),
-        rgba(3,16,40,.92)
-      );
-      border: 1px solid rgba(96,170,255,.19);
-      border-radius: 28px;
-      padding: 25px;
-      box-shadow: 0 30px 80px rgba(0,0,0,.40);
-      overflow: hidden;
-    }
-
-    .hero-score-card::before {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: rgba(0,212,255,.12);
-      filter: blur(35px);
-      right: -60px;
-      top: -60px;
-    }
-
-    .score-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .score-header strong {
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    .live-pill {
-      font-size: 11px;
-      background: rgba(255,49,90,.14);
-      color: #ff7e99;
-      border: 1px solid rgba(255,49,90,.30);
-      border-radius: 30px;
-      padding: 7px 10px;
-      font-weight: bold;
-    }
-
-    .teams-score {
-      margin-top: 28px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .team-line {
-      display: grid;
-      grid-template-columns: 45px 1fr auto;
-      gap: 12px;
-      align-items: center;
-      padding: 17px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .team-line:last-child {
-      border-bottom: none;
-    }
-
-    .team-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #0a54ff, #00d4ff);
-      font-weight: 800;
-      box-shadow: inset 0 0 0 2px rgba(255,255,255,.16);
-    }
-
-    .team-line:nth-child(2) .team-icon {
-      background: linear-gradient(135deg, #ff315a, #ff9d42);
-    }
-
-    .team-name {
-      font-weight: 700;
-      font-size: 15px;
-    }
-
-    .team-status {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 5px;
-    }
-
-    .score-number {
-      text-align: right;
-      font-size: 26px;
-      font-weight: 800;
-    }
-
-    .score-number small {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 500;
-      margin-top: 3px;
-    }
-
-    .match-note {
-      background: rgba(255,255,255,.05);
-      margin-top: 18px;
-      padding: 14px;
-      border-radius: 13px;
-      font-size: 12px;
-      color: #b8c8e5;
-      text-align: center;
-    }
-
-    /* SECTIONS */
-
-    .section {
-      max-width: 1450px;
-      margin: auto;
-      padding: 75px 28px;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      margin-bottom: 26px;
-      gap: 25px;
-    }
-
-    .section-heading h3 {
-      font-size: 32px;
-      letter-spacing: -.5px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      margin-top: 8px;
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    .section-heading a {
-      color: #6ecfff;
-      font-size: 13px;
-      white-space: nowrap;
-    }
-
-    /* QUICK LINKS */
-
-    .quick-grid {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 16px;
-    }
-
-    .quick-card {
-      border-radius: 20px;
-      padding: 24px;
-      min-height: 185px;
-      background:
-        linear-gradient(
-          145deg,
-          rgba(14,43,91,.80),
-          rgba(6,25,57,.73)
-        );
-      border: 1px solid var(--border);
-      transition: .25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .quick-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(0,212,255,.30);
-      box-shadow: 0 18px 55px rgba(0,0,0,.23);
-    }
-
-    .quick-card::after {
-      content: "";
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      right: -40px;
-      bottom: -40px;
-      background: rgba(10,84,255,.13);
-    }
-
-    .quick-icon {
-      width: 49px;
-      height: 49px;
-      border-radius: 13px;
-      display: grid;
-      place-items: center;
-      background: rgba(10,84,255,.16);
-      border: 1px solid rgba(76,147,255,.22);
-      font-size: 22px;
-      margin-bottom: 20px;
-    }
-
-    .quick-card h4 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .quick-card p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    /* LIVE MATCH CARDS */
-
-    .match-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 18px;
-    }
-
-    .match-card {
-      background: rgba(8,30,67,.78);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 22px;
-    }
-
-    .match-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 22px;
-    }
-
-    .match-type {
-      font-size: 11px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .8px;
-    }
-
-    .status-live {
-      font-size: 10px;
-      color: #73efb5;
-      background: rgba(32,217,132,.10);
-      padding: 6px 9px;
-      border-radius: 20px;
-      border: 1px solid rgba(32,217,132,.22);
-      font-weight: bold;
-    }
-
-    .mini-team {
-      display: grid;
-      grid-template-columns: 36px 1fr auto;
-      gap: 11px;
-      align-items: center;
-      margin: 13px 0;
-    }
-
-    .mini-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.08);
-      display: grid;
-      place-items: center;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .mini-name {
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .mini-score {
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    .mini-score span {
-      display: block;
-      color: var(--muted);
-      font-size: 10px;
-      margin-top: 3px;
-      font-weight: normal;
-      text-align: right;
-    }
-
-    .match-result {
-      margin-top: 17px;
-      padding-top: 15px;
-      border-top: 1px solid var(--border);
-      color: #b4c5e3;
-      font-size: 12px;
-    }
-
-    .match-action {
-      display: inline-block;
-      margin-top: 16px;
-      color: #72d7ff;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    /* TOURNAMENT AREA */
-
-    .feature-area {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background:
-        radial-gradient(circle at center, rgba(10,84,255,.14), transparent 50%);
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .feature-card {
-      border: 1px solid var(--border);
-      border-radius: 25px;
-      overflow: hidden;
-      min-height: 330px;
-      position: relative;
-      background: #051934;
-    }
-
-    .feature-card video,
-    .feature-card img {
-      width: 100%;
-      height: 330px;
-      object-fit: cover;
-      opacity: .48;
-    }
-
-    .feature-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: end;
-      padding: 28px;
-      background: linear-gradient(
-        0deg,
-        rgba(2,12,28,.96),
-        rgba(2,12,28,.08)
-      );
-    }
-
-    .feature-overlay h4 {
-      font-size: 27px;
-      margin-bottom: 8px;
-    }
-
-    .feature-overlay p {
-      color: #bdcbe4;
-      font-size: 13px;
-      line-height: 1.6;
-      max-width: 500px;
-    }
-
-    /* CTA */
-
-    .cta {
-      max-width: 1395px;
-      margin: 0 auto 75px;
-      padding: 45px;
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at 85% 50%, rgba(0,212,255,.18), transparent 30%),
-        linear-gradient(135deg, #073581, #061b42);
-      border: 1px solid rgba(91,160,255,.24);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 40px;
-      box-shadow: 0 30px 70px rgba(0,0,0,.25);
-    }
-
-    .cta h3 {
-      font-size: 31px;
-      margin-bottom: 10px;
-    }
-
-    .cta p {
-      color: #c5d3ec;
-      max-width: 720px;
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    /* FOOTER */
-
-    .footer {
-      border-top: 1px solid var(--border);
-      padding: 38px 28px;
-      background: #020b1b;
-    }
-
-    .footer-inner {
-      max-width: 1450px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 25px;
-      align-items: center;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-    }
-
-    .footer-brand img {
-      width: 38px;
-      height: 38px;
-      object-fit: contain;
-    }
-
-    .footer-copy {
-      color: #70829f;
-      font-size: 12px;
-    }
-
-    /* RESPONSIVE */
-
-    @media(max-width:1100px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        left: 20px;
-        right: 20px;
-        top: 90px;
-        padding: 14px;
-        background: rgba(3,17,42,.98);
-        border: 1px solid var(--border);
-        border-radius: 17px;
-        flex-direction: column;
-        align-items: stretch;
-        box-shadow: 0 25px 60px rgba(0,0,0,.40);
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-score-card {
-        max-width: 650px;
-      }
-
-      .quick-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
-
-      .match-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
-    }
-
-    @media(max-width:760px) {
-      .nav {
-        height: 72px;
-        padding: 0 18px;
-      }
-
-      .brand img {
-        width: 44px;
-        height: 44px;
-      }
-
-      .brand-text h1 {
-        font-size: 20px;
-      }
-
-      .hero-grid {
-        padding: 55px 20px;
-      }
-
-      .hero-copy h2 {
-        letter-spacing: -2px;
-      }
-
-      .section {
-        padding: 55px 18px;
-      }
-
-      .section-heading {
-        align-items: start;
-        flex-direction: column;
-      }
-
-      .quick-grid,
-      .match-grid,
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .cta {
-        margin: 0 18px 55px;
-        padding: 30px 22px;
-        flex-direction: column;
-        align-items: start;
-      }
-
-      .cta h3 {
-        font-size: 25px;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: start;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HCCL — Heroes Champions Cricket League</title>
+
+<style>
+:root {
+  --navy: #071a34;
+  --black: #020306;
+  --red: #ef1b1b;
+  --muted: #9ca6b2;
+  --line: #203a58;
+  --max: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  line-height: 1.5;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 8% 35%, rgba(10,55,105,.30), transparent 38%),
+    radial-gradient(circle at 92% 55%, rgba(150,5,12,.22), transparent 40%),
+    linear-gradient(
+      90deg,
+      #071a34 0%,
+      #06162c 18%,
+      #030b16 34%,
+      #020306 50%,
+      #080305 66%,
+      #190507 82%,
+      #300609 100%
+    );
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+section[id] {
+  scroll-margin-top: 95px;
+}
+
+:focus-visible {
+  outline: 3px solid #f3cf61;
+  outline-offset: 4px;
+}
+
+/* HEADER */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 7px max(16px, calc((100% - 1180px)/2));
+  background: linear-gradient(
+    90deg,
+    rgba(7,26,52,.97),
+    rgba(3,8,16,.97) 52%,
+    rgba(47,5,8,.97)
+  );
+  border-bottom: 1px solid rgba(239,27,27,.18);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.nav .logo img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.logo span {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.nav nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.nav nav a {
+  padding: 8px 9px;
+  border-radius: 999px;
+  color: #e8e8e8;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.nav nav a:hover,
+.nav nav a.active {
+  background: rgba(239,27,27,.14);
+}
+
+.live-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 16px;
+  border-radius: 11px;
+  background: #ef1b1b;
+  font-size: 11px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.live-nav i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff5757;
+}
+
+.menu-toggle {
+  display: none;
+  color: white;
+  background: #10243a;
+  border: 1px solid #31577e;
+  border-radius: 9px;
+  padding: 10px 14px;
+  font-size: 15px;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+/* MAIN HERO */
+
+.hero {
+  min-height: 650px;
+  display: grid;
+  grid-template-columns:
+    minmax(0,1fr)
+    minmax(0,1.25fr)
+    minmax(0,1fr);
+  align-items: center;
+  gap: 25px;
+  padding: 52px max(20px, calc((100% - var(--max))/2));
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 19% 50%, rgba(20,67,116,.27), transparent 35%),
+    radial-gradient(circle at 82% 50%, rgba(239,27,27,.20), transparent 37%),
+    linear-gradient(
+      90deg,
+      #071a34 0%,
+      #05162c 20%,
+      #020306 50%,
+      #160507 78%,
+      #380609 100%
+    );
+}
+
+.hero-side {
+  min-width: 0;
+  min-height: 430px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* TWO VIDEO CIRCLES */
+
+.hero-circle {
+  position: relative;
+  width: min(100%,340px);
+  aspect-ratio: 1/1;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #081525;
+}
+
+.hero-circle video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  clip-path: circle(49.9% at 50% 50%);
+  transform: scale(1.01);
+}
+
+.trophy-circle {
+  border: 3px solid #1f5b91;
+  box-shadow:
+    0 0 25px rgba(31,91,145,.28),
+    0 0 60px rgba(31,91,145,.14);
+}
+
+.league-circle {
+  border: 3px solid #ef1b1b;
+  box-shadow:
+    0 0 25px rgba(239,27,27,.25),
+    0 0 60px rgba(239,27,27,.13);
+}
+
+.video-toggle {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: #fff;
+  background: rgba(0,0,0,.8);
+  border: 1px solid #aaa;
+  border-radius: 20px;
+  padding: 6px 12px;
+  min-height: 36px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.video-toggle[hidden] {
+  display: none;
+}
+
+/* CENTER TITLE */
+
+.hero-center {
+  position: relative;
+  z-index: 3;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-main-tag,
+.hero-center .tag {
+  color: #ff3434;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.7px;
+}
+
+.hero-tagline {
+  margin: 8px 0 17px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+
+.hero-tagline i {
+  color: #ef1b1b;
+  font-style: normal;
+  margin: 0 7px;
+}
+
+.hero-center h1 {
+  margin: 4px 0 18px;
+  font-size: clamp(52px,6vw,86px);
+  line-height: .88;
+  letter-spacing: -3px;
+  font-weight: 1000;
+}
+
+.hero-center h1 em {
+  color: #ef1b1b;
+  font-style: normal;
+}
+
+.hero-center p {
+  max-width: 540px;
+  color: #d6d9de;
+  font-size: 14px;
+}
+
+.hero-actions {
+  margin-top: 26px;
+  display: flex;
+  gap: 13px;
+  justify-content: center;
+}
+
+.primary,
+.secondary {
+  min-width: 145px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 17px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.primary {
+  background: #ef1b1b;
+}
+
+.secondary {
+  background: #07182c;
+  border: 1px solid #31577e;
+}
+
+/* SCORE STRIP */
+
+.live-strip {
+  width: min(1180px,calc(100% - 32px));
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px;
+  border: 1px solid #29405a;
+  border-radius: 16px;
+  background: linear-gradient(100deg,#081e37,#07080d,#250709);
+  flex-wrap: wrap;
+}
+
+.live-title,
+.live-team {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.live-title small {
+  display: block;
+  color: #9ca6b2;
+  font-size: 12px;
+}
+
+.live-team strong {
+  font-size: 28px;
+}
+
+.live-team img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.live-note {
+  flex-basis: 100%;
+  font-size: 12px;
+  color: #aebac8;
+}
+
+.live-strip > a {
+  color: #ff6464;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* SECTIONS */
+
+.section {
+  width: min(var(--max),calc(100% - 32px));
+  margin: auto;
+  padding: 65px 0;
+  background: transparent;
+}
+
+.section.dark {
+  width: 100%;
+  max-width: none;
+  padding-left: max(16px,calc((100% - var(--max))/2));
+  padding-right: max(16px,calc((100% - var(--max))/2));
+  background: linear-gradient(
+    90deg,
+    rgba(7,26,52,.48),
+    rgba(2,3,6,.45) 52%,
+    rgba(42,6,8,.45)
+  );
+}
+
+.section-head {
+  margin-bottom: 26px;
+}
+
+.section-head .tag {
+  color: #ef1b1b;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.section-head h2 {
+  margin-top: 5px;
+  font-size: clamp(28px,4vw,40px);
+}
+
+/* TEAM CARDS */
+
+.teams {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 14px;
+}
+
+.team-card {
+  min-height: 165px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 17px;
+  gap: 8px;
+  border: 1px solid #1d3855;
+  border-radius: 16px;
+  transition: transform .2s,border-color .2s;
+  background: linear-gradient(
+    145deg,
+    rgba(7,26,52,.94),
+    rgba(4,7,12,.95) 68%,
+    rgba(20,5,7,.94)
+  );
+}
+
+.team-card:hover {
+  transform: translateY(-3px);
+  border-color: #e83a3a;
+}
+
+.team-card img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: auto;
+}
+
+.team-card b {
+  font-size: 15px;
+}
+
+.team-card span {
+  margin-top: 5px;
+  color: #ff4747;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+/* POINTS TABLE */
+
+.standings-note {
+  color: #aebac8;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.points {
+  overflow-x: auto;
+  border: 1px solid #1d3855;
+  border-radius: 16px;
+  background: linear-gradient(
+    90deg,
+    rgba(7,20,38,.95),
+    rgba(5,7,11,.95),
+    rgba(20,5,7,.95)
+  );
+}
+
+.points > div {
+  min-height: 54px;
+  min-width: 640px;
+  display: grid;
+  grid-template-columns:
+    50px
+    minmax(170px,2fr)
+    repeat(5,minmax(60px,1fr));
+  align-items: center;
+  padding: 0 15px;
+  border-bottom: 1px solid #17283d;
+}
+
+.pt-head {
+  color: #9ca6b2;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* FOOTER */
+
+footer {
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 24px max(20px,calc((100% - var(--max))/2));
+  background: linear-gradient(90deg,#071a34,#020306 55%,#2a0608);
+  border-top: 1px solid rgba(239,27,27,.18);
+  color: #98a1ab;
+}
+
+footer img {
+  width: 54px;
+}
+
+footer span {
+  color: #fff;
+  font-weight: 900;
+}
+
+footer small {
+  margin-left: auto;
+}
+
+/* TABLET */
+
+@media(max-width:1250px) {
+  .nav {
+    flex-wrap: wrap;
+    padding: 10px 18px;
+    min-height: 70px;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  .nav nav {
+    display: none;
+    flex-basis: 100%;
+    order: 4;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 10px 0;
+  }
+
+  .nav nav.open {
+    display: flex;
+  }
+
+  .nav nav a {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .hero {
+    padding: 48px 24px;
+    gap: 20px;
+    min-height: 580px;
+  }
+
+  .hero-side {
+    min-height: 300px;
+  }
+
+  .hero-center h1 {
+    font-size: clamp(46px,6.3vw,78px);
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .primary,
+  .secondary {
+    min-width: 0;
+    min-height: 46px;
+    padding: 12px 16px;
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:760px) {
+  .nav {
+    gap: 10px;
+    padding: 10px 14px;
+  }
+
+  .nav .logo img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .logo span {
+    font-size: 21px;
+  }
+
+  .live-nav {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-template-areas:
+      "title title"
+      "trophy league";
+    gap: 28px 18px;
+    padding: 38px 18px 44px;
+    min-height: 0;
+  }
+
+  .hero-center {
+    grid-area: title;
+    padding: 0;
+  }
+
+  .trophy-side {
+    grid-area: trophy;
+  }
+
+  .league-side {
+    grid-area: league;
+  }
+
+  .hero-side {
+    min-height: 0;
+  }
+
+  .hero-circle {
+    width: min(100%,230px);
+  }
+
+  .hero-center h1 {
+    font-size: clamp(58px,14vw,82px);
+    letter-spacing: -2px;
+    line-height: .94;
+    margin: 12px 0 20px;
+  }
+
+  .hero-center .tag {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .hero-tagline {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    margin: 8px 0;
+  }
+
+  .hero-center p {
+    font-size: 14px;
+    line-height: 1.65;
+    max-width: 440px;
+  }
+
+  .hero-actions {
+    margin-top: 22px;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .primary,
+  .secondary {
+    font-size: 13px;
+    flex: 1;
+    max-width: 220px;
+    padding: 12px 10px;
+    min-height: 46px;
+  }
+
+  .teams {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .team-card {
+    padding: 16px;
+    min-width: 0;
+  }
+
+  .team-card b {
+    font-size: 14px;
+  }
+
+  .section {
+    padding: 42px 0;
+  }
+
+  .live-strip {
+    padding: 18px;
+    gap: 16px;
+  }
+
+  .live-title {
+    flex-basis: 100%;
+  }
+
+  .live-team {
+    gap: 8px;
+  }
+
+  .live-note {
+    line-height: 1.6;
+  }
+
+  footer {
+    padding: 24px 16px;
+    flex-wrap: wrap;
+  }
+
+  footer small {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+}
+
+@media(max-width:360px) {
+  .hero {
+    padding-left: 14px;
+    padding-right: 14px;
+    gap: 24px 12px;
+  }
+
+  .hero-center h1 {
+    font-size: 56px;
+  }
+
+  .hero-center .tag {
+    font-size: 9px;
+  }
+
+  .hero-tagline {
+    letter-spacing: 2px;
+  }
+
+  .primary,
+  .secondary {
+    font-size: 12px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
+<!-- HEADER -->
 
-  <header class="header">
-    <nav class="nav">
+<header class="nav">
+  <a class="logo" href="index.html">
+    <img src="hccl-logo.png" alt="HCCL Logo">
+    <span>HCCL</span>
+  </a>
 
-      <a href="index.html" class="brand">
+  <button
+    class="menu-toggle"
+    id="menuToggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="mainNav">
+    ☰ Menu
+  </button>
 
-        <img
-          src="hccl-logo.png"
-          alt="HCCL Logo"
-          onerror="this.style.display='none'"
-        />
+  <nav id="mainNav" aria-label="Main navigation">
+    <a class="active" href="index.html">Home</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="match.html">Live</a>
+    <a href="match.html#scorecard">Scorecard</a>
+    <a href="#teams">Teams</a>
+    <a href="#table">Points</a>
+    <a href="players.html">MVP Players</a>
+    <a href="player-profile.html?id=1">Player Profile</a>
+    <a href="registration.html">Player Registration</a>
+    <a href="scorer.html">Scoring</a>
+  </nav>
 
-        <div class="brand-text">
-          <h1>HCCL</h1>
-          <p>LIVE CRICKET</p>
-        </div>
+  <a class="live-nav" href="match.html">
+    <i></i>
+    LIVE MATCH
+  </a>
+</header>
 
-      </a>
+<main>
 
+<!-- HERO -->
 
-      <div class="nav-links" id="navLinks">
+<section class="hero">
 
-        <a href="index.html">Home</a>
-        <a href="schedule.html">Matches</a>
-        <a href="players.html">Players</a>
-        <a href="team.html">Teams</a>
-        <a href="registration.html">Registration</a>
-        <a href="scorer.html" class="scorer-btn">
-          Scorer
-        </a>
+  <!-- LEFT TROPHY VIDEO -->
 
-      </div>
-
+  <div class="hero-side trophy-side">
+    <div class="hero-circle trophy-circle">
+      <video
+        src="TROPHY.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-label="HCCL trophy animation">
+      </video>
 
       <button
-        class="menu-btn"
-        onclick="toggleMenu()"
-        aria-label="Menu"
-      >
-        ☰
+        class="video-toggle"
+        type="button"
+        aria-label="Play animation"
+        hidden>
+        Play
       </button>
-
-    </nav>
-  </header>
-
-
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <video
-      class="hero-video"
-      autoplay
-      muted
-      loop
-      playsinline
-    >
-      <source
-        src="hccl-logo-animated.mp4"
-        type="video/mp4"
-      />
-    </video>
-
-    <div class="hero-overlay"></div>
-
-
-    <div class="hero-grid">
-
-      <div class="hero-copy">
-
-        <div class="eyebrow">
-          <span class="live-dot"></span>
-          HCCL CRICKET IS LIVE
-        </div>
-
-        <h2>
-          Cricket.
-          <span>Live.</span>
-          Bigger.
-        </h2>
-
-        <p>
-          Follow HCCL matches live with scores, schedules,
-          player profiles, team information and professional
-          cricket scoring — all in one place.
-        </p>
-
-        <div class="hero-buttons">
-
-          <a
-            href="schedule.html"
-            class="primary-button"
-          >
-            View Matches
-          </a>
-
-          <a
-            href="players.html"
-            class="secondary-button"
-          >
-            Explore Players
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <!-- LIVE SCORE PREVIEW -->
-
-      <div class="hero-score-card">
-
-        <div class="score-header">
-
-          <strong>LIVE MATCH</strong>
-
-          <span class="live-pill">
-            ● LIVE
-          </span>
-
-        </div>
-
-
-        <div class="teams-score">
-
-          <div class="team-line">
-
-            <div class="team-icon">
-              A
-            </div>
-
-            <div>
-              <div class="team-name" id="homeTeamA">
-                TEAM A
-              </div>
-
-              <div class="team-status">
-                Batting
-              </div>
-            </div>
-
-            <div class="score-number">
-              <span id="homeScoreA">0/0</span>
-
-              <small>
-                <span id="homeOversA">0.0</span> OV
-              </small>
-            </div>
-
-          </div>
-
-
-          <div class="team-line">
-
-            <div class="team-icon">
-              B
-            </div>
-
-            <div>
-              <div class="team-name" id="homeTeamB">
-                TEAM B
-              </div>
-
-              <div class="team-status">
-                Bowling
-              </div>
-            </div>
-
-            <div class="score-number">
-              -
-              <small>Yet to bat</small>
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div
-          class="match-note"
-          id="homeMatchNote"
-        >
-          HCCL Live Cricket
-        </div>
-
-      </div>
-
     </div>
-
-  </section>
-
-
-  <!-- QUICK LINKS -->
-
-  <section class="section">
-
-    <div class="section-heading">
-
-      <div>
-
-        <h3>Everything HCCL</h3>
-
-        <p>
-          Match centre, player registration, teams and live scoring.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="quick-grid">
-
-      <a href="schedule.html" class="quick-card">
-
-        <div class="quick-icon">🏏</div>
-
-        <h4>Matches</h4>
-
-        <p>
-          View live, upcoming and completed HCCL matches.
-        </p>
-
-      </a>
-
-
-      <a href="players.html" class="quick-card">
-
-        <div class="quick-icon">👤</div>
-
-        <h4>Players</h4>
-
-        <p>
-          Explore player profiles, statistics and performance.
-        </p>
-
-      </a>
-
-
-      <a href="team.html" class="quick-card">
-
-        <div class="quick-icon">🛡️</div>
-
-        <h4>Teams</h4>
-
-        <p>
-          Discover HCCL teams, squads and team information.
-        </p>
-
-      </a>
-
-
-      <a href="registration.html" class="quick-card">
-
-        <div class="quick-icon">✍️</div>
-
-        <h4>Player Registration</h4>
-
-        <p>
-          Register players for upcoming HCCL matches and tournaments.
-        </p>
-
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- MATCH CENTRE -->
-
-  <section class="section">
-
-    <div class="section-heading">
-
-      <div>
-
-        <h3>Match Centre</h3>
-
-        <p>
-          Stay connected with every HCCL cricket match.
-        </p>
-
-      </div>
-
-      <a href="schedule.html">
-        View all matches →
-      </a>
-
-    </div>
-
-
-    <div class="match-grid">
-
-      <!-- LIVE -->
-
-      <div class="match-card">
-
-        <div class="match-top">
-
-          <span class="match-type">
-            HCCL MATCH
-          </span>
-
-          <span class="status-live">
-            ● LIVE
-          </span>
-
-        </div>
-
-
-        <div class="mini-team">
-
-          <div class="mini-logo">
-            A
-          </div>
-
-          <div class="mini-name" id="matchTeamA">
-            Team A
-          </div>
-
-          <div class="mini-score">
-
-            <span id="matchScoreA">0/0</span>
-
-            <span id="matchOversA">
-              0.0 Overs
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="mini-team">
-
-          <div class="mini-logo">
-            B
-          </div>
-
-          <div class="mini-name" id="matchTeamB">
-            Team B
-          </div>
-
-          <div class="mini-score">
-
-            -
-
-            <span>
-              Yet to bat
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="match-result" id="matchStatus">
-          Match in progress
-        </div>
-
-
-        <a
-          href="match.html"
-          class="match-action"
-        >
-          OPEN MATCH →
-        </a>
-
-      </div>
-
-
-      <!-- UPCOMING -->
-
-      <div class="match-card">
-
-        <div class="match-top">
-
-          <span class="match-type">
-            UPCOMING
-          </span>
-
-        </div>
-
-        <div class="mini-team">
-
-          <div class="mini-logo">
-            T1
-          </div>
-
-          <div class="mini-name">
-            Team 1
-          </div>
-
-        </div>
-
-
-        <div class="mini-team">
-
-          <div class="mini-logo">
-            T2
-          </div>
-
-          <div class="mini-name">
-            Team 2
-          </div>
-
-        </div>
-
-
-        <div class="match-result">
-          Match schedule will appear here.
-        </div>
-
-
-        <a
-          href="schedule.html"
-          class="match-action"
-        >
-          VIEW SCHEDULE →
-        </a>
-
-      </div>
-
-
-      <!-- REGISTRATION -->
-
-      <div class="match-card">
-
-        <div class="match-top">
-
-          <span class="match-type">
-            PLAYER REGISTRATION
-          </span>
-
-        </div>
-
-
-        <div
-          style="
-            font-size:27px;
-            font-weight:800;
-            line-height:1.2;
-            margin-top:25px;
-          "
-        >
-          Ready to play
-          <br />
-          HCCL cricket?
-        </div>
-
-
-        <div
-          style="
-            color:#a8b8d8;
-            font-size:13px;
-            line-height:1.7;
-            margin-top:16px;
-          "
-        >
-          Register your player profile and become part
-          of the HCCL cricket community.
-        </div>
-
-
-        <a
-          href="registration.html"
-          class="match-action"
-          style="margin-top:28px;"
-        >
-          REGISTER PLAYER →
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- FEATURE AREA -->
-
-  <div class="feature-area">
-
-    <section class="section">
-
-      <div class="section-heading">
-
-        <div>
-
-          <h3>The HCCL Experience</h3>
-
-          <p>
-            Professional cricket presentation built for players,
-            viewers and live broadcasts.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="feature-grid">
-
-        <div class="feature-card">
-
-          <video
-            autoplay
-            muted
-            loop
-            playsinline
-          >
-            <source
-              src="TROPHY.mp4"
-              type="video/mp4"
-            />
-          </video>
-
-
-          <div class="feature-overlay">
-
-            <h4>
-              Play for the Trophy
-            </h4>
-
-            <p>
-              Every match. Every run. Every wicket.
-              One journey towards HCCL glory.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="feature-card">
-
-          <img
-            src="hccl-logo.png"
-            alt="HCCL"
-          />
-
-
-          <div class="feature-overlay">
-
-            <h4>
-              HCCL Live Scoring
-            </h4>
-
-            <p>
-              Professional match scoring, player statistics,
-              live match centre and broadcast-ready experience.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
   </div>
 
+  <!-- CENTER HEADLINE -->
 
-  <!-- CTA -->
+  <div class="hero-center">
+    <span class="tag hero-main-tag">
+      HEROES CHAMPIONS CRICKET LEAGUE
+    </span>
 
-  <section class="section">
+    <div class="hero-tagline">
+      PLAY <i>•</i> PERFORM <i>•</i> WIN
+    </div>
 
-    <div class="cta">
+    <h1>
+      THE<br>
+      LEAGUE.<br>
+      <em>LIVE.</em>
+    </h1>
 
-      <div>
+    <p>
+      Fixtures, live scores, streaming, full scorecards,
+      player statistics and HCCL tournament updates —
+      all in one place.
+    </p>
 
-        <h3>
-          Become part of HCCL
-        </h3>
-
-        <p>
-          Register your player profile, follow upcoming matches
-          and stay connected with HCCL cricket.
-        </p>
-
-      </div>
-
-
-      <a
-        href="registration.html"
-        class="primary-button"
-      >
-        Register Now
+    <div class="hero-actions">
+      <a class="primary" href="match.html">
+        Watch Live Match
       </a>
 
+      <a class="secondary" href="schedule.html">
+        View Schedule
+      </a>
+    </div>
+  </div>
+
+  <!-- RIGHT HCCL VIDEO -->
+
+  <div class="hero-side league-side">
+    <div class="hero-circle league-circle">
+      <video
+        src="hccl-logo-animated.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-label="HCCL logo animation">
+      </video>
+
+      <button
+        class="video-toggle"
+        type="button"
+        aria-label="Play animation"
+        hidden>
+        Play
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<!-- SCORE STRIP -->
+
+<section class="live-strip" aria-label="Latest match score">
+  <div class="live-title">
+    <b id="scoreStatus">NO SCORE YET</b>
+    <small>HCCL Match Centre</small>
+  </div>
+
+  <div class="live-team">
+    <img src="hccl-logo.png" alt="">
+    <span id="scoreTeam">Awaiting match</span>
+    <strong id="scoreRuns">—</strong>
+    <small id="scoreOvers">—</small>
+  </div>
+
+  <div id="scoreTarget">Target not available</div>
+
+  <a href="match.html">OPEN MATCH →</a>
+
+  <p class="live-note" id="scoreNote">
+    No score received in this browser.
+  </p>
+</section>
+
+<!-- MATCH CENTRE -->
+
+<section class="section">
+  <div class="section-head">
+    <span class="tag">HCCL MATCH CENTRE</span>
+    <h2>Everything Cricket</h2>
+  </div>
+
+  <div class="teams">
+    <a class="team-card" href="schedule.html">
+      <img src="hccl-logo.png" alt="Schedule">
+      <b>Match Schedule</b>
+      <span>View Fixtures →</span>
+    </a>
+
+    <a class="team-card" href="match.html">
+      <img src="hccl-logo.png" alt="Live Match">
+      <b>Live Match</b>
+      <span>Watch Live →</span>
+    </a>
+
+    <a class="team-card" href="match.html#scorecard">
+      <img src="hccl-logo.png" alt="Scorecard">
+      <b>Scorecard</b>
+      <span>Full Scorecard →</span>
+    </a>
+
+    <a class="team-card" href="players.html">
+      <img src="hccl-logo.png" alt="MVP Players">
+      <b>MVP Players</b>
+      <span>View Rankings →</span>
+    </a>
+
+    <a class="team-card" href="player-profile.html?id=1">
+      <img src="hccl-logo.png" alt="Player Profile">
+      <b>Player Profile</b>
+      <span>View Profile →</span>
+    </a>
+
+    <a class="team-card" href="registration.html">
+      <img src="hccl-logo.png" alt="Player Registration">
+      <b>Player Registration</b>
+      <span>Register Now →</span>
+    </a>
+  </div>
+</section>
+
+<!-- TEAMS -->
+
+<section id="teams" class="section dark">
+  <div class="section-head">
+    <span class="tag">FRANCHISES</span>
+    <h2>HCCL Teams</h2>
+  </div>
+
+  <div class="teams">
+    <a class="team-card" href="team.html?team=reds">
+      <img src="hccl-logo.png" alt="HCCL Reds">
+      <b>HCCL Reds</b>
+      <span>Squad →</span>
+    </a>
+
+    <a class="team-card" href="team.html?team=blues">
+      <img src="hccl-logo.png" alt="HCCL Blues">
+      <b>HCCL Blues</b>
+      <span>Squad →</span>
+    </a>
+
+    <a class="team-card" href="team.html?team=warriors">
+      <img src="hccl-logo.png" alt="HCCL Warriors">
+      <b>HCCL Warriors</b>
+      <span>Squad →</span>
+    </a>
+
+    <a class="team-card" href="team.html?team=titans">
+      <img src="hccl-logo.png" alt="HCCL Titans">
+      <b>HCCL Titans</b>
+      <span>Squad →</span>
+    </a>
+
+    <a class="team-card" href="team.html?team=kings">
+      <img src="hccl-logo.png" alt="HCCL Kings">
+      <b>HCCL Kings</b>
+      <span>Squad →</span>
+    </a>
+
+    <a class="team-card" href="team.html?team=strikers">
+      <img src="hccl-logo.png" alt="HCCL Strikers">
+      <b>HCCL Strikers</b>
+      <span>Squad →</span>
+    </a>
+
+    <a class="team-card" href="team.html?team=lions">
+      <img src="hccl-logo.png" alt="HCCL Lions">
+      <b>HCCL Lions</b>
+      <span>Squad →</span>
+    </a>
+
+    <a class="team-card" href="team.html?team=eagles">
+      <img src="hccl-logo.png" alt="HCCL Eagles">
+      <b>HCCL Eagles</b>
+      <span>Squad →</span>
+    </a>
+  </div>
+</section>
+
+<!-- POINTS TABLE -->
+
+<section id="table" class="section">
+  <div class="section-head">
+    <span class="tag">LEAGUE TABLE</span>
+    <h2>Points Table</h2>
+  </div>
+
+  <p class="standings-note">
+    Standings pending. Official results are not connected yet;
+    dashes are not scores.
+  </p>
+
+  <div
+    class="points"
+    role="region"
+    aria-label="Points table, scroll horizontally on mobile"
+    tabindex="0">
+
+    <div class="pt-head">
+      <span>#</span>
+      <span>TEAM</span>
+      <span>P</span>
+      <span>W</span>
+      <span>L</span>
+      <span>NRR</span>
+      <span>PTS</span>
     </div>
 
-  </section>
-
-
-  <!-- FOOTER -->
-
-  <footer class="footer">
-
-    <div class="footer-inner">
-
-      <div class="footer-brand">
-
-        <img
-          src="hccl-logo.png"
-          alt="HCCL"
-          onerror="this.style.display='none'"
-        />
-
-        HCCL
-
-      </div>
-
-
-      <div class="footer-copy">
-        © <span id="year"></span> HCCL. All rights reserved.
-      </div>
-
+    <div>
+      <span>—</span>
+      <span><b>HCCL Reds</b></span>
+      <span>—</span>
+      <span>—</span>
+      <span>—</span>
+      <span>—</span>
+      <strong>—</strong>
     </div>
 
-  </footer>
+    <div>
+      <span>—</span>
+      <span><b>HCCL Lions</b></span>
+      <span>—</span>
+      < Chengspan>—</span>
+      <span>—</span>
+      <span>—</span>
+      <strong>—</strong>
+    </div>
 
+    <div>
+      <span>—</span>
+      <span><b>HCCL Blues</b></span>
+      <span>—</span>
+      <span>—</span>
+      <span>—</span>
+      <span>—</span>
+      <strong>—</strong>
+    </div>
+
+    <div>
+      <span>—</span>
+      <span><b>HCCL Titans</b></span>
+      <span>—</span>
+      <span>—</span>
+      <span>—</span>
+      <span>—</span>
+      <strong>—</strong>
+    </div>
+
+    <div>
+      <span>—</span>
+      <span><b>HCCL Warriors</b></span>
+      <span>—</span>
+      <span>—</span>
+      <span>—</span>
+      <span>—</span>
+      <strong>—</strong>
+    </div>
+
+    <div>
+      <span>—</span>
+      <span><b>HCCL Kings</b></span>
+      <span>—</span>
+      <span>—</span>
+      <span>—</span>
+      <span>—</span>
+      <strong>—</strong>
+    </div>
+
+    <div>
+      <span>—</span>
+      <span><b>HCCL Strikers</b></span>
+      <span>—</span>
+      <span>—</span>
+      <span>—</span>
+      <span>—</span>
+      <strong>—</strong>
+    </div>
+
+    <div>
+      <span>—</span>
+      <span><b>HCCL Eagles</b></span>
+      <span>—</span>
+      <span>—</span>
+      <span>—</span>
+      <span>—</span>
+      <strong>—</strong>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+  <img src="hccl-logo.png" alt="HCCL Logo">
+  <span>Heroes Champions Cricket League</span>
+  <small>Official HCCL Tournament Portal</small>
+</footer>
 
 <script>
+"use strict";
 
-  /*
-  ============================================
-  HCCL HOME PAGE
-  ============================================
-  */
+/* MOBILE MENU */
 
-  function toggleMenu() {
+const menu = document.getElementById("menuToggle");
+const nav = document.getElementById("mainNav");
 
-    document
-      .getElementById("navLinks")
-      .classList.toggle("open");
+function closeMenu() {
+  nav.classList.remove("open");
+  menu.setAttribute("aria-expanded", "false");
+}
 
+menu.addEventListener("click", function () {
+  const isOpen = nav.classList.toggle("open");
+  menu.setAttribute("aria-expanded", String(isOpen));
+});
+
+nav.querySelectorAll("a").forEach(function (link) {
+  link.addEventListener("click", closeMenu);
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    closeMenu();
   }
+});
 
+/* SCORE DATA */
 
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
+function readScore(key) {
+  try {
+    const value = JSON.parse(localStorage.getItem(key));
 
-
-  /*
-  ============================================
-  READ LIVE SCORE
-  ============================================
-
-  Supports both:
-  hccl_state
-  and older hccl_v4_state
-
-  Old key is read ONLY for migration.
-  Nothing displays V4 on the website.
-  ============================================
-  */
-
-
-  function getHCCLState() {
-
-    let state = null;
-
-
-    try {
-
-      state =
-        JSON.parse(
-          localStorage.getItem("hccl_state")
-        );
-
-    }
-    catch(e) {}
-
-
-    /*
-      OLD DATA MIGRATION
-    */
-
-    if (!state) {
-
-      try {
-
-        const oldState =
-          JSON.parse(
-            localStorage.getItem(
-              "hccl_v4_state"
-            )
-          );
-
-
-        if (oldState) {
-
-          state = oldState;
-
-
-          localStorage.setItem(
-            "hccl_state",
-            JSON.stringify(oldState)
-          );
-
-        }
-
-      }
-      catch(e) {}
-
-    }
-
-
-    return state;
-
-  }
-
-
-
-  function firstValue(...values) {
-
-    for (const value of values) {
-
-      if (
-        value !== undefined &&
-        value !== null &&
-        value !== ""
-      ) {
-
-        return value;
-
-      }
-
+    if (
+      value &&
+      typeof value === "object" &&
+      !Array.isArray(value)
+    ) {
+      return value;
     }
 
     return null;
+  } catch (error) {
+    return null;
+  }
+}
 
+function text(id, value) {
+  document.getElementById(id).textContent = value;
+}
+
+function safeNumber(value) {
+  const number = Number(value);
+
+  return Number.isFinite(number) && number >= 0
+    ? number
+    : 0;
+}
+
+function updateScore() {
+  const current = readScore("HCCL_LIVE_SCORE");
+
+  const score =
+    current ||
+    readScore("hccl_state") ||
+    readScore("hccl_v4_state");
+
+  if (!score) {
+    text("scoreStatus", "NO SCORE YET");
+    text("scoreTeam", "Awaiting match");
+    text("scoreRuns", "—");
+    text("scoreOvers", "—");
+    text("scoreTarget", "Target not available");
+    text("scoreNote", "No score received in this browser.");
+    return;
   }
 
-
-
-  function updateHomepageScore() {
-
-    const state =
-      getHCCLState();
-
-
-    if (!state) {
-
-      return;
-
-    }
-
-
-    /*
-    ============================================
-    TEAM NAMES
-    ============================================
-    */
-
-
-    const teamA =
-      firstValue(
-
-        state.teamA,
-
-        state.team1,
-
-        state.battingTeam,
-
-        state.battingTeamName,
-
-        state.teamAName,
-
-        state.team1Name
-
-      ) || "TEAM A";
-
-
-    const teamB =
-      firstValue(
-
-        state.teamB,
-
-        state.team2,
-
-        state.bowlingTeam,
-
-        state.bowlingTeamName,
-
-        state.teamBName,
-
-        state.team2Name
-
-      ) || "TEAM B";
-
-
-
-    /*
-    ============================================
-    SCORE
-    ============================================
-    */
-
-
-    const runs =
-      Number(
-
-        firstValue(
-
-          state.runs,
-
-          state.score,
-
-          state.totalRuns
-
-        )
-
-      ) || 0;
-
-
-
-    const wickets =
-      Number(
-
-        firstValue(
-
-          state.wickets,
-
-          state.wkts,
-
-          state.totalWickets
-
-        )
-
-      ) || 0;
-
-
-
-    /*
-    ============================================
-    OVERS
-    ============================================
-    */
-
-
-    let overs =
-      firstValue(
-
-        state.overs,
-
-        state.currentOvers
-
+  const team = current
+    ? score.team
+    : (
+        score.teamA ||
+        score.battingTeamName ||
+        score.teamAName
       );
 
-
-    if (
-      overs === null &&
-      state.balls !== undefined
-    ) {
-
-      const balls =
-        Number(state.balls) || 0;
-
-
-      overs =
-        Math.floor(balls / 6)
-        + "."
-        + (balls % 6);
-
-    }
-
-
-    if (overs === null) {
-
-      overs = "0.0";
-
-    }
-
-
-
-    /*
-    ============================================
-    HOME HERO
-    ============================================
-    */
-
-
-    document.getElementById(
-      "homeTeamA"
-    ).textContent = teamA;
-
-
-    document.getElementById(
-      "homeTeamB"
-    ).textContent = teamB;
-
-
-    document.getElementById(
-      "homeScoreA"
-    ).textContent =
-      runs + "/" + wickets;
-
-
-    document.getElementById(
-      "homeOversA"
-    ).textContent = overs;
-
-
-
-    /*
-    ============================================
-    MATCH CARD
-    ============================================
-    */
-
-
-    document.getElementById(
-      "matchTeamA"
-    ).textContent = teamA;
-
-
-    document.getElementById(
-      "matchTeamB"
-    ).textContent = teamB;
-
-
-    document.getElementById(
-      "matchScoreA"
-    ).textContent =
-      runs + "/" + wickets;
-
-
-    document.getElementById(
-      "matchOversA"
-    ).textContent =
-      overs + " Overs";
-
-
-
-    /*
-    ============================================
-    MATCH STATUS / DLS
-    ============================================
-    */
-
-
-    const dlsTarget =
-      firstValue(
-
-        state.dlsTarget,
-
-        state.revisedTarget,
-
-        state.target
-
-      );
-
-
-    const revisedOvers =
-      firstValue(
-
-        state.revisedOvers,
-
-        state.dlsOvers
-
-      );
-
-
-    if (dlsTarget) {
-
-      let text =
-        "DLS Target: " +
-        dlsTarget;
-
-
-      if (revisedOvers) {
-
-        text +=
-          " in " +
-          revisedOvers +
-          " overs";
-
-      }
-
-
-      document.getElementById(
-        "homeMatchNote"
-      ).textContent = text;
-
-
-      document.getElementById(
-        "matchStatus"
-      ).textContent = text;
-
-    }
-
-    else {
-
-      const matchMessage =
-        firstValue(
-
-          state.status,
-
-          state.matchStatus,
-
-          state.message
-
-        );
-
-
-      if (matchMessage) {
-
-        document.getElementById(
-          "homeMatchNote"
-        ).textContent =
-          matchMessage;
-
-
-        document.getElementById(
-          "matchStatus"
-        ).textContent =
-          matchMessage;
-
-      }
-
-    }
-
+  text(
+    "scoreTeam",
+    typeof team === "string" && team.trim()
+      ? team
+      : "Batting team"
+  );
+
+  const runs = safeNumber(
+    score.runs ?? score.totalRuns
+  );
+
+  const wickets = safeNumber(
+    score.wickets ?? score.wkts
+  );
+
+  text("scoreRuns", runs + "/" + wickets);
+
+  const balls = safeNumber(
+    score.legalBalls ?? score.balls
+  );
+
+  const overs = String(
+    score.overs ??
+    score.currentOvers ??
+    (Math.floor(balls / 6) + "." + (balls % 6))
+  );
+
+  text(
+    "scoreOvers",
+    /^\d+(\.[0-5])?$/.test(overs)
+      ? overs + " OV"
+      : "—"
+  );
+
+  const target = safeNumber(score.target);
+
+  text(
+    "scoreTarget",
+    target > 0
+      ? "Target " + target
+      : "Target not available"
+  );
+
+  text("scoreStatus", "LAST RECEIVED SCORE");
+
+  text(
+    "scoreNote",
+    "Saved score from this browser. Public live sync requires a server connection."
+  );
+}
+
+updateScore();
+
+window.addEventListener("storage", updateScore);
+
+setInterval(updateScore, 1000);
+
+/* VIDEO PLAYBACK */
+
+document.querySelectorAll(".hero-circle").forEach(function (circle) {
+  const video = circle.querySelector("video");
+  const button = circle.querySelector("button");
+
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  video.muted = true;
+
+  function showPlay() {
+    button.hidden = false;
+    button.textContent = "Play";
+    button.setAttribute("aria-label", "Play animation");
   }
 
+  function showPause() {
+    button.hidden = false;
+    button.textContent = "Pause";
+    button.setAttribute("aria-label", "Pause animation");
+  }
 
-
-  /*
-  ============================================
-  INITIAL LOAD
-  ============================================
-  */
-
-
-  updateHomepageScore();
-
-
-
-  /*
-  ============================================
-  SAME BROWSER LIVE SYNC
-  ============================================
-  */
-
-
-  window.addEventListener(
-    "storage",
-
-    function(event) {
-
-      if (
-        event.key === "hccl_state" ||
-        event.key === "hccl_v4_state"
-      ) {
-
-        updateHomepageScore();
-
-      }
-
+  button.addEventListener("click", function () {
+    if (video.paused) {
+      video.play().catch(showPlay);
+    } else {
+      video.pause();
     }
-  );
+  });
 
+  video.addEventListener("playing", showPause);
+  video.addEventListener("pause", showPlay);
 
+  video.addEventListener("error", function () {
+    button.hidden = false;
+    button.disabled = true;
+    button.textContent = "Video unavailable";
+  });
 
-  /*
-  ============================================
-  REFRESH SCORE EVERY 1 SECOND
-  ============================================
-  */
+  if (reducedMotion) {
+    video.autoplay = false;
+    video.pause();
+    showPlay();
+  } else {
+    const playPromise = video.play();
 
-
-  setInterval(
-    updateHomepageScore,
-    1000
-  );
-
+    if (playPromise) {
+      playPromise.catch(showPlay);
+    }
+  }
+});
 </script>
 
 </body>
