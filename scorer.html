@@ -1,484 +1,2291 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>HCCL — Scoring Control</title>
+
 <link rel="stylesheet" href="site.css">
 
 <style>
-.scorer-wrap{
-  width:min(1180px,calc(100% - 30px));
-  margin:40px auto;
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.scorer-page{
+  width:min(1220px,calc(100% - 28px));
+  margin:auto;
+  padding:42px 0 90px;
 }
 
-.scorer-title{
-  margin-bottom:25px;
+.scorer-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+  margin-bottom:24px;
 }
 
-.scorer-title h1{
-  font-size:42px;
+.scorer-header small{
+  color:#ef1b1b;
+  font-size:10px;
+  font-weight:1000;
+  letter-spacing:2px;
+}
+
+.scorer-header h1{
+  margin-top:5px;
+  font-size:clamp(34px,5vw,54px);
+}
+
+.scorer-header p{
+  color:#8f9aa6;
+  margin-top:6px;
+}
+
+
+/* =====================================================
+   SCORE HERO
+===================================================== */
+
+.score-control-hero{
+  padding:26px;
+
+  border:1px solid rgba(53,97,139,.65);
+  border-radius:22px;
+
+  background:
+    radial-gradient(circle at 12% 35%,rgba(20,78,137,.20),transparent 34%),
+    radial-gradient(circle at 88% 35%,rgba(239,27,27,.14),transparent 36%),
+    linear-gradient(
+      110deg,
+      rgba(7,26,52,.92),
+      rgba(3,6,11,.97) 54%,
+      rgba(29,5,8,.90)
+    );
+}
+
+.score-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+}
+
+.live-state{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+
+  padding:8px 12px;
+
+  background:#ef1b1b;
+  border-radius:999px;
+
+  font-size:10px;
+  font-weight:1000;
+}
+
+.live-state i{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#ff6a6a;
+}
+
+
+/* SCORE */
+
+.score-main{
+  text-align:center;
+  padding:24px 0 16px;
+}
+
+.score-team-name{
+  color:#9da8b4;
+  font-size:12px;
+  font-weight:900;
+}
+
+.score-number{
+  font-size:clamp(58px,8vw,92px);
+  font-weight:1000;
+  line-height:1;
   margin-top:5px;
 }
 
-.score-display{
-  background:linear-gradient(135deg,#181818,#090909);
-  border:1px solid #333;
-  border-radius:20px;
-  padding:30px;
+.score-over{
+  margin-top:8px;
+  color:#8c98a4;
+  font-size:13px;
+}
+
+
+/* METRICS */
+
+.score-metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+
+  margin-top:20px;
+
+  border-top:1px solid rgba(57,99,140,.25);
+  padding-top:18px;
+}
+
+.metric{
   text-align:center;
-  margin-bottom:20px;
 }
 
-.score-display img{
-  width:100px;
-  margin:0 auto 15px;
-}
-
-.score-display h2{
-  font-size:24px;
-}
-
-.main-score{
-  font-size:70px;
+.metric small{
+  display:block;
+  color:#7e8c99;
+  font-size:9px;
   font-weight:900;
-  color:#fff;
-  line-height:1;
-  margin:15px 0;
 }
 
-.overs{
-  color:#aaa;
+.metric strong{
+  display:block;
+  margin-top:5px;
   font-size:18px;
 }
 
-.control-panel{
-  background:#111;
-  border:1px solid #292929;
-  border-radius:18px;
-  padding:22px;
-  margin-bottom:20px;
-}
 
-.control-panel h3{
-  margin-bottom:18px;
-  color:#fff;
-}
+/* =====================================================
+   MAIN GRID
+===================================================== */
 
-.run-buttons{
+.scorer-grid{
   display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:10px;
+  grid-template-columns:1.15fr .85fr;
+  gap:18px;
+  margin-top:22px;
 }
 
-.run-btn{
-  min-height:70px;
-  border:0;
-  border-radius:12px;
-  background:#222;
-  color:white;
-  font-size:25px;
+
+/* PANEL */
+
+.panel{
+  padding:22px;
+
+  border:1px solid rgba(48,88,126,.55);
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(7,24,44,.76),
+      rgba(4,7,12,.82)
+    );
+}
+
+.panel-head{
+  margin-bottom:16px;
+}
+
+.panel-head small{
+  color:#ef1b1b;
+  font-size:9px;
+  font-weight:1000;
+  letter-spacing:1.4px;
+}
+
+.panel-head h2{
+  margin-top:4px;
+  font-size:23px;
+}
+
+
+/* =====================================================
+   PLAYER SELECT
+===================================================== */
+
+.player-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.field{
+  margin-bottom:13px;
+}
+
+.field label{
+  display:block;
+  margin-bottom:6px;
+
+  color:#8f9ba7;
+
+  font-size:9px;
   font-weight:900;
-  cursor:pointer;
 }
 
-.run-btn:hover{
-  background:#333;
+.field input,
+.field select{
+  width:100%;
+  height:44px;
+
+  padding:0 12px;
+
+  border:1px solid #294664;
+  border-radius:9px;
+
+  background:#061220;
+  color:#fff;
+
+  outline:none;
 }
 
-.run-btn.four{
-  background:#1677ff;
+
+/* =====================================================
+   BATTER INFO
+===================================================== */
+
+.active-players{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+
+  margin:16px 0;
 }
 
-.run-btn.six{
-  background:#7c3aed;
+.active-player{
+  padding:14px;
+
+  border-left:2px solid #315b83;
 }
 
-.extra-buttons{
+.active-player.striker{
+  border-left-color:#ef1b1b;
+}
+
+.active-player small{
+  color:#7d8996;
+  font-size:8px;
+  font-weight:900;
+}
+
+.active-player strong{
+  display:block;
+  margin-top:3px;
+  font-size:15px;
+}
+
+.active-player span{
+  display:block;
+  margin-top:5px;
+  color:#9ca6b0;
+  font-size:10px;
+}
+
+
+/* =====================================================
+   RUN BUTTONS
+===================================================== */
+
+.run-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:10px;
 }
 
-.extra-btn{
-  min-height:55px;
-  border:0;
-  border-radius:10px;
-  font-weight:900;
-  cursor:pointer;
-  background:#252525;
-  color:white;
-}
+.run-btn{
+  min-height:58px;
 
-.wicket{
-  background:#d50000;
-}
-
-.wide{
-  background:#d97706;
-}
-
-.noball{
-  background:#c026d3;
-}
-
-.undo{
-  background:#444;
-}
-
-.info-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-
-.info-box{
-  background:#171717;
-  border:1px solid #292929;
+  border:1px solid #315578;
   border-radius:12px;
-  padding:18px;
+
+  background:#07182c;
+  color:#fff;
+
+  font-size:20px;
+  font-weight:1000;
+
+  cursor:pointer;
+
+  transition:.15s;
 }
 
-.info-box small{
-  display:block;
-  color:#888;
+.run-btn:hover{
+  transform:translateY(-2px);
+  border-color:#ef1b1b;
 }
 
-.info-box strong{
-  display:block;
-  font-size:22px;
-  margin-top:5px;
+.run-btn.boundary{
+  background:#0d4d31;
+  border-color:#28734d;
 }
 
-.event-message{
-  margin-top:15px;
-  min-height:50px;
+.run-btn.six{
+  background:#705107;
+  border-color:#b28a22;
+}
+
+.run-btn.wicket{
+  background:#6d1117;
+  border-color:#be2d37;
+}
+
+
+/* =====================================================
+   EXTRAS
+===================================================== */
+
+.extras-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px;
+  margin-top:12px;
+}
+
+.extra-btn{
+  min-height:43px;
+
+  border:1px solid #315578;
+  border-radius:9px;
+
+  background:#07182c;
+  color:#fff;
+
+  font-size:10px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.extra-btn:hover{
+  border-color:#ef1b1b;
+}
+
+
+/* =====================================================
+   RECENT BALLS
+===================================================== */
+
+.recent-balls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.ball{
+  width:34px;
+  height:34px;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#080808;
-  border:1px solid #292929;
-  border-radius:12px;
-  font-weight:900;
-  color:#ff4444;
+
+  border-radius:50%;
+
+  background:#07182c;
+  border:1px solid #2d4c6c;
+
+  font-size:10px;
+  font-weight:1000;
 }
 
-@media(max-width:700px){
-  .run-buttons{
-    grid-template-columns:repeat(4,1fr);
-  }
+.ball.four{
+  background:#115536;
+}
 
-  .extra-buttons{
-    grid-template-columns:repeat(2,1fr);
-  }
+.ball.six{
+  background:#745309;
+}
 
-  .info-grid{
+.ball.wicket{
+  background:#711218;
+}
+
+.ball.extra{
+  background:#3c315e;
+}
+
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.action-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+  margin-top:16px;
+}
+
+.action-btn{
+  min-height:44px;
+
+  border-radius:9px;
+  border:1px solid #315578;
+
+  background:#07182c;
+  color:#fff;
+
+  font-size:10px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.action-btn.red{
+  background:#ef1b1b;
+  border-color:#ef1b1b;
+}
+
+.action-btn.warning{
+  color:#ffca46;
+}
+
+.action-btn:hover{
+  filter:brightness(1.12);
+}
+
+
+/* =====================================================
+   OVER SUMMARY
+===================================================== */
+
+.over-summary{
+  margin-top:17px;
+  padding-top:16px;
+
+  border-top:1px solid rgba(48,88,126,.28);
+}
+
+.over-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+
+  margin-top:7px;
+
+  font-size:11px;
+}
+
+.over-row span{
+  color:#8e9aa6;
+}
+
+
+/* =====================================================
+   LOG
+===================================================== */
+
+.scoring-log{
+  max-height:300px;
+  overflow-y:auto;
+}
+
+.log-item{
+  padding:9px 0;
+  border-bottom:1px solid rgba(48,88,126,.22);
+
+  font-size:10px;
+  color:#aab3bd;
+}
+
+.log-item strong{
+  color:#fff;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:850px){
+
+  .scorer-grid{
     grid-template-columns:1fr;
   }
 
-  .main-score{
-    font-size:52px;
-  }
 }
+
+@media(max-width:620px){
+
+  .scorer-header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .score-metrics{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .player-row{
+    grid-template-columns:1fr;
+  }
+
+  .run-grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .extras-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
 </style>
 </head>
 
+
 <body>
+
+
+<!-- =====================================================
+     NAV
+===================================================== -->
 
 <header class="nav">
 
-  <a class="logo" href="index.html">
-    <img src="hccl-logo.png">
-    <span>HCCL</span>
-  </a>
+<a class="logo" href="index.html">
+  <img src="hccl-logo.png" alt="HCCL">
+  <span>HCCL</span>
+</a>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="match.html">Live Match</a>
-    <a class="active" href="scorer.html">Scoring</a>
-  </nav>
+<nav>
 
-  <a class="live-nav" href="match.html">
-    <i></i> VIEW LIVE
-  </a>
+<a href="index.html">Home</a>
+<a href="schedule.html">Schedule</a>
+<a href="match.html">Live</a>
+<a href="match.html#scorecard">Scorecard</a>
+<a href="index.html#teams">Teams</a>
+<a href="index.html#table">Points</a>
+<a href="players.html">MVP Players</a>
+<a href="player-profile.html?id=1">Player Profile</a>
+<a href="registration.html">Player Registration</a>
+<a class="active" href="scorer.html">Scoring</a>
+
+</nav>
+
+<a class="live-nav" href="match.html">
+<i></i>
+LIVE MATCH
+</a>
 
 </header>
 
 
-<main class="scorer-wrap">
 
-<div class="scorer-title">
-  <span class="tag">HCCL MATCH CONTROL</span>
-  <h1>Live Scoring Panel</h1>
+<main class="scorer-page">
+
+
+<!-- =====================================================
+     TITLE
+===================================================== -->
+
+<div class="scorer-header">
+
+<div>
+
+<small>
+HCCL MATCH CONTROL
+</small>
+
+<h1>
+Live Scoring
+</h1>
+
+<p>
+Official scorer control for HCCL live matches.
+</p>
+
+</div>
+
 </div>
 
 
-<section class="score-display">
 
-  <img src="hccl-logo.png">
+<!-- =====================================================
+     SCORE HERO
+===================================================== -->
 
-  <h2>HCCL REDS</h2>
+<section class="score-control-hero">
 
-  <div class="main-score">
-    <span id="runs">0</span>/<span id="wickets">0</span>
-  </div>
 
-  <div class="overs">
-    <span id="overs">0.0</span> Overs
-  </div>
+<div class="score-top">
+
+<span style="
+color:#ef1b1b;
+font-size:10px;
+font-weight:1000;
+letter-spacing:1.5px;
+">
+MATCH 04 · SECOND INNINGS
+</span>
+
+<span class="live-state">
+<i></i>
+SCORING LIVE
+</span>
+
+</div>
+
+
+<div class="score-main">
+
+<div class="score-team-name" id="battingTeam">
+HCCL REDS
+</div>
+
+<div class="score-number">
+
+<span id="runs">0</span>/<span id="wickets">0</span>
+
+</div>
+
+<div class="score-over">
+
+<span id="overs">0.0</span> Overs
+
+</div>
+
+</div>
+
+
+<div class="score-metrics">
+
+<div class="metric">
+<small>CURRENT RR</small>
+<strong id="crr">0.00</strong>
+</div>
+
+<div class="metric">
+<small>TARGET</small>
+<strong id="targetView">176</strong>
+</div>
+
+<div class="metric">
+<small>REQUIRED RR</small>
+<strong id="rrr">0.00</strong>
+</div>
+
+<div class="metric">
+<small>BALLS LEFT</small>
+<strong id="ballsLeft">120</strong>
+</div>
+
+</div>
+
 
 </section>
 
 
-<section class="control-panel">
 
-<h3>RUNS</h3>
+<!-- =====================================================
+     SCORER GRID
+===================================================== -->
 
-<div class="run-buttons">
+<section class="scorer-grid">
 
-<button class="run-btn" onclick="addRuns(0)">0</button>
 
-<button class="run-btn" onclick="addRuns(1)">1</button>
+<!-- LEFT CONTROL -->
 
-<button class="run-btn" onclick="addRuns(2)">2</button>
+<div>
 
-<button class="run-btn" onclick="addRuns(3)">3</button>
 
-<button class="run-btn four" onclick="addRuns(4)">4</button>
+<div class="panel">
 
-<button class="run-btn" onclick="addRuns(5)">5</button>
+<div class="panel-head">
 
-<button class="run-btn six" onclick="addRuns(6)">6</button>
+<small>
+CURRENT PLAYERS
+</small>
+
+<h2>
+Batting & Bowling
+</h2>
 
 </div>
 
-</section>
+
+<div class="player-row">
 
 
-<section class="control-panel">
+<div class="field">
 
-<h3>EXTRAS / WICKET</h3>
+<label>
+STRIKER
+</label>
 
-<div class="extra-buttons">
+<select id="strikerSelect">
 
-<button class="extra-btn wide" onclick="wideBall()">
+<option value="Player 01">
+Player 01
+</option>
+
+<option value="Player 02">
+Player 02
+</option>
+
+<option value="Player 03">
+Player 03
+</option>
+
+<option value="Player 04">
+Player 04
+</option>
+
+<option value="Player 05">
+Player 05
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+NON-STRIKER
+</label>
+
+<select id="nonStrikerSelect">
+
+<option value="Player 02">
+Player 02
+</option>
+
+<option value="Player 01">
+Player 01
+</option>
+
+<option value="Player 03">
+Player 03
+</option>
+
+<option value="Player 04">
+Player 04
+</option>
+
+<option value="Player 05">
+Player 05
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+<div class="field">
+
+<label>
+CURRENT BOWLER
+</label>
+
+<select id="bowlerSelect">
+
+<option value="Player 06">
+Player 06
+</option>
+
+<option value="Player 07">
+Player 07
+</option>
+
+<option value="Player 08">
+Player 08
+</option>
+
+<option value="Player 09">
+Player 09
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="active-players">
+
+
+<div class="active-player striker">
+
+<small>
+STRIKER
+</small>
+
+<strong id="strikerName">
+Player 01
+</strong>
+
+<span>
+<span id="strikerRuns">0</span>
+(
+<span id="strikerBalls">0</span>
+)
+</span>
+
+</div>
+
+
+<div class="active-player">
+
+<small>
+NON-STRIKER
+</small>
+
+<strong id="nonStrikerName">
+Player 02
+</strong>
+
+<span>
+<span id="nonStrikerRuns">0</span>
+(
+<span id="nonStrikerBalls">0</span>
+)
+</span>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- RUN CONTROL -->
+
+<div class="panel" style="margin-top:18px">
+
+
+<div class="panel-head">
+
+<small>
+BALL RESULT
+</small>
+
+<h2>
+Add Runs
+</h2>
+
+</div>
+
+
+<div class="run-grid">
+
+<button class="run-btn" data-run="0">
+0
+</button>
+
+<button class="run-btn" data-run="1">
+1
+</button>
+
+<button class="run-btn" data-run="2">
+2
+</button>
+
+<button class="run-btn" data-run="3">
+3
+</button>
+
+<button class="run-btn boundary" data-run="4">
+4
+</button>
+
+<button class="run-btn six" data-run="6">
+6
+</button>
+
+<button class="run-btn wicket" id="wicketBtn">
+W
+</button>
+
+<button class="run-btn" id="swapBtn">
+SWAP
+</button>
+
+</div>
+
+
+
+<div class="panel-head" style="margin-top:22px">
+
+<small>
+EXTRAS
+</small>
+
+<h2>
+Add Extra
+</h2>
+
+</div>
+
+
+<div class="extras-grid">
+
+<button class="extra-btn" data-extra="WD">
 WIDE +1
 </button>
 
-<button class="extra-btn noball" onclick="noBall()">
+<button class="extra-btn" data-extra="NB">
 NO BALL +1
 </button>
 
-<button class="extra-btn wicket" onclick="wicketBall()">
-WICKET
+<button class="extra-btn" data-extra="B">
+BYE +1
 </button>
 
-<button class="extra-btn undo" onclick="undoBall()">
-UNDO
+<button class="extra-btn" data-extra="LB">
+LEG BYE +1
 </button>
 
 </div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- RIGHT SIDE -->
+
+<div>
+
+
+<!-- MATCH SETUP -->
+
+<div class="panel">
+
+
+<div class="panel-head">
+
+<small>
+MATCH SETTINGS
+</small>
+
+<h2>
+Innings Setup
+</h2>
+
+</div>
+
+
+<div class="field">
+
+<label>
+MAX OVERS
+</label>
+
+<input
+type="number"
+id="maxOvers"
+value="20"
+min="1">
+
+</div>
+
+
+<div class="field">
+
+<label>
+TARGET
+</label>
+
+<input
+type="number"
+id="target"
+value="176"
+min="0">
+
+</div>
+
+
+<div class="field">
+
+<label>
+BATTING TEAM
+</label>
+
+<select id="teamSelect">
+
+<option>
+HCCL Reds
+</option>
+
+<option>
+HCCL Blues
+</option>
+
+<option>
+HCCL Warriors
+</option>
+
+<option>
+HCCL Titans
+</option>
+
+<option>
+HCCL Kings
+</option>
+
+<option>
+HCCL Strikers
+</option>
+
+<option>
+HCCL Lions
+</option>
+
+<option>
+HCCL Eagles
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+
+<!-- RECENT BALLS -->
+
+<div class="panel" style="margin-top:18px">
+
+
+<div class="panel-head">
+
+<small>
+THIS OVER
+</small>
+
+<h2>
+Recent Balls
+</h2>
+
+</div>
+
+
+<div
+class="recent-balls"
+id="recentBalls">
+</div>
+
+
+<div class="over-summary">
+
+<div class="over-row">
+
+<span>
+Legal Balls
+</span>
+
+<strong id="legalBalls">
+0
+</strong>
+
+</div>
+
+
+<div class="over-row">
+
+<span>
+This Over Runs
+</span>
+
+<strong id="overRuns">
+0
+</strong>
+
+</div>
+
+
+<div class="over-row">
+
+<span>
+Current Bowler
+</span>
+
+<strong id="bowlerName">
+Player 06
+</strong>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- ACTIONS -->
+
+<div class="panel" style="margin-top:18px">
+
+
+<div class="panel-head">
+
+<small>
+SCORING CONTROL
+</small>
+
+<h2>
+Actions
+</h2>
+
+</div>
+
+
+<div class="action-grid">
+
+
+<button
+class="action-btn warning"
+id="undoBtn">
+
+UNDO LAST BALL
+
+</button>
+
+
+<button
+class="action-btn"
+id="newOverBtn">
+
+NEW OVER
+
+</button>
+
+
+<button
+class="action-btn"
+id="saveBtn">
+
+SAVE SCORE
+
+</button>
+
+
+<button
+class="action-btn red"
+id="resetBtn">
+
+RESET INNINGS
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- LOG -->
+
+<div class="panel" style="margin-top:18px">
+
+
+<div class="panel-head">
+
+<small>
+MATCH LOG
+</small>
+
+<h2>
+Scoring History
+</h2>
+
+</div>
+
+
+<div
+class="scoring-log"
+id="scoringLog">
+</div>
+
+
+</div>
+
+
+</div>
+
 
 </section>
 
-
-<section class="control-panel">
-
-<h3>MATCH STATUS</h3>
-
-<div class="info-grid">
-
-<div class="info-box">
-<small>TOTAL RUNS</small>
-<strong id="infoRuns">0</strong>
-</div>
-
-<div class="info-box">
-<small>WICKETS</small>
-<strong id="infoWickets">0</strong>
-</div>
-
-<div class="info-box">
-<small>OVERS</small>
-<strong id="infoOvers">0.0</strong>
-</div>
-
-</div>
-
-<div class="event-message" id="eventMessage">
-READY TO SCORE
-</div>
-
-</section>
 
 </main>
 
 
+
+<footer>
+
+<img src="hccl-logo.png" alt="HCCL">
+
+<span>
+Heroes Champions Cricket League
+</span>
+
+<small>
+Official HCCL Tournament Portal
+</small>
+
+</footer>
+
+
+
 <script>
 
-let runs = 0;
-let wickets = 0;
-let balls = 0;
+/* =====================================================
+   STATE
+===================================================== */
 
-let history = [];
+const defaultState = {
+
+runs:0,
+
+wickets:0,
+
+legalBalls:0,
+
+target:176,
+
+maxOvers:20,
+
+striker:"Player 01",
+
+nonStriker:"Player 02",
+
+bowler:"Player 06",
+
+batters:{
+
+"Player 01":{
+runs:0,
+balls:0
+},
+
+"Player 02":{
+runs:0,
+balls:0
+}
+
+},
+
+history:[],
+
+recent:[],
+
+overRuns:0
+
+};
 
 
-function saveHistory(){
+let state =
+JSON.parse(
+localStorage.getItem(
+"HCCL_SCORER_STATE"
+)
+) || structuredClone(defaultState);
 
-history.push({
-runs:runs,
-wickets:wickets,
-balls:balls
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const runsEl =
+document.getElementById("runs");
+
+const wicketsEl =
+document.getElementById("wickets");
+
+const oversEl =
+document.getElementById("overs");
+
+const crrEl =
+document.getElementById("crr");
+
+const rrrEl =
+document.getElementById("rrr");
+
+const ballsLeftEl =
+document.getElementById("ballsLeft");
+
+const targetView =
+document.getElementById("targetView");
+
+const recentBalls =
+document.getElementById("recentBalls");
+
+const scoringLog =
+document.getElementById("scoringLog");
+
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function ensureBatter(name){
+
+if(!state.batters[name]){
+
+state.batters[name] = {
+
+runs:0,
+balls:0
+
+};
+
+}
+
+}
+
+
+function ballsToOvers(balls){
+
+const completed =
+Math.floor(
+balls / 6
+);
+
+const remaining =
+balls % 6;
+
+return(
+completed +
+"." +
+remaining
+);
+
+}
+
+
+function swapStrike(){
+
+const old =
+state.striker;
+
+state.striker =
+state.nonStriker;
+
+state.nonStriker =
+old;
+
+}
+
+
+/* =====================================================
+   SAVE
+===================================================== */
+
+function saveState(){
+
+localStorage.setItem(
+"HCCL_SCORER_STATE",
+JSON.stringify(state)
+);
+
+}
+
+
+/* =====================================================
+   CALCULATIONS
+===================================================== */
+
+function getCRR(){
+
+if(state.legalBalls === 0){
+return 0;
+}
+
+return(
+state.runs /
+(state.legalBalls / 6)
+);
+
+}
+
+
+function getBallsLeft(){
+
+const total =
+state.maxOvers * 6;
+
+return Math.max(
+0,
+total - state.legalBalls
+);
+
+}
+
+
+function getRRR(){
+
+const ballsLeft =
+getBallsLeft();
+
+if(
+ballsLeft <= 0 ||
+state.target <= 0
+){
+
+return 0;
+
+}
+
+const required =
+Math.max(
+0,
+state.target - state.runs
+);
+
+return(
+required /
+(ballsLeft / 6)
+);
+
+}
+
+
+/* =====================================================
+   BALL CLASS
+===================================================== */
+
+function ballClass(value){
+
+if(value === "4"){
+return "four";
+}
+
+if(value === "6"){
+return "six";
+}
+
+if(value === "W"){
+return "wicket";
+}
+
+if(
+value.includes("WD") ||
+value.includes("NB") ||
+value.includes("LB") ||
+value === "B"
+){
+
+return "extra";
+
+}
+
+return "";
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function render(){
+
+runsEl.textContent =
+state.runs;
+
+wicketsEl.textContent =
+state.wickets;
+
+oversEl.textContent =
+ballsToOvers(
+state.legalBalls
+);
+
+crrEl.textContent =
+getCRR().toFixed(2);
+
+rrrEl.textContent =
+getRRR().toFixed(2);
+
+ballsLeftEl.textContent =
+getBallsLeft();
+
+targetView.textContent =
+state.target;
+
+
+document.getElementById(
+"legalBalls"
+).textContent =
+state.legalBalls % 6;
+
+
+document.getElementById(
+"overRuns"
+).textContent =
+state.overRuns;
+
+
+document.getElementById(
+"strikerName"
+).textContent =
+state.striker;
+
+
+document.getElementById(
+"nonStrikerName"
+).textContent =
+state.nonStriker;
+
+
+document.getElementById(
+"bowlerName"
+).textContent =
+state.bowler;
+
+
+ensureBatter(
+state.striker
+);
+
+ensureBatter(
+state.nonStriker
+);
+
+
+document.getElementById(
+"strikerRuns"
+).textContent =
+state.batters[
+state.striker
+].runs;
+
+
+document.getElementById(
+"strikerBalls"
+).textContent =
+state.batters[
+state.striker
+].balls;
+
+
+document.getElementById(
+"nonStrikerRuns"
+).textContent =
+state.batters[
+state.nonStriker
+].runs;
+
+
+document.getElementById(
+"nonStrikerBalls"
+).textContent =
+state.batters[
+state.nonStriker
+].balls;
+
+
+/* RECENT BALLS */
+
+recentBalls.innerHTML = "";
+
+state.recent.forEach(
+value => {
+
+const ball =
+document.createElement(
+"div"
+);
+
+ball.className =
+"ball " +
+ballClass(value);
+
+ball.textContent =
+value;
+
+recentBalls.appendChild(
+ball
+);
+
 });
 
-}
+
+/* LOG */
+
+scoringLog.innerHTML =
+state.history
+.slice()
+.reverse()
+.map(
+(item,index) => `
+
+<div class="log-item">
+
+<strong>
+${state.history.length - index}.
+</strong>
+
+${item.label}
+
+</div>
+
+`
+)
+.join("");
 
 
-function updateScore(){
+/* SELECT VALUES */
 
-document.getElementById("runs").textContent = runs;
-
-document.getElementById("wickets").textContent = wickets;
-
-let overNumber = Math.floor(balls / 6);
-
-let ballNumber = balls % 6;
-
-let oversText = overNumber + "." + ballNumber;
-
-document.getElementById("overs").textContent = oversText;
-
-document.getElementById("infoRuns").textContent = runs;
-
-document.getElementById("infoWickets").textContent = wickets;
-
-document.getElementById("infoOvers").textContent = oversText;
-
-}
+document.getElementById(
+"strikerSelect"
+).value =
+state.striker;
 
 
-function message(text){
+document.getElementById(
+"nonStrikerSelect"
+).value =
+state.nonStriker;
 
-document.getElementById("eventMessage").textContent = text;
 
-}
+document.getElementById(
+"bowlerSelect"
+).value =
+state.bowler;
 
 
-function addRuns(value){
+document.getElementById(
+"target"
+).value =
+state.target;
 
-saveHistory();
 
-runs += value;
+document.getElementById(
+"maxOvers"
+).value =
+state.maxOvers;
 
-balls++;
 
-if(value === 0){
-message("DOT BALL");
-}
-
-if(value === 1){
-message("1 RUN");
-}
-
-if(value === 2){
-message("2 RUNS");
-}
-
-if(value === 3){
-message("3 RUNS");
-}
-
-if(value === 4){
-message("FOUR!");
-}
-
-if(value === 5){
-message("5 RUNS");
-}
-
-if(value === 6){
-message("SIX!");
-}
-
-updateScore();
+saveState();
 
 }
 
 
-function wideBall(){
 
-saveHistory();
+/* =====================================================
+   SNAPSHOT FOR UNDO
+===================================================== */
 
-runs++;
+function snapshot(){
 
-message("WIDE BALL +1");
-
-updateScore();
-
-}
-
-
-function noBall(){
-
-saveHistory();
-
-runs++;
-
-message("NO BALL +1");
-
-updateScore();
+return JSON.parse(
+JSON.stringify(state)
+);
 
 }
 
 
-function wicketBall(){
+const undoStack = [];
 
-if(wickets >= 10){
-message("ALL OUT");
+
+
+/* =====================================================
+   ADD NORMAL BALL
+===================================================== */
+
+function addRuns(runs){
+
+undoStack.push(
+snapshot()
+);
+
+
+ensureBatter(
+state.striker
+);
+
+
+state.runs += runs;
+
+state.overRuns += runs;
+
+state.legalBalls += 1;
+
+
+state.batters[
+state.striker
+].runs += runs;
+
+
+state.batters[
+state.striker
+].balls += 1;
+
+
+let label =
+`${state.striker}: ${runs} run`;
+
+if(runs !== 1){
+label += "s";
+}
+
+
+state.history.push({
+
+label:label
+
+});
+
+
+state.recent.push(
+String(runs)
+);
+
+
+if(
+state.recent.length > 12
+){
+
+state.recent.shift();
+
+}
+
+
+/* odd run = change strike */
+
+if(
+runs % 2 === 1
+){
+
+swapStrike();
+
+}
+
+
+/* Over end */
+
+if(
+state.legalBalls % 6 === 0
+){
+
+swapStrike();
+
+state.overRuns = 0;
+
+}
+
+
+render();
+
+}
+
+
+
+/* =====================================================
+   WICKET
+===================================================== */
+
+function addWicket(){
+
+if(state.wickets >= 10){
 return;
 }
 
-saveHistory();
 
-wickets++;
+undoStack.push(
+snapshot()
+);
 
-balls++;
 
-message("WICKET!");
+ensureBatter(
+state.striker
+);
 
-updateScore();
+
+state.wickets += 1;
+
+state.legalBalls += 1;
+
+state.batters[
+state.striker
+].balls += 1;
+
+
+state.history.push({
+
+label:
+`${state.striker}: WICKET`
+
+});
+
+
+state.recent.push(
+"W"
+);
+
+
+if(
+state.recent.length > 12
+){
+
+state.recent.shift();
 
 }
 
 
-function undoBall(){
+if(
+state.legalBalls % 6 === 0
+){
 
-if(history.length === 0){
+swapStrike();
 
-message("NOTHING TO UNDO");
+state.overRuns = 0;
+
+}
+
+
+render();
+
+}
+
+
+
+/* =====================================================
+   EXTRAS
+===================================================== */
+
+function addExtra(type){
+
+undoStack.push(
+snapshot()
+);
+
+
+let label =
+type + " +1";
+
+
+state.runs += 1;
+
+state.overRuns += 1;
+
+
+/*
+Wide and No Ball:
+not legal delivery.
+
+Bye and Leg Bye:
+legal delivery.
+*/
+
+if(
+type === "B" ||
+type === "LB"
+){
+
+state.legalBalls += 1;
+
+
+ensureBatter(
+state.striker
+);
+
+
+state.batters[
+state.striker
+].balls += 1;
+
+}
+
+
+state.history.push({
+
+label:label
+
+});
+
+
+state.recent.push(
+type
+);
+
+
+if(
+state.recent.length > 12
+){
+
+state.recent.shift();
+
+}
+
+
+if(
+state.legalBalls > 0 &&
+state.legalBalls % 6 === 0 &&
+(
+type === "B" ||
+type === "LB"
+)
+){
+
+swapStrike();
+
+state.overRuns = 0;
+
+}
+
+
+render();
+
+}
+
+
+
+/* =====================================================
+   BUTTON EVENTS
+===================================================== */
+
+document
+.querySelectorAll(
+".run-btn[data-run]"
+)
+.forEach(
+button => {
+
+button.addEventListener(
+"click",
+function(){
+
+addRuns(
+Number(
+this.dataset.run
+)
+);
+
+}
+);
+
+});
+
+
+document
+.getElementById(
+"wicketBtn"
+)
+.addEventListener(
+"click",
+addWicket
+);
+
+
+document
+.querySelectorAll(
+".extra-btn"
+)
+.forEach(
+button => {
+
+button.addEventListener(
+"click",
+function(){
+
+addExtra(
+this.dataset.extra
+);
+
+}
+);
+
+});
+
+
+/* =====================================================
+   SWAP
+===================================================== */
+
+document
+.getElementById(
+"swapBtn"
+)
+.addEventListener(
+"click",
+function(){
+
+undoStack.push(
+snapshot()
+);
+
+swapStrike();
+
+render();
+
+}
+);
+
+
+/* =====================================================
+   PLAYER SELECT
+===================================================== */
+
+document
+.getElementById(
+"strikerSelect"
+)
+.addEventListener(
+"change",
+function(){
+
+state.striker =
+this.value;
+
+ensureBatter(
+state.striker
+);
+
+render();
+
+}
+);
+
+
+document
+.getElementById(
+"nonStrikerSelect"
+)
+.addEventListener(
+"change",
+function(){
+
+state.nonStriker =
+this.value;
+
+ensureBatter(
+state.nonStriker
+);
+
+render();
+
+}
+);
+
+
+document
+.getElementById(
+"bowlerSelect"
+)
+.addEventListener(
+"change",
+function(){
+
+state.bowler =
+this.value;
+
+render();
+
+}
+);
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+document
+.getElementById(
+"target"
+)
+.addEventListener(
+"input",
+function(){
+
+state.target =
+Number(
+this.value
+) || 0;
+
+render();
+
+}
+);
+
+
+document
+.getElementById(
+"maxOvers"
+)
+.addEventListener(
+"input",
+function(){
+
+state.maxOvers =
+Number(
+this.value
+) || 20;
+
+render();
+
+}
+);
+
+
+document
+.getElementById(
+"teamSelect"
+)
+.addEventListener(
+"change",
+function(){
+
+document
+.getElementById(
+"battingTeam"
+).textContent =
+this.value.toUpperCase();
+
+}
+);
+
+
+/* =====================================================
+   UNDO
+===================================================== */
+
+document
+.getElementById(
+"undoBtn"
+)
+.addEventListener(
+"click",
+function(){
+
+if(
+undoStack.length === 0
+){
+
+alert(
+"No previous ball to undo."
+);
 
 return;
 
 }
 
-let previous = history.pop();
+state =
+undoStack.pop();
 
-runs = previous.runs;
-
-wickets = previous.wickets;
-
-balls = previous.balls;
-
-message("LAST BALL UNDONE");
-
-updateScore();
+render();
 
 }
+);
 
 
-updateScore();
+/* =====================================================
+   NEW OVER
+===================================================== */
+
+document
+.getElementById(
+"newOverBtn"
+)
+.addEventListener(
+"click",
+function(){
+
+state.overRuns = 0;
+
+state.recent = [];
+
+render();
+
+}
+);
+
+
+/* =====================================================
+   SAVE
+===================================================== */
+
+document
+.getElementById(
+"saveBtn"
+)
+.addEventListener(
+"click",
+function(){
+
+saveState();
+
+alert(
+"HCCL score saved."
+);
+
+}
+);
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+document
+.getElementById(
+"resetBtn"
+)
+.addEventListener(
+"click",
+function(){
+
+const confirmReset =
+confirm(
+"Reset the complete innings score?"
+);
+
+if(!confirmReset){
+return;
+}
+
+state =
+structuredClone(
+defaultState
+);
+
+undoStack.length = 0;
+
+saveState();
+
+render();
+
+}
+);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+ensureBatter(
+state.striker
+);
+
+ensureBatter(
+state.nonStriker
+);
+
+render();
 
 </script>
+
 
 </body>
 </html>
